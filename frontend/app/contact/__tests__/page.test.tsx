@@ -1,7 +1,11 @@
 import { describe, it, expect } from '@jest/globals'
-import { render, screen } from '@testing-library/react'
+import { render, screen, waitFor, fireEvent } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import ContactPage from '../page'
+
+jest.mock('@/lib/services/contact', () => ({
+  submitContactForm: () => Promise.resolve(),
+}))
 
 describe('ContactPage', () => {
   it('renders the hero heading', () => {
@@ -39,17 +43,19 @@ describe('ContactPage', () => {
   })
 
   it('shows a confirmation message after form submission', async () => {
-    const user = userEvent.setup()
     render(<ContactPage />)
-    await user.click(screen.getByRole('button', { name: /request diagnostic call/i }))
-    expect(screen.getByText(/Request received/i)).toBeInTheDocument()
+    const form = screen.getByRole('button', { name: /request diagnostic call/i }).closest('form')!
+    fireEvent.submit(form)
+    expect(await screen.findByText(/Request received/i)).toBeInTheDocument()
   })
 
   it('hides the submit button after form submission', async () => {
-    const user = userEvent.setup()
     render(<ContactPage />)
-    await user.click(screen.getByRole('button', { name: /request diagnostic call/i }))
-    expect(screen.queryByRole('button', { name: /request diagnostic call/i })).not.toBeInTheDocument()
+    const form = screen.getByRole('button', { name: /request diagnostic call/i }).closest('form')!
+    fireEvent.submit(form)
+    await waitFor(() => {
+      expect(screen.queryByRole('button', { name: /request diagnostic call/i })).not.toBeInTheDocument()
+    })
   })
 
   it('renders the process step "You submit" in the aside', () => {
