@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2026-04-23",
+  "lastUpdated": "2026-04-24",
   "flows": {
     "home-loads": {
       "name": "Home page loads",
@@ -10,44 +10,12 @@
       "description": "Home page renders with main heading visible",
       "expectedSpecs": 1
     },
-    "home-to-blog": {
-      "name": "Navigate from home to blog detail",
-      "module": "home",
-      "roles": ["shared"],
-      "priority": "P2",
-      "description": "User clicks 'Read blogs' on home page and navigates to blogs",
-      "expectedSpecs": 1
-    },
-    "blog-list-view": {
-      "name": "View blog listing",
-      "module": "blog",
-      "roles": ["shared"],
-      "priority": "P2",
-      "description": "User views the /blogs page and sees blog cards",
-      "expectedSpecs": 1
-    },
-    "blog-detail-view": {
-      "name": "View blog detail",
-      "module": "blog",
-      "roles": ["shared"],
-      "priority": "P2",
-      "description": "User clicks a blog card and views the detail page with matching title",
-      "expectedSpecs": 1
-    },
-    "blog-detail-back": {
-      "name": "Navigate back from blog detail",
-      "module": "blog",
-      "roles": ["shared"],
-      "priority": "P3",
-      "description": "User uses browser back from blog detail and returns to blogs list",
-      "expectedSpecs": 1
-    },
     "navigation-between-pages": {
       "name": "Navigate between main sections",
       "module": "navigation",
       "roles": ["shared"],
       "priority": "P2",
-      "description": "User navigates across home and blogs pages",
+      "description": "User navigates across home, about, services and contact pages",
       "expectedSpecs": 1
     },
     "navigation-header": {
@@ -64,6 +32,134 @@
       "roles": ["shared"],
       "priority": "P4",
       "description": "Footer element is visible on the home page",
+      "expectedSpecs": 1
+    },
+    "services-overview": {
+      "name": "Services Overview",
+      "module": "services",
+      "roles": ["shared"],
+      "priority": "P2",
+      "description": "Guest visits /services and sees the three engagement options",
+      "expectedSpecs": 1
+    },
+    "services-qa": {
+      "name": "AI Spanish QA Sprint",
+      "module": "services",
+      "roles": ["shared"],
+      "priority": "P2",
+      "description": "Guest visits /services/qa and sees the QA sprint service detail",
+      "expectedSpecs": 1
+    },
+    "services-audit": {
+      "name": "Launch Readiness Audit",
+      "module": "services",
+      "roles": ["shared"],
+      "priority": "P2",
+      "description": "Guest visits /services/audit and sees the audit service detail",
+      "expectedSpecs": 1
+    },
+    "services-fractional": {
+      "name": "Fractional Lead",
+      "module": "services",
+      "roles": ["shared"],
+      "priority": "P2",
+      "description": "Guest visits /services/fractional and sees the fractional lead service detail",
+      "expectedSpecs": 1
+    },
+    "contact-page": {
+      "name": "Contact",
+      "module": "static",
+      "roles": ["shared"],
+      "priority": "P2",
+      "description": "Guest visits /contact and sees the contact page",
+      "expectedSpecs": 1
+    },
+    "about-page": {
+      "name": "About",
+      "module": "static",
+      "roles": ["shared"],
+      "priority": "P3",
+      "description": "Guest visits /about and sees the about page content",
+      "expectedSpecs": 1
+    },
+    "contact-form-submit": {
+      "name": "Contact form submit",
+      "module": "contact",
+      "roles": ["guest"],
+      "priority": "P1",
+      "description": "Guest fills out the contact qualifier form and submits — success banner appears",
+      "expectedSpecs": 1
+    },
+    "cta-home-to-contact": {
+      "name": "CTA: Home → Contact",
+      "module": "cta",
+      "roles": ["guest"],
+      "priority": "P2",
+      "description": "Guest clicks 'Book a diagnostic call' CTA on home page and lands on /contact",
+      "expectedSpecs": 1
+    },
+    "cta-service-detail-to-contact": {
+      "name": "CTA: Service detail → Contact",
+      "module": "cta",
+      "roles": ["guest"],
+      "priority": "P2",
+      "description": "Guest clicks the primary CTA on a service detail page and lands on /contact",
+      "expectedSpecs": 1
+    },
+    "services-card-to-detail": {
+      "name": "Services card → Detail page",
+      "module": "services",
+      "roles": ["guest"],
+      "priority": "P2",
+      "description": "Guest clicks a service card on /services and navigates to the service detail page",
+      "expectedSpecs": 1
+    },
+    "breadcrumb-back-to-services": {
+      "name": "Breadcrumb: Detail → Services",
+      "module": "services",
+      "roles": ["guest"],
+      "priority": "P2",
+      "description": "Guest clicks '← ALL SERVICES' breadcrumb on a service detail page and returns to /services",
+      "expectedSpecs": 1
+    },
+    "mobile-navigation-drawer": {
+      "name": "Mobile navigation drawer",
+      "module": "navigation",
+      "roles": ["guest"],
+      "priority": "P3",
+      "description": "Guest on mobile opens the hamburger drawer and navigates to a page",
+      "expectedSpecs": 1
+    },
+    "header-services-dropdown": {
+      "name": "Header services dropdown",
+      "module": "navigation",
+      "roles": ["guest"],
+      "priority": "P3",
+      "description": "Guest hovers the Services nav item on desktop, dropdown appears, and clicking navigates correctly",
+      "expectedSpecs": 1
+    },
+    "fab-contact-button": {
+      "name": "FAB contact button",
+      "module": "navigation",
+      "roles": ["guest"],
+      "priority": "P3",
+      "description": "Guest clicks the floating action button and lands on /contact",
+      "expectedSpecs": 1
+    },
+    "language-toggle-preference": {
+      "name": "Language toggle preference",
+      "module": "navigation",
+      "roles": ["guest"],
+      "priority": "P3",
+      "description": "Guest clicks the ES language toggle and the preference is stored in localStorage",
+      "expectedSpecs": 1
+    },
+    "footer-links-navigation": {
+      "name": "Footer links navigation",
+      "module": "navigation",
+      "roles": ["guest"],
+      "priority": "P4",
+      "description": "Guest clicks a footer link and navigates to the correct page",
       "expectedSpecs": 1
     }
   }
