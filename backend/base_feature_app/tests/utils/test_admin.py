@@ -8,11 +8,9 @@ from base_feature_app.admin import (
     BaseFeatureUserAdmin,
     BlogAdmin,
     PasswordCodeAdmin,
-    ProductAdmin,
-    SaleAdmin,
     admin_site,
 )
-from base_feature_app.models import Blog, PasswordCode, Product, Sale, SoldProduct, User
+from base_feature_app.models import Blog, PasswordCode, User
 
 
 def _request_with_messages(user):
@@ -48,58 +46,6 @@ def test_blog_admin_delete_queryset_removes_objects():
 
 
 @pytest.mark.django_db
-def test_product_admin_delete_queryset_removes_gallery():
-    """Verifies ProductAdmin.delete_queryset removes the product and its associated gallery library."""
-    library = Library.objects.create(title='Product Library')
-    product = Product.objects.create(
-        title='Test Product',
-        category='Cat',
-        sub_category='Sub',
-        description='Desc',
-        price=50,
-        gallery=library,
-    )
-
-    admin = ProductAdmin(Product, admin_site)
-    admin.delete_queryset(RequestFactory().get('/admin/'), Product.objects.filter(id=product.id))
-
-    assert Product.objects.count() == 0
-    assert Library.objects.filter(id=library.id).count() == 0
-
-
-@pytest.mark.django_db
-def test_sale_admin_delete_queryset_and_total():
-    """Verifies SaleAdmin computes total products correctly and deletes the sale with its sold products."""
-    library = Library.objects.create(title='Sale Library')
-    product = Product.objects.create(
-        title='Test Product',
-        category='Cat',
-        sub_category='Sub',
-        description='Desc',
-        price=50,
-        gallery=library,
-    )
-    sold_product = SoldProduct.objects.create(product=product, quantity=2)
-    sale = Sale.objects.create(
-        email='buyer@example.com',
-        address='Addr',
-        city='City',
-        state='State',
-        postal_code='12345',
-    )
-    sale.sold_products.add(sold_product)
-
-    admin = SaleAdmin(Sale, admin_site)
-
-    assert admin.get_total_products(sale) == 1
-
-    admin.delete_queryset(RequestFactory().get('/admin/'), Sale.objects.filter(id=sale.id))
-
-    assert Sale.objects.count() == 0
-    assert SoldProduct.objects.count() == 0
-
-
-@pytest.mark.django_db
 def test_admin_site_custom_sections():
     """Verifies the custom admin site exposes all required model sections in the app list."""
     User.objects.create_superuser(email='admin@example.com', password='pass1234')
@@ -110,7 +56,7 @@ def test_admin_site_custom_sections():
 
     object_names = {model['object_name'] for section in app_list for model in section['models']}
 
-    assert {'User', 'PasswordCode', 'Blog', 'Product', 'Sale', 'SoldProduct'}.issubset(object_names)
+    assert {'User', 'PasswordCode', 'Blog'}.issubset(object_names)
 
 
 @pytest.mark.django_db

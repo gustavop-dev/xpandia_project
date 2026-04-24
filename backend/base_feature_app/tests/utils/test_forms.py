@@ -6,9 +6,8 @@ from django.core.files.uploadedfile import SimpleUploadedFile
 from django_attachments.models import Attachment, Library
 
 from base_feature_app.forms.blog import BlogForm
-from base_feature_app.forms.product import ProductForm
 from base_feature_app.forms.user import UserChangeForm, UserCreationForm
-from base_feature_app.models import Blog, Product, User
+from base_feature_app.models import Blog, User
 
 
 def _create_attachment(library, filename='file.txt'):
@@ -69,39 +68,6 @@ def test_blog_form_save_creates_library_when_missing_attribute(tmp_path, monkeyp
 
     assert isinstance(blog, Blog)
     assert blog.image is not None
-    assert Library.objects.count() == 2
-
-
-@pytest.mark.django_db
-def test_product_form_save_creates_gallery_when_missing_attribute(tmp_path, monkeypatch):
-    """Verifies ProductForm.save() creates a new Library when the product instance has no gallery attribute."""
-    monkeypatch.setattr(django_settings, 'MEDIA_ROOT', tmp_path)
-    library = Library.objects.create(title='Existing')
-
-    form = ProductForm(
-        data={
-            'title': 'Test Product',
-            'category': 'Cat',
-            'sub_category': 'Sub',
-            'description': 'Desc',
-            'price': 120,
-            'gallery': library.id,
-        }
-    )
-
-    assert form.is_valid() is True
-
-    original_hasattr = builtins.hasattr
-    monkeypatch.setattr(
-        builtins,
-        'hasattr',
-        lambda obj, name: False if name == 'gallery' else original_hasattr(obj, name),
-    )
-
-    product = form.save()
-
-    assert isinstance(product, Product)
-    assert product.gallery is not None
     assert Library.objects.count() == 2
 
 

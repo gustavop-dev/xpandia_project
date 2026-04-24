@@ -14,9 +14,8 @@ from django.utils.translation import gettext_lazy as _
 from django_attachments.admin import AttachmentsAdminMixin
 
 from .forms.blog import BlogForm
-from .forms.product import ProductForm
 from .forms.user import UserChangeForm, UserCreationForm
-from .models import Blog, Product, Sale, SoldProduct, User, PasswordCode
+from .models import Blog, User, PasswordCode
 from .utils.auth_utils import generate_auth_tokens
 
 logger = logging.getLogger(__name__)
@@ -35,46 +34,6 @@ class BlogAdmin(AttachmentsAdminMixin, admin.ModelAdmin):
     def delete_queryset(self, request, queryset):
         for obj in queryset:
             obj.delete()
-
-
-# ============================================================================
-# PRODUCT MANAGEMENT
-# ============================================================================
-
-class ProductAdmin(AttachmentsAdminMixin, admin.ModelAdmin):
-    form = ProductForm
-    list_display = ('title', 'category', 'sub_category', 'price')
-    search_fields = ('title', 'category', 'sub_category')
-    list_filter = ('category', 'sub_category')
-
-    def delete_queryset(self, request, queryset):
-        for obj in queryset:
-            obj.delete()
-
-
-# ============================================================================
-# SALES MANAGEMENT
-# ============================================================================
-
-class SoldProductAdmin(admin.ModelAdmin):
-    list_display = ('product', 'quantity')
-    search_fields = ('product__title',)
-    list_filter = ('product',)
-
-
-class SaleAdmin(admin.ModelAdmin):
-    list_display = ('email', 'address', 'city', 'state', 'postal_code', 'get_total_products')
-    search_fields = ('email', 'city', 'state')
-    list_filter = ('state', 'city')
-    filter_horizontal = ('sold_products',)
-
-    def get_total_products(self, obj):
-        return obj.sold_products.count()
-    get_total_products.short_description = 'Total Products'
-
-    def delete_queryset(self, request, queryset):
-        for sale in queryset:
-            sale.delete()
 
 
 # ============================================================================
@@ -163,9 +122,8 @@ class PasswordCodeAdmin(admin.ModelAdmin):
     search_fields = ('user__email', 'code')
     list_filter = ('used', 'created_at')
     readonly_fields = ('created_at',)
-    
+
     def has_add_permission(self, request):
-        # Don't allow manual creation from admin
         return False
 
 
@@ -181,8 +139,7 @@ class BaseFeatureAdminSite(admin.AdminSite):
     def get_app_list(self, request):
         app_dict = self._build_app_dict(request)
         base_app_models = app_dict.get('base_feature_app', {}).get('models', [])
-        
-        # Custom structure for the admin index organized by sections
+
         custom_app_list = [
             {
                 'name': _('👥 User Management'),
@@ -200,41 +157,17 @@ class BaseFeatureAdminSite(admin.AdminSite):
                     if model['object_name'] in ['Blog']
                 ]
             },
-            {
-                'name': _('🛍️ Product Management'),
-                'app_label': 'product_management',
-                'models': [
-                    model for model in base_app_models
-                    if model['object_name'] in ['Product']
-                ]
-            },
-            {
-                'name': _('💰 Sales Management'),
-                'app_label': 'sales_management',
-                'models': [
-                    model for model in base_app_models
-                    if model['object_name'] in ['Sale', 'SoldProduct']
-                ]
-            },
         ]
-        
-        # Filter out empty sections
-        custom_app_list = [section for section in custom_app_list if section['models']]
-        
-        return custom_app_list
+
+        return [section for section in custom_app_list if section['models']]
 
 
 # ============================================================================
 # REGISTER MODELS
 # ============================================================================
 
-# Create an instance of the custom AdminSite
 admin_site = BaseFeatureAdminSite(name='myadmin')
 
-# Register all models with the custom AdminSite
 admin_site.register(User, BaseFeatureUserAdmin)
 admin_site.register(PasswordCode, PasswordCodeAdmin)
 admin_site.register(Blog, BlogAdmin)
-admin_site.register(Product, ProductAdmin)
-admin_site.register(Sale, SaleAdmin)
-admin_site.register(SoldProduct, SoldProductAdmin)
