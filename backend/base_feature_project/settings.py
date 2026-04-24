@@ -319,8 +319,8 @@ DBBACKUP_CLEANUP_KEEP_MEDIA = 4
 # Task Queue (Huey)
 # ---------------------------------------------------------------------------
 HUEY = RedisHuey(
-    name='base_feature_project',
-    url=os.getenv('REDIS_URL', 'redis://localhost:6379/1'),
+    name='xpandia_project',
+    url=os.getenv('REDIS_URL', 'redis://localhost:6379/11'),
     immediate=not IS_PRODUCTION,
 )
 

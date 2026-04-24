@@ -2,10 +2,10 @@
 Scheduled operational tasks with Huey.
 
 Tasks:
-- scheduled_backup: DB + media backup weekly (Sunday at 3:00 AM UTC)
-- silk_garbage_collection: Daily cleanup of Silk profiling data (4:00 AM)
-- weekly_slow_queries_report: Weekly performance report (Mondays 8:00 AM)
-- silk_reports_cleanup: Monthly cleanup of Silk report files older than 6 months
+- scheduled_backup: DB + media backup weekly (Sunday 04:30 UTC — shifted to avoid collisions)
+- silk_garbage_collection: Daily cleanup of Silk profiling data (04:45 UTC)
+- weekly_slow_queries_report: Weekly performance report (Mondays 08:30 UTC)
+- silk_reports_cleanup: Monthly cleanup of Silk report files (1st at 07:00 UTC)
 """
 
 import logging
@@ -21,10 +21,10 @@ from huey.contrib.djhuey import db_periodic_task
 logger = logging.getLogger('backups')
 
 
-@db_periodic_task(crontab(day_of_week='0', hour='3', minute='0'))
+@db_periodic_task(crontab(day_of_week='0', hour='4', minute='30'))
 def scheduled_backup():
     """
-    Automated weekly backup of database and media files (Sunday 03:00 UTC).
+    Automated weekly backup of database and media files (Sunday 04:30 UTC).
     Storage: configured via BACKUP_STORAGE_PATH env var.
     Retention: 4 weeks (~1 month).
     """
@@ -53,7 +53,7 @@ def scheduled_backup():
         raise
 
 
-@db_periodic_task(crontab(hour='4', minute='0'))
+@db_periodic_task(crontab(hour='4', minute='45'))
 def silk_garbage_collection():
     """
     Daily cleanup of Silk profiling data older than 7 days.
@@ -70,7 +70,7 @@ def silk_garbage_collection():
     logger.info(output.getvalue())
 
 
-@db_periodic_task(crontab(day_of_week='1', hour='8', minute='0'))
+@db_periodic_task(crontab(day_of_week='1', hour='8', minute='30'))
 def weekly_slow_queries_report():
     """
     Weekly report of slow queries and potential N+1 patterns.
@@ -156,7 +156,7 @@ def weekly_slow_queries_report():
     return report
 
 
-@db_periodic_task(crontab(day='1', hour='5', minute='0'))
+@db_periodic_task(crontab(day='1', hour='7', minute='0'))
 def silk_reports_cleanup():
     """
     Monthly cleanup of Silk report files older than 6 months.
