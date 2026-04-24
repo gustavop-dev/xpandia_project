@@ -2,15 +2,13 @@ import pytest
 from django.contrib.messages.storage.fallback import FallbackStorage
 from django.core.exceptions import PermissionDenied
 from django.test import RequestFactory
-from django_attachments.models import Library
 
 from base_feature_app.admin import (
     BaseFeatureUserAdmin,
-    BlogAdmin,
     PasswordCodeAdmin,
     admin_site,
 )
-from base_feature_app.models import Blog, PasswordCode, User
+from base_feature_app.models import PasswordCode, User
 
 
 def _request_with_messages(user):
@@ -30,22 +28,6 @@ def test_password_code_admin_disables_add_permission():
 
 
 @pytest.mark.django_db
-def test_blog_admin_delete_queryset_removes_objects():
-    library = Library.objects.create(title='Blog Library')
-    blog = Blog.objects.create(
-        title='Test Blog',
-        description='Desc',
-        category='Cat',
-        image=library,
-    )
-
-    admin = BlogAdmin(Blog, admin_site)
-    admin.delete_queryset(RequestFactory().get('/admin/'), Blog.objects.filter(id=blog.id))
-
-    assert Blog.objects.count() == 0
-
-
-@pytest.mark.django_db
 def test_admin_site_custom_sections():
     """Verifies the custom admin site exposes all required model sections in the app list."""
     User.objects.create_superuser(email='admin@example.com', password='pass1234')
@@ -56,7 +38,7 @@ def test_admin_site_custom_sections():
 
     object_names = {model['object_name'] for section in app_list for model in section['models']}
 
-    assert {'User', 'PasswordCode', 'Blog'}.issubset(object_names)
+    assert {'User', 'PasswordCode'}.issubset(object_names)
 
 
 @pytest.mark.django_db

@@ -4,6 +4,8 @@ This document defines the **standard configuration** for generating unified, hum
 
 > **Scope:** Backend + Frontend unit tests only. E2E test coverage has its own standard (see `E2E_FLOW_COVERAGE_REPORT_STANDARD.md`).
 
+> **Note for Xpandia:** Sample coverage tables below include filenames such as `blog.py`, `product_crud.py` or `sale.py` — they are illustrations of what a real coverage output looks like for a feature-rich app. Xpandia's current backend only ships `User`, `PasswordCode`, auth and captcha code, so the real report will list a smaller file set. Replace the example names in your head when reading the samples.
+
 ---
 
 ## Table of Contents

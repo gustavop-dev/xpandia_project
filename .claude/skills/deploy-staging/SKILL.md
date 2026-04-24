@@ -1,6 +1,6 @@
 ---
 name: deploy-staging
-description: "Deploy a release branch to the staging server for client UAT. Pass the branch name as argument."
+description: "Deploy a release branch to the Xpandia staging server for client UAT. Pass the branch name as argument."
 disable-model-invocation: true
 allowed-tools: Bash
 argument-hint: "[branch-name, e.g. release/march-2026]"
@@ -8,13 +8,15 @@ argument-hint: "[branch-name, e.g. release/march-2026]"
 
 # Deploy to Staging
 
-Run these steps on the staging server at `/home/ryzepeck/webapps/base_django_react_next_feature_staging` to deploy a release branch for client testing/UAT.
+Run these steps on the Xpandia staging server at `<XPANDIA_STAGING_PATH>` to deploy a release branch for client testing/UAT.
 
-- **Domain**: https://YOUR_STAGING_DOMAIN
+- **Domain**: `<XPANDIA_STAGING_DOMAIN>`
 - **Stack**: Django + Gunicorn + Nginx + MySQL 8 + Redis + Huey
-- **Services**: `base_django_react_next_feature_staging` (Gunicorn), `base_django_react_next_feature-staging-huey` (task queue)
+- **Services**: `<XPANDIA_STAGING_SERVICE>` (Gunicorn), `<XPANDIA_STAGING_HUEY_SERVICE>` (task queue)
 
-> **⚠️ How to invoke**: Pass the branch name as an argument when calling this command.
+> **⚠️ TODO before first use**: replace the `<XPANDIA_STAGING_*>` placeholders below (path, domain, service names) with the real values once the Xpandia staging environment is provisioned. Until then this skill must not be run.
+
+> **How to invoke**: Pass the branch name as an argument when calling this command.
 > Example: `/deploy-staging release/march-2026`
 > If no branch is specified, Claude Code will ask before proceeding.
 >
@@ -32,13 +34,13 @@ If any service is down or disk >85%, **stop and fix before deploying**.
 
 2. Check current git status (ensure working directory is clean):
 ```bash
-cd /home/ryzepeck/webapps/base_django_react_next_feature_staging && git status
+cd <XPANDIA_STAGING_PATH> && git status
 ```
 Expected: `nothing to commit, working tree clean`. If there are uncommitted changes, stash or discard them first.
 
 3. Verify the target branch exists on remote:
 ```bash
-cd /home/ryzepeck/webapps/base_django_react_next_feature_staging && git fetch origin && git branch -r | grep $ARGUMENTS
+cd <XPANDIA_STAGING_PATH> && git fetch origin && git branch -r | grep $ARGUMENTS
 ```
 If the branch doesn't exist, **stop — wrong branch name or not pushed yet**.
 
@@ -48,28 +50,28 @@ If the branch doesn't exist, **stop — wrong branch name or not pushed yet**.
 
 4. Checkout and pull the release branch:
 ```bash
-cd /home/ryzepeck/webapps/base_django_react_next_feature_staging && git fetch origin && git checkout $ARGUMENTS && git pull origin $ARGUMENTS
+cd <XPANDIA_STAGING_PATH> && git fetch origin && git checkout $ARGUMENTS && git pull origin $ARGUMENTS
 ```
 
 5. Install backend dependencies and run migrations:
 ```bash
-cd /home/ryzepeck/webapps/base_django_react_next_feature_staging/backend && source venv/bin/activate && pip install -r requirements.txt && python manage.py migrate
+cd <XPANDIA_STAGING_PATH>/backend && source venv/bin/activate && pip install -r requirements.txt && python manage.py migrate
 ```
 
 6. Build the frontend (requires nvm for Node 22.13.0) and remove node_modules afterwards:
 ```bash
-bash -c 'export NVM_DIR="$HOME/.nvm"; source "$NVM_DIR/nvm.sh"; nvm use; cd /home/ryzepeck/webapps/base_django_react_next_feature_staging/frontend && npm ci && npm run build && rm -rf node_modules'
+bash -c 'export NVM_DIR="$HOME/.nvm"; source "$NVM_DIR/nvm.sh"; nvm use; cd <XPANDIA_STAGING_PATH>/frontend && npm ci && npm run build && rm -rf node_modules'
 ```
 > `rm -rf node_modules` runs only if the build succeeds. Frees ~200–500 MB of disk space.
 
 6b. (Optional) Verify node_modules were removed:
 ```bash
-ls /home/ryzepeck/webapps/base_django_react_next_feature_staging/frontend/node_modules 2>/dev/null && echo "WARNING: node_modules still present" || echo "OK: node_modules removed"
+ls <XPANDIA_STAGING_PATH>/frontend/node_modules 2>/dev/null && echo "WARNING: node_modules still present" || echo "OK: node_modules removed"
 ```
 
 7. Collect static files:
 ```bash
-cd /home/ryzepeck/webapps/base_django_react_next_feature_staging/backend && source venv/bin/activate && python manage.py collectstatic --noinput
+cd <XPANDIA_STAGING_PATH>/backend && source venv/bin/activate && python manage.py collectstatic --noinput
 ```
 
 ---
@@ -78,7 +80,7 @@ cd /home/ryzepeck/webapps/base_django_react_next_feature_staging/backend && sour
 
 8. Restart Gunicorn and Huey for staging:
 ```bash
-sudo systemctl restart base_django_react_next_feature_staging && sudo systemctl restart base_django_react_next_feature-staging-huey
+sudo systemctl restart <XPANDIA_STAGING_SERVICE> && sudo systemctl restart <XPANDIA_STAGING_HUEY_SERVICE>
 ```
 
 ---
@@ -87,19 +89,19 @@ sudo systemctl restart base_django_react_next_feature_staging && sudo systemctl 
 
 9. Verify staging services are active:
 ```bash
-sudo systemctl is-active base_django_react_next_feature_staging && sudo systemctl is-active base_django_react_next_feature-staging-huey
+sudo systemctl is-active <XPANDIA_STAGING_SERVICE> && sudo systemctl is-active <XPANDIA_STAGING_HUEY_SERVICE>
 ```
 Expected: `active`, `active`.
 
 10. Verify the staging health endpoint:
 ```bash
-curl -s https://YOUR_STAGING_DOMAIN/api/health/ | python3 -m json.tool
+curl -s https://<XPANDIA_STAGING_DOMAIN>/api/health/ | python3 -m json.tool
 ```
-Expected: `{"app": "ok", "database": "ok", "redis": "ok"}` with HTTP 200.
+Expected: `{"status": "ok"}` with HTTP 200.
 
 11. Confirm the deployed branch matches the expected release:
 ```bash
-cd /home/ryzepeck/webapps/base_django_react_next_feature_staging && git log --oneline -1
+cd <XPANDIA_STAGING_PATH> && git log --oneline -1
 ```
 Verify the commit matches the latest on `$ARGUMENTS`.
 
@@ -109,12 +111,12 @@ Verify the commit matches the latest on `$ARGUMENTS`.
 
 12. Check Gunicorn logs:
 ```bash
-sudo journalctl -u base_django_react_next_feature_staging --no-pager -n 50
+sudo journalctl -u <XPANDIA_STAGING_SERVICE> --no-pager -n 50
 ```
 
 13. Check Huey logs:
 ```bash
-sudo journalctl -u base_django_react_next_feature-staging-huey --no-pager -n 50
+sudo journalctl -u <XPANDIA_STAGING_HUEY_SERVICE> --no-pager -n 50
 ```
 
 14. Check Nginx error log:
@@ -124,21 +126,21 @@ sudo tail -30 /var/log/nginx/error.log
 
 15. Check Django debug log:
 ```bash
-tail -50 /home/ryzepeck/webapps/base_django_react_next_feature_staging/backend/debug.log
+tail -50 <XPANDIA_STAGING_PATH>/backend/debug.log
 ```
 
 16. If services won't start, check systemd details:
 ```bash
-sudo systemctl status base_django_react_next_feature_staging --no-pager -l
-sudo systemctl status base_django_react_next_feature-staging-huey --no-pager -l
+sudo systemctl status <XPANDIA_STAGING_SERVICE> --no-pager -l
+sudo systemctl status <XPANDIA_STAGING_HUEY_SERVICE> --no-pager -l
 ```
 
 ---
 
 ## Phase 6 — Notify client (optional)
 
-17. Once verification passes, notify the client that the staging environment is ready for UAT at:
-    - **URL**: https://YOUR_STAGING_DOMAIN
+17. Once verification passes, notify the client that the Xpandia staging environment is ready for UAT at:
+    - **URL**: https://<XPANDIA_STAGING_DOMAIN>
     - **Branch deployed**: `$ARGUMENTS`
     - **Date**: (current date)
 
@@ -150,5 +152,3 @@ sudo systemctl status base_django_react_next_feature-staging-huey --no-pager -l
 - After client approval, use `/deploy-and-check` to deploy master to production (after merging the release branch).
 - The branch is specified at invocation time in the chat message — no need to edit this file per release.
 - Staging uses a **separate database and `.env`** from production — client testing will not affect production data.
-
-> ⚠️ **TODO — Update before using**: Replace `YOUR_STAGING_DOMAIN` with the actual staging domain for this project and verify the health endpoint URL (`/api/health/`) is correct.

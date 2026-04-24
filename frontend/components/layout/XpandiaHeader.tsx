@@ -11,7 +11,6 @@ export default function XpandiaHeader() {
   const activePage = pathname === '/' ? 'home'
     : pathname.startsWith('/services') ? 'services'
     : pathname === '/about' ? 'about'
-    : pathname.startsWith('/blogs') ? 'blog'
     : pathname === '/contact' ? 'contact'
     : ''
   const [scrolled, setScrolled] = useState(false)
@@ -97,7 +96,6 @@ export default function XpandiaHeader() {
             </div>
 
             <Link className={cn(linkBase, activePage === 'about' && linkActive)} href="/about">About</Link>
-            <Link className={cn(linkBase, activePage === 'blog' && linkActive)} href="/blogs">Blog</Link>
           </nav>
 
           <div className="flex items-center gap-4">
@@ -158,7 +156,6 @@ export default function XpandiaHeader() {
           </Link>
         ))}
         <Link href="/about" className="block mt-5 py-[18px] border-b border-ink-150 font-display text-[22px] text-ink-900" onClick={closeDrawer}>About</Link>
-        <Link href="/blogs" className="block py-[18px] border-b border-ink-150 font-display text-[22px] text-ink-900" onClick={closeDrawer}>Blog</Link>
         <Link href="/contact" className="btn btn-primary mt-8 w-full justify-center" onClick={closeDrawer}>
           Book a diagnostic call <span className="btn-arrow"></span>
         </Link>

@@ -4,6 +4,8 @@
 
 This document defines test quality standards to ensure maintainable, reliable, and meaningful test suites across the project. Following these standards helps prevent flaky tests, reduces maintenance burden, and ensures tests serve as living documentation of system behavior.
 
+> **Note for Xpandia:** Examples referencing `Product`, `Sale`, `Blog`, `cart` or `checkout` are illustrative test-writing patterns, not a description of Xpandia's codebase. Apply the patterns to Xpandia's actual models and flows (`User`, `PasswordCode`, auth, public pages).
+
 ---
 
 ## Scope

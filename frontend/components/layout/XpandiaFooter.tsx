@@ -33,7 +33,6 @@ export default function XpandiaFooter() {
             <h5 className="font-mono text-[11px] tracking-[0.12em] uppercase text-ink-400 mt-0 mb-4 font-medium">Company</h5>
             <ul className="list-none p-0 m-0">
               <li className="mb-[10px] text-[14px]"><Link href="/about" className="text-ink-200 hover:text-white transition-colors">About</Link></li>
-              <li className="mb-[10px] text-[14px]"><Link href="/blogs" className="text-ink-200 hover:text-white transition-colors">Blog</Link></li>
               <li className="mb-[10px] text-[14px]"><Link href="/contact" className="text-ink-200 hover:text-white transition-colors">Contact</Link></li>
             </ul>
           </div>

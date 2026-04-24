@@ -29,7 +29,13 @@ def test_users_list_success_for_staff(api_client, staff_user):
 
 
 @pytest.mark.django_db
-def test_blogs_create_requires_staff(api_client):
-    url = reverse('blogs')
-    response = api_client.post(url, {}, format='json')
+def test_users_create_authenticated_non_staff_returns_403(api_client, existing_user):
+    api_client.force_authenticate(user=existing_user)
+
+    response = api_client.post(
+        reverse('user-list'),
+        {'email': 'new@example.com', 'password': 'pass1234', 'role': 'customer'},
+        format='json',
+    )
+
     assert response.status_code == status.HTTP_403_FORBIDDEN

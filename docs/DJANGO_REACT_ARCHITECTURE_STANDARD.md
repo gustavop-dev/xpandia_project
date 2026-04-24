@@ -7,6 +7,8 @@ This document consolidates and standardizes the best architecture practices for 
 
 **Version 2.0 - February 2026**
 
+> **Note for Xpandia:** Code samples in this document (e.g. `Product`, `Sale`, `Blog`, `Order`) are generic teaching examples inherited from the corporate architecture standard. They do **not** reflect Xpandia's domain model. Current Xpandia models are `User` and `PasswordCode` in `base_feature_app`. Use the patterns shown here, but swap the example entities for your actual Xpandia models when applying them.
+
 ---
 
 ## Table of Contents

@@ -47,3 +47,24 @@ def test_user_str_representation():
     User = get_user_model()
     user = User.objects.create_user(email='str@example.com', password='pass1234')
     assert str(user) == 'str@example.com'
+
+
+@pytest.mark.django_db
+def test_create_user_normalizes_email():
+    User = get_user_model()
+    user = User.objects.create_user(email='UPPER@EXAMPLE.COM', password='pass1234')
+    assert user.email == 'UPPER@example.com'
+
+
+@pytest.mark.django_db
+def test_create_user_is_active_by_default():
+    User = get_user_model()
+    user = User.objects.create_user(email='active@example.com', password='pass1234')
+    assert user.is_active is True
+
+
+@pytest.mark.django_db
+def test_user_first_name_max_length():
+    User = get_user_model()
+    field = User._meta.get_field('first_name')
+    assert field.max_length == 150

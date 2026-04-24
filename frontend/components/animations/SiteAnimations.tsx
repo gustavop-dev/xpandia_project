@@ -16,7 +16,7 @@ export default function SiteAnimations() {
 
     mm.add('(prefers-reduced-motion: no-preference)', () => {
       // ── Hero entrance ─────────────────────────────────────────────────────
-      const heroSel = '.hero, .blog-hero'
+      const heroSel = '.hero'
       const hero = document.querySelector<HTMLElement>(heroSel)
       if (hero) {
         const items = hero.querySelectorAll(':scope > .container > *')
@@ -55,31 +55,6 @@ export default function SiteAnimations() {
         start: 'top 90%',
       })
 
-      // ── Blog post cards ────────────────────────────────────────────────────
-      ScrollTrigger.batch('.post-card', {
-        onEnter: els =>
-          gsap.from(els, {
-            y: ENTER_Y,
-            opacity: 0,
-            duration: 0.6,
-            stagger: 0.08,
-            ease: EASE,
-          }),
-        once: true,
-        start: 'top 92%',
-      })
-
-      // ── Featured article ───────────────────────────────────────────────────
-      gsap.utils.toArray<HTMLElement>('.featured-card').forEach(el => {
-        gsap.from(el, {
-          y: 24,
-          opacity: 0,
-          duration: ENTER_DURATION,
-          ease: EASE,
-          scrollTrigger: { trigger: el, start: 'top 88%', once: true },
-        })
-      })
-
       // ── Scorecard widget ───────────────────────────────────────────────────
       gsap.utils.toArray<HTMLElement>('.scorecard').forEach(el => {
         gsap.from(el, {
@@ -101,17 +76,6 @@ export default function SiteAnimations() {
           stagger: 0.1,
           ease: EASE,
           scrollTrigger: { trigger: list, start: 'top 85%', once: true },
-        })
-      })
-
-      // ── Editorial wall ─────────────────────────────────────────────────────
-      gsap.utils.toArray<HTMLElement>('.editorial-wall').forEach(el => {
-        gsap.from(el.querySelector(':scope > .container > *'), {
-          y: 20,
-          opacity: 0,
-          duration: 0.8,
-          ease: EASE,
-          scrollTrigger: { trigger: el, start: 'top 80%', once: true },
         })
       })
 

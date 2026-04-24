@@ -3,51 +3,44 @@ trigger: manual
 description: Project intelligence and lessons learned. Reference for project-specific patterns, preferences, and key insights discovered during development.
 ---
 
-# Lessons Learned — Base Django React Next Feature
+# Lessons Learned — Xpandia
 
 This file captures important patterns, preferences, and project intelligence that help work more effectively with this codebase. Updated as new insights are discovered.
+
+> This is the Windsurf-consumed copy. The canonical Memory Bank file lives at `docs/methodology/lessons-learned.md` — keep both in sync when updating.
 
 ---
 
 ## 1. Architecture Patterns
 
-### Content Storage: Structured JSON over CMS
-- Proposal sections, portfolio works, and blog posts use Django `JSONField` for content
-- Each proposal section's `content_json` maps directly to a React component's props interface
-- Blog supports dual format: structured JSON (preferred) with HTML fallback via `dangerouslySetInnerHTML` (sanitized with DOMPurify)
-- This avoids the need for a full CMS while keeping content rich and structured
+### Static-Public-Only Scope (as of 2026-04-24)
+- Xpandia surface is a marketing site: `/`, `/about`, `/contact`, `/services` (+ `/services/qa`, `/services/audit`, `/services/fractional`).
+- Backend ships auth + user infrastructure (`User`, `PasswordCode`, JWT, Google OAuth, password reset by code). **Not yet consumed by the frontend.**
+- Template e-commerce residue (Product, Sale, Blog, cart, checkout, catalog) has been fully removed.
 
-### Single Django App: `content`
-- All models, views, serializers, and services live in the `content` app
-- This works for now but may need splitting if scope grows significantly
-- Models are already split into individual files under `content/models/`
+### Single Django App: `base_feature_app`
+- All models, views, serializers live in `base_feature_app`.
+- Models split into individual files under `base_feature_app/models/` (`user.py`, `password_code.py`).
+- Project + app keep the scaffold names `base_feature_project` / `base_feature_app` on purpose.
 
 ### Service Layer Pattern
-- Business logic lives in `content/services/`, not in views
-- Views are thin FBV wrappers that call service methods
+- Business logic lives in views (thin FBVs with `@api_view`) and in `base_feature_app/services/` (`email_service`).
 
 ---
 
 ## 2. Code Style & Conventions
 
 ### Backend: Function-Based Views (FBV)
-- **All** DRF views use `@api_view` decorators, not class-based views
-- Never convert to CBV unless explicitly requested
+- All DRF views use `@api_view` decorators, not CBVs. Do not convert unless explicitly requested.
 
 ### Frontend: Zustand Stores
-- State management uses Zustand with TypeScript
-- HTTP requests go through centralized API client in `lib/api/`
-
-### Bilingual Content Pattern
-- Models have paired fields: `title_en`/`title_es`, `content_json_en`/`content_json_es`, etc.
-- Frontend reads the appropriate field based on current locale via `next-intl`
-- Proposals have a `language` field (`es`/`en`) that determines which default content to use
+- Only `localeStore` is currently active (persisted `en`/`es` preference).
+- HTTP requests go through `lib/services/http.ts` (Axios with JWT refresh interceptors).
 
 ### Naming Conventions
-- Backend: snake_case for everything (Python standard)
-- Frontend components: PascalCase (`BusinessProposal/Greeting.tsx`)
-- Frontend hooks: camelCase with `use` prefix (`useExpirationTimer.ts`)
-- Frontend stores: camelCase (`useProposalStore.ts`)
+- Backend: snake_case (Python standard).
+- Frontend components: PascalCase (`XpandiaHeader.tsx`).
+- Frontend stores: camelCase (`localeStore.ts`).
 
 ---
 
@@ -56,83 +49,39 @@ This file captures important patterns, preferences, and project intelligence tha
 ### Backend Commands Always Need venv
 ```bash
 source venv/bin/activate && <command>
-# or
-venv/bin/python <command>
 ```
 
-### Huey Immediate Mode in Development
-- When `DJANGO_ENV != 'production'`, Huey tasks execute synchronously
-- No need to run Redis or Huey worker for development
-- Tasks still need to be importable and functional
-
 ### Frontend Dev Proxy
-- Next.js proxies `/api`, `/admin`, `/static`, `/media` to Django at `127.0.0.1:8000`
-- Both servers must be running simultaneously for full functionality
-- In production, everything goes through Django (no separate Next.js server)
+- Next.js proxies `/api`, `/admin`, `/static`, `/media` to Django at `127.0.0.1:8000`.
+- Both servers must be running simultaneously for full functionality.
 
 ### Test Execution Rules
-- Never run the full test suite — always specify files
-- Backend: `pytest backend/content/tests/<specific_file> -v`
-- Frontend: `npm test -- <specific_file>`
-- E2E: max 2 files per `npx playwright test` invocation
-- Use `E2E_REUSE_SERVER=1` when dev server is already running
+- Never run the full test suite — always specify files.
+- Backend: `pytest backend/base_feature_app/tests/<file> -v`.
+- Frontend: `npm test -- <specific_file>`.
+- E2E: max 2 files per `npx playwright test` invocation.
+- Use `E2E_REUSE_SERVER=1` when dev server is already running.
 
 ---
 
 ## 4. Staging Deployment
 
-### Build Flow
-1. Frontend: `npm run build` → generates static output
-2. Backend: `python manage.py collectstatic` → copies to `backend/staticfiles/`
-3. Restart: `sudo systemctl restart base_django_react_next_feature_staging && sudo systemctl restart base_django_react_next_feature-staging-huey`
+Staging is **not provisioned yet**. The `deploy-staging` skill (`.claude/skills/deploy-staging/SKILL.md`) and the Windsurf workflow (`.windsurf/workflows/deploy-staging.md`) contain placeholders (`<XPANDIA_STAGING_PATH>`, `<XPANDIA_STAGING_DOMAIN>`, `<XPANDIA_STAGING_SERVICE>`, `<XPANDIA_STAGING_HUEY_SERVICE>`) that must be replaced before either can be run.
 
-### Django Serves Next.js Pages
-- The catch-all view in `base_feature_project/views.py` serves pre-rendered Next.js pages
-- This is the LAST URL pattern — all other routes take priority
+### Expected Build Flow (once staging exists)
+1. Frontend: `npm run build`.
+2. Backend: `python manage.py collectstatic`.
+3. Restart Gunicorn and Huey services.
 
 ---
 
-## 5. Email System
-
-### Template Registry Pattern
-- All emails defined in `EmailTemplateRegistry` with default content
-- Admin can override content via `EmailTemplateConfig` model
-- Admin can disable specific emails via `is_active` flag
-- Preview rendering available for all templates
-
-### 24h Cooldown Rule
-- `last_automated_email_at` field on `BusinessProposal` tracks last automated email
-- All automated email tasks check this before sending
-- Manual sends (admin clicks "Send") bypass the cooldown
-
-### Automations Pause
-- `automations_paused` flag on `BusinessProposal` stops all automated emails
-- Each Huey task checks this flag early and returns if paused
-
----
-
-## 6. Proposal System Specifics
-
-### Section Types Are Fixed
-- 12 section types defined in `ProposalSection.SectionType` choices
-- Each maps to a specific React component in `components/BusinessProposal/`
-- Unique together constraint: `(proposal, section_type)` — one of each per proposal
-
-### Heat Score (1-10)
-- Pre-computed and cached in `cached_heat_score` field
-- Updated by tracking endpoint and periodic task (`refresh_all_heat_scores`)
-- Based on: view count, section time, recency, engagement patterns
-
----
-
-## 7. Testing Insights
+## 5. Testing Insights
 
 ### Backend conftest.py
-- Custom coverage report with Unicode progress bars replaces default pytest-cov output
-- `api_client` fixture provides unauthenticated DRF APIClient
-- Content tests have their own `conftest.py` with model-specific fixtures
+- Custom coverage report with Unicode progress bars replaces default pytest-cov output.
+- `api_client` fixture provides unauthenticated DRF APIClient.
 
 ### E2E Flow Definitions
-- Every navigation flow must be registered in `docs/USER_FLOW_MAP.md` and `frontend/e2e/flow-definitions.json`
-- E2E tests must reflect real user integrations
-- Follow quality standards from `docs/TESTING_QUALITY_STANDARDS.md`
+- Every navigation flow must be registered in `frontend/e2e/flow-definitions.json`.
+- E2E tests must carry `@flow:<flow-id>` tags.
+- Follow quality standards from `docs/TESTING_QUALITY_STANDARDS.md`.
