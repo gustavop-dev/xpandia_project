@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand, CommandError
-from base_feature_app.models import User
+from base_feature_app.models import Blog, User
 
 class Command(BaseCommand):
     help = 'Delete fake records from the database'
@@ -23,6 +23,12 @@ class Command(BaseCommand):
             raise CommandError('Deletion not confirmed. Re-run with --confirm.')
 
         self.stdout.write(self.style.SUCCESS('==== Deleting Fake Data ===='))
+
+        self.stdout.write(self.style.SUCCESS('\n--- Deleting Blogs ---'))
+        blog_count = Blog.objects.count()
+        for blog in Blog.objects.all():
+            blog.delete()
+        self.stdout.write(self.style.SUCCESS(f'{blog_count} Blogs deleted'))
 
         self.stdout.write(self.style.SUCCESS('\n--- Deleting Users ---'))
         users_to_delete = User.objects.filter(is_superuser=False, is_staff=False)
