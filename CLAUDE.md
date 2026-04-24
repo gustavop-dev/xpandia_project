@@ -1,13 +1,14 @@
-# Base Django React Next Feature — Claude Code Configuration
+# Xpandia — Claude Code Configuration
 
 ## Project Identity
 
-- **Name**: Base Django React Next Feature (Template project)
-- **Domain**: N/A (template — not deployed to production)
-- **Stack**: Django + DRF (backend) / Next.js + React + TypeScript (frontend) / MySQL 8 / Redis / Huey
-- **Server path**: `/home/ryzepeck/webapps/base_django_react_next_feature_staging` (staging only)
-- **Services**: `base_django_react_next_feature_staging` (Gunicorn), `base_django_react_next_feature-staging-huey`
-- **Note**: This is a **template project** used as the starting point for new Django+Next.js projects
+- **Name**: Xpandia
+- **Domain**: Boutique language assurance for AI, SaaS and EdTech — structured Spanish/LatAm quality review, measurable scoring and senior oversight.
+- **Contact**: `hello@xpandia.co`
+- **Stack**: Django 6 + DRF (backend) / Next.js 16 + React 19 + TypeScript (frontend) / MySQL 8 / Redis / Huey
+- **Backend Django project**: `base_feature_project` (template scaffold name, kept by design)
+- **Backend Django app**: `base_feature_app` (template scaffold name, kept by design — houses User and auth infrastructure)
+- **Server paths & services**: `TBD` — set once staging/production is provisioned
 
 ---
 
@@ -38,11 +39,9 @@ load_dotenv()
 
 SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
 DATABASE_URL = os.environ['DATABASE_URL']
-STRIPE_API_KEY = os.environ['STRIPE_SECRET_KEY']
 
 # ❌ NEVER do this
 SECRET_KEY = 'django-insecure-abc123xyz'
-DATABASE_URL = 'mysql://root:password123@localhost/mydb'
 ```
 
 ```typescript
@@ -52,9 +51,6 @@ const secretKey = process.env.API_SECRET_KEY  // server-only, no NEXT_PUBLIC_ pr
 
 // ❌ NEVER do this
 const API_KEY = 'sk-live-abc123xyz'
-fetch('https://api.stripe.com/v1/charges', {
-  headers: { Authorization: 'Bearer sk-live-abc123xyz' }
-})
 ```
 
 ### .env rules
@@ -73,20 +69,9 @@ NEVER trust user input. Validate on both server AND client.
 
 ```python
 # ✅ Serializer validates input
-class OrderSerializer(serializers.Serializer):
+class ContactSerializer(serializers.Serializer):
     email = serializers.EmailField()
-    quantity = serializers.IntegerField(min_value=1, max_value=100)
-    product_id = serializers.IntegerField()
-
-    def validate_product_id(self, value):
-        if not Product.objects.filter(id=value, is_active=True).exists():
-            raise serializers.ValidationError('Product not found')
-        return value
-
-# ❌ Using raw request data
-def create_order(request):
-    product_id = request.data['product_id']  # no validation
-    Order.objects.create(product_id=product_id)  # SQL injection risk
+    message = serializers.CharField(max_length=2000)
 ```
 
 #### React
@@ -95,20 +80,10 @@ def create_order(request):
 // ✅ Validate before sending
 import { z } from 'zod'
 
-const orderSchema = z.object({
+const contactSchema = z.object({
   email: z.string().email(),
-  quantity: z.number().int().min(1).max(100),
-  productId: z.number().int().positive(),
+  message: z.string().min(1).max(2000),
 })
-
-const handleSubmit = (data: unknown) => {
-  const result = orderSchema.safeParse(data)
-  if (!result.success) {
-    setErrors(result.error.flatten().fieldErrors)
-    return
-  }
-  await submitOrder(result.data)
-}
 ```
 
 ### SQL Injection Prevention
@@ -120,10 +95,10 @@ users = User.objects.filter(email=user_input)
 # ✅ If raw SQL is needed, use parameterized queries
 from django.db import connection
 with connection.cursor() as cursor:
-    cursor.execute("SELECT * FROM users WHERE email = %s", [user_input])
+    cursor.execute("SELECT * FROM base_feature_app_user WHERE email = %s", [user_input])
 
 # ❌ NEVER interpolate user input into SQL
-cursor.execute(f"SELECT * FROM users WHERE email = '{user_input}'")
+cursor.execute(f"SELECT * FROM base_feature_app_user WHERE email = '{user_input}'")
 ```
 
 ### XSS Prevention
@@ -149,15 +124,12 @@ MIDDLEWARE = [
     ...
 ]
 
-# ✅ DRF — use SessionAuthentication or JWT
+# ✅ DRF — use JWT via rest_framework_simplejwt
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ],
 }
-
-# ❌ NEVER disable CSRF globally
-@csrf_exempt  # only for webhooks from external services with signature verification
 ```
 
 ### Authentication and Authorization
@@ -166,12 +138,11 @@ REST_FRAMEWORK = {
 # ✅ Always check permissions
 from rest_framework.permissions import IsAuthenticated
 
-class OrderViewSet(viewsets.ModelViewSet):
+class MyViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
-        # Users can only see their own orders
-        return Order.objects.filter(user=self.request.user)
+        return MyModel.objects.filter(user=self.request.user)
 ```
 
 ### Sensitive Data Exposure
@@ -181,14 +152,8 @@ class OrderViewSet(viewsets.ModelViewSet):
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['id', 'email', 'name']
+        fields = ['id', 'email', 'first_name', 'last_name']
         # password, tokens, internal IDs are excluded
-
-# ❌ Exposing everything
-class UserSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = User
-        fields = '__all__'  # leaks password hash, tokens, etc.
 ```
 
 ### HTTP Security Headers (Django)
@@ -198,7 +163,7 @@ class UserSerializer(serializers.ModelSerializer):
 SECURE_BROWSER_XSS_FILTER = True
 SECURE_CONTENT_TYPE_NOSNIFF = True
 X_FRAME_OPTIONS = 'DENY'
-SECURE_HSTS_SECONDS = 31536000  # 1 year
+SECURE_HSTS_SECONDS = 31536000
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 SECURE_SSL_REDIRECT = True  # in production
 SESSION_COOKIE_SECURE = True
@@ -209,7 +174,7 @@ SESSION_COOKIE_HTTPONLY = True
 ### Dependency Security
 
 - Run `pip audit` (Python) and `npm audit` (Node) regularly
-- Never use `*` for dependency versions — pin exact versions
+- Pin exact dependency versions
 - Review new dependencies before adding them
 - Keep dependencies updated, especially security patches
 
@@ -260,34 +225,19 @@ flowchart TD
     TC --> AC[active_context.md]
     AC --> ER[error-documentation.md]
     AC --> LL[lessons-learned.md]
-    subgraph LIT[ docs/literature ]
-        L1[...]
-        L2[...]
-    end
-    subgraph RFC[ tasks/rfc/ ]
-        R1[...]
-        R2[...]
-    end
-    PC --o LIT
-    TC --o RFC
 ```
 
 ### Core Files (Required)
 
 | # | File | Purpose |
 |---|------|---------|
-| 1 | `docs/methodology/product_requirement_docs.md` | PRD: why this project exists, core requirements, scope |
+| 1 | `docs/methodology/product_requirement_docs.md` | PRD: why Xpandia exists, core requirements, scope |
 | 2 | `docs/methodology/architecture.md` | System architecture, component relationships, Mermaid diagrams |
 | 3 | `docs/methodology/technical.md` | Tech stack, dev setup, design patterns, technical constraints |
 | 4 | `tasks/tasks_plan.md` | Task backlog, progress tracking, known issues |
 | 5 | `tasks/active_context.md` | Current work focus, recent changes, next steps |
 | 6 | `docs/methodology/error-documentation.md` | Known errors, their context, and resolutions |
 | 7 | `docs/methodology/lessons-learned.md` | Project intelligence, patterns, preferences |
-
-### Context Files (Optional)
-
-- `docs/literature/` — Literature survey and research (LaTeX files)
-- `tasks/rfc/` — RFCs for individual tasks (LaTeX files)
 
 ### When to Read Memory Files
 
@@ -303,14 +253,14 @@ flowchart TD
 4. When context needs clarification
 5. After a significant part of a plan is verified
 
-Focus particularly on `tasks/active_context.md` and `tasks/tasks_plan.md` as they track current state. And `docs/methodology/architecture.md` has a section of current workflow that also gets updated by any code changes.
-
 ---
 
 ## Directory Structure
 
-- Backend: `content/` Django app, `base_feature_project/` Django project
-- Frontend: `app/` (Next.js App Router), `components/`, `lib/stores/`, `e2e/`
+- Backend: `base_feature_app/` Django app, `base_feature_project/` Django project root
+- Frontend: `app/` (Next.js App Router), `components/`, `lib/`, `e2e/`
+- Current Xpandia routes: `/`, `/about`, `/contact`, `/services`, `/services/qa`, `/services/audit`, `/services/fractional`
+- Current backend surface: `/api/health/`, `/api/token/`, `/api/token/refresh/`, `/api/` auth endpoints, `/api/users/`, `/api/google-captcha/`
 
 ---
 
@@ -338,49 +288,9 @@ Full reference: `docs/TESTING_QUALITY_STANDARDS.md`
 
 ---
 
-## Lessons Learned — Base Django React Next Feature
+## Error Documentation — Xpandia
 
-### Architecture Patterns
-
-#### Content Storage: Structured JSON over CMS
-- Structured JSON storage for content (JSONField pattern)
-
-#### Single Django App: `content`
-- All models, views, serializers, and services live in the `content` app
-- Models are split into individual files under `content/models/`
-
-#### Service Layer Pattern
-- Business logic lives in `content/services/`, not in views
-- Views are thin FBV wrappers that call service methods
-
-### Code Style & Conventions
-
-#### Bilingual Content Pattern
-- Models have paired fields: `title_en`/`title_es`, `content_json_en`/`content_json_es`, etc.
-- Frontend reads the appropriate field based on current locale
-
-### Email System
-
-#### Template Registry Pattern
-- All emails defined in `EmailTemplateRegistry` with default content
-- Admin can override content via `EmailTemplateConfig` model
-
-#### 24h Cooldown Rule
-- `last_automated_email_at` field tracks last automated email
-- All automated email tasks check this before sending
-- Manual sends bypass the cooldown
-
-### Proposal System
-
-- 12 section types defined in `ProposalSection.SectionType` choices with unique constraint
-- Heat Score (1-10): pre-computed and cached
-- 20+ change log types tracked
-
----
-
-## Error Documentation — Base Django React Next Feature
-
-No documented errors (clean template).
+No documented errors yet.
 
 ---
 

@@ -1,22 +1,21 @@
 # User Flow Map
 
-**Single source of truth for all user flows in the application.**
+**Single source of truth for all user flows in the Xpandia application.**
 
 Use this document to understand each flow's steps, branching conditions, role restrictions, and API contracts before writing or reviewing E2E tests.
 
-**Version:** 1.0.0
-**Last Updated:** 2026-02-24
+**Version:** 2.0.0
+**Last Updated:** 2026-04-24
 
 ---
 
 ## Table of Contents
 
 1. [Module Index](#module-index)
-2. [Auth Module](#auth-module)
-3. [Public Module](#public-module)
-4. [App Module](#app-module)
-5. [Backoffice Module](#backoffice-module)
-6. [Cross-Reference](#cross-reference)
+2. [Home Module](#home-module)
+3. [Services Module](#services-module)
+4. [Static Module](#static-module)
+5. [Navigation](#navigation)
 
 ---
 
@@ -24,620 +23,219 @@ Use this document to understand each flow's steps, branching conditions, role re
 
 | Flow ID | Name | Module | Priority | Roles | Frontend Route |
 |---------|------|--------|----------|-------|----------------|
-| `auth-sign-in` | Sign In | auth | P1 | guest | `/sign-in` |
-| `auth-sign-up` | Sign Up | auth | P1 | guest | `/sign-up` |
-| `auth-google-login` | Google OAuth Login | auth | P2 | guest | `/sign-in`, `/sign-up` |
-| `auth-forgot-password` | Forgot Password | auth | P2 | guest | `/forgot-password` |
-| `auth-sign-out` | Sign Out | auth | P2 | user | `/dashboard` |
-| `auth-session-persistence` | Session Persistence | auth | P2 | user | any protected route |
-| `public-home` | Home Page | public | P2 | guest | `/` |
-| `public-navigation` | Site Navigation | public | P3 | guest | all pages |
-| `public-catalog-browse` | Browse Catalog | public | P2 | guest | `/catalog` |
-| `public-product-detail` | Product Detail | public | P2 | guest | `/products/[productId]` |
-| `public-blogs-browse` | Browse Blogs | public | P3 | guest | `/blogs` |
-| `public-blog-detail` | Blog Detail | public | P3 | guest | `/blogs/[blogId]` |
-| `app-cart-add` | Add to Cart | app | P1 | guest | `/products/[productId]` |
-| `app-cart-manage` | Manage Cart | app | P1 | guest | `/checkout` |
-| `app-cart-persistence` | Cart Persistence | app | P2 | guest | `/checkout` |
-| `app-checkout-complete` | Complete Checkout | app | P1 | guest | `/checkout` |
-| `app-dashboard` | Dashboard | app | P2 | user | `/dashboard` |
-| `backoffice-users-list` | Users List | backoffice | P2 | staff | `/backoffice` |
-| `backoffice-sales-list` | Sales List | backoffice | P2 | staff | `/backoffice` |
+| `home-loads` | Home Page | home | P1 | guest | `/` |
+| `contact-form-submit` | Contact Form Submit | contact | P1 | guest | `/contact` |
+| `services-overview` | Services Overview | services | P2 | guest | `/services` |
+| `services-qa` | AI Spanish QA Sprint | services | P2 | guest | `/services/qa` |
+| `services-audit` | Launch Readiness Audit | services | P2 | guest | `/services/audit` |
+| `services-fractional` | Fractional Lead | services | P2 | guest | `/services/fractional` |
+| `cta-home-to-contact` | CTA: Home → Contact | cta | P2 | guest | `/` |
+| `cta-service-detail-to-contact` | CTA: Service detail → Contact | cta | P2 | guest | `/services/qa` |
+| `services-card-to-detail` | Service card → Detail page | services | P2 | guest | `/services` |
+| `breadcrumb-back-to-services` | Breadcrumb: Detail → Services | services | P2 | guest | `/services/qa` |
+| `about-page` | About | static | P3 | guest | `/about` |
+| `contact-page` | Contact | static | P2 | guest | `/contact` |
+| `mobile-navigation-drawer` | Mobile nav drawer | navigation | P3 | guest | all pages |
+| `header-services-dropdown` | Header services dropdown | navigation | P3 | guest | all pages |
+| `fab-contact-button` | FAB contact button | navigation | P3 | guest | all pages |
+| `language-toggle-preference` | Language toggle | navigation | P3 | guest | all pages |
+| `navigation-between-pages` | Cross-page navigation | navigation | P2 | guest | all pages |
+| `navigation-header` | Header nav renders | navigation | P3 | guest | all pages |
+| `navigation-footer` | Footer renders | navigation | P4 | guest | all pages |
+| `footer-links-navigation` | Footer links navigate correctly | navigation | P4 | guest | all pages |
 
 ---
 
-## Auth Module
+## Home Module
 
-### auth-sign-in
+### home-loads
 
 | Field | Value |
 |-------|-------|
 | **Priority** | P1 |
 | **Roles** | guest |
-| **Frontend route** | `/sign-in` |
-| **API endpoints** | `POST /api/sign_in/` |
+| **Frontend route** | `/` |
+| **API endpoints** | none (static content) |
 
-**Preconditions:** User is not authenticated. A registered account exists.
+**Preconditions:** None.
 
 **Steps:**
+1. User opens `/`.
+2. Hero section renders with H1 `Spanish that works. Quality you can measure.`
+3. Methodology, stats strip, services grid, scorecard preview, audience fit and CTA sections render.
+4. `Book a diagnostic call` and `Request an audit` CTAs link to `/contact`.
 
-1. User navigates to `/sign-in`.
-2. Page renders form with **Email**, **Password** fields and **Sign in** button.
-3. User fills in email and password.
-4. User clicks **Sign in**.
-5. Frontend sends `POST /api/sign_in/` with `{ email, password }`.
-6. Backend validates credentials and returns `{ access, refresh }` (HTTP 200).
-7. Frontend stores tokens in cookies (`access_token`, `refresh_token`).
-8. Frontend redirects to `/dashboard`.
-
-**Branching conditions:**
-
-| Condition | Behavior |
-|-----------|----------|
-| Empty email or password | HTML `required` prevents submission |
-| Email not registered | `401 { error: "Invalid credentials" }` — error below form |
-| Wrong password | `401 { error: "Invalid credentials" }` — error below form |
-| Account inactive | `403 { error: "Account is inactive" }` — error below form |
+**Happy path:** Page renders without network requests; all links are functional; animations trigger on scroll.
 
 ---
 
-### auth-sign-up
+## Contact Module
+
+### contact-form-submit
 
 | Field | Value |
 |-------|-------|
 | **Priority** | P1 |
 | **Roles** | guest |
-| **Frontend route** | `/sign-up` |
-| **API endpoints** | `POST /api/sign_up/` |
+| **Frontend route** | `/contact` |
+| **API endpoints** | none (frontend-only state; no backend wiring yet) |
 
-**Preconditions:** User is not authenticated.
-
-**Steps:**
-
-1. User navigates to `/sign-up`.
-2. Page renders form: **First Name**, **Last Name**, **Email**, **Password**, **Confirm Password**, **Create account** button.
-3. User fills in all fields.
-4. User clicks **Create account**.
-5. Frontend validates passwords match and length >= 8.
-6. Frontend sends `POST /api/sign_up/` with `{ email, password, first_name, last_name }`.
-7. Backend creates user and returns `{ access, refresh }` (HTTP 201).
-8. Frontend stores tokens and redirects to `/dashboard`.
-
-**Branching conditions:**
-
-| Condition | Behavior |
-|-----------|----------|
-| Passwords do not match | Client error: "Passwords do not match" — no API call |
-| Password < 8 chars | Client error: "Password must be at least 8 characters" — no API call |
-| Email already registered | `400 { error: "User with this email already exists" }` |
-| Missing email or password | `400 { error: "Email and password are required" }` |
-
----
-
-### auth-google-login
-
-| Field | Value |
-|-------|-------|
-| **Priority** | P2 |
-| **Roles** | guest |
-| **Frontend route** | `/sign-in`, `/sign-up` |
-| **API endpoints** | `POST /api/google_login/` |
-
-**Preconditions:** `NEXT_PUBLIC_GOOGLE_CLIENT_ID` env var is set. User is not authenticated.
+**Preconditions:** User is on `/contact`.
 
 **Steps:**
+1. User clicks a service radio tile (e.g., "AI Spanish QA Sprint").
+2. User clicks a company size radio tile (e.g., "50–150").
+3. User fills in Full name, Role, Work email, Company text inputs.
+4. User writes a paragraph in the situation textarea.
+5. User clicks "Request diagnostic call" button.
 
-1. User navigates to `/sign-in` or `/sign-up`.
-2. Google Sign-In button rendered via `@react-oauth/google`.
-3. User clicks Google button and completes OAuth consent.
-4. Frontend receives credential JWT, decodes `email`, `given_name`, `family_name`, `picture`.
-5. Frontend sends `POST /api/google_login/` with `{ credential, email, given_name, family_name, picture }`.
-6. Backend validates token via Google tokeninfo, gets or creates user.
-7. Backend returns `{ access, refresh, created, google_validated }` (HTTP 200).
-8. Frontend stores tokens and redirects to `/dashboard`.
-
-**Branching conditions:**
-
-| Condition | Behavior |
-|-----------|----------|
-| `NEXT_PUBLIC_GOOGLE_CLIENT_ID` missing | "Missing NEXT_PUBLIC_GOOGLE_CLIENT_ID" shown instead of button |
-| Credential missing | `400 { error: "Google credential is required" }` |
-| Invalid credential (prod) | `401 { error: "Invalid Google credential" }` |
-| Audience mismatch (prod) | `401 { error: "Invalid Google client" }` |
-| New user | User created with unusable password; `created: true` |
-| Existing user | Matched by email; names updated if blank |
+**Happy path:** Form submits (`onSubmit` sets `submitted = true`); the button is replaced by a success banner reading "✓ Request received — we'll reply within 24 hours".
 
 ---
 
-### auth-forgot-password
+## CTA Module
 
-| Field | Value |
-|-------|-------|
-| **Priority** | P2 |
-| **Roles** | guest |
-| **Frontend route** | `/forgot-password` |
-| **API endpoints** | `POST /api/send_passcode/`, `POST /api/verify_passcode_and_reset_password/` |
-
-**Preconditions:** User is not authenticated. A registered account exists.
-
-**Step A — Request passcode:**
-
-1. User navigates to `/forgot-password`.
-2. Page renders email input and **Send verification code** button (step = `email`).
-3. User enters email and clicks **Send verification code**.
-4. Frontend sends `POST /api/send_passcode/` with `{ email }`.
-5. Backend generates a `PasswordCode`, sends email with 6-digit code.
-6. Success message: "Verification code sent to your email". UI transitions to step = `code`.
-
-**Step B — Reset password:**
-
-7. Page renders **Code** (6-digit), **New Password**, **Confirm New Password** fields and **Reset password** button.
-8. User enters code and new password.
-9. Frontend validates passwords match and length >= 8.
-10. Frontend sends `POST /api/verify_passcode_and_reset_password/` with `{ email, code, new_password }`.
-11. Backend verifies code, updates password, marks code as used. Returns HTTP 200.
-12. Success message: "Password reset successfully! Redirecting..." — redirect to `/sign-in`.
-
-**Branching conditions:**
-
-| Condition | Behavior |
-|-----------|----------|
-| Email not registered | API still returns `200 { message: "If the email exists, a code has been sent" }` (no leak) |
-| Email send failure | `500 { error: "Failed to send email" }` |
-| Invalid or expired code | `400 { error: "Invalid or expired code" }` |
-| Passwords do not match | Client error — no API call |
-| Password < 8 chars | Client error — no API call |
-| "Back to email" clicked | UI returns to step A |
-
----
-
-### auth-sign-out
-
-| Field | Value |
-|-------|-------|
-| **Priority** | P2 |
-| **Roles** | user |
-| **Frontend route** | `/dashboard` |
-| **API endpoints** | None (client-side only) |
-
-**Preconditions:** User is authenticated.
-
-**Steps:**
-
-1. User is on `/dashboard`.
-2. User clicks **Sign out** button.
-3. Frontend clears JWT tokens from cookies via `authStore.signOut()`.
-4. User is redirected to `/sign-in` (or home) by the auth guard.
-
-**Branching conditions:** None — sign-out is always client-side.
-
----
-
-### auth-session-persistence
-
-| Field | Value |
-|-------|-------|
-| **Priority** | P2 |
-| **Roles** | user |
-| **Frontend route** | any protected route |
-| **API endpoints** | `GET /api/validate_token/`, `POST /api/token/refresh/` |
-
-**Preconditions:** User has valid tokens in cookies.
-
-**Steps:**
-
-1. User navigates to a protected route (`/dashboard`, `/backoffice`).
-2. Frontend reads `access_token` from cookies.
-3. Frontend sends `GET /api/validate_token/` with Bearer token.
-4. Backend validates JWT and returns `{ valid: true, user: { id, email, first_name, last_name, role, is_staff } }`.
-5. User is shown the protected content.
-
-**Branching conditions:**
-
-| Condition | Behavior |
-|-----------|----------|
-| No tokens in cookies | Redirect to `/sign-in` via `useRequireAuth` hook |
-| Access token expired | Frontend calls `POST /api/token/refresh/` with refresh token |
-| Refresh token expired | Redirect to `/sign-in` |
-
----
-
-## Public Module
-
-### public-home
+### cta-home-to-contact
 
 | Field | Value |
 |-------|-------|
 | **Priority** | P2 |
 | **Roles** | guest |
 | **Frontend route** | `/` |
-| **API endpoints** | `GET /api/products-data/`, `GET /api/blogs-data/` |
+| **API endpoints** | none |
 
-**Preconditions:** None.
+**Steps:** User clicks the "Book a diagnostic call" link in the home hero section → browser navigates to `/contact`.
 
-**Steps:**
+### cta-service-detail-to-contact
 
-1. User navigates to `/`.
-2. Page renders hero section with heading "Everything you need, in one place".
-3. CTA buttons: **Shop now** (→ `/catalog`), **Read blogs** (→ `/blogs`), **Go to cart** (→ `/checkout`).
-4. **ProductCarousel** component loads products from API and displays cards.
-5. **BlogCarousel** component loads blogs from API and displays cards.
+| Field | Value |
+|-------|-------|
+| **Priority** | P2 |
+| **Roles** | guest |
+| **Frontend route** | `/services/qa` (representative; same pattern on audit and fractional) |
+| **API endpoints** | none |
 
-**Branching conditions:**
-
-| Condition | Behavior |
-|-----------|----------|
-| Products API unavailable | Carousel shows empty or error state |
-| Blogs API unavailable | Carousel shows empty or error state |
+**Steps:** User clicks the primary CTA "Request an AI Spanish QA Sprint" on `/services/qa` → browser navigates to `/contact`.
 
 ---
 
-### public-navigation
+## Services Module
+
+### services-overview
+
+| Field | Value |
+|-------|-------|
+| **Priority** | P2 |
+| **Roles** | guest |
+| **Frontend route** | `/services` |
+| **API endpoints** | none |
+
+Presents the three concrete Xpandia engagements with cross-links to the detail pages.
+
+### services-qa / services-audit / services-fractional
+
+Each service detail page is static content under `/services/<slug>`. No API calls.
+
+### services-card-to-detail
+
+| Field | Value |
+|-------|-------|
+| **Priority** | P2 |
+| **Roles** | guest |
+| **Frontend route** | `/services` |
+| **API endpoints** | none |
+
+**Steps:** User clicks the "AI Spanish QA Sprint" service card/link on the `/services` overview page → browser navigates to `/services/qa`.
+
+### breadcrumb-back-to-services
+
+| Field | Value |
+|-------|-------|
+| **Priority** | P2 |
+| **Roles** | guest |
+| **Frontend route** | `/services/qa` |
+| **API endpoints** | none |
+
+**Steps:** User clicks the "← ALL SERVICES" breadcrumb link on any service detail page → browser navigates to `/services`.
+
+---
+
+## Static Module
+
+### about-page
+
+Static page at `/about` describing Xpandia's focus, founder background and methodology.
+
+### contact-page
+
+Contact page at `/contact`. Contains the booking and contact form. Email contact: `hello@xpandia.co`.
+
+---
+
+## Navigation
+
+### navigation-between-pages
+
+Cross-page navigation via `XpandiaHeader` (desktop nav, mobile drawer) across `/`, `/about`, `/contact`, `/services`, `/services/qa`, `/services/audit`, `/services/fractional`.
+
+### navigation-header / navigation-footer
+
+Header and footer render on every route and expose the expected link set and CTAs.
+
+### mobile-navigation-drawer
 
 | Field | Value |
 |-------|-------|
 | **Priority** | P3 |
 | **Roles** | guest |
 | **Frontend route** | all pages |
-| **API endpoints** | None |
+| **Viewport** | mobile (390×844) |
 
-**Preconditions:** None.
+**Steps:** User taps the hamburger button (`aria-label="Menu"`) → mobile drawer slides in → user taps "About" link → drawer closes; URL is `/about`.
 
-**Steps:**
-
-1. Every page renders a shared header with navigation links.
-2. Header contains links to: Home (`/`), Catalog (`/catalog`), Blogs (`/blogs`), Sign-in (`/sign-in`).
-3. Footer is present on all pages.
-4. Navigation links work across page transitions.
-5. Browser back/forward buttons maintain correct history.
-
-**Branching conditions:** None — purely structural.
-
----
-
-### public-catalog-browse
-
-| Field | Value |
-|-------|-------|
-| **Priority** | P2 |
-| **Roles** | guest |
-| **Frontend route** | `/catalog` |
-| **API endpoints** | `GET /api/products-data/` |
-
-**Preconditions:** None.
-
-**Steps:**
-
-1. User navigates to `/catalog`.
-2. Page displays heading "Catalog" with loading skeleton.
-3. Frontend fetches `GET /api/products-data/` via `productStore.fetchProducts()`.
-4. Products render as a grid of `ProductCard` components (image, title, price).
-5. Each card links to `/products/[productId]`.
-
-**Branching conditions:**
-
-| Condition | Behavior |
-|-----------|----------|
-| API loading | Skeleton grid (12 placeholders) shown |
-| API error | "Catalog unavailable" message with **Retry** button |
-| No products in DB | "No products yet" dashed-border message |
-
----
-
-### public-product-detail
-
-| Field | Value |
-|-------|-------|
-| **Priority** | P2 |
-| **Roles** | guest |
-| **Frontend route** | `/products/[productId]` |
-| **API endpoints** | `GET /api/products-data/` (single product fetch) |
-
-**Preconditions:** Product with given ID exists.
-
-**Steps:**
-
-1. User navigates to `/products/[productId]`.
-2. Page shows "Loading..." while fetching.
-3. Frontend fetches product data via `productStore.fetchProduct(id)`.
-4. Page renders: image gallery (up to 4 images), category label, title, price, description, **Add to cart** button.
-5. User can click **Add to cart** (see `app-cart-add` flow).
-
-**Branching conditions:**
-
-| Condition | Behavior |
-|-----------|----------|
-| Invalid product ID | "Loading..." remains or redirects |
-| No gallery images | Single gray placeholder square |
-
----
-
-### public-blogs-browse
+### header-services-dropdown
 
 | Field | Value |
 |-------|-------|
 | **Priority** | P3 |
 | **Roles** | guest |
-| **Frontend route** | `/blogs` |
-| **API endpoints** | `GET /api/blogs-data/` |
+| **Frontend route** | all pages |
+| **Viewport** | desktop (≥ 768px) |
 
-**Preconditions:** None.
+**Steps:** User hovers over the "Services" nav item in the desktop header → dropdown menu appears with "All services" and three service links → user clicks "All services" → navigates to `/services`.
 
-**Steps:**
-
-1. User navigates to `/blogs`.
-2. Page displays heading "Blogs" with loading skeleton.
-3. Frontend fetches `GET /api/blogs-data/` via `blogStore.fetchBlogs()`.
-4. Blogs render as a grid of `BlogCard` components.
-5. Each card links to `/blogs/[blogId]`.
-
-**Branching conditions:**
-
-| Condition | Behavior |
-|-----------|----------|
-| API loading | Skeleton grid (9 placeholders) shown |
-| API error | "Blogs unavailable" message with **Retry** button |
-| No blogs in DB | "No blogs yet" dashed-border message |
-
----
-
-### public-blog-detail
+### fab-contact-button
 
 | Field | Value |
 |-------|-------|
 | **Priority** | P3 |
 | **Roles** | guest |
-| **Frontend route** | `/blogs/[blogId]` |
-| **API endpoints** | `GET /api/blogs-data/[blogId]/` |
+| **Frontend route** | all pages |
 
-**Preconditions:** Blog with given ID exists.
+**Steps:** User clicks the `FABContact` floating action button (`aria-label="Book a diagnostic call"`) → browser navigates to `/contact`.
 
-**Steps:**
-
-1. User navigates to `/blogs/[blogId]`.
-2. Frontend fetches blog detail data.
-3. Page renders blog title, content, and associated media.
-4. User can navigate back to `/blogs` via browser back button.
-
-**Branching conditions:**
-
-| Condition | Behavior |
-|-----------|----------|
-| Blog not found | Loading state or fallback |
-
----
-
-## App Module
-
-### app-cart-add
+### language-toggle-preference
 
 | Field | Value |
 |-------|-------|
-| **Priority** | P1 |
+| **Priority** | P3 |
 | **Roles** | guest |
-| **Frontend route** | `/products/[productId]` |
-| **API endpoints** | None (client-side state via Zustand + localStorage) |
+| **Frontend route** | all pages |
 
-**Preconditions:** User is on a product detail page.
+**Steps:** User clicks the "ES" language toggle button in the header → `localStorage['xpandia-lang']` is set to `'es'`; the ES button becomes active (dark background).
 
-**Steps:**
-
-1. User views a product on `/products/[productId]`.
-2. User clicks **Add to cart** button.
-3. `cartStore.addToCart(product, 1)` adds the product with quantity 1 to local state.
-4. Cart state persists to `localStorage`.
-5. User can navigate to `/checkout` to see the item.
-
-**Branching conditions:**
-
-| Condition | Behavior |
-|-----------|----------|
-| Product already in cart | Quantity incremented |
-| Product not in cart | New entry added with quantity 1 |
-
----
-
-### app-cart-manage
+### footer-links-navigation
 
 | Field | Value |
 |-------|-------|
-| **Priority** | P1 |
+| **Priority** | P4 |
 | **Roles** | guest |
-| **Frontend route** | `/checkout` |
-| **API endpoints** | None (client-side state) |
+| **Frontend route** | all pages |
 
-**Preconditions:** User has at least one item in cart.
-
-**Steps:**
-
-1. User navigates to `/checkout`.
-2. Cart section displays each item: image, title, price, quantity input, **Remove** button, line total.
-3. **Update quantity:** User changes the number input → `cartStore.updateQuantity(id, qty)`.
-4. **Remove item:** User clicks **Remove** → `cartStore.removeFromCart(id)`.
-5. **Subtotal** recalculates automatically: `items.reduce((acc, item) => acc + item.price * item.quantity, 0)`.
-
-**Branching conditions:**
-
-| Condition | Behavior |
-|-----------|----------|
-| Cart is empty | "Your cart is empty." message; checkout button disabled |
-| Single item removed | If last item, shows empty cart message |
-| Quantity set to 0 or negative | Minimum enforced by `min={1}` on input |
+**Steps:** User clicks the "About" link in the footer Company column → browser navigates to `/about`.
 
 ---
 
-### app-cart-persistence
+## Notes for new flows
 
-| Field | Value |
-|-------|-------|
-| **Priority** | P2 |
-| **Roles** | guest |
-| **Frontend route** | `/checkout` |
-| **API endpoints** | None |
-
-**Preconditions:** User has items in cart.
-
-**Steps:**
-
-1. User adds products to cart (see `app-cart-add`).
-2. User reloads the page or navigates away and returns.
-3. Cart state is restored from `localStorage` via Zustand persist middleware.
-4. All items, quantities, and subtotal remain intact.
-
-**Branching conditions:**
-
-| Condition | Behavior |
-|-----------|----------|
-| localStorage cleared | Cart resets to empty |
-| Corrupt localStorage data | Cart may reset to empty (Zustand default) |
-
----
-
-### app-checkout-complete
-
-| Field | Value |
-|-------|-------|
-| **Priority** | P1 |
-| **Roles** | guest |
-| **Frontend route** | `/checkout` |
-| **API endpoints** | `POST /api/create-sale/` |
-
-**Preconditions:** User has at least one item in cart.
-
-**Steps:**
-
-1. User navigates to `/checkout` with items in cart.
-2. Shipping form displays: **Email**, **Address**, **City**, **State**, **Postal code** fields.
-3. User fills in all shipping fields.
-4. **Complete checkout** button becomes enabled (requires non-empty cart).
-5. User clicks **Complete checkout**.
-6. Frontend builds payload:
-   ```json
-   {
-     "email": "...",
-     "address": "...",
-     "city": "...",
-     "state": "...",
-     "postal_code": "...",
-     "sold_products": [{ "product_id": 1, "quantity": 2 }, ...]
-   }
-   ```
-7. Frontend sends `POST /api/create-sale/` with payload.
-8. Backend creates `Sale` + associated `SoldProduct` records (HTTP 201).
-9. Frontend clears cart via `cartStore.clearCart()`.
-10. Success message: "Checkout completed."
-
-**Branching conditions:**
-
-| Condition | Behavior |
-|-----------|----------|
-| Cart is empty | **Complete checkout** button disabled (`disabled={!items.length}`) |
-| API failure | Error message: "Could not complete checkout." |
-| Button shows loading state | Text changes to "..." during submission |
-| Invalid product ID in payload | `400` with serializer errors |
-
----
-
-### app-dashboard
-
-| Field | Value |
-|-------|-------|
-| **Priority** | P2 |
-| **Roles** | user |
-| **Frontend route** | `/dashboard` |
-| **API endpoints** | `GET /api/validate_token/` (via auth guard) |
-
-**Preconditions:** User is authenticated with valid JWT.
-
-**Steps:**
-
-1. User navigates to `/dashboard`.
-2. `useRequireAuth()` hook validates the token.
-3. If authenticated, page renders: heading "Dashboard", link to **Backoffice**, **Sign out** button.
-4. User can click **Backoffice** to navigate to `/backoffice`.
-5. User can click **Sign out** to clear session (see `auth-sign-out`).
-
-**Branching conditions:**
-
-| Condition | Behavior |
-|-----------|----------|
-| Not authenticated | Redirect to `/sign-in` |
-| Token expired | Attempt refresh; if fail, redirect to `/sign-in` |
-
----
-
-## Backoffice Module
-
-### backoffice-users-list
-
-| Field | Value |
-|-------|-------|
-| **Priority** | P2 |
-| **Roles** | staff |
-| **Frontend route** | `/backoffice` |
-| **API endpoints** | `GET /api/users/` |
-
-**Preconditions:** User is authenticated with `is_staff = true`.
-
-**Steps:**
-
-1. User navigates to `/backoffice`.
-2. `useRequireAuth()` hook validates the token.
-3. Frontend fetches `GET /api/users/` with Bearer token.
-4. Users table renders columns: **Email**, **Role**, **Staff**, **Active**.
-5. Each row shows user data.
-
-**Branching conditions:**
-
-| Condition | Behavior |
-|-----------|----------|
-| Not authenticated | Redirect to `/sign-in` |
-| Not staff | `403` error — "Could not load backoffice data. Make sure you are signed in with a staff user." |
-| No users | "No data" row shown |
-
----
-
-### backoffice-sales-list
-
-| Field | Value |
-|-------|-------|
-| **Priority** | P2 |
-| **Roles** | staff |
-| **Frontend route** | `/backoffice` |
-| **API endpoints** | `GET /api/sales/` |
-
-**Preconditions:** User is authenticated with `is_staff = true`.
-
-**Steps:**
-
-1. User navigates to `/backoffice` (loaded together with users).
-2. Frontend fetches `GET /api/sales/` with Bearer token.
-3. Sales table renders columns: **Id**, **Email**, **City**, **State**, **Postal**.
-4. Each row shows sale data.
-
-**Branching conditions:**
-
-| Condition | Behavior |
-|-----------|----------|
-| Not staff | Same error as `backoffice-users-list` (both fetched in parallel) |
-| No sales | "No data" row shown |
-
----
-
-## Cross-Reference
-
-| Artifact | Path | Purpose |
-|----------|------|---------|
-| Flow Definitions (JSON) | `e2e/flow-definitions.json` | Machine-readable flow registry for the E2E reporter |
-| Flow Tag Constants | `e2e/helpers/flow-tags.ts` | Reusable tag arrays for Playwright tests |
-| E2E Spec Files | `e2e/<module>/*.spec.ts` | Playwright test implementations per module |
-| Flow Coverage Report | `e2e-results/flow-coverage.json` | Auto-generated coverage status per flow |
-| Architecture Standard | `docs/DJANGO_REACT_ARCHITECTURE_STANDARD.md` | Sections 3.7.5–3.7.10 define the flow methodology |
-| E2E Flow Coverage Standard | `docs/E2E_FLOW_COVERAGE_REPORT_STANDARD.md` | Reporter implementation and JSON schema |
-
-### Maintenance Rules
-
-- **Adding a new flow:** Add entry here with full steps/branches, then add to `e2e/flow-definitions.json`, then create E2E tests.
-- **Modifying a flow:** Update steps and branches in this document first, then update tests accordingly.
-- **Removing a flow:** Remove from this document, `e2e/flow-definitions.json`, and all `@flow:` tags in specs.
-- **Bump `Version` and `Last Updated`** on every change.
+When adding authenticated flows (sign-in, sign-up, dashboards), extend this map and add the corresponding entry to `frontend/e2e/flow-definitions.json` and `frontend/e2e/helpers/flow-tags.ts`.

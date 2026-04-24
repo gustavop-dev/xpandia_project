@@ -1,11 +1,3 @@
-export type Blog = {
-  id: number;
-  title: string;
-  description?: string;
-  category?: string;
-  image_url?: string | null;
-};
-
 export type UserListItem = {
   id: number;
   email: string;

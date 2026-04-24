@@ -11,29 +11,12 @@ from django.urls import path, reverse
 from django.contrib import messages
 from django.utils.html import format_html
 from django.utils.translation import gettext_lazy as _
-from django_attachments.admin import AttachmentsAdminMixin
 
-from .forms.blog import BlogForm
 from .forms.user import UserChangeForm, UserCreationForm
-from .models import Blog, User, PasswordCode
+from .models import User, PasswordCode
 from .utils.auth_utils import generate_auth_tokens
 
 logger = logging.getLogger(__name__)
-
-
-# ============================================================================
-# BLOG MANAGEMENT
-# ============================================================================
-
-class BlogAdmin(AttachmentsAdminMixin, admin.ModelAdmin):
-    form = BlogForm
-    list_display = ('title', 'category')
-    search_fields = ('title', 'category')
-    list_filter = ('category',)
-
-    def delete_queryset(self, request, queryset):
-        for obj in queryset:
-            obj.delete()
 
 
 # ============================================================================
@@ -149,14 +132,6 @@ class BaseFeatureAdminSite(admin.AdminSite):
                     if model['object_name'] in ['User', 'PasswordCode']
                 ]
             },
-            {
-                'name': _('📝 Blog Management'),
-                'app_label': 'blog_management',
-                'models': [
-                    model for model in base_app_models
-                    if model['object_name'] in ['Blog']
-                ]
-            },
         ]
 
         return [section for section in custom_app_list if section['models']]
@@ -170,4 +145,3 @@ admin_site = BaseFeatureAdminSite(name='myadmin')
 
 admin_site.register(User, BaseFeatureUserAdmin)
 admin_site.register(PasswordCode, PasswordCodeAdmin)
-admin_site.register(Blog, BlogAdmin)

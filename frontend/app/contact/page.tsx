@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { cn } from '@/lib/utils'
+import { submitContactForm } from '@/lib/services/contact'
 
 type RadioGroup = 'service' | 'size' | 'variant' | 'urgency'
 
@@ -12,10 +13,41 @@ export default function ContactPage() {
     variant: '',
     urgency: '',
   })
+  const [name, setName] = useState('')
+  const [role, setRole] = useState('')
+  const [email, setEmail] = useState('')
+  const [company, setCompany] = useState('')
+  const [message, setMessage] = useState('')
   const [submitted, setSubmitted] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
 
   function select(group: RadioGroup, value: string) {
     setSelections(prev => ({ ...prev, [group]: value }))
+  }
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault()
+    setError('')
+    setLoading(true)
+    try {
+      await submitContactForm({
+        name,
+        email,
+        role,
+        company,
+        message,
+        service: selections.service,
+        size: selections.size,
+        variant: selections.variant,
+        urgency: selections.urgency,
+      })
+      setSubmitted(true)
+    } catch {
+      setError('Something went wrong. Please email us directly at hello@xpandia.co')
+    } finally {
+      setLoading(false)
+    }
   }
 
   function RadioTile({ group, value, label }: { group: RadioGroup; value: string; label: string }) {
@@ -54,7 +86,7 @@ export default function ContactPage() {
             {/* Form */}
             <form data-reveal
               className="bg-white border border-ink-150 rounded-lg p-10"
-              onSubmit={e => { e.preventDefault(); setSubmitted(true) }}
+              onSubmit={handleSubmit}
             >
               <div className="font-mono text-[11px] text-ink-500 tracking-[0.1em] mb-[6px]">QUALIFIER</div>
               <h3 className="mb-8">Start here.</h3>
@@ -100,26 +132,55 @@ export default function ContactPage() {
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="form-field"><label>Full name</label><input type="text" placeholder="Jane Doe" /></div>
-                <div className="form-field"><label>Role</label><input type="text" placeholder="VP Product" /></div>
+                <div className="form-field">
+                  <label htmlFor="contact-name">Full name</label>
+                  <input id="contact-name" type="text" placeholder="Jane Doe" value={name} onChange={e => setName(e.target.value)} required />
+                </div>
+                <div className="form-field">
+                  <label htmlFor="contact-role">Role</label>
+                  <input id="contact-role" type="text" placeholder="VP Product" value={role} onChange={e => setRole(e.target.value)} required />
+                </div>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="form-field"><label>Work email</label><input type="email" placeholder="jane@company.com" /></div>
-                <div className="form-field"><label>Company</label><input type="text" placeholder="Company Inc." /></div>
+                <div className="form-field">
+                  <label htmlFor="contact-email">Work email</label>
+                  <input id="contact-email" type="email" placeholder="jane@company.com" value={email} onChange={e => setEmail(e.target.value)} required />
+                </div>
+                <div className="form-field">
+                  <label htmlFor="contact-company">Company</label>
+                  <input id="contact-company" type="text" placeholder="Company Inc." value={company} onChange={e => setCompany(e.target.value)} required />
+                </div>
               </div>
 
               <div className="form-field">
-                <label>What's the situation, in one paragraph?</label>
-                <textarea placeholder="e.g., We launched our AI tutor in Spanish last quarter. Support tickets mention confusion. We need a read on quality before expanding to Mexico." />
+                <label htmlFor="contact-message">What's the situation, in one paragraph?</label>
+                <textarea
+                  id="contact-message"
+                  placeholder="e.g., We launched our AI tutor in Spanish last quarter. Support tickets mention confusion. We need a read on quality before expanding to Mexico."
+                  value={message}
+                  onChange={e => setMessage(e.target.value)}
+                  required
+                />
               </div>
+
+              {error && (
+                <div className="mb-4 p-4 rounded-lg bg-red-50 border border-red-200 text-red-700 text-[14px]">
+                  {error}
+                </div>
+              )}
 
               {submitted ? (
                 <div className="w-full p-[18px] rounded-full bg-accent text-paper text-center font-body text-[15px] font-medium">
                   ✓ Request received — we'll reply within 24 hours
                 </div>
               ) : (
-                <button type="submit" className="btn btn-primary w-full justify-center" style={{ padding: 18 }}>
-                  Request diagnostic call <span className="btn-arrow"></span>
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className={cn('btn btn-primary w-full justify-center', loading && 'opacity-60 cursor-not-allowed')}
+                  style={{ padding: 18 }}
+                >
+                  {loading ? 'Sending…' : <>Request diagnostic call <span className="btn-arrow"></span></>}
                 </button>
               )}
               <div className="font-mono text-[11px] text-ink-500 tracking-[0.06em] mt-4 text-center">
