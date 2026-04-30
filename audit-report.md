@@ -162,7 +162,48 @@ No security advisories were observed against these packages in the scans above, 
 
 ## 7. Update execution log
 
-This section is updated as updates are applied (sub-phases D and E).
+### Frontend updates applied
+
+- `npm audit fix` (no `--force`): removed 1 package, changed 19 packages.
+- `npx --yes npm-check-updates -u --target minor`: 20 dev/prod deps bumped (patch+minor).
+  - Bumps include: `next 16.1.6 → 16.2.4`, `next-intl 4.8.3 → 4.11.0`, `axios 1.13.5 → 1.15.2`, `@playwright/test 1.58.2 → 1.59.1`, `lucide-react 1.8.0 → 1.14.0`, `eslint 9.39.3 → 9.39.4`, `react/react-dom 19.2.4 → 19.2.5`, `tailwindcss 4.2.1 → 4.2.4`, `jest 30.2.0 → 30.3.0`, etc. (see table in §2).
+- After the npm/ncu pass, `next@16.2.4` still ships a hardcoded transitive `postcss@8.4.31` (advisory range `<8.5.10`). Added a top-level **`overrides.postcss: ^8.5.12`** in `frontend/package.json` to pin the transitive copy to a fixed version (no major bump, no `--force`).
+- Final frontend `npm audit`: **0 vulnerabilities** (was 8: 3 high + 5 moderate).
+
+### Backend updates applied
+
+`backend/requirements.txt` patch+minor bumps:
+
+| Package | Before | After |
+|---------|--------|-------|
+| Django | 6.0.2 | 6.0.4 |
+| djangorestframework | 3.16.1 | 3.17.1 |
+| Faker | 40.5.1 | 40.15.0 |
+| pillow | 12.1.1 | 12.2.0 |
+| pytest | 9.0.2 | 9.0.3 |
+| pytest-cov | 7.0.0 | 7.1.0 |
+| coverage | 7.13.4 | 7.13.5 |
+| ruff | 0.15.2 | 0.15.12 |
+| requests | 2.32.5 | 2.33.1 |
+
+After recreating `backend/.venv-audit` and reinstalling, `pip-audit -r requirements.txt` reports: **No known vulnerabilities found** (was 10 advisories across 4 packages).
+
+### Verification results
+
+- `frontend/`: `npm run build` → success (Next.js 16.2.4 Turbopack, all 8 pages generated).
+- `frontend/`: `npm run test` → **134 passed / 134**, 19 suites, no failures.
+- `frontend/`: `npm run lint` → 48 errors / 9 warnings — **all pre-existing** in `scripts/*.cjs` (require-style imports, unused vars). None introduced by these dependency updates.
+- `backend/`: `python manage.py check` → "System check identified no issues (0 silenced)."
+- `backend/`: `pytest --no-cov` → **152 passed**, 8 warnings, 102.68s.
+
+### Rollbacks
+
+None. All packages installed cleanly, no breaking changes encountered. No version had to be reverted.
+
+### Skipped majors (out of scope per policy)
+
+- Frontend: `eslint` 10.x, `typescript` 6.x.
+- Backend: `gunicorn` 24.x/25.x (pinned to `<24.0`), and major bumps of `Faker`, `requests`, `Django` were not required because patch/minor fixes already covered all observed CVEs.
 
 </content>
 </invoke>
