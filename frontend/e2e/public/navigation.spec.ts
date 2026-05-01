@@ -24,7 +24,7 @@ test.describe('Navigation', () => {
     await page.goto('/');
     await waitForPageLoad(page);
 
-    const header = page.locator('#site-nav');
+    const header = page.getByRole('banner');
     await expect(header).toBeVisible();
     // Logo links to home
     await expect(header.getByRole('link', { name: 'Xpandia' })).toHaveAttribute('href', '/');

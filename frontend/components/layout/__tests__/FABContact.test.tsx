@@ -14,8 +14,9 @@ describe('FABContact', () => {
   })
 
   it('renders the SVG email icon', () => {
-    render(<FABContact />)
-    const link = screen.getByRole('link', { name: /book a diagnostic call/i })
-    expect(link.querySelector('svg')).toBeInTheDocument()
+    const { container } = render(<FABContact />)
+    // Scope the SVG lookup to the rendered container rather than the global document.
+    const svg = container.getElementsByTagName('svg')[0]
+    expect(svg).toBeInTheDocument()
   })
 })

@@ -66,7 +66,9 @@ describe('XpandiaHeader', () => {
 
   it('hides the mobile drawer aside initially', () => {
     render(<XpandiaHeader />)
-    const aside = document.querySelector('aside')
+    // <aside> has implicit ARIA role 'complementary'. Use { hidden: true } so RTL
+    // returns the element regardless of its aria-hidden state.
+    const aside = screen.getByRole('complementary', { hidden: true })
     expect(aside).toHaveAttribute('aria-hidden', 'true')
   })
 
@@ -74,7 +76,7 @@ describe('XpandiaHeader', () => {
     const user = userEvent.setup()
     render(<XpandiaHeader />)
     await user.click(screen.getByRole('button', { name: 'Menu' }))
-    const aside = document.querySelector('aside')
+    const aside = screen.getByRole('complementary', { hidden: true })
     expect(aside).toHaveAttribute('aria-hidden', 'false')
   })
 
@@ -105,7 +107,8 @@ describe('XpandiaHeader', () => {
     render(<XpandiaHeader />)
     Object.defineProperty(window, 'scrollY', { value: 20, writable: true })
     fireEvent.scroll(window)
-    expect(document.getElementById('site-nav')).toHaveClass('border-ink-150')
+    // <header> has implicit ARIA role 'banner'.
+    expect(screen.getByRole('banner')).toHaveClass('border-ink-150')
   })
 
   it('marks the Home link as active on the home route', () => {

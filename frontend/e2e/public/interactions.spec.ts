@@ -69,6 +69,8 @@ test.describe('CTA navigation', () => {
         page.waitForURL(/\/contact/),
         cta.click(),
       ])
+
+      await expect(page).toHaveURL(/\/contact/)
     }
   )
 })
