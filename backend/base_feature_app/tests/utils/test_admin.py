@@ -73,6 +73,7 @@ def test_user_admin_login_as_redirects_to_frontend(settings):
 
 @pytest.mark.django_db
 def test_user_admin_login_as_requires_active_superuser():
+    """Non-superusers must be rejected with PermissionDenied when invoking login-as."""
     factory = RequestFactory()
     regular_user = User.objects.create_user(email='user@example.com', password='pass1234')
     target_user = User.objects.create_user(email='target@example.com', password='pass1234')
@@ -81,8 +82,10 @@ def test_user_admin_login_as_requires_active_superuser():
 
     admin = BaseFeatureUserAdmin(User, admin_site)
 
-    with pytest.raises(PermissionDenied):
+    with pytest.raises(PermissionDenied) as exc_info:
         admin.login_as_user_view(request, target_user.id)
+
+    assert exc_info.type is PermissionDenied
 
 
 @pytest.mark.django_db
