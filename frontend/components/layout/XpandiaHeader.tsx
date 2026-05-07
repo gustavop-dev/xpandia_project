@@ -10,6 +10,7 @@ export default function XpandiaHeader() {
   const pathname = usePathname()
   const activePage = pathname === '/' ? 'home'
     : pathname.startsWith('/services') ? 'services'
+    : pathname.startsWith('/blog') ? 'blog'
     : pathname === '/about' ? 'about'
     : pathname === '/contact' ? 'contact'
     : ''
@@ -95,6 +96,7 @@ export default function XpandiaHeader() {
               </div>
             </div>
 
+            <Link className={cn(linkBase, activePage === 'blog' && linkActive)} href="/blog">Blog</Link>
             <Link className={cn(linkBase, activePage === 'about' && linkActive)} href="/about">About</Link>
           </nav>
 
@@ -155,7 +157,8 @@ export default function XpandiaHeader() {
             {item.label}
           </Link>
         ))}
-        <Link href="/about" className="block mt-5 py-[18px] border-b border-ink-150 font-display text-[22px] text-ink-900" onClick={closeDrawer}>About</Link>
+        <Link href="/blog" className="block mt-5 py-[18px] border-b border-ink-150 font-display text-[22px] text-ink-900" onClick={closeDrawer}>Blog</Link>
+        <Link href="/about" className="block py-[18px] border-b border-ink-150 font-display text-[22px] text-ink-900" onClick={closeDrawer}>About</Link>
         <Link href="/contact" className="btn btn-primary mt-8 w-full justify-center" onClick={closeDrawer}>
           Book a diagnostic call <span className="btn-arrow"></span>
         </Link>

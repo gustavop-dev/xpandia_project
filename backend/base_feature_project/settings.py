@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'easy_thumbnails',
     'base_feature_app',
+    'blog',
     'django_attachments',
     'django_cleanup.apps.CleanupConfig',
     'dbbackup',

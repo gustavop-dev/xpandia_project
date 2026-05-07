@@ -122,8 +122,17 @@ class BaseFeatureAdminSite(admin.AdminSite):
     def get_app_list(self, request):
         app_dict = self._build_app_dict(request)
         base_app_models = app_dict.get('base_feature_app', {}).get('models', [])
+        blog_models = app_dict.get('blog', {}).get('models', [])
 
         custom_app_list = [
+            {
+                'name': _('📝 Content'),
+                'app_label': 'content',
+                'models': [
+                    model for model in blog_models
+                    if model['object_name'] == 'BlogPost'
+                ]
+            },
             {
                 'name': _('👥 User Management'),
                 'app_label': 'user_management',

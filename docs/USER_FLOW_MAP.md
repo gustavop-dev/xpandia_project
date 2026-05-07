@@ -4,8 +4,8 @@
 
 Use this document to understand each flow's steps, branching conditions, role restrictions, and API contracts before writing or reviewing E2E tests.
 
-**Version:** 2.0.0
-**Last Updated:** 2026-04-24
+**Version:** 2.2.0
+**Last Updated:** 2026-05-07
 
 ---
 
@@ -15,7 +15,8 @@ Use this document to understand each flow's steps, branching conditions, role re
 2. [Home Module](#home-module)
 3. [Services Module](#services-module)
 4. [Static Module](#static-module)
-5. [Navigation](#navigation)
+5. [Blog Module](#blog-module)
+6. [Navigation](#navigation)
 
 ---
 
@@ -35,6 +36,15 @@ Use this document to understand each flow's steps, branching conditions, role re
 | `breadcrumb-back-to-services` | Breadcrumb: Detail → Services | services | P2 | guest | `/services/qa` |
 | `about-page` | About | static | P3 | guest | `/about` |
 | `contact-page` | Contact | static | P2 | guest | `/contact` |
+| `blog-list` | Blog list view | blog | P2 | guest | `/blog` |
+| `blog-detail` | Blog detail view | blog | P2 | guest | `/blog/[slug]` |
+| `blog-pagination` | Blog pagination | blog | P3 | guest | `/blog?page=N` |
+| `blog-language-switch` | Blog language switch (EN ↔ ES) | blog | P3 | guest | `/blog?lang=` |
+| `blog-not-found` | Blog detail 404 | blog | P4 | guest | `/blog/[unknown]` |
+| `blog-card-to-detail` | Blog card click → detail | blog | P3 | guest | `/blog` |
+| `blog-back-from-detail-to-list` | Back link from detail → list | blog | P3 | guest | `/blog/[slug]` |
+| `contact-form-error-state` | Contact form server error | contact | P3 | guest | `/contact` |
+| `header-blog-link` | Header Blog nav link | navigation | P4 | guest | all pages |
 | `mobile-navigation-drawer` | Mobile nav drawer | navigation | P3 | guest | all pages |
 | `header-services-dropdown` | Header services dropdown | navigation | P3 | guest | all pages |
 | `fab-contact-button` | FAB contact button | navigation | P3 | guest | all pages |
@@ -78,7 +88,7 @@ Use this document to understand each flow's steps, branching conditions, role re
 | **Priority** | P1 |
 | **Roles** | guest |
 | **Frontend route** | `/contact` |
-| **API endpoints** | none (frontend-only state; no backend wiring yet) |
+| **API endpoints** | `POST /api/contact/` (AllowAny) |
 
 **Preconditions:** User is on `/contact`.
 
@@ -88,8 +98,30 @@ Use this document to understand each flow's steps, branching conditions, role re
 3. User fills in Full name, Role, Work email, Company text inputs.
 4. User writes a paragraph in the situation textarea.
 5. User clicks "Request diagnostic call" button.
+6. While the request is in flight, the button shows "Sending…" and is disabled.
 
-**Happy path:** Form submits (`onSubmit` sets `submitted = true`); the button is replaced by a success banner reading "✓ Request received — we'll reply within 24 hours".
+**Happy path:** Backend returns 201; `setSubmitted(true)` replaces the button with a success banner reading "✓ Request received — we'll reply within 24 hours".
+
+### contact-form-error-state
+
+| Field | Value |
+|-------|-------|
+| **Priority** | P3 |
+| **Roles** | guest |
+| **Frontend route** | `/contact` |
+| **API endpoints** | `POST /api/contact/` (AllowAny — failure path) |
+
+**Preconditions:** Same as `contact-form-submit`.
+
+**Steps:**
+1. User completes the form and submits as in the happy path.
+2. Backend responds with a non-2xx status (e.g. 503 from email provider failure).
+
+**Expected outcome:** A red error banner appears above the submit button reading: "Something went wrong. Please email us directly at hello@xpandia.co". The button is re-enabled and the success banner does NOT appear.
+
+**Edge cases:**
+- Network offline → same fallback banner.
+- Backend `/api/contact/` returns 400 (serializer validation error) → currently shown via the same generic banner; consider improving messaging in a future iteration.
 
 ---
 
@@ -172,11 +204,156 @@ Contact page at `/contact`. Contains the booking and contact form. Email contact
 
 ---
 
+## Blog Module
+
+The blog is a public, bilingual (EN/ES) collection of articles authored entirely from the Django admin (no public POST endpoints). Pagination is server-side (default 9 posts/page, max 50). Content is stored as structured JSON with 6 supported section types: paragraph, heading, list, image, quote, callout.
+
+### blog-list
+
+| Field | Value |
+|-------|-------|
+| **Priority** | P2 |
+| **Roles** | guest |
+| **Frontend route** | `/blog` |
+| **API endpoints** | `GET /api/blog/?lang=&page=&page_size=` (AllowAny) |
+
+**Preconditions:** At least one published `BlogPost` exists in the database (`is_published=True`).
+
+**Steps:**
+1. User opens `/blog`.
+2. Server Component fetches `GET /api/blog/?lang=en&page=1&page_size=9`.
+3. Hero section renders with H1 `Notes on Spanish quality for AI products.` and an EN/ES toggle.
+4. Up to 9 `BlogCard` items render in a responsive grid (1/2/3 columns at sm/tablet/lg).
+5. If `total_pages > 1`, `BlogPagination` renders below the grid.
+
+**Happy path:** Grid shows published posts; drafts are filtered out; `BlogCard` link includes `?lang=en`.
+
+**Edge cases:**
+- 0 published posts → empty state with `"No posts published yet."` (or Spanish equivalent).
+- `?page=99` beyond range → backend clamps to last page; UI shows the available results.
+
+### blog-detail
+
+| Field | Value |
+|-------|-------|
+| **Priority** | P2 |
+| **Roles** | guest |
+| **Frontend route** | `/blog/[slug]` |
+| **API endpoints** | `GET /api/blog/<slug>/?lang=` (AllowAny) |
+
+**Preconditions:** A `BlogPost` with the given slug exists and `is_published=True`.
+
+**Steps:**
+1. User clicks a `BlogCard` on `/blog` (or navigates directly to `/blog/<slug>`).
+2. `generateMetadata` and the page component share a single `React.cache`-wrapped `fetchBlogPost(slug, lang)` call.
+3. Hero renders the back link `← BACK TO BLOG`, category eyebrow, H1 title, excerpt, author + formatted date.
+4. If `cover_image` is set, the cover image renders above the content.
+5. `BlogContentRenderer` renders `intro`, ordered `sections`, and `conclusion`.
+
+**Happy path:** Title, metadata, cover, and structured content all render in the requested language.
+
+**Edge cases:**
+- Slug refers to a draft → backend returns 404 → Next.js `notFound()` renders.
+- `?lang=fr` (unsupported) → backend falls back to English.
+
+### blog-pagination
+
+| Field | Value |
+|-------|-------|
+| **Priority** | P3 |
+| **Roles** | guest |
+| **Frontend route** | `/blog?page=N` |
+| **API endpoints** | `GET /api/blog/?lang=&page=N` |
+
+**Preconditions:** At least 10 published posts (so `total_pages > 1` at default `page_size=9`).
+
+**Steps:**
+1. User opens `/blog`.
+2. User clicks the `NEXT →` link in `BlogPagination`.
+3. URL changes to `/blog?lang=en&page=2`.
+4. New grid renders the next batch of posts.
+
+**Edge cases:**
+- On the last page, the `NEXT →` element is rendered as a disabled `<span>` (not a `<Link>`).
+- Symmetrically, `← PREV` is disabled on the first page.
+
+### blog-language-switch
+
+| Field | Value |
+|-------|-------|
+| **Priority** | P3 |
+| **Roles** | guest |
+| **Frontend route** | `/blog?lang=es` |
+| **API endpoints** | `GET /api/blog/?lang=es` and `GET /api/blog/<slug>/?lang=es` |
+
+**Preconditions:** At least one bilingual published post exists.
+
+**Steps:**
+1. User opens `/blog` (default `?lang=en`).
+2. User clicks `ES` inside the `BlogLanguageToggle` `role="group"` named "Language".
+3. URL changes to `/blog?lang=es`.
+4. Hero copy switches to Spanish; `BlogCard` titles and excerpts are re-fetched in Spanish.
+
+**Edge cases:**
+- The header's localStorage-based EN/ES toggle is independent of this URL toggle (current intentional split).
+
+### blog-not-found
+
+| Field | Value |
+|-------|-------|
+| **Priority** | P4 |
+| **Roles** | guest |
+| **Frontend route** | `/blog/[unknown]` |
+| **API endpoints** | `GET /api/blog/<unknown>/` returns 404 |
+
+**Steps:**
+1. User navigates to `/blog/this-slug-does-not-exist`.
+2. Backend returns `{"detail": "Not found."}` with 404.
+3. `fetchBlogPost` returns `null`; the page calls Next.js `notFound()`.
+4. Browser receives a 404 status with the Next.js `not-found` UI.
+
+### blog-card-to-detail
+
+| Field | Value |
+|-------|-------|
+| **Priority** | P3 |
+| **Roles** | guest |
+| **Frontend route** | `/blog` → `/blog/<slug>` |
+| **API endpoints** | `GET /api/blog/<slug>/?lang=` (after click) |
+
+**Preconditions:** At least one published `BlogPost` is visible on `/blog`.
+
+**Steps:**
+1. User opens `/blog` (with optional `?lang=es`).
+2. User clicks the link on the first `BlogCard` (the link element wraps the entire card).
+3. Browser navigates to `/blog/<slug>?lang=<current>`; the `lang` query param is preserved from the list page.
+
+**Expected outcome:** The detail page renders the clicked post's title in the requested language.
+
+### blog-back-from-detail-to-list
+
+| Field | Value |
+|-------|-------|
+| **Priority** | P3 |
+| **Roles** | guest |
+| **Frontend route** | `/blog/<slug>` → `/blog` |
+| **API endpoints** | `GET /api/blog/?lang=` (after click) |
+
+**Preconditions:** User is on `/blog/<slug>?lang=es`.
+
+**Steps:**
+1. User clicks the eyebrow link `← BACK TO BLOG` (or `← VOLVER AL BLOG` in Spanish) at the top of the detail page.
+2. Browser navigates to `/blog?lang=es`; the `lang` query param is preserved.
+
+**Expected outcome:** The list page renders in the same language the user was reading the detail in.
+
+---
+
 ## Navigation
 
 ### navigation-between-pages
 
-Cross-page navigation via `XpandiaHeader` (desktop nav, mobile drawer) across `/`, `/about`, `/contact`, `/services`, `/services/qa`, `/services/audit`, `/services/fractional`.
+Cross-page navigation via `XpandiaHeader` (desktop nav, mobile drawer) across `/`, `/about`, `/contact`, `/services`, `/services/qa`, `/services/audit`, `/services/fractional`, `/blog`.
 
 ### navigation-header / navigation-footer
 
@@ -233,6 +410,21 @@ Header and footer render on every route and expose the expected link set and CTA
 | **Frontend route** | all pages |
 
 **Steps:** User clicks the "About" link in the footer Company column → browser navigates to `/about`.
+
+### header-blog-link
+
+| Field | Value |
+|-------|-------|
+| **Priority** | P4 |
+| **Roles** | guest |
+| **Frontend route** | all pages (desktop + mobile drawer) |
+
+**Steps:**
+1. User is on any page (e.g. `/`).
+2. User clicks the "Blog" link in the desktop header nav (or in the mobile drawer after opening the hamburger menu).
+3. Browser navigates to `/blog`.
+
+**Expected outcome:** The header's `nav-active` underline appears on the Blog item once on `/blog`.
 
 ---
 

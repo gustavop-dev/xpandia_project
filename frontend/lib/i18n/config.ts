@@ -12,3 +12,16 @@ export const LOCALE_LABELS: Record<SupportedLocale, string> = {
 export function isValidLocale(locale: string): locale is SupportedLocale {
   return SUPPORTED_LOCALES.includes(locale as SupportedLocale);
 }
+
+const DATE_LOCALES: Record<SupportedLocale, string> = {
+  en: 'en-US',
+  es: 'es-ES',
+};
+
+export function formatLocaleDate(
+  iso: string,
+  locale: SupportedLocale,
+  options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'short', day: 'numeric' },
+): string {
+  return new Date(iso).toLocaleDateString(DATE_LOCALES[locale], options);
+}

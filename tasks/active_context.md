@@ -5,60 +5,89 @@ description: Current work focus, recent changes, active decisions, and next step
 
 # Active Context — Xpandia
 
-_Last updated: 2026-04-24_
+_Last updated: 2026-05-07_
 
 ---
 
 ## Current State
 
-The Xpandia project is a **marketing site + backend infrastructure**. The public site is live at 7 routes (`/`, `/about`, `/contact`, `/services`, `/services/qa`, `/services/audit`, `/services/fractional`). The backend has auth infrastructure ready but no authenticated frontend features yet.
+The Xpandia project is a **marketing site + bilingual blog + backend infrastructure**. The public site exposes 9 routes (7 marketing + `/blog` + `/blog/[slug]`). The blog is fully content-managed via Django admin; readers consume it bilingually via `?lang=es|en`. Backend has auth infrastructure ready but no authenticated frontend features yet.
 
 ---
 
-## Recent Work (2026-04-24)
+## Recent Work (2026-05-07)
 
-### Frontend Unit Test Coverage
-Completed a full coverage sweep. Added 9 new test files covering every previously untested file:
+### Bilingual blog feature
+End-to-end implementation, tested across all three layers, with code review and simplification pass:
 
-| Test File | Source | Coverage After |
-|-----------|--------|----------------|
-| `lib/__tests__/utils.test.ts` | `lib/utils.ts` | 100% |
-| `components/layout/__tests__/FABContact.test.tsx` | `FABContact.tsx` | 100% |
-| `components/layout/__tests__/XpandiaFooter.test.tsx` | `XpandiaFooter.tsx` | 100% |
-| `components/layout/__tests__/XpandiaHeader.test.tsx` | `XpandiaHeader.tsx` | 100% stmts |
-| `components/animations/__tests__/SiteAnimations.test.tsx` | `SiteAnimations.tsx` | 47.78% (GSAP limit) |
-| `app/__tests__/home.test.tsx` | `app/page.tsx` | 100% |
-| `app/contact/__tests__/page.test.tsx` | `app/contact/page.tsx` | 100% stmts |
-| `app/about/__tests__/page.test.tsx` | `app/about/page.tsx` | 100% |
-| `app/services/__tests__/page.test.tsx` + 3 sub-page tests | service pages | 100% |
+**Backend** (`backend/blog/`)
+- New Django app, decoupled from `base_feature_app`
+- `BlogPost` model: bilingual title/excerpt/content_json (es/en), cover ImageField, 5-category enum, `xpandia-team` author, `is_published` boolean, auto-slug from `title_en` with collision counter, auto `published_at` on first publish
+- 6 supported JSON section types in content: paragraph, heading, list, image, quote, callout
+- DRF endpoints: `GET /api/blog/?lang=&page=&page_size=` and `GET /api/blog/<slug>/?lang=` — both `AllowAny`, FBV
+- Admin: `BlogPostAdmin` registered under "📝 Content" section in `BaseFeatureAdminSite`
+- Pagination: default 9/page, max 50
+- Initial migration: `blog/migrations/0001_initial.py`
 
-**Final result:** 134 tests / 19 suites — **96.81% statements, 98.59% branches**
+**Frontend** (`frontend/`)
+- Server Component pages: `app/blog/page.tsx`, `app/blog/[slug]/page.tsx`
+- 4 new components in `components/blog/`: `BlogCard`, `BlogPagination`, `BlogLanguageToggle`, `BlogContentRenderer`
+- Server-side fetcher `lib/services/blog.ts` using native `fetch` + `next: { revalidate: 60 }` (ISR), wrapped in `React.cache()` to dedupe `generateMetadata` and the page component (eliminates duplicate backend hits)
+- i18n helper additions to `lib/i18n/config.ts`: `formatLocaleDate(iso, lang, opts)`
+- Constants: added `PAGINATION.BLOG_PAGE_SIZE = 9`
+- Header: "Blog" link added to desktop nav and mobile drawer; `activePage` logic extended
 
-### Memory Bank Setup
-Created the 7 core methodology files for the first time (product_requirement_docs.md, technical.md, architecture.md, tasks_plan.md, active_context.md, error-documentation.md, lessons-learned.md).
+**Tests**
+- Backend: 5 new test files (`test_models`, `test_serializers`, `test_views_list`, `test_views_detail`, `test_admin`) → 25 tests, all passing. Coverage: 100% on models/admin/views/urls, ~89% on serializers.
+- Frontend unit: 5 new test files (1 in `lib/services/__tests__/`, 4 in `components/blog/__tests__/`) + extended `lib/i18n/__tests__/config.test.ts` for `formatLocaleDate` → 23 new tests, 134+ total passing.
+- E2E: new `e2e/public/blog.spec.ts` (5 tests), 5 new flows in `flow-definitions.json` (`blog-list`, `blog-detail`, `blog-pagination`, `blog-language-switch`, `blog-not-found`), corresponding constants in `flow-tags.ts`, plus `globalSetup` (`e2e/global-setup.ts`) that runs `python manage.py seed_blog_e2e` via `execFileSync` to seed 12 published + 1 draft posts before tests.
+
+**Code review pass (`/simplify`)**
+- Removed redundant `BlogLang` type → reuse `SupportedLocale` from `lib/i18n/config.ts`
+- Inline date formatting → extracted to `formatLocaleDate` (used by `BlogCard` and detail page)
+- Inline `lang === 'es' ? 'es' : 'en'` ternary → replaced with `isValidLocale()`
+- `BlogPagination` Prev/Next link/span pairs → unified via local `<PaginationArrow>`
+- `BlogLanguageToggle` two near-identical `<Link>` blocks → mapped over `SUPPORTED_LOCALES`
+- `BlogContentRenderer.heading` → dynamic `Tag = h${level}` (single return)
+- `views.py` page/page_size try/except clamping → `_int_param` helper
+- Removed unnecessary class docstring from `BlogPost`
+- `admin.py`: `if model['object_name'] == 'BlogPost'` (was `in ['BlogPost']`)
+- Hoisted bilingual `HERO_COPY` literal to module scope in `app/blog/page.tsx`
 
 ---
 
 ## Active Decisions
 
-### SiteAnimations coverage ceiling
-`SiteAnimations.tsx` sits at 47.78% statement coverage in Jest. The remaining uncovered lines (22–107) are GSAP animation callbacks — code that only runs when real DOM elements with `.hero`, `.section-head`, `.service-card`, `.scorecard`, `.num-list`, `[data-stagger]`, `[data-reveal]` selectors exist. This is expected and acceptable: animation render fidelity belongs in E2E/visual tests, not Jest unit tests.
+### Two distinct API base URLs (intentional)
+- **Server-side** (Server Components, `lib/services/blog.ts`): reads `NEXT_PUBLIC_BACKEND_ORIGIN` for absolute URL to Django.
+- **Client-side** (`lib/services/http.ts`, Axios): uses relative `/api/*` proxied via Next rewrites, `NEXT_PUBLIC_API_BASE_URL`.
+- These are not duplicate env vars; they serve different contexts.
 
-### Contact form wiring
-The `/contact` page form currently only sets `submitted = true` on submit — it does not send data to the backend. This is a known gap to address before launch.
+### Blog seeding strategy for E2E
+Blog data is created via the **Django management command `seed_blog_e2e`** (idempotent, uses `slug__startswith='e2e-'` for cleanup). Playwright's `globalSetup` runs it via `execFileSync` (NOT `exec`/`execSync`, which would be shell-injectable). This keeps E2E tests deterministic without exposing public POST endpoints.
 
-### Backend test coverage baseline
-Backend coverage has not been measured yet. The 20 test files exist but no coverage report has been run. Establish this baseline next.
+### React.cache deduplication
+`fetchBlogPosts` and `fetchBlogPost` are wrapped with `React.cache()`. Without it, `generateMetadata` and the page component would each issue a separate `fetch` for the same slug per request, doubling backend traffic on cache miss.
+
+### Bilingual approach (current)
+The blog uses a **simple `?lang=es|en` query param** approach (mirroring projectapp). Full `next-intl` setup with locale-prefixed routes (`/en/blog`, `/es/blog`) is deferred to a backlog item. The header's localStorage-based lang toggle and the blog's query-param toggle are independent for now.
+
+### pytest DB engine override for tests
+`pytest.ini` points at `base_feature_project.settings` (production-like, MySQL by default). To run tests without a MySQL instance, override with sqlite memory:
+```
+DJANGO_DB_ENGINE=django.db.backends.sqlite3 DJANGO_DB_NAME=':memory:' pytest blog/tests/ -v
+```
+This is documented in `technical.md` §5.
 
 ---
 
 ## Next Steps
 
-1. **Wire contact form to backend** — create an endpoint (or use email service) to receive the qualifier form submissions from `/contact`.
-2. **Provision staging** — fill in deploy-staging placeholders and deploy the first staging build.
-3. **Measure backend coverage** — `source venv/bin/activate && pytest backend/ --cov=backend/base_feature_app --cov-report=term`.
-4. **Raise Jest threshold** — update `jest.config.cjs` global thresholds from 50% to 80%.
-5. **Implement i18n** — create `messages/en.json` + `messages/es.json`, wrap layout with `NextIntlClientProvider`, connect `localeStore` to `next-intl`.
+1. **Run Playwright E2E for blog** — user is restarting the existing dev server (PID 540786) so it picks up the new `blog` app. Then: `E2E_REUSE_SERVER=1 npx playwright test e2e/public/blog.spec.ts`.
+2. **Decide on i18n unification** — current setup mixes `?lang=` (blog) and `localStorage` (header toggle). Pick one, then either implement `next-intl` fully or remove the header toggle.
+3. **Wire contact form to backend** — `/contact` already POSTs to `/api/contact/` (this works); confirm end-to-end after staging is up.
+4. **Provision staging** — fill in `deploy-staging` placeholders.
+5. **Raise Jest coverage threshold** — from 50% global to 80%.
 
 ---
 
@@ -67,11 +96,25 @@ Backend coverage has not been measured yet. The 20 test files exist but no cover
 | Purpose | Path |
 |---------|------|
 | Root layout | `frontend/app/layout.tsx` |
-| Contact form | `frontend/app/contact/page.tsx` |
+| Blog list page | `frontend/app/blog/page.tsx` |
+| Blog detail page | `frontend/app/blog/[slug]/page.tsx` |
+| Blog server fetcher | `frontend/lib/services/blog.ts` |
+| Blog components | `frontend/components/blog/{BlogCard,BlogPagination,BlogLanguageToggle,BlogContentRenderer}.tsx` |
+| i18n helpers | `frontend/lib/i18n/config.ts` |
+| Backend blog model | `backend/blog/models.py` |
+| Backend blog views | `backend/blog/views.py` |
+| Backend blog serializers | `backend/blog/serializers.py` |
+| Backend blog admin | `backend/blog/admin.py` |
+| Blog seed command | `backend/blog/management/commands/seed_blog_e2e.py` |
+| Blog tests | `backend/blog/tests/` |
+| E2E blog spec | `frontend/e2e/public/blog.spec.ts` |
+| Playwright globalSetup | `frontend/e2e/global-setup.ts` |
+| Flow definitions | `frontend/e2e/flow-definitions.json` |
+| Flow tag constants | `frontend/e2e/helpers/flow-tags.ts` |
 | Axios instance | `frontend/lib/services/http.ts` |
 | Email service | `backend/base_feature_app/services/email_service.py` |
-| Backend views | `backend/base_feature_app/views/` |
 | Jest config | `frontend/jest.config.cjs` |
 | Jest setup | `frontend/jest.setup.ts` |
+| pytest.ini | `backend/pytest.ini` |
+| Custom coverage reporter | `backend/conftest.py` |
 | Testing standards | `docs/TESTING_QUALITY_STANDARDS.md` |
-| Deploy skill | `.claude/skills/deploy-staging/SKILL.md` |

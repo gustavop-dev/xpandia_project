@@ -72,9 +72,9 @@ Xpandia fills this gap with scoped, senior-led, evidence-based engagements.
 
 ---
 
-## 5. Current Website Scope (as of 2026-04-24)
+## 5. Current Website Scope (as of 2026-05-07)
 
-The frontend is a **marketing site only** — no authenticated features are live yet. Routes:
+The frontend is a **marketing site + bilingual blog** — no authenticated user-facing features are live yet. Routes:
 
 | Route | Component | Type |
 |-------|-----------|------|
@@ -85,6 +85,10 @@ The frontend is a **marketing site only** — no authenticated features are live
 | `/services/qa` | `app/services/qa/page.tsx` | Static — sprint detail |
 | `/services/audit` | `app/services/audit/page.tsx` | Static — audit detail |
 | `/services/fractional` | `app/services/fractional/page.tsx` | Static — fractional detail |
+| `/blog` | `app/blog/page.tsx` | Server — paginated post grid + EN/ES toggle |
+| `/blog/[slug]` | `app/blog/[slug]/page.tsx` | Server — single post detail |
+
+The blog is fully content-managed via the Django admin (`/admin/` → 📝 Content → Blog Posts). Editors author posts in both English and Spanish; readers select language via `?lang=es|en` query param. Six structured section types are supported: paragraph, heading, list, image, quote, callout.
 
 The backend exposes **auth + user management** infrastructure (JWT, Google OAuth, password reset), ready for future authenticated portal features.
 

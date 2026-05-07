@@ -50,3 +50,17 @@ _No open issues._
 - **Root Cause**: The `jest.setup.ts` mock for `next/image` renders as a plain `<img>` and passes all props including `priority={true}`, which is not a valid HTML attribute
 - **Resolution**: This is a non-fatal warning, not a test failure. Suppress by updating the Image mock to omit `priority`, or accept it as a known mock limitation
 - **Files Affected**: `frontend/jest.setup.ts`, any test that renders a component using `<Image priority />`
+
+### [ERROR-004] `'WSGIRequest' object has no attribute 'query_params'` in serializer tests
+- **Date**: 2026-05-07
+- **Context**: `backend/blog/tests/test_serializers.py` — calling `BlogPostListSerializer(post, context={'request': RequestFactory().get(...)}).data` raised `AttributeError`
+- **Root Cause**: Django's `RequestFactory` and DRF's `APIRequestFactory` both produce a plain `WSGIRequest`. DRF's `.query_params` attribute is added only when the request is wrapped by `rest_framework.request.Request` (which DRF does inside `APIView.dispatch`). Calling a serializer directly outside a view skips that wrapping.
+- **Resolution**: Wrap the factory request with `rest_framework.request.Request` in the test context: `context={'request': Request(rf.get(url))}`
+- **Files Affected**: `backend/blog/tests/test_serializers.py`
+
+### [ERROR-005] pytest fails with `Identifier name '...db.sqlite3' is too long` (MySQL test DB)
+- **Date**: 2026-05-07
+- **Context**: Running `pytest blog/tests/` with no env override raised `MySQLdb.OperationalError (1059)` while attempting `CREATE DATABASE 'test_/home/.../db.sqlite3'`
+- **Root Cause**: `pytest.ini` sets `DJANGO_SETTINGS_MODULE = base_feature_project.settings` (production-like, defaults to `DJANGO_DB_ENGINE=django.db.backends.mysql` from `.env`). However `.env` only sets `DB_NAME`, not `DJANGO_DB_NAME`, so `settings.py` falls back to the sqlite path string while the engine is mysql — incompatible. (`manage.py` itself defaults to `settings_dev.py` which uses sqlite, so the dev server is fine; only pytest hits this.)
+- **Resolution**: Either fix the `.env`/`settings.py` mismatch (rename `DB_NAME` → `DJANGO_DB_NAME` or add a fallback), or run pytest with sqlite memory override: `DJANGO_DB_ENGINE=django.db.backends.sqlite3 DJANGO_DB_NAME=':memory:' pytest ...`
+- **Files Affected**: `backend/.env`, `backend/base_feature_project/settings.py`, `backend/pytest.ini`

@@ -11,15 +11,15 @@ This file captures important patterns, preferences, and project intelligence tha
 
 ## 1. Architecture Patterns
 
-### Static-Public-Only Scope (as of 2026-04-24)
-- Current Xpandia surface is a marketing site: `/`, `/about`, `/contact`, `/services` (+ `/services/qa`, `/services/audit`, `/services/fractional`).
-- Backend exposes auth + user management infrastructure (`User`, `PasswordCode`, JWT, Google OAuth, password reset by code) preserved for future authenticated features — **not yet consumed by the frontend**.
-- Template e-commerce residue (Product, Sale, Blog, cart, checkout, catalog) has been fully removed.
+### Public Scope (as of 2026-05-07)
+- Marketing site: `/`, `/about`, `/contact`, `/services` (+ `/services/qa`, `/services/audit`, `/services/fractional`).
+- **Bilingual blog**: `/blog`, `/blog/[slug]` — content-managed via Django admin, consumed bilingually via `?lang=es|en`.
+- Backend exposes auth + user management infrastructure (`User`, `PasswordCode`, JWT, Google OAuth, password reset) preserved for future authenticated features — **not yet consumed by the frontend**.
 
-### Single Django App: `base_feature_app`
-- All models, views, serializers live in `base_feature_app`.
-- Models split into individual files under `base_feature_app/models/` (`user.py`, `password_code.py`).
-- Project and app keep the scaffold names `base_feature_project` / `base_feature_app` on purpose.
+### Multiple Django Apps
+- `base_feature_app` — auth, users, contact, captcha (all the original infrastructure).
+- `blog` — added 2026-05-07. Decoupled deliberately so it can be extracted later. Mirrors the modular convention (`models.py`, `views.py`, `serializers.py`, `urls.py`, `admin.py` registers into the shared `BaseFeatureAdminSite`).
+- `django_attachments` — installed but not consumed yet.
 
 ### Service Layer Pattern
 - Business logic lives in views (thin FBVs with `@api_view`) and in `base_feature_app/services/` (currently `email_service`).
@@ -117,20 +117,78 @@ The Xpandia staging environment is **not provisioned yet**. The `deploy-staging`
 - The `jest.setup.ts` Image mock passes all props to `<img>`, causing `priority="true"` DOM warning.
 - This is non-fatal. To fix: update the mock to destructure and omit `priority` from spread props.
 
+### DRF Serializer Tests Need `Request` Wrapper
+- `RequestFactory().get(...)` and `APIRequestFactory().get(...)` both return a bare `WSGIRequest` that lacks `.query_params` (DRF only adds it inside `APIView.dispatch`).
+- When unit-testing a serializer that inspects `context['request'].query_params`, wrap the factory request: `from rest_framework.request import Request; context={'request': Request(rf.get(url))}`.
+- See `backend/blog/tests/test_serializers.py` for the working pattern.
+
+### pytest Needs Explicit DB Override
+- `pytest.ini` points `DJANGO_SETTINGS_MODULE` at `base_feature_project.settings` (the prod-like one, MySQL by default).
+- The `.env` defines `DB_NAME` but `settings.py` reads `DJANGO_DB_NAME` — they don't match, so pytest tries to create a MySQL test DB with the sqlite path as its name.
+- Run with: `DJANGO_DB_ENGINE=django.db.backends.sqlite3 DJANGO_DB_NAME=':memory:' pytest ...`.
+- This is unrelated to `manage.py runserver`, which uses `settings_dev` (sqlite) and works fine.
+
+### Mocking `React.cache()` for Unit Tests
+- `lib/services/blog.ts` wraps fetchers with `React.cache()` from React 19 to dedupe `generateMetadata` + page-component pairs.
+- In Jest, the cache wrapper has no React render context. Unwrap it:
+  ```ts
+  jest.mock('react', () => ({ ...jest.requireActual('react'), cache: (fn) => fn }))
+  ```
+- Pair with `global.fetch = jest.fn()` and `mockResolvedValueOnce({ ok, status, json: async () => ... })` for fetch-based service tests.
+
+### Module-Level env Vars in Tests
+- Constants computed at module load (e.g. `const API_BASE = ...process.env.NEXT_PUBLIC_BACKEND_ORIGIN`) are frozen at first import.
+- Set `process.env.X = ...` in `beforeEach` and use `jest.isolateModules(() => { mod = require('../blog') })` to force re-evaluation per test. See `lib/services/__tests__/blog.test.ts`.
+
 ---
 
-## 6. Key Files Quick Reference
+## 6. Bilingual / Blog-Specific Patterns
+
+### Two API base URLs (server vs. client)
+- **Server-side** (Server Components, `lib/services/blog.ts`): absolute URL via `NEXT_PUBLIC_BACKEND_ORIGIN`.
+- **Client-side** (Axios in `lib/services/http.ts`): relative `/api/*` proxied via Next rewrites.
+- These are intentionally distinct env vars — don't try to unify them.
+
+### Blog seeding for E2E
+- Blog data must be in the DB before `/blog` SSR responses are meaningful.
+- The pattern: a Django management command (`seed_blog_e2e`) that's idempotent (filters `slug__startswith='e2e-'` then deletes + recreates), invoked from Playwright's `globalSetup` via `execFileSync` (NEVER `exec`/`execSync` — those are shell-injectable; the security hook will block them).
+
+### Bilingual via `?lang=` (current; not next-intl yet)
+- Backend `_get_lang(serializer)` reads `request.query_params.get('lang', 'en')`.
+- Frontend uses `isValidLocale(raw) ? raw : 'en'` from `lib/i18n/config.ts` to resolve the param.
+- Date formatting via `formatLocaleDate(iso, lang, opts)` (also in `lib/i18n/config.ts`) — keeps locale logic in one place.
+- The header's localStorage-based lang toggle is independent of the blog's URL-based one. Unification is a backlog item.
+
+---
+
+## 7. Key Files Quick Reference
 
 | Purpose | Path |
 |---------|------|
 | Root layout | `frontend/app/layout.tsx` |
 | Global styles + tokens | `frontend/app/globals.css` |
 | Class merger utility | `frontend/lib/utils.ts` |
-| Axios + JWT interceptor | `frontend/lib/services/http.ts` |
+| i18n helpers (`isValidLocale`, `formatLocaleDate`) | `frontend/lib/i18n/config.ts` |
+| Pagination constants | `frontend/lib/constants.ts` |
+| Axios + JWT interceptor (client) | `frontend/lib/services/http.ts` |
 | Cookie token management | `frontend/lib/services/tokens.ts` |
+| Contact form client | `frontend/lib/services/contact.ts` |
+| Blog server fetcher (RSC + ISR + React.cache) | `frontend/lib/services/blog.ts` |
+| Blog components | `frontend/components/blog/{BlogCard,BlogPagination,BlogLanguageToggle,BlogContentRenderer}.tsx` |
 | Locale store | `frontend/lib/stores/localeStore.ts` |
 | Jest config | `frontend/jest.config.cjs` |
 | Jest setup | `frontend/jest.setup.ts` |
+| Playwright config | `frontend/playwright.config.ts` |
+| Playwright globalSetup | `frontend/e2e/global-setup.ts` |
+| Flow definitions | `frontend/e2e/flow-definitions.json` |
+| Flow tag constants | `frontend/e2e/helpers/flow-tags.ts` |
 | Testing quality standards | `docs/TESTING_QUALITY_STANDARDS.md` |
 | Backend email service | `backend/base_feature_app/services/email_service.py` |
+| Backend blog model | `backend/blog/models.py` |
+| Backend blog views | `backend/blog/views.py` |
+| Backend blog serializers | `backend/blog/serializers.py` |
+| Backend blog admin | `backend/blog/admin.py` |
 | Fake data command | `backend/base_feature_app/management/commands/create_fake_data.py` |
+| Blog seed command (E2E) | `backend/blog/management/commands/seed_blog_e2e.py` |
+| pytest.ini (`--cov=base_feature_app --cov=blog`) | `backend/pytest.ini` |
+| Custom coverage reporter | `backend/conftest.py` |

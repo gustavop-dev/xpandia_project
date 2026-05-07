@@ -161,6 +161,78 @@
       "priority": "P4",
       "description": "Guest clicks a footer link and navigates to the correct page",
       "expectedSpecs": 1
+    },
+    "blog-list": {
+      "name": "Blog list view",
+      "module": "blog",
+      "roles": ["shared"],
+      "priority": "P2",
+      "description": "Guest visits /blog and sees a grid of published posts",
+      "expectedSpecs": 1
+    },
+    "blog-detail": {
+      "name": "Blog detail view",
+      "module": "blog",
+      "roles": ["shared"],
+      "priority": "P2",
+      "description": "Guest opens a blog post detail and sees title and back link",
+      "expectedSpecs": 1
+    },
+    "blog-pagination": {
+      "name": "Blog pagination",
+      "module": "blog",
+      "roles": ["shared"],
+      "priority": "P3",
+      "description": "Guest navigates from page 1 to page 2 of /blog",
+      "expectedSpecs": 1
+    },
+    "blog-language-switch": {
+      "name": "Blog language switch",
+      "module": "blog",
+      "roles": ["shared"],
+      "priority": "P3",
+      "description": "Guest switches blog list to Spanish via the EN/ES toggle",
+      "expectedSpecs": 1
+    },
+    "blog-not-found": {
+      "name": "Blog detail 404",
+      "module": "blog",
+      "roles": ["shared"],
+      "priority": "P4",
+      "description": "Unknown slug returns 404 from /blog/[slug]",
+      "expectedSpecs": 1
+    },
+    "contact-form-error-state": {
+      "name": "Contact form server error",
+      "module": "contact",
+      "roles": ["shared"],
+      "priority": "P3",
+      "description": "When POST /api/contact/ returns 5xx, the UI shows a red error banner instead of the success state",
+      "expectedSpecs": 1
+    },
+    "blog-card-to-detail": {
+      "name": "Blog card click navigates to detail",
+      "module": "blog",
+      "roles": ["shared"],
+      "priority": "P3",
+      "description": "Guest clicks a BlogCard link on /blog and lands on /blog/<slug> with the lang query param preserved",
+      "expectedSpecs": 1
+    },
+    "blog-back-from-detail-to-list": {
+      "name": "Back link from blog detail to list",
+      "module": "blog",
+      "roles": ["shared"],
+      "priority": "P3",
+      "description": "Guest clicks '← BACK TO BLOG' on /blog/<slug> and returns to /blog with the same lang query param",
+      "expectedSpecs": 1
+    },
+    "header-blog-link": {
+      "name": "Header Blog nav link",
+      "module": "navigation",
+      "roles": ["shared"],
+      "priority": "P4",
+      "description": "Guest clicks 'Blog' in the desktop header nav and navigates to /blog from any page",
+      "expectedSpecs": 1
     }
   }
 }

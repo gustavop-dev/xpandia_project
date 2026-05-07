@@ -5,105 +5,121 @@ description: Tech stack, dev setup, environment configuration, design patterns, 
 
 # Technical — Xpandia
 
+_Last verified: 2026-05-07_
+
 ## 1. Tech Stack
 
 ### Backend
 | Package | Version |
 |---------|---------|
-| Python | 3.x |
-| Django | 6.0.2 |
-| Django REST Framework | 3.16.1 |
+| Python | 3.12 |
+| Django | 6.0.4 |
+| Django REST Framework | 3.17.1 |
 | djangorestframework-simplejwt | 5.5.1 |
 | django-cors-headers | 4.9.0 |
 | Huey (Redis task queue) | ≥2.5.0 |
 | redis | ≥4.0.0 |
-| Pillow | 12.1.1 |
+| Pillow | 12.2.0 |
 | easy-thumbnails | 2.10.1 |
 | django-cleanup | 9.0.0 |
-| django-silk | ≥5.0.0 (profiling) |
+| django-silk | ≥5.0.0 (profiling, opt-in via `ENABLE_SILK`) |
 | django-dbbackup | ≥4.0.0 |
-| python-dotenv | 1.2.1 |
+| python-decouple | (env reader) |
 | Faker | 40.5.1 |
-| Factory Boy | 3.3.3 |
-| pytest + pytest-django + pytest-cov | 9.0.2 / 4.12 / 7.0 |
+| Factory Boy | 3.3.3 (installed but unused — project uses `.objects.create()` directly) |
+| pytest + pytest-django + pytest-cov | 9.0.3 / 4.12.0 / 7.1.0 |
 | gunicorn | ≥23.0,<24.0 (prod) |
 | mysqlclient | ≥2.2,<3.0 (prod) |
-| Database | MySQL 8 (prod) / SQLite (dev) |
+| Database | MySQL 8 (prod) / SQLite (dev via `settings_dev`) |
 
 ### Frontend
 | Package | Version |
 |---------|---------|
-| Node.js | LTS |
-| Next.js | 16.1.6 |
-| React | 19.2.4 |
+| Node.js | 20+ |
+| Next.js | 16.2.4 |
+| React | 19.2.5 |
 | TypeScript | ≥5 |
-| Tailwind CSS | 4.2.1 |
-| GSAP + @gsap/react | 3.15.0 / 2.1.2 |
-| Zustand | 5.0.11 |
-| Axios | 1.13.5 |
-| next-intl | 4.8.3 |
-| lucide-react | 1.8.0 |
+| Tailwind CSS | 4.2.4 |
+| GSAP + @gsap/react | 3.x |
+| Zustand | 5.0.12 |
+| Axios | 1.x |
+| next-intl | installed, **not yet wired** |
+| lucide-react | latest |
 | js-cookie | 3.0.5 |
 | jwt-decode | 4.0.0 |
 | react-google-recaptcha | 3.1.0 |
 | @react-oauth/google | 0.13.4 |
-| Jest | 30.2.0 |
+| Jest | 30.3.0 |
 | @testing-library/react | 16.3.2 |
-| @playwright/test | 1.58.2 |
+| @testing-library/user-event | 14.6.1 |
+| @playwright/test | 1.59.1 |
 
 ---
 
 ## 2. Project Structure
 
 ```
-xpandia_project/
+xpandia_project_staging/
 ├── backend/
-│   ├── base_feature_project/      # Django project root (settings, urls, wsgi)
-│   │   ├── settings.py            # Base settings (env-driven)
-│   │   ├── settings_dev.py        # Dev overrides
-│   │   ├── settings_prod.py       # Prod overrides
-│   │   ├── tasks.py               # Huey task definitions
-│   │   └── urls.py                # Root URL conf
-│   ├── base_feature_app/          # Main Django app
-│   │   ├── models/                # user.py, password_code.py
-│   │   ├── views/                 # auth.py, user_crud.py, captcha_views.py
-│   │   ├── serializers/           # user_create_update.py, user_detail.py, user_list.py
-│   │   ├── services/              # email_service.py
-│   │   ├── urls/                  # auth.py, user.py, captcha.py, __init__.py
-│   │   ├── forms/                 # Django admin forms
-│   │   ├── management/commands/   # create_fake_data.py, delete_fake_data.py
-│   │   ├── migrations/            # 2 migration files
-│   │   └── tests/                 # 20 test files
-│   ├── django_attachments/        # File attachment model
-│   └── venv/                      # Python virtualenv
+│   ├── base_feature_project/          # Django project root
+│   │   ├── settings.py                # Base — env-driven, MySQL by default
+│   │   ├── settings_dev.py            # SQLite override; manage.py points here by default
+│   │   ├── settings_prod.py           # Prod overrides
+│   │   └── urls.py                    # Root URL conf (8 path entries)
+│   ├── base_feature_app/              # Auth & user-management app
+│   │   ├── models/                    # user.py, password_code.py
+│   │   ├── views/                     # auth.py, user_crud.py, captcha_views.py, contact.py
+│   │   ├── serializers/               # user_*.py, contact.py
+│   │   ├── services/                  # email_service.py
+│   │   ├── urls/                      # auth.py, user.py, captcha.py, contact.py, __init__.py
+│   │   ├── forms/                     # Admin forms
+│   │   ├── management/commands/       # create_fake_data.py, create_users.py, delete_fake_data.py
+│   │   ├── migrations/                # 2 files
+│   │   └── tests/                     # 20 test files
+│   ├── blog/                          # Bilingual blog app (added 2026-05-07)
+│   │   ├── models.py                  # BlogPost (es/en title/excerpt/content_json, cover, category, author, is_published, published_at, auto-slug)
+│   │   ├── admin.py                   # BlogPostAdmin (registered under "📝 Content" section)
+│   │   ├── serializers.py             # ListSerializer, DetailSerializer, _get_lang() helper
+│   │   ├── views.py                   # FBV: list_blog_posts, retrieve_blog_post (AllowAny)
+│   │   ├── urls.py                    # 2 paths
+│   │   ├── apps.py
+│   │   ├── management/commands/       # seed_blog_e2e.py (idempotent, 12 published + 1 draft)
+│   │   ├── migrations/                # 0001_initial.py
+│   │   └── tests/                     # 5 test files, 25 tests
+│   ├── django_attachments/            # Generic file attachment model
+│   ├── pytest.ini                     # testpaths includes blog/tests; --cov=base_feature_app --cov=blog
+│   ├── conftest.py                    # Custom Unicode coverage reporter
+│   └── venv/
 ├── frontend/
-│   ├── app/                       # Next.js App Router
-│   │   ├── page.tsx               # Home
-│   │   ├── layout.tsx             # Root layout (Header, Footer, FAB, Animations)
-│   │   ├── providers.tsx          # Client providers wrapper
-│   │   ├── globals.css            # Global styles + Tailwind + design tokens
+│   ├── app/                           # Next.js App Router (9 routes)
+│   │   ├── page.tsx                   # Home
+│   │   ├── layout.tsx                 # Root layout
+│   │   ├── providers.tsx              # Client providers wrapper (passthrough)
+│   │   ├── globals.css                # Design tokens (--color-accent #2B8CC4, --color-ink-*, --color-paper)
 │   │   ├── about/page.tsx
-│   │   ├── contact/page.tsx       # Client — contact form
-│   │   └── services/              # page.tsx, qa/, audit/, fractional/
+│   │   ├── contact/page.tsx           # Client — contact form
+│   │   ├── services/                  # page.tsx + qa/, audit/, fractional/
+│   │   └── blog/                      # page.tsx (list, RSC) + [slug]/page.tsx (detail, RSC)
 │   ├── components/
-│   │   ├── layout/                # XpandiaHeader.tsx, XpandiaFooter.tsx, FABContact.tsx
-│   │   └── animations/            # SiteAnimations.tsx (GSAP)
+│   │   ├── layout/                    # XpandiaHeader, XpandiaFooter, FABContact
+│   │   ├── animations/                # SiteAnimations (GSAP)
+│   │   └── blog/                      # BlogCard, BlogPagination, BlogLanguageToggle, BlogContentRenderer
 │   ├── lib/
-│   │   ├── constants.ts           # ROUTES, PAGINATION
-│   │   ├── utils.ts               # cn() class merger
-│   │   ├── types.ts               # UserListItem type
-│   │   ├── i18n/config.ts         # Locale config (en, es)
-│   │   ├── stores/localeStore.ts  # Zustand locale store
-│   │   └── services/              # http.ts (Axios), tokens.ts (cookies)
-│   ├── e2e/                       # Playwright E2E tests
-│   ├── scripts/                   # Coverage utils, E2E module helpers
+│   │   ├── constants.ts               # ROUTES, PAGINATION { DEFAULT_PAGE_SIZE: 20, BLOG_PAGE_SIZE: 9 }
+│   │   ├── utils.ts                   # cn() class merger
+│   │   ├── types.ts                   # UserListItem
+│   │   ├── i18n/config.ts             # SUPPORTED_LOCALES, DEFAULT_LOCALE, isValidLocale, formatLocaleDate
+│   │   ├── stores/localeStore.ts      # Zustand locale store
+│   │   └── services/                  # http.ts, tokens.ts, contact.ts, blog.ts (server-side, React.cache wrapped)
+│   ├── e2e/                           # 6 spec files + global-setup + flow-definitions + helpers + reporters
 │   ├── jest.config.cjs
 │   ├── jest.setup.ts
-│   └── playwright.config.ts
+│   ├── playwright.config.ts           # baseURL :3004, globalSetup runs seed_blog_e2e
+│   └── next.config.ts                 # Rewrites /api/* → backend
 ├── docs/
-│   ├── methodology/               # Memory Bank files (7 core files)
-│   └── TESTING_QUALITY_STANDARDS.md
-└── tasks/                         # tasks_plan.md, active_context.md, rfc/
+│   ├── methodology/                   # Memory Bank (this folder)
+│   └── *.md                           # Standards documents
+└── tasks/                             # tasks_plan.md, active_context.md, rfc/
 ```
 
 ---
@@ -117,77 +133,87 @@ python -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
 cp .env.example .env          # fill in vars
-python manage.py migrate
-python manage.py create_fake_data   # seed data
+python manage.py migrate      # uses settings_dev → SQLite by default
 python manage.py runserver
 ```
+
+`manage.py` defaults `DJANGO_SETTINGS_MODULE` to `base_feature_project.settings_dev` (SQLite). Use `DJANGO_SETTINGS_MODULE=base_feature_project.settings` only for production-like behavior.
 
 ### Frontend
 ```bash
 cd frontend
 npm install
-npm run dev                   # starts on :3000
+npm run dev                   # starts on :3000 (Playwright config uses :3004)
 ```
 
 ### Environment Variables (Backend)
-- `DJANGO_SECRET_KEY`
-- `DJANGO_DEBUG` (default: true)
-- `DJANGO_ALLOWED_HOSTS`
-- `DATABASE_URL`
+- `DJANGO_SECRET_KEY`, `DJANGO_DEBUG`, `DJANGO_ALLOWED_HOSTS`
+- `DJANGO_DB_ENGINE` (default sqlite3 — overridden by `settings_dev` to sqlite, by prod env to mysql)
+- `DB_USER`, `DB_PASSWORD`, `DB_HOST`, `DB_PORT` (only when engine ≠ sqlite)
 - `REDIS_URL`
-- `EMAIL_*` (SMTP config)
-- `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`
-- `RECAPTCHA_SECRET_KEY`
+- `EMAIL_*` (SMTP)
+- `DJANGO_GOOGLE_CLIENT_ID`, `RECAPTCHA_SITE_KEY`, `RECAPTCHA_SECRET_KEY`
 - `ENABLE_SILK` (profiling toggle)
+- `FRONTEND_URL`
 
 ### Environment Variables (Frontend)
-- `NEXT_PUBLIC_API_URL` — backend API base URL
-- `NEXT_PUBLIC_RECAPTCHA_SITE_KEY`
-- `NEXT_PUBLIC_GOOGLE_CLIENT_ID`
+- `NEXT_PUBLIC_BACKEND_ORIGIN` — server-side absolute URL (e.g. `http://localhost:8000`); used by `lib/services/blog.ts` from Server Components
+- `NEXT_PUBLIC_API_BASE_URL` / `NEXT_PUBLIC_API_URL` — client-side base for Axios in `lib/services/http.ts` (defaults to `/api` via Next rewrite)
+- `NEXT_PUBLIC_RECAPTCHA_SITE_KEY`, `NEXT_PUBLIC_GOOGLE_CLIENT_ID`
 
 ---
 
 ## 4. Design Patterns
 
 ### Backend
-- **Function-Based Views**: All DRF views use `@api_view` decorators — no CBVs
-- **Service Layer**: Business logic in `services/` (e.g., `email_service.py`)
-- **Auth**: JWT via SimpleJWT + Google OAuth + email/passcode password reset
-- **Task Queue**: Huey + Redis for async tasks (email sending, etc.)
-- **Custom Admin**: `admin_site` instance separate from default Django admin
+- **Function-Based Views** with `@api_view` — no CBVs unless explicitly requested
+- **Service layer** for business logic (`services/email_service.py`)
+- **Auth**: JWT via SimpleJWT + Google OAuth + email passcode reset
+- **Task queue**: Huey + Redis (immediate=True in dev)
+- **Custom admin**: `BaseFeatureAdminSite` with grouped sections (👥 User Management, 📝 Content)
+- **Bilingual content**: paired fields `*_es` / `*_en`; serializer's `_get_lang()` helper resolves from `request.query_params.get('lang')` (default `'en'` for Xpandia)
+- **Auto-slug** on save (`BlogPost.save()` derives from `title_en` with collision counter)
 
 ### Frontend
-- **Server Components first**: Pages default to RSC; `'use client'` only when needed
-- **cn() utility**: All conditional Tailwind class merging via `lib/utils.ts`
-- **GSAP animations**: `SiteAnimations.tsx` runs one-time scroll-triggered reveals; respects `prefers-reduced-motion`
-- **Auth tokens**: Stored in cookies via `lib/services/tokens.ts`; Axios interceptor auto-refreshes on 401
-- **i18n**: Zustand `localeStore` persists `en`/`es` preference in localStorage; `next-intl` integration ready
-- **No Pinia**: State management is Zustand (not Pinia, which is a Vue concept)
+- **Server Components first**: `'use client'` only when needed (header drawer, contact form, animations)
+- **Server-side fetchers**: `lib/services/blog.ts` uses native `fetch` + `next: { revalidate: 60 }` (ISR), wrapped in `React.cache()` to deduplicate `generateMetadata` + page-component pair
+- **Client-side fetchers**: `lib/services/http.ts` uses Axios with JWT refresh interceptor; only for client components
+- **Two distinct base URLs**: server-side reads `NEXT_PUBLIC_BACKEND_ORIGIN` (absolute); client-side reads `NEXT_PUBLIC_API_BASE_URL` (relative `/api`, proxied via Next rewrites)
+- **i18n helpers**: `isValidLocale(str)` type-guard, `formatLocaleDate(iso, lang, opts)` — currently used by blog only; full next-intl wiring is a backlog item
+- **`cn()` utility** for all conditional Tailwind class merging
+- **GSAP animations**: `SiteAnimations.tsx` runs scroll-triggered reveals; respects `prefers-reduced-motion`
+- **State**: Zustand only (no Pinia — that's a Vue concept)
 
 ---
 
 ## 5. Test Strategy
 
 ### Backend (pytest)
-- **Framework**: pytest + pytest-django + pytest-cov + factory-boy
-- **Run**: `source venv/bin/activate && pytest backend/base_feature_app/tests/<file> -v`
-- **Never run the full suite** — always specify file(s)
-- **Max 20 tests per batch, 3 commands per cycle**
-- **conftest.py**: Custom Unicode progress-bar coverage reporter; `api_client` fixture
+- Framework: pytest + pytest-django + pytest-cov + custom Unicode reporter
+- pytest.ini: `DJANGO_SETTINGS_MODULE = base_feature_project.settings` (MySQL by default — override for tests)
+- testpaths: `base_feature_app/tests`, `blog/tests`, `django_attachments`
+- Run: `cd backend && source venv/bin/activate && DJANGO_DB_ENGINE=django.db.backends.sqlite3 DJANGO_DB_NAME=':memory:' pytest blog/tests/ -v`
+- **Max 20 tests/batch, 3 commands/cycle**, never the full suite
+- Conftest fixtures: `api_client`, `existing_user`, `admin_user`, `authenticated_client`, `admin_client`
+- Blog test suite: 25 tests (5 files: models, serializers, views_list, views_detail, admin) — coverage 100% models/admin/views/urls, ~89% serializers
+- Total backend test files: 25 (20 base_feature_app + 5 blog)
 
 ### Frontend Unit (Jest)
-- **Framework**: Jest 30 + React Testing Library 16 + jest-environment-jsdom
-- **Run**: `npm test -- <file>`
-- **Coverage**: 96.81% stmts / 98.59% branches / 86.84% funcs (as of 2026-04-24)
-- **19 test files, 134 tests** passing
-- **Mocks in jest.setup.ts**: `next/image`, `next/link`
+- Framework: Jest 30 + RTL 16 + jsdom
+- Run: `npm test -- <file>` from `frontend/`
+- 24 test files, 134+ tests passing
+- jest.setup.ts mocks: `next/image`, `next/link` (global). `next/navigation` mocked per-test.
+- For `React.cache()`: `jest.mock('react', () => ({ ...jest.requireActual('react'), cache: (fn) => fn }))`
+- For raw `fetch`: `global.fetch = jest.fn()` + `mockResolvedValueOnce`
+- For env vars in modules: `jest.isolateModules()` + reset env in `beforeEach`/`afterEach`
 
 ### Frontend E2E (Playwright)
-- **Framework**: Playwright 1.58 + custom flow-coverage reporter
-- **Run**: `npx playwright test e2e/public/<file>`
-- **4 spec files**: smoke, navigation, services, static-pages
-- **Tags required**: `@flow:<id>` per test
-- **Config**: Single worker; Django :8000 + Next.js :3000
+- Framework: Playwright 1.59 + custom flow-coverage reporter (`e2e/reporters/flow-coverage-reporter.mjs`)
+- 6 spec files: `smoke`, `navigation`, `services`, `interactions`, `static-pages`, `blog`
+- Tags required: `[...FLOW_CONST]` per test — sourced from `e2e/helpers/flow-tags.ts`, defined in `e2e/flow-definitions.json`
+- Config: `baseURL: http://localhost:3004`, `workers: 1`, two webServers (Django :8000, Next :3004)
+- `globalSetup: e2e/global-setup.ts` runs `python manage.py seed_blog_e2e` via `execFileSync` (not `exec`/`execSync` — safer)
+- `E2E_REUSE_SERVER=1` reuses existing dev servers; max 2 spec files per `playwright test` invocation; never `waitForTimeout`
 
 ---
 
