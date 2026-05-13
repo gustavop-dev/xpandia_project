@@ -1,42 +1,79 @@
 import { describe, it, expect } from '@jest/globals'
-import { render, screen } from '@testing-library/react'
-import LanguageAssurancePage from '../page'
+import { screen } from '@testing-library/react'
+import { renderWithIntl } from '@/test-utils/renderWithIntl'
+import LanguageAssurancePage, { generateMetadata } from '../page'
+
+const makeParams = (locale = 'en') => Promise.resolve({ locale })
 
 describe('LanguageAssurancePage', () => {
-  it('renders the hero heading', () => {
-    render(<LanguageAssurancePage />)
+  it('renders the hero heading', async () => {
+    renderWithIntl(await LanguageAssurancePage({ params: makeParams() }))
     expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent('Validate Spanish before your users do.')
   })
 
-  it('renders the LANGUAGE ASSURANCE eyebrow label', () => {
-    render(<LanguageAssurancePage />)
+  it('renders the LANGUAGE ASSURANCE eyebrow label', async () => {
+    renderWithIntl(await LanguageAssurancePage({ params: makeParams() }))
     const eyebrows = screen.getAllByText('LANGUAGE ASSURANCE')
     expect(eyebrows.length).toBeGreaterThan(0)
   })
 
-  it('renders a link back to all services', () => {
-    render(<LanguageAssurancePage />)
+  it('renders a link back to all services', async () => {
+    renderWithIntl(await LanguageAssurancePage({ params: makeParams() }))
     expect(screen.getByRole('link', { name: /all services/i })).toHaveAttribute('href', '/services')
   })
 
-  it('renders the request audit CTA link', () => {
-    render(<LanguageAssurancePage />)
+  it('renders the request audit CTA link', async () => {
+    renderWithIntl(await LanguageAssurancePage({ params: makeParams() }))
     const links = screen.getAllByRole('link', { name: /request a language assurance audit/i })
     expect(links[0]).toHaveAttribute('href', '/contact')
   })
 
-  it('renders the WHY LANGUAGE ASSURANCE positioning headline', () => {
-    render(<LanguageAssurancePage />)
+  it('renders the WHY LANGUAGE ASSURANCE positioning headline', async () => {
+    renderWithIntl(await LanguageAssurancePage({ params: makeParams() }))
     expect(screen.getByText('Spanish quality is too important to leave unmeasured.')).toBeInTheDocument()
   })
 
-  it('renders the CORE ENGAGEMENTS section eyebrow', () => {
-    render(<LanguageAssurancePage />)
+  it('renders the WHAT WE EVALUATE eyebrow', async () => {
+    renderWithIntl(await LanguageAssurancePage({ params: makeParams() }))
+    expect(screen.getByText('WHAT WE EVALUATE')).toBeInTheDocument()
+  })
+
+  it('renders the QUALITY CRITERIA eyebrow', async () => {
+    renderWithIntl(await LanguageAssurancePage({ params: makeParams() }))
+    expect(screen.getByText('QUALITY CRITERIA')).toBeInTheDocument()
+  })
+
+  it('renders the CORE ENGAGEMENTS section eyebrow', async () => {
+    renderWithIntl(await LanguageAssurancePage({ params: makeParams() }))
     expect(screen.getByText('CORE ENGAGEMENTS')).toBeInTheDocument()
   })
 
-  it('renders the methodology headline', () => {
-    render(<LanguageAssurancePage />)
+  it('renders the methodology headline', async () => {
+    renderWithIntl(await LanguageAssurancePage({ params: makeParams() }))
     expect(screen.getByText('A structured path from Spanish review to release confidence.')).toBeInTheDocument()
+  })
+
+  it('renders a book diagnostic call CTA link', async () => {
+    renderWithIntl(await LanguageAssurancePage({ params: makeParams() }))
+    const links = screen.getAllByRole('link', { name: /book a diagnostic call/i })
+    expect(links[0]).toHaveAttribute('href', '/contact')
+  })
+})
+
+describe('generateMetadata — LanguageAssurancePage', () => {
+  it('returns a title containing Language Assurance', async () => {
+    const metadata = await generateMetadata({ params: makeParams() })
+    expect(metadata.title).toMatch(/Language Assurance/)
+  })
+
+  it('returns the canonical alternates for the language-assurance path', async () => {
+    const metadata = await generateMetadata({ params: makeParams() })
+    expect(metadata.alternates?.canonical).toBe('/services/language-assurance')
+  })
+
+  it('returns hreflang for the es locale', async () => {
+    const metadata = await generateMetadata({ params: makeParams() })
+    const languages = metadata.alternates?.languages as Record<string, string> | undefined
+    expect(languages?.es).toBe('/es/services/language-assurance')
   })
 })
