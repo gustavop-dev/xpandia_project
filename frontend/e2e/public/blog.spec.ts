@@ -26,7 +26,7 @@ test.describe('Blog', () => {
     await waitForPageLoad(page)
 
     await expect(page.getByRole('heading', { level: 1, name: /E2E Post 01/i })).toBeVisible()
-    await expect(page.getByRole('link', { name: /BACK TO BLOG/i })).toHaveAttribute('href', '/blog?lang=en')
+    await expect(page.getByRole('link', { name: /BACK TO BLOG/i })).toHaveAttribute('href', '/blog')
   })
 
   test('blog pagination navigates to page 2', { tag: [...BLOG_PAGINATION] }, async ({ page }) => {
@@ -42,8 +42,8 @@ test.describe('Blog', () => {
     await expect(page.getByRole('heading', { level: 3, name: /E2E Post 01/i })).toBeVisible()
   })
 
-  test('blog list renders Spanish content for ?lang=es', { tag: [...BLOG_LANGUAGE_SWITCH] }, async ({ page }) => {
-    await page.goto('/blog?lang=es')
+  test('blog list renders Spanish content at /es/blog', { tag: [...BLOG_LANGUAGE_SWITCH] }, async ({ page }) => {
+    await page.goto('/es/blog')
     await waitForPageLoad(page)
 
     await expect(page.getByRole('heading', { level: 1, name: /calidad en español/i })).toBeVisible()
@@ -55,30 +55,30 @@ test.describe('Blog', () => {
     expect(response?.status()).toBe(404)
   })
 
-  test('clicking a blog card navigates to the detail with lang preserved', { tag: [...BLOG_CARD_TO_DETAIL] }, async ({ page }) => {
-    await page.goto('/blog?lang=es')
+  test('clicking a blog card navigates to the detail under the same locale', { tag: [...BLOG_CARD_TO_DETAIL] }, async ({ page }) => {
+    await page.goto('/es/blog')
     await waitForPageLoad(page)
 
     // First card on page 1 (newest) is e2e-post-12.
     const firstCard = page.getByRole('link', { name: /Post E2E 12/i })
     await Promise.all([
-      page.waitForURL(/\/blog\/e2e-post-12\?lang=es/),
+      page.waitForURL(/\/es\/blog\/e2e-post-12$/),
       firstCard.click(),
     ])
     await expect(page.getByRole('heading', { level: 1, name: /Post E2E 12/i })).toBeVisible()
   })
 
-  test('back link from blog detail returns to list with lang preserved', { tag: [...BLOG_BACK_FROM_DETAIL_TO_LIST] }, async ({ page }) => {
-    await page.goto('/blog/e2e-post-12?lang=es')
+  test('back link from blog detail returns to the localized list', { tag: [...BLOG_BACK_FROM_DETAIL_TO_LIST] }, async ({ page }) => {
+    await page.goto('/es/blog/e2e-post-12')
     await waitForPageLoad(page)
 
     const backLink = page.getByRole('link', { name: /VOLVER AL BLOG/i })
-    await expect(backLink).toHaveAttribute('href', '/blog?lang=es')
+    await expect(backLink).toHaveAttribute('href', '/es/blog')
     await Promise.all([
-      page.waitForURL(/\/blog\?lang=es$/, { waitUntil: 'commit' }),
+      page.waitForURL(/\/es\/blog$/, { waitUntil: 'commit' }),
       backLink.click(),
     ])
-    // Spanish list hero confirms the back link landed on /blog with the preserved locale.
+    // Spanish list hero confirms the back link landed on /es/blog.
     await expect(page.getByRole('heading', { level: 1, name: /calidad en español/i })).toBeVisible()
   })
 })
