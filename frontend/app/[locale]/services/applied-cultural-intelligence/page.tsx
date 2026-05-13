@@ -196,12 +196,12 @@ export default async function AppliedCulturalIntelligencePage({ params }: { para
               <div key={e.n} className="p-8 tablet:p-10 bg-white border border-ink-150 rounded-lg">
                 <div className="grid grid-cols-1 tablet:grid-cols-[1.1fr_1.4fr] gap-8 tablet:gap-12">
                   <div>
-                    <div className="font-mono text-[11px] text-ink-400 tracking-[0.1em] mb-3">{e.n} / ENGAGEMENT</div>
+                    <div className="font-mono text-[11px] text-ink-400 tracking-[0.1em] mb-3">{e.n} / {t('engagements.engagementLabel')}</div>
                     <h3 className="h3 mb-2">{e.title}</h3>
                     <p className="text-accent text-[15px] font-medium mb-6">{e.tagline}</p>
-                    <div className="eyebrow no-bar mb-2">BEST FOR</div>
+                    <div className="eyebrow no-bar mb-2">{t('engagements.bestForLabel')}</div>
                     <p className="text-ink-600 text-[15px] leading-[1.55] mb-5">{e.bestFor}</p>
-                    <div className="eyebrow no-bar mb-2">OUTCOME</div>
+                    <div className="eyebrow no-bar mb-2">{t('engagements.outcomeLabel')}</div>
                     <p className="text-ink-600 text-[15px] leading-[1.55]">{e.outcome}</p>
                     {e.overview && (
                       <>
