@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach } from '@jest/globals'
 import { screen, fireEvent, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { renderWithIntl } from '@/test-utils/renderWithIntl'
+import { renderWithIntl, renderWithIntlEs } from '@/test-utils/renderWithIntl'
 
 import { usePathname, useRouter } from '@/i18n/navigation'
 import XpandiaHeader from '../XpandiaHeader'
@@ -166,5 +166,12 @@ describe('XpandiaHeader', () => {
     mockUsePathname.mockReturnValue('/contact')
     renderWithIntl(<XpandiaHeader />)
     expect(screen.getByAltText('Xpandia')).toBeInTheDocument()
+  })
+
+  it('renders the Spanish Services navigation label when given Spanish messages', () => {
+    renderWithIntlEs(<XpandiaHeader />)
+    const servicesLinks = screen.getAllByRole('link', { name: 'Servicios' })
+    const desktopServices = servicesLinks.find(l => l.closest('nav'))
+    expect(desktopServices).toHaveAttribute('href', '/services')
   })
 })
