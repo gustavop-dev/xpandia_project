@@ -40,9 +40,10 @@ jest.mock('next-intl/server', () => {
     messages[ns] = value
   }
 
-  const getTranslations = async (namespace: string) => {
+  const getTranslations = async (namespaceOrOptions: string | { locale?: string; namespace: string }) => {
+    const namespace = typeof namespaceOrOptions === 'string' ? namespaceOrOptions : namespaceOrOptions.namespace
     return createTranslator({ locale: 'en', messages, namespace })
   }
 
-  return { getTranslations }
+  return { getTranslations, setRequestLocale: jest.fn() }
 });

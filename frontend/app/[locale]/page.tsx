@@ -1,104 +1,75 @@
-import Link from 'next/link'
+import type { Metadata } from 'next'
+import { getTranslations, setRequestLocale } from 'next-intl/server'
+import { Link } from '@/i18n/navigation'
+import Image from 'next/image'
+import { localizedAlternates } from '@/lib/seo/alternates'
 
-const services = [
-  {
-    href: '/services/language-assurance',
-    num: '01 / ASSURANCE',
-    title: 'Language Assurance',
-    tagline: 'Validate Spanish before your users do.',
-    desc: 'Structured audits and QA sprints for AI outputs, product flows, support content, launch readiness, and ongoing language quality governance.',
-    bestFor: 'AI products, chatbots, copilots, SaaS platforms, EdTech products, and support experiences already operating in Spanish or preparing to launch.',
-    youGet: 'Quality scorecards, issue taxonomy, severity ratings, readiness recommendations, prioritized fixes, and executive-ready findings.',
-    cta: 'Explore Language Assurance',
-  },
-  {
-    href: '/services/localization-adaptation',
-    num: '02 / LOCALIZATION',
-    title: 'Localization & Adaptation',
-    tagline: 'More than translated. Spanish that feels native, clear and trusted.',
-    desc: 'Customized Spanish localization, transcreation, UX copy, documentation, and regional adaptation for digital products and content.',
-    bestFor: 'Teams launching websites, product interfaces, help centers, marketing campaigns, learning content, or customer communications in Spanish.',
-    youGet: 'Localized copy, adapted messaging, terminology guidance, regional fit recommendations, QA-ready content, and publication-ready Spanish assets.',
-    cta: 'Explore Localization & Adaptation',
-  },
-  {
-    href: '/services/applied-cultural-intelligence',
-    num: '03 / CULTURE',
-    title: 'Applied Cultural Intelligence',
-    tagline: 'Make Spanish resonate.',
-    desc: 'Advisory, workshops, audits, and training that help teams understand Hispanic and Spanish-speaking audiences, cultural expectations, trust signals, tone, and market fit.',
-    bestFor: 'Product, marketing, CX, localization, and leadership teams that need to connect with Spanish-speaking users across the US, Canada, Europe, and LatAm.',
-    youGet: 'Cultural insight, audience-specific recommendations, messaging guidance, training sessions, market fit findings, and actionable strategy.',
-    cta: 'Explore Applied Cultural Intelligence',
-  },
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params
+  const t = await getTranslations({ locale, namespace: 'home.metadata' })
+  return {
+    title: t('title'),
+    description: t('description'),
+    openGraph: { title: t('ogTitle'), description: t('ogDescription') },
+    alternates: localizedAlternates('/'),
+  }
+}
+
+const serviceHrefs = [
+  '/services/language-assurance',
+  '/services/localization-adaptation',
+  '/services/applied-cultural-intelligence',
 ]
 
-const methodology = [
-  { title: 'Define', body: 'We clarify your use case, audience, Spanish variant, product surface, business goal, and what "good" needs to mean for your team.' },
-  { title: 'Evaluate', body: 'We review language, meaning, tone, terminology, clarity, cultural fit, UX friction, and quality risks using structured criteria.' },
-  { title: 'Prioritize', body: 'We separate critical issues from quick wins and organize findings by severity, business impact, and implementation effort.' },
-  { title: 'Improve', body: 'We deliver recommendations, rewrites, standards, scorecards, and next steps your product, localization, AI, or CX team can execute.' },
-]
+export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  setRequestLocale(locale)
+  const t = await getTranslations('home')
 
-const deliverables = [
-  { title: 'Quality Scorecard', body: 'Measurable scoring across the criteria that matter for your use case: accuracy, clarity, naturalness, tone, terminology, regional fit, cultural fit, UX friction, and risk.' },
-  { title: 'Issue Taxonomy', body: 'A structured list of what is breaking quality, where it happens, how severe it is, and what your team should fix first.' },
-  { title: 'Executive Readout', body: 'A concise summary for product, AI, localization, CX, or leadership teams with risks, opportunities, and recommended next steps.' },
-  { title: 'Remediation Guidance', body: 'Practical recommendations, rewrites, examples, and standards to help your team improve Spanish quality without slowing down delivery.' },
-]
+  const proofItems = t.raw('hero.proof') as Array<{ label: string; text: string }>
+  const serviceCards = t.raw('servicesOverview.cards') as Array<{
+    num: string
+    title: string
+    tagline: string
+    description: string
+    bestForLabel: string
+    bestFor: string
+    whatYouGetLabel: string
+    whatYouGet: string
+    cta: string
+  }>
+  const methodologySteps = t.raw('methodology.steps') as Array<{ title: string; body: string }>
+  const deliverableCards = t.raw('deliverables.cards') as Array<{ title: string; body: string }>
+  const scorecardRows = t.raw('deliverables.scorecard.rows') as Array<{
+    label: string
+    width: string
+    val: string
+    accent?: boolean
+    dim?: boolean
+  }>
+  const scorecardCriteria = t.raw('deliverables.scorecard.criteria') as string[]
+  const audienceCards = t.raw('builtFor.cards') as Array<{ title: string; body: string }>
+  const buyerRoles = t.raw('buyer.roles') as string[]
 
-const scorecardCriteria = [
-  'Accuracy', 'Clarity', 'Naturalness', 'Tone & register', 'Terminology',
-  'Regional fit', 'Cultural fit', 'UX friction', 'Instruction-following', 'Risk severity',
-]
-
-const audiences = [
-  { title: 'AI & ML Product Teams', body: 'Validate Spanish outputs from chatbots, tutors, copilots, agents, and generative AI experiences before users rely on them.' },
-  { title: 'SaaS & Product Teams', body: 'Improve Spanish product flows, onboarding, UI copy, forms, errors, and launch readiness.' },
-  { title: 'EdTech Teams', body: 'Make Spanish learning experiences clear, natural, culturally relevant, and pedagogically effective.' },
-  { title: 'Localization Teams', body: 'Strengthen Spanish quality, vendor oversight, review workflows, terminology, and sign-off processes.' },
-  { title: 'CX & Support Teams', body: 'Improve Spanish help content, support macros, chatbot responses, and customer-facing communication.' },
-  { title: 'Marketing & Growth Teams', body: 'Adapt Spanish messaging, landing pages, campaigns, and conversion copy for real Hispanic and Spanish-speaking audiences.' },
-]
-
-const buyers = [
-  'Head of Product',
-  'VP Product',
-  'AI / ML Product Lead',
-  'Director of Localization',
-  'Head of Globalization',
-  'VP Customer Experience',
-  'Customer Support Leader',
-  'EdTech Content Leader',
-  'Marketing / Growth Lead',
-  'Trust & Safety Lead',
-]
-
-export default function HomePage() {
   return (
     <main>
       {/* Hero */}
       <section className="hero">
         <div className="container">
-          <div className="eyebrow mb-9">SPANISH EXPERTISE · AI · SAAS · EDTECH · DIGITAL PRODUCTS</div>
+          <div className="eyebrow mb-9">{t('hero.eyebrow')}</div>
           <h1 className="hero-display">
-            Spanish that works for{' '}
-            <span className="whitespace-nowrap"><span className="accent-underline">real users</span>.</span>
+            {t('hero.h1')}{' '}
+            <span className="whitespace-nowrap"><span className="accent-underline">{t('hero.h1Accent')}</span>.</span>
           </h1>
           <p className="hero-sub">
-            Xpandia helps AI, SaaS, EdTech, and digital product teams validate, localize, and culturally adapt Spanish experiences for Hispanic and Spanish-speaking audiences.
+            {t('hero.subheadline')}
           </p>
           <div className="hero-ctas">
-            <Link className="btn btn-primary" href="/contact">Book a diagnostic call <span className="btn-arrow"></span></Link>
-            <Link className="btn btn-secondary" href="/contact">Request an audit</Link>
+            <Link className="btn btn-primary" href="/contact">{t('hero.ctaPrimary')} <span className="btn-arrow"></span></Link>
+            <Link className="btn btn-secondary" href="/contact">{t('hero.ctaSecondary')}</Link>
           </div>
           <div className="mt-24 pt-7 border-t border-ink-150 grid grid-cols-2 tablet:grid-cols-4 gap-8">
-            {[
-              { label: '20+ YEARS', text: 'Global localization and language quality experience' },
-              { label: 'SPANISH FOCUS', text: 'LatAm, US Hispanic, and regional variants' },
-              { label: 'BUILT FOR', text: 'AI, Product, Localization, CX, and EdTech teams' },
-              { label: 'MARKETS', text: 'US · Canada · Europe' },
-            ].map(({ label, text }) => (
+            {proofItems.map(({ label, text }) => (
               <div key={label}>
                 <div className="font-mono text-[11px] tracking-[0.1em] text-ink-500 mb-[10px]">{label}</div>
                 <div className="text-[14px] leading-[1.45] text-ink-700">{text}</div>
@@ -112,23 +83,23 @@ export default function HomePage() {
       <section className="tight pt-10">
         <div className="container">
           <div data-reveal className="grid grid-cols-1 tablet:grid-cols-[1fr_2fr] gap-8 py-14 border-t border-b border-ink-150 items-start">
-            <div className="eyebrow">WHY XPANDIA</div>
+            <div className="eyebrow">{t('positioning.eyebrow')}</div>
             <div>
               <p className="display max-w-[24ch]" style={{ fontSize: 'clamp(28px,3vw,44px)', lineHeight: 1.08, letterSpacing: '-0.02em', marginBottom: 28 }}>
-                Spanish quality is product quality.
+                {t('positioning.headline')}
               </p>
               <p className="text-ink-600 text-[19px] max-w-[56ch] mb-6">
-                Your users experience your product through language: the answers your AI gives, the onboarding copy they follow, the support content they trust, and the messages that help them decide.
+                {t('positioning.body1')}
               </p>
               <p className="text-ink-600 text-[19px] max-w-[56ch] mb-6">
-                Xpandia gives teams the expert Spanish judgment, structured review, cultural insight, and measurable quality signals they need to launch, improve, and scale with confidence.
+                {t('positioning.body2')}
               </p>
               <p className="text-ink-600 text-[19px] max-w-[56ch]">
-                We combine senior linguistic expertise, applied cultural intelligence, and practical product judgment to help Spanish experiences perform in the real world.
+                {t('positioning.body3')}
               </p>
               <div className="mt-10 p-7 bg-ink-50 border border-ink-150 rounded-lg">
-                <div className="font-display text-[22px] font-medium text-ink-900 tracking-[-0.01em] leading-[1.2]">Language. Culture. Product judgment.</div>
-                <div className="text-ink-600 text-[15px] mt-2">The three layers behind Spanish that works.</div>
+                <div className="font-display text-[22px] font-medium text-ink-900 tracking-[-0.01em] leading-[1.2]">{t('positioning.calloutTitle')}</div>
+                <div className="text-ink-600 text-[15px] mt-2">{t('positioning.calloutLine')}</div>
               </div>
             </div>
           </div>
@@ -140,29 +111,29 @@ export default function HomePage() {
         <div className="container">
           <div className="section-head">
             <div>
-              <div className="eyebrow">SERVICES</div>
-              <h2 className="head-title" style={{ marginTop: 16 }}>The Spanish expertise your product needs.</h2>
+              <div className="eyebrow">{t('servicesOverview.eyebrow')}</div>
+              <h2 className="head-title" style={{ marginTop: 16 }}>{t('servicesOverview.headline')}</h2>
             </div>
-            <p className="head-lede">Choose the right path based on what your team needs: validate what exists, create or improve Spanish content, or understand the audience behind the language.</p>
+            <p className="head-lede">{t('servicesOverview.intro')}</p>
           </div>
           <div className="grid grid-cols-1 tablet:grid-cols-3 gap-5 mt-12">
-            {services.map(s => (
-              <div key={s.href} className="service-card">
+            {serviceCards.map((s, i) => (
+              <div key={serviceHrefs[i]} className="service-card">
                 <div className="xbar"></div>
                 <div className="service-num">{s.num}</div>
                 <div className="service-title">{s.title}</div>
                 <div className="text-ink-900 font-medium text-[15px] mb-3">{s.tagline}</div>
-                <div className="service-desc">{s.desc}</div>
+                <div className="service-desc">{s.description}</div>
                 <div className="text-[13px] leading-[1.5] text-ink-600 mb-4">
-                  <span className="font-mono text-[11px] tracking-[0.06em] text-ink-500 block mb-1">BEST FOR</span>
+                  <span className="font-mono text-[11px] tracking-[0.06em] text-ink-500 block mb-1">{s.bestForLabel}</span>
                   {s.bestFor}
                 </div>
                 <div className="text-[13px] leading-[1.5] text-ink-600 mb-6">
-                  <span className="font-mono text-[11px] tracking-[0.06em] text-ink-500 block mb-1">WHAT YOU GET</span>
-                  {s.youGet}
+                  <span className="font-mono text-[11px] tracking-[0.06em] text-ink-500 block mb-1">{s.whatYouGetLabel}</span>
+                  {s.whatYouGet}
                 </div>
                 <div className="service-meta">
-                  <Link href={s.href} className="text-primary font-medium font-sans normal-case tracking-normal text-[13.5px] hover:underline">{s.cta} →</Link>
+                  <Link href={serviceHrefs[i]} className="text-primary font-medium font-sans normal-case tracking-normal text-[13.5px] hover:underline">{s.cta} →</Link>
                 </div>
               </div>
             ))}
@@ -175,12 +146,12 @@ export default function HomePage() {
         <div className="container">
           <div className="grid grid-cols-1 tablet:grid-cols-[1fr_1.6fr] gap-20 items-start">
             <div>
-              <div className="eyebrow !text-ink-400">METHODOLOGY</div>
-              <h2 style={{ marginTop: 24 }}>The method behind Spanish that works.</h2>
-              <p className="text-ink-300 max-w-[40ch]" style={{ marginTop: 24 }}>Every engagement follows a clear process: define the audience, evaluate the experience, identify risks, and deliver recommendations your team can act on.</p>
+              <div className="eyebrow !text-ink-400">{t('methodology.eyebrow')}</div>
+              <h2 style={{ marginTop: 24 }}>{t('methodology.headline')}</h2>
+              <p className="text-ink-300 max-w-[40ch]" style={{ marginTop: 24 }}>{t('methodology.intro')}</p>
             </div>
             <ol className="num-list">
-              {methodology.map(s => (
+              {methodologySteps.map(s => (
                 <li key={s.title} style={{ borderTopColor: 'rgba(255,255,255,0.1)' }}>
                   <div>
                     <h4>{s.title}</h4>
@@ -198,14 +169,14 @@ export default function HomePage() {
         <div className="container">
           <div className="section-head">
             <div>
-              <div className="eyebrow">THE DELIVERABLES</div>
-              <h2 className="head-title" style={{ marginTop: 16 }}>Evidence your team can act on.</h2>
+              <div className="eyebrow">{t('deliverables.eyebrow')}</div>
+              <h2 className="head-title" style={{ marginTop: 16 }}>{t('deliverables.headline')}</h2>
             </div>
-            <p className="head-lede">Every Xpandia engagement turns expert judgment into practical evidence: scorecards, findings, examples, recommendations, and decision-ready guidance.</p>
+            <p className="head-lede">{t('deliverables.body')}</p>
           </div>
           <div className="grid grid-cols-1 tablet:grid-cols-[1.1fr_1fr] gap-16 items-start mt-12">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-              {deliverables.map(d => (
+              {deliverableCards.map(d => (
                 <div key={d.title} className="p-6 bg-white border border-ink-150 rounded-lg">
                   <h3 className="text-[19px] font-display font-medium text-ink-900 tracking-[-0.01em] mb-3">{d.title}</h3>
                   <p className="text-ink-600 text-[14.5px] leading-[1.55]">{d.body}</p>
@@ -215,21 +186,10 @@ export default function HomePage() {
             <div>
               <div className="scorecard" aria-hidden="true">
                 <div className="scorecard-head">
-                  <div className="scorecard-title">Quality Scorecard</div>
-                  <div className="font-mono text-[11px] text-ink-500 tracking-[0.06em]">SAMPLE · N=240 OUTPUTS</div>
+                  <div className="scorecard-title">{t('deliverables.scorecard.title')}</div>
+                  <div className="font-mono text-[11px] text-ink-500 tracking-[0.06em]">{t('deliverables.scorecard.sampleLabel')}</div>
                 </div>
-                {[
-                  { label: 'Pass rate', width: '78%', val: '78%', accent: true },
-                  { label: 'Accuracy', width: '86%', val: '4.3 / 5' },
-                  { label: 'Clarity', width: '72%', val: '3.6 / 5' },
-                  { label: 'Naturalness', width: '64%', val: '3.2 / 5' },
-                  { label: 'Tone & register', width: '70%', val: '3.5 / 5' },
-                  { label: 'Terminology', width: '58%', val: '2.9 / 5' },
-                  { label: 'Regional fit', width: '81%', val: '4.1 / 5' },
-                  { label: 'Cultural fit', width: '76%', val: '3.8 / 5' },
-                  { label: 'UX friction', width: '67%', val: '3.3 / 5' },
-                  { label: 'Risk severity', width: '12%', val: '3.1%', dim: true },
-                ].map(r => (
+                {scorecardRows.map(r => (
                   <div key={r.label} className="scorecard-row">
                     <div className="scorecard-label">{r.label}</div>
                     <div className={`scorecard-bar${r.accent ? ' accent' : ''}`}>
@@ -239,12 +199,12 @@ export default function HomePage() {
                   </div>
                 ))}
                 <div className="mt-[18px] pt-4 border-t border-ink-150 text-[11px] text-ink-500 leading-[1.5]">
-                  OUTPUT SAMPLE · USE CASE: SUPPORT COPILOT · VARIANT: es-MX · REVIEWER: XPANDIA SENIOR
+                  {t('deliverables.scorecard.footer')}
                 </div>
               </div>
               <div className="mt-8 flex flex-wrap gap-2">
-                {scorecardCriteria.map(t => (
-                  <span key={t} className="tag">{t}</span>
+                {scorecardCriteria.map(criterion => (
+                  <span key={criterion} className="tag">{criterion}</span>
                 ))}
               </div>
             </div>
@@ -257,12 +217,12 @@ export default function HomePage() {
         <div className="container">
           <div className="section-head" style={{ gridTemplateColumns: '1fr' }}>
             <div>
-              <div className="eyebrow">BUILT FOR</div>
-              <h2 className="head-title" style={{ marginTop: 16 }}>For teams building products and experiences in Spanish.</h2>
+              <div className="eyebrow">{t('builtFor.eyebrow')}</div>
+              <h2 className="head-title" style={{ marginTop: 16 }}>{t('builtFor.headline')}</h2>
             </div>
           </div>
           <div data-stagger className="grid grid-cols-1 sm:grid-cols-2 tablet:grid-cols-3 gap-5 mt-12">
-            {audiences.map(a => (
+            {audienceCards.map(a => (
               <div key={a.title} className="p-7 bg-white border border-ink-150 rounded-lg">
                 <h3 className="text-[18px] font-display font-medium text-ink-900 tracking-[-0.01em] mb-3">{a.title}</h3>
                 <p className="text-ink-600 text-[14.5px] leading-[1.55]">{a.body}</p>
@@ -277,12 +237,12 @@ export default function HomePage() {
         <div className="container">
           <div className="grid grid-cols-1 tablet:grid-cols-[1fr_2fr] gap-8 py-14 border-t border-b border-ink-150 items-start">
             <div>
-              <div className="eyebrow">WHO WE HELP</div>
-              <h2 style={{ marginTop: 24, fontSize: 'clamp(26px,2.6vw,40px)', lineHeight: 1.1, letterSpacing: '-0.02em' }}>Built for the leaders responsible for Spanish quality.</h2>
+              <div className="eyebrow">{t('buyer.eyebrow')}</div>
+              <h2 style={{ marginTop: 24, fontSize: 'clamp(26px,2.6vw,40px)', lineHeight: 1.1, letterSpacing: '-0.02em' }}>{t('buyer.headline')}</h2>
             </div>
             <ul className="checklist">
-              {buyers.map(b => (
-                <li key={b}><span className="chk"></span><span>{b}</span></li>
+              {buyerRoles.map(role => (
+                <li key={role}><span className="chk"></span><span>{role}</span></li>
               ))}
             </ul>
           </div>
@@ -292,24 +252,24 @@ export default function HomePage() {
       {/* Final CTA */}
       <section>
         <div className="container-narrow" style={{ maxWidth: 900 }}>
-          <div className="eyebrow">NEXT STEP</div>
+          <div className="eyebrow">{t('finalCta.eyebrow')}</div>
           <h2 style={{ marginTop: 24, fontSize: 'clamp(36px,4.6vw,64px)', lineHeight: 1.05 }}>
-            Know where your Spanish stands — and what to do{' '}
+            {t('finalCta.headline')}{' '}
             <span className="relative inline-block">
-              next<span className="absolute left-0 right-0 bottom-[0.08em] h-[2px] bg-accent"></span>
+              {t('finalCta.headlineAccent')}<span className="absolute left-0 right-0 bottom-[0.08em] h-[2px] bg-accent"></span>
             </span>
             .
           </h2>
           <p className="lede" style={{ marginTop: 28 }}>
-            In a focused diagnostic call, we review your Spanish surface, understand your audience, product context, timeline, and business goal, and recommend the right path forward: an audit, an AI QA sprint, a localization engagement, a CQ talk, or a quality roadmap.
+            {t('finalCta.body')}
           </p>
-          <p className="text-ink-900 font-medium text-[17px]" style={{ marginTop: 20 }}>Engagements start from $500.</p>
+          <p className="text-ink-900 font-medium text-[17px]" style={{ marginTop: 20 }}>{t('finalCta.pricingLine')}</p>
           <p className="text-ink-600 text-[15px] max-w-[60ch]" style={{ marginTop: 8 }}>
-            Diagnostics, audits, AI QA sprints, localization engagements, CQ talks, and fractional advisory are scoped based on your product, audience, complexity, timeline and business priority.
+            {t('finalCta.pricingNote')}
           </p>
           <div className="hero-ctas mt-10">
-            <Link className="btn btn-primary" href="/contact">Book a diagnostic call <span className="btn-arrow"></span></Link>
-            <Link className="btn btn-secondary" href="/contact">Request an audit</Link>
+            <Link className="btn btn-primary" href="/contact">{t('finalCta.ctaPrimary')} <span className="btn-arrow"></span></Link>
+            <Link className="btn btn-secondary" href="/contact">{t('finalCta.ctaSecondary')}</Link>
           </div>
         </div>
       </section>
