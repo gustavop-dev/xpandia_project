@@ -14,4 +14,16 @@ jest.mock('next/image', () => ({
 jest.mock('next/link', () => ({
   __esModule: true,
   default: ({ href, children, ...rest }: any) => React.createElement('a', { href, ...rest }, children),
-}));
+}))
+
+// i18n navigation: make next-intl's Link/useRouter/usePathname behave like plain Next equivalents in tests
+jest.mock('@/i18n/navigation', () => {
+  const React = require('react')
+  return {
+    Link: ({ href, children, ...rest }: any) => React.createElement('a', { href: typeof href === 'string' ? href : href?.pathname ?? '/', ...rest }, children),
+    usePathname: jest.fn(() => '/'),
+    useRouter: jest.fn(() => ({ push: jest.fn(), replace: jest.fn(), refresh: jest.fn(), back: jest.fn() })),
+    redirect: jest.fn(),
+    getPathname: jest.fn(({ href }: any) => (typeof href === 'string' ? href : href?.pathname ?? '/')),
+  }
+});
