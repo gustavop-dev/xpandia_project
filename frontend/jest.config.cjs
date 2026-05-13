@@ -36,4 +36,17 @@ const customJestConfig = {
   coverageReporters: ['text-summary', 'text', 'lcov', 'html', 'json-summary'],
 };
 
-module.exports = createJestConfig(customJestConfig);
+// next/jest hardcodes a /node_modules/ transformIgnorePatterns entry that blocks
+// ESM-only packages like next-intl. We post-process the resolved config to inject
+// next-intl and use-intl into the existing allow-list in that pattern.
+const ESM_PACKAGES = ['next-intl', 'use-intl']
+async function jestConfig() {
+  const config = await createJestConfig(customJestConfig)()
+  config.transformIgnorePatterns = (config.transformIgnorePatterns || []).map(p =>
+    p.startsWith('/node_modules/(?!')
+      ? p.replace('/node_modules/(?!', `/node_modules/(?!(${ESM_PACKAGES.join('|')})|`)
+      : p,
+  )
+  return config
+}
+module.exports = jestConfig
