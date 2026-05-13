@@ -1,1 +1,27 @@
-{}
+{
+  "metadata": {
+    "title": "Blog — Xpandia",
+    "description": "Insights on AI Spanish quality, localization, and language operations."
+  },
+  "hero": {
+    "eyebrow": "JOURNAL",
+    "titleLead": "Notas sobre",
+    "titleAccent": "calidad en español",
+    "titleTail": "para productos de IA.",
+    "sub": "Reportes, auditorías y frameworks desde el trabajo boutique de aseguramiento lingüístico."
+  },
+  "empty": {
+    "message": "Aún no hay publicaciones."
+  },
+  "pagination": {
+    "prev": "← PREV",
+    "next": "NEXT →",
+    "ariaLabel": "Pagination"
+  },
+  "detail": {
+    "backToBlog": "← BACK TO BLOG"
+  },
+  "languageToggle": {
+    "ariaLabel": "Language"
+  }
+}

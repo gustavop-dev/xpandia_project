@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
+import { getTranslations } from 'next-intl/server'
 import { fetchBlogPost } from '@/lib/services/blog'
 import { formatLocaleDate, isValidLocale, type SupportedLocale } from '@/lib/i18n/config'
 import BlogContentRenderer from '@/components/blog/BlogContentRenderer'
@@ -35,17 +36,18 @@ export default async function BlogDetailPage({ params, searchParams }: BlogDetai
   const post = await fetchBlogPost(slug, lang)
   if (!post) notFound()
 
+  const t = await getTranslations('blog')
+
   const dateLabel = post.published_at
     ? formatLocaleDate(post.published_at, lang, { year: 'numeric', month: 'long', day: 'numeric' })
     : ''
-  const backLabel = lang === 'es' ? '← VOLVER AL BLOG' : '← BACK TO BLOG'
 
   return (
     <main>
       <section className="hero">
         <div className="container container-narrow max-w-[820px]">
           <Link href={`/blog?lang=${lang}`} className="eyebrow mb-8 inline-flex no-bar">
-            {backLabel}
+            {t('detail.backToBlog')}
           </Link>
           {post.category_display && (
             <div className="font-mono text-[11px] text-accent tracking-[0.12em] uppercase mb-4">

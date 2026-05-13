@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { getTranslations } from 'next-intl/server'
 import { cn } from '@/lib/utils'
 import { SUPPORTED_LOCALES, type SupportedLocale } from '@/lib/i18n/config'
 
@@ -12,9 +13,11 @@ const LOCALE_TOGGLE_LABELS: Record<SupportedLocale, string> = {
   es: 'ES',
 }
 
-export default function BlogLanguageToggle({ currentLang, basePath = '/blog' }: BlogLanguageToggleProps) {
+export default async function BlogLanguageToggle({ currentLang, basePath = '/blog' }: BlogLanguageToggleProps) {
+  const t = await getTranslations('blog')
+
   return (
-    <div className="inline-flex rounded-full overflow-hidden border border-ink-200" role="group" aria-label="Language">
+    <div className="inline-flex rounded-full overflow-hidden border border-ink-200" role="group" aria-label={t('languageToggle.ariaLabel')}>
       {SUPPORTED_LOCALES.map(locale => {
         const active = locale === currentLang
         return (

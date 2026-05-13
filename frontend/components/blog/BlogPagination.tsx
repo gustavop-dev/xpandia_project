@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { getTranslations } from 'next-intl/server'
 import { cn } from '@/lib/utils'
 import type { SupportedLocale } from '@/lib/i18n/config'
 
@@ -34,15 +35,16 @@ function PaginationArrow({ href, label, disabled }: { href: string; label: strin
   )
 }
 
-export default function BlogPagination({ currentPage, totalPages, lang }: BlogPaginationProps) {
+export default async function BlogPagination({ currentPage, totalPages, lang }: BlogPaginationProps) {
+  const t = await getTranslations('blog')
   const pages = buildPages(currentPage, totalPages)
   const linkFor = (p: number) => `/blog?lang=${lang}&page=${p}`
 
   return (
-    <nav className="flex items-center justify-center gap-2 font-mono text-[12px]" aria-label="Pagination">
+    <nav className="flex items-center justify-center gap-2 font-mono text-[12px]" aria-label={t('pagination.ariaLabel')}>
       <PaginationArrow
         href={linkFor(currentPage - 1)}
-        label="← PREV"
+        label={t('pagination.prev')}
         disabled={currentPage <= 1}
       />
 
@@ -68,7 +70,7 @@ export default function BlogPagination({ currentPage, totalPages, lang }: BlogPa
 
       <PaginationArrow
         href={linkFor(currentPage + 1)}
-        label="NEXT →"
+        label={t('pagination.next')}
         disabled={currentPage >= totalPages}
       />
     </nav>
