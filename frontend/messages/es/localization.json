@@ -1,444 +1,444 @@
 {
   "metadata": {
-    "title": "Spanish Localization & Adaptation for Digital Products | Xpandia",
-    "description": "Xpandia helps SaaS, AI, EdTech, Product, Marketing, CX, and Localization teams translate, localize, transcreate, and adapt Spanish content, product copy, documentation, and campaigns for real Spanish-speaking audiences.",
-    "ogTitle": "Spanish Localization & Adaptation for Digital Products | Xpandia",
-    "ogDescription": "Xpandia helps SaaS, AI, EdTech, Product, Marketing, CX, and Localization teams translate, localize, transcreate, and adapt Spanish content, product copy, documentation, and campaigns for real Spanish-speaking audiences."
+    "title": "Localización y adaptación al español para productos digitales | Xpandia",
+    "description": "Xpandia ayuda a equipos de SaaS, IA, EdTech, producto, marketing, CX y localización a traducir, localizar, transcrear y adaptar contenido, copy de producto, documentación y campañas en español para audiencias hispanohablantes reales.",
+    "ogTitle": "Localización y adaptación al español para productos digitales | Xpandia",
+    "ogDescription": "Xpandia ayuda a equipos de SaaS, IA, EdTech, producto, marketing, CX y localización a traducir, localizar, transcrear y adaptar contenido, copy de producto, documentación y campañas en español para audiencias hispanohablantes reales."
   },
   "breadcrumb": {
-    "allServices": "← ALL SERVICES",
-    "current": "· 02 / ADAPT"
+    "allServices": "← TODOS LOS SERVICIOS",
+    "current": "· 02 / ADAPTAR"
   },
   "hero": {
-    "eyebrow": "LOCALIZATION & ADAPTATION",
-    "h1": "More than translated. Built for",
-    "h1Accent": "Spanish-speaking",
-    "h1End": "audiences.",
-    "subheadline": "Xpandia helps SaaS, AI, EdTech, Product, Marketing, CX, and Localization teams create, improve, and adapt Spanish content, product experiences, documentation, and campaigns so they feel clear, natural, trustworthy, and ready for real users.",
-    "body": "We combine senior Spanish expertise, localization judgment, UX awareness, and cultural adaptation to help your content work across the moments that matter: product use, onboarding, support, learning, marketing, and conversion.",
-    "ctaPrimary": "Request a localization review",
-    "ctaSecondary": "Book a diagnostic call",
+    "eyebrow": "LOCALIZACIÓN Y ADAPTACIÓN",
+    "h1": "Más que traducido. Hecho para",
+    "h1Accent": "audiencias hispanohablantes",
+    "h1End": ".",
+    "subheadline": "Xpandia ayuda a equipos de SaaS, IA, EdTech, producto, marketing, CX y localización a crear, mejorar y adaptar contenido en español, experiencias de producto, documentación y campañas para que se sientan claras, naturales, confiables y listas para usuarios reales.",
+    "body": "Combinamos experiencia sénior en español, criterio de localización, sensibilidad de UX y adaptación cultural para que tu contenido funcione en los momentos que importan: uso del producto, onboarding, soporte, aprendizaje, marketing y conversión.",
+    "ctaPrimary": "Solicitar una revisión de localización",
+    "ctaSecondary": "Agendar una llamada de diagnóstico",
     "proofPoints": [
       {
-        "title": "Product-ready Spanish",
-        "desc": "UI copy, onboarding, forms, errors, flows, and user-facing product content."
+        "title": "Español listo para producto",
+        "desc": "Copy de UI, onboarding, formularios, errores, flujos y contenido de producto de cara al usuario."
       },
       {
-        "title": "Content that connects",
-        "desc": "Websites, campaigns, help centers, learning materials, and customer communication."
+        "title": "Contenido que conecta",
+        "desc": "Sitios web, campañas, centros de ayuda, materiales de aprendizaje y comunicación con clientes."
       },
       {
-        "title": "Audience-aware adaptation",
-        "desc": "LatAm, US Hispanic, Spain, neutral Spanish, or specific regional markets."
+        "title": "Adaptación según la audiencia",
+        "desc": "LatAm, hispanos en EE. UU., España, español neutro o mercados regionales específicos."
       }
     ]
   },
   "photoBand": {
-    "line1": "02 / ADAPT",
-    "line2": "SOURCE → ADAPTED SPANISH"
+    "line1": "02 / ADAPTAR",
+    "line2": "FUENTE → ESPAÑOL ADAPTADO"
   },
   "positioning": {
-    "eyebrow": "WHY LOCALIZATION & ADAPTATION",
-    "headline": "Translation helps users read. Localization helps users trust, understand, and act.",
-    "body1": "A Spanish version can be technically correct and still feel foreign, literal, inconsistent, or disconnected from the audience. That gap affects clarity, trust, UX, conversion, support, learning, and product adoption.",
-    "body2": "Localization & Adaptation closes that gap. We help teams create or improve Spanish experiences that respect the product context, the user journey, the audience, the market, and the business goal.",
-    "callout": "The goal is not just Spanish content. The goal is Spanish that feels intentional, usable, and aligned with how your audience thinks, decides, learns, and acts."
+    "eyebrow": "POR QUÉ LOCALIZACIÓN Y ADAPTACIÓN",
+    "headline": "La traducción ayuda a leer. La localización ayuda a confiar, entender y actuar.",
+    "body1": "Una versión en español puede ser técnicamente correcta y aun así sentirse ajena, literal, inconsistente o desconectada de la audiencia. Esa brecha afecta la claridad, la confianza, la UX, la conversión, el soporte, el aprendizaje y la adopción del producto.",
+    "body2": "Localización y Adaptación cierra esa brecha. Ayudamos a los equipos a crear o mejorar experiencias en español que respeten el contexto del producto, el recorrido del usuario, la audiencia, el mercado y el objetivo de negocio.",
+    "callout": "El objetivo no es solo tener contenido en español. El objetivo es un español que se sienta intencional, usable y alineado con la forma en que tu audiencia piensa, decide, aprende y actúa."
   },
   "whatWeAdapt": {
-    "eyebrow": "WHAT WE ADAPT",
-    "headline": "Spanish content across the full user journey.",
-    "intro": "Localization & Adaptation can support any Spanish touchpoint your audience reads, follows, clicks, learns from, or uses to make a decision.",
+    "eyebrow": "QUÉ ADAPTAMOS",
+    "headline": "Contenido en español a lo largo de todo el recorrido del usuario.",
+    "intro": "Localización y Adaptación puede apoyar cualquier punto de contacto en español que tu audiencia lea, siga, haga clic, use para aprender o para tomar una decisión.",
     "cards": [
       {
-        "title": "Websites and landing pages",
-        "desc": "Homepage, service pages, pricing pages, product pages, landing pages, FAQs, lead-generation flows, and conversion copy."
+        "title": "Sitios web y landing pages",
+        "desc": "Página de inicio, páginas de servicios, páginas de precios, páginas de producto, landing pages, FAQ, flujos de generación de leads y copy de conversión."
       },
       {
-        "title": "Product UI and UX copy",
-        "desc": "Buttons, menus, settings, empty states, onboarding, tooltips, notifications, error messages, forms, and product flows."
+        "title": "UI de producto y copy de UX",
+        "desc": "Botones, menús, ajustes, estados vacíos, onboarding, tooltips, notificaciones, mensajes de error, formularios y flujos de producto."
       },
       {
-        "title": "Marketing and campaigns",
-        "desc": "Email campaigns, ads, launch messaging, sales decks, lead magnets, newsletters, social content, and campaign concepts."
+        "title": "Marketing y campañas",
+        "desc": "Campañas de email, anuncios, mensajes de lanzamiento, presentaciones de ventas, lead magnets, newsletters, contenido para redes sociales y conceptos de campaña."
       },
       {
-        "title": "Help center and documentation",
-        "desc": "Knowledge base articles, FAQs, how-to guides, support content, release notes, product documentation, and user education."
+        "title": "Centro de ayuda y documentación",
+        "desc": "Artículos de la base de conocimiento, FAQ, guías paso a paso, contenido de soporte, notas de versión, documentación de producto y formación de usuarios."
       },
       {
-        "title": "EdTech and learning content",
-        "desc": "Lessons, scripts, quizzes, instructions, assessments, learner feedback, tutoring content, and educational explanations."
+        "title": "EdTech y contenido de aprendizaje",
+        "desc": "Lecciones, guiones, cuestionarios, instrucciones, evaluaciones, feedback para estudiantes, contenido de tutoría y explicaciones educativas."
       },
       {
-        "title": "Support and CX communication",
-        "desc": "Macros, support replies, chatbot scripts, escalation language, customer emails, and service recovery messages."
+        "title": "Comunicación de soporte y CX",
+        "desc": "Macros, respuestas de soporte, guiones de chatbot, lenguaje de escalado, emails a clientes y mensajes de recuperación del servicio."
       }
     ]
   },
   "whenToUse": {
-    "eyebrow": "WHEN TO USE IT",
-    "headline": "Use it when Spanish needs to feel native, clear, and useful.",
+    "eyebrow": "CUÁNDO USARLO",
+    "headline": "Úsalo cuando el español necesita sentirse nativo, claro y útil.",
     "items": [
-      "Your English-first product, website, content, or campaign needs a professional Spanish version.",
-      "Your existing Spanish translation sounds literal, generic, inconsistent, or disconnected from the audience.",
-      "Your product UI, help content, or marketing copy needs to feel natural and trustworthy in Spanish.",
-      "Your Spanish experience needs regional adaptation for LatAm, US Hispanic, Spain, or a specific market.",
-      "Your content needs to support conversion, clarity, trust, learning, or user action.",
-      "Your team needs Spanish copy that works in context, not isolated strings or word-by-word translation.",
-      "Your audience understands the words, but the experience still does not feel made for them."
+      "Tu producto, sitio web, contenido o campaña pensado primero en inglés necesita una versión profesional en español.",
+      "Tu traducción al español actual suena literal, genérica, inconsistente o desconectada de la audiencia.",
+      "La UI de tu producto, tu contenido de ayuda o tu copy de marketing necesita sentirse natural y confiable en español.",
+      "Tu experiencia en español necesita adaptación regional para LatAm, hispanos en EE. UU., España o un mercado específico.",
+      "Tu contenido necesita apoyar la conversión, la claridad, la confianza, el aprendizaje o la acción del usuario.",
+      "Tu equipo necesita copy en español que funcione en contexto, no cadenas de texto aisladas ni traducción palabra por palabra.",
+      "Tu audiencia entiende las palabras, pero la experiencia todavía no se siente hecha para ellos."
     ]
   },
   "adaptationCriteria": {
-    "eyebrow": "ADAPTATION CRITERIA",
-    "headline": "The signals behind Spanish that feels made for the user.",
-    "intro": "Each localization engagement is scoped around your audience, market, product context, content type, and business goal. Depending on the project, we adapt for the criteria that matter most.",
+    "eyebrow": "CRITERIOS DE ADAPTACIÓN",
+    "headline": "Las señales detrás de un español que se siente hecho para el usuario.",
+    "intro": "Cada proyecto de localización se define en torno a tu audiencia, tu mercado, el contexto del producto, el tipo de contenido y el objetivo de negocio. Según el proyecto, adaptamos los criterios que más importan.",
     "cards": [
       {
         "n": "01",
-        "title": "Meaning",
-        "desc": "Does the Spanish preserve the intent, message, and product logic of the original content?"
+        "title": "Significado",
+        "desc": "¿El español conserva la intención, el mensaje y la lógica de producto del contenido original?"
       },
       {
         "n": "02",
-        "title": "Clarity",
-        "desc": "Can users understand what the content means, what action to take, and why it matters?"
+        "title": "Claridad",
+        "desc": "¿Pueden los usuarios entender qué significa el contenido, qué acción tomar y por qué importa?"
       },
       {
         "n": "03",
-        "title": "Naturality",
-        "desc": "Does the Spanish sound fluent, native, and appropriate for real Spanish-speaking users?"
+        "title": "Naturalidad",
+        "desc": "¿El español suena fluido, nativo y apropiado para usuarios hispanohablantes reales?"
       },
       {
         "n": "04",
-        "title": "Tone and voice",
-        "desc": "Does the Spanish match your brand, audience, product context, and level of formality?"
+        "title": "Tono y voz",
+        "desc": "¿El español coincide con tu marca, tu audiencia, el contexto del producto y el nivel de formalidad?"
       },
       {
         "n": "05",
-        "title": "Terminology",
-        "desc": "Are product terms, feature names, support language, and key concepts consistent and usable?"
+        "title": "Terminología",
+        "desc": "¿Los términos de producto, los nombres de funciones, el lenguaje de soporte y los conceptos clave son consistentes y usables?"
       },
       {
         "n": "06",
-        "title": "Regional fit",
-        "desc": "Does the Spanish align with the intended audience: LatAm, US Hispanic, Spain, neutral Spanish, or a specific regional market?"
+        "title": "Ajuste regional",
+        "desc": "¿El español se alinea con la audiencia prevista: LatAm, hispanos en EE. UU., España, español neutro o un mercado regional específico?"
       },
       {
         "n": "07",
-        "title": "Cultural fit",
-        "desc": "Do examples, references, assumptions, tone, trust signals, and communication choices fit the audience?"
+        "title": "Ajuste cultural",
+        "desc": "¿Los ejemplos, referencias, supuestos, tono, señales de confianza y decisiones de comunicación encajan con la audiencia?"
       },
       {
         "n": "08",
-        "title": "UX fit",
-        "desc": "Does the copy work inside the interface, layout, flow, character limits, buttons, forms, and decision points?"
+        "title": "Ajuste de UX",
+        "desc": "¿El copy funciona dentro de la interfaz, el layout, el flujo, los límites de caracteres, los botones, los formularios y los puntos de decisión?"
       },
       {
         "n": "09",
-        "title": "Conversion fit",
-        "desc": "Does the content help users understand, trust, decide, continue, buy, sign up, complete, or take the next step?"
+        "title": "Ajuste de conversión",
+        "desc": "¿El contenido ayuda a los usuarios a entender, confiar, decidir, continuar, comprar, registrarse, completar o dar el siguiente paso?"
       },
       {
         "n": "10",
-        "title": "Publication readiness",
-        "desc": "Is the content ready for review, QA, stakeholder approval, or publication?"
+        "title": "Listo para publicar",
+        "desc": "¿El contenido está listo para revisión, QA, aprobación de stakeholders o publicación?"
       }
     ]
   },
   "engagements": {
-    "eyebrow": "CORE ENGAGEMENTS",
-    "headline": "Create, improve, or repair your Spanish experience.",
-    "intro": "Start with a focused localization or adaptation engagement, then move into review, repair, QA, or ongoing Spanish quality leadership when needed.",
-    "bestForLabel": "BEST FOR",
-    "outcomeLabel": "OUTCOME",
-    "timelinePrefix": "Timeline: ",
+    "eyebrow": "ENGAGEMENTS PRINCIPALES",
+    "headline": "Crea, mejora o repara tu experiencia en español.",
+    "intro": "Empieza con un engagement enfocado de localización o adaptación y luego avanza a revisión, reparación, QA o liderazgo continuo de calidad en español cuando lo necesites.",
+    "bestForLabel": "IDEAL PARA",
+    "outcomeLabel": "RESULTADO",
+    "timelinePrefix": "Plazo: ",
     "items": [
       {
         "n": "01",
-        "title": "Website & Landing Page Localization",
-        "tagline": "Turn your English-first website into Spanish that feels built for the audience.",
-        "bestFor": "Teams launching or improving Spanish websites, landing pages, service pages, pricing pages, lead-generation pages, or product marketing pages.",
-        "outcome": "Create a Spanish web experience that supports clarity, trust, conversion, brand consistency, and audience fit.",
-        "deliverablesLabel": "Localization deliverables",
+        "title": "Localización de sitio web y landing page",
+        "tagline": "Convierte tu sitio web pensado primero en inglés en un español hecho para la audiencia.",
+        "bestFor": "Equipos que lanzan o mejoran sitios web en español, landing pages, páginas de servicios, páginas de precios, páginas de generación de leads o páginas de marketing de producto.",
+        "outcome": "Crear una experiencia web en español que apoye la claridad, la confianza, la conversión, la consistencia de marca y el ajuste a la audiencia.",
+        "deliverablesLabel": "Entregables de localización",
         "deliverables": [
-          "Localized website or landing page copy.",
-          "Adapted headlines, body copy, CTAs, FAQs, and conversion sections.",
-          "Terminology and style notes.",
-          "Regional fit recommendations.",
-          "Copy review in context where access is available.",
-          "QA-ready or publication-ready Spanish copy."
+          "Copy localizado de sitio web o landing page.",
+          "Titulares, cuerpo de texto, CTAs, FAQ y secciones de conversión adaptados.",
+          "Notas de terminología y estilo.",
+          "Recomendaciones de ajuste regional.",
+          "Revisión del copy en contexto cuando hay acceso disponible.",
+          "Copy en español listo para QA o para publicar."
         ],
-        "price": "From $2,500",
-        "timeline": "5–10 business days, depending on scope.",
-        "cta": "Request website localization"
+        "price": "Desde $2,500",
+        "timeline": "5–10 días hábiles, según el alcance.",
+        "cta": "Solicitar localización de sitio web"
       },
       {
         "n": "02",
-        "title": "Product UI & UX Copy Localization",
-        "tagline": "Make product copy feel clear, usable, and natural in Spanish.",
-        "bestFor": "Product, SaaS, AI, EdTech, and Localization teams localizing or improving Spanish interfaces, onboarding, forms, errors, tooltips, notifications, and user flows.",
-        "outcome": "Improve Spanish usability, clarity, consistency, and product readiness across user-facing product surfaces.",
-        "deliverablesLabel": "Localization deliverables",
+        "title": "Localización de UI de producto y copy de UX",
+        "tagline": "Haz que el copy de producto se sienta claro, usable y natural en español.",
+        "bestFor": "Equipos de producto, SaaS, IA, EdTech y localización que localizan o mejoran interfaces en español, onboarding, formularios, errores, tooltips, notificaciones y flujos de usuario.",
+        "outcome": "Mejorar la usabilidad, la claridad, la consistencia y la preparación de producto en español en las superficies de cara al usuario.",
+        "deliverablesLabel": "Entregables de localización",
         "deliverables": [
-          "Localized UI strings or product copy.",
-          "UX copy adaptation for flows, states, and microcopy.",
-          "Terminology guidance.",
-          "Character-limit and context notes where applicable.",
-          "Annotated recommendations for UX friction.",
-          "QA-ready Spanish copy."
+          "Cadenas de UI o copy de producto localizados.",
+          "Adaptación del copy de UX para flujos, estados y microcopy.",
+          "Guía de terminología.",
+          "Notas de límites de caracteres y contexto cuando aplica.",
+          "Recomendaciones anotadas sobre fricción de UX.",
+          "Copy en español listo para QA."
         ],
-        "price": "From $3,000",
-        "timeline": "7–15 business days, depending on volume and product complexity.",
-        "cta": "Request product localization"
+        "price": "Desde $3,000",
+        "timeline": "7–15 días hábiles, según el volumen y la complejidad del producto.",
+        "cta": "Solicitar localización de producto"
       },
       {
         "n": "03",
-        "title": "Marketing Localization & Transcreation",
-        "tagline": "Adapt the message, not just the words.",
-        "bestFor": "Marketing, Growth, Product Marketing, and Localization teams adapting campaigns, landing pages, emails, ads, sales content, or launch messaging for Spanish-speaking audiences.",
-        "outcome": "Create Spanish marketing content that preserves strategic intent while adapting tone, emotion, persuasion, cultural context, and audience expectations.",
-        "deliverablesLabel": "Adaptation deliverables",
+        "title": "Localización y transcreación de marketing",
+        "tagline": "Adapta el mensaje, no solo las palabras.",
+        "bestFor": "Equipos de marketing, growth, marketing de producto y localización que adaptan campañas, landing pages, emails, anuncios, contenido de ventas o mensajes de lanzamiento para audiencias hispanohablantes.",
+        "outcome": "Crear contenido de marketing en español que conserve la intención estratégica mientras adapta el tono, la emoción, la persuasión, el contexto cultural y las expectativas de la audiencia.",
+        "deliverablesLabel": "Entregables de adaptación",
         "deliverables": [
-          "Localized or transcreated campaign copy.",
-          "Alternative headlines, claims, CTAs, or message directions.",
-          "Audience-specific messaging notes.",
-          "Cultural adaptation rationale.",
-          "Terminology and tone guidance.",
-          "Publication-ready Spanish copy."
+          "Copy de campaña localizado o transcreado.",
+          "Titulares, claims, CTAs o direcciones de mensaje alternativos.",
+          "Notas de mensajería específicas por audiencia.",
+          "Justificación de la adaptación cultural.",
+          "Guía de terminología y tono.",
+          "Copy en español listo para publicar."
         ],
-        "price": "From $2,500",
-        "timeline": "5–10 business days, depending on scope.",
-        "cta": "Request marketing adaptation"
+        "price": "Desde $2,500",
+        "timeline": "5–10 días hábiles, según el alcance.",
+        "cta": "Solicitar adaptación de marketing"
       },
       {
         "n": "04",
-        "title": "Help Center & Documentation Localization",
-        "tagline": "Turn support content into Spanish users can actually use.",
-        "bestFor": "Support, CX, Product, EdTech, SaaS, and Localization teams localizing help centers, FAQs, product documentation, how-to guides, support articles, or user education content.",
-        "outcome": "Create Spanish support and documentation content that is clear, consistent, useful, and aligned with how users ask for help.",
-        "deliverablesLabel": "Localization deliverables",
+        "title": "Localización de centro de ayuda y documentación",
+        "tagline": "Convierte el contenido de soporte en un español que los usuarios realmente puedan usar.",
+        "bestFor": "Equipos de soporte, CX, producto, EdTech, SaaS y localización que localizan centros de ayuda, FAQ, documentación de producto, guías paso a paso, artículos de soporte o contenido de formación de usuarios.",
+        "outcome": "Crear contenido de soporte y documentación en español que sea claro, consistente, útil y alineado con la forma en que los usuarios piden ayuda.",
+        "deliverablesLabel": "Entregables de localización",
         "deliverables": [
-          "Localized help center articles or documentation.",
-          "Terminology and style recommendations.",
-          "Clarity and usefulness improvements.",
-          "Structure or readability notes where applicable.",
-          "Support tone guidance.",
-          "QA-ready or publication-ready content."
+          "Artículos del centro de ayuda o documentación localizados.",
+          "Recomendaciones de terminología y estilo.",
+          "Mejoras de claridad y utilidad.",
+          "Notas de estructura o legibilidad cuando aplica.",
+          "Guía de tono de soporte.",
+          "Contenido listo para QA o para publicar."
         ],
-        "price": "From $3,000",
-        "timeline": "1–3 weeks, depending on volume and complexity.",
-        "cta": "Request documentation localization"
+        "price": "Desde $3,000",
+        "timeline": "1–3 semanas, según el volumen y la complejidad.",
+        "cta": "Solicitar localización de documentación"
       },
       {
         "n": "05",
-        "title": "EdTech & Learning Content Localization",
-        "tagline": "Make learning content clear, natural, and pedagogically effective in Spanish.",
-        "bestFor": "EdTech, learning, training, assessment, and content teams adapting lessons, quizzes, scripts, instructions, tutoring content, learner feedback, or educational materials.",
-        "outcome": "Create Spanish learning content that supports comprehension, engagement, cultural relevance, and pedagogical clarity.",
-        "deliverablesLabel": "Localization deliverables",
+        "title": "Localización de contenido EdTech y de aprendizaje",
+        "tagline": "Haz que el contenido de aprendizaje sea claro, natural y pedagógicamente efectivo en español.",
+        "bestFor": "Equipos de EdTech, aprendizaje, formación, evaluación y contenido que adaptan lecciones, cuestionarios, guiones, instrucciones, contenido de tutoría, feedback para estudiantes o materiales educativos.",
+        "outcome": "Crear contenido de aprendizaje en español que apoye la comprensión, el engagement, la relevancia cultural y la claridad pedagógica.",
+        "deliverablesLabel": "Entregables de localización",
         "deliverables": [
-          "Localized learning content.",
-          "Adapted examples, instructions, feedback, and assessments.",
-          "Tone and learner-level recommendations.",
-          "Cultural and regional fit notes.",
-          "Pedagogical clarity review.",
-          "QA-ready or learner-ready Spanish content."
+          "Contenido de aprendizaje localizado.",
+          "Ejemplos, instrucciones, feedback y evaluaciones adaptados.",
+          "Recomendaciones de tono y nivel del estudiante.",
+          "Notas de ajuste cultural y regional.",
+          "Revisión de claridad pedagógica.",
+          "Contenido en español listo para QA o para los estudiantes."
         ],
-        "price": "From $4,000",
-        "timeline": "2–4 weeks, depending on content type and volume.",
-        "cta": "Request learning content localization"
+        "price": "Desde $4,000",
+        "timeline": "2–4 semanas, según el tipo de contenido y el volumen.",
+        "cta": "Solicitar localización de contenido de aprendizaje"
       },
       {
         "n": "06",
-        "title": "Localization Review & Repair",
-        "tagline": "Turn translated Spanish into Spanish that works.",
-        "bestFor": "Teams with existing Spanish translations that need improvement, consistency, adaptation, regional fit, or publication readiness.",
-        "outcome": "Improve translated Spanish so it feels natural, clear, trustworthy, and aligned with your audience.",
-        "deliverablesLabel": "Review deliverables",
+        "title": "Revisión y reparación de localización",
+        "tagline": "Convierte un español traducido en un español que funciona.",
+        "bestFor": "Equipos con traducciones al español existentes que necesitan mejora, consistencia, adaptación, ajuste regional o preparación para publicar.",
+        "outcome": "Mejorar el español traducido para que se sienta natural, claro, confiable y alineado con tu audiencia.",
+        "deliverablesLabel": "Entregables de revisión",
         "deliverables": [
-          "Content review.",
-          "Rewrite recommendations.",
-          "Terminology notes.",
-          "Regional fit guidance.",
-          "QA checklist.",
-          "Final-ready copy where scope allows."
+          "Revisión de contenido.",
+          "Recomendaciones de reescritura.",
+          "Notas de terminología.",
+          "Guía de ajuste regional.",
+          "Checklist de QA.",
+          "Copy final cuando el alcance lo permite."
         ],
-        "price": "From $2,500",
-        "timeline": "5–10 business days.",
-        "cta": "Request localization review"
+        "price": "Desde $2,500",
+        "timeline": "5–10 días hábiles.",
+        "cta": "Solicitar revisión de localización"
       }
     ]
   },
   "methodology": {
-    "eyebrow": "METHODOLOGY",
-    "headline": "A practical path from English-first to audience-ready Spanish.",
-    "intro": "Every Localization & Adaptation engagement follows a structured process designed to preserve meaning, adapt context, and make Spanish work for the audience.",
+    "eyebrow": "METODOLOGÍA",
+    "headline": "Un camino práctico desde el inglés primero hasta un español listo para la audiencia.",
+    "intro": "Cada engagement de Localización y Adaptación sigue un proceso estructurado diseñado para preservar el significado, adaptar el contexto y hacer que el español funcione para la audiencia.",
     "steps": [
       {
-        "title": "Understand the context",
-        "body": "We clarify your audience, Spanish variant, product surface, content type, business goal, tone, terminology, and publication needs."
+        "title": "Entender el contexto",
+        "body": "Aclaramos tu audiencia, la variante de español, la superficie de producto, el tipo de contenido, el objetivo de negocio, el tono, la terminología y las necesidades de publicación."
       },
       {
-        "title": "Adapt the experience",
-        "body": "We localize or transcreate the selected content with attention to meaning, clarity, tone, terminology, regional fit, cultural fit, UX context, and user action."
+        "title": "Adaptar la experiencia",
+        "body": "Localizamos o transcreamos el contenido seleccionado con atención al significado, la claridad, el tono, la terminología, el ajuste regional, el ajuste cultural, el contexto de UX y la acción del usuario."
       },
       {
-        "title": "Review in context",
-        "body": "Where access is available, we review Spanish inside the product, website, document, flow, or layout so the copy works in the real experience."
+        "title": "Revisar en contexto",
+        "body": "Cuando hay acceso disponible, revisamos el español dentro del producto, el sitio web, el documento, el flujo o el layout para que el copy funcione en la experiencia real."
       },
       {
-        "title": "Deliver usable Spanish assets",
-        "body": "You receive localized, adapted, QA-ready, or publication-ready Spanish copy, along with notes your team can use: terminology guidance, cultural rationale, regional fit recommendations, and implementation comments."
+        "title": "Entregar activos en español usables",
+        "body": "Recibes copy en español localizado, adaptado, listo para QA o listo para publicar, junto con notas que tu equipo puede usar: guía de terminología, justificación cultural, recomendaciones de ajuste regional y comentarios de implementación."
       },
       {
-        "title": "Prepare for launch or QA",
-        "body": "We recommend the right next step: publish, QA, sign off, repair, expand, test, or move into Language Assurance for readiness validation."
+        "title": "Preparar para el lanzamiento o el QA",
+        "body": "Recomendamos el siguiente paso adecuado: publicar, hacer QA, aprobar, reparar, expandir, probar o avanzar a Language Assurance para validar la preparación."
       }
     ]
   },
   "deliverables": {
-    "eyebrow": "THE DELIVERABLES",
-    "headline": "Spanish assets your team can use, publish, and scale.",
-    "intro": "Localization & Adaptation turns source content into Spanish experiences that are clear, natural, consistent, audience-aware, and ready for the next step in your workflow.",
+    "eyebrow": "LOS ENTREGABLES",
+    "headline": "Activos en español que tu equipo puede usar, publicar y escalar.",
+    "intro": "Localización y Adaptación convierte el contenido fuente en experiencias en español que son claras, naturales, consistentes, conscientes de la audiencia y listas para el siguiente paso en tu flujo de trabajo.",
     "cards": [
       {
-        "title": "Localized Copy",
-        "desc": "Spanish content adapted for your product, brand, audience, and business goal."
+        "title": "Copy localizado",
+        "desc": "Contenido en español adaptado para tu producto, tu marca, tu audiencia y tu objetivo de negocio."
       },
       {
-        "title": "Transcreation Options",
-        "desc": "Alternative messaging directions when direct translation does not carry the same impact."
+        "title": "Opciones de transcreación",
+        "desc": "Direcciones de mensaje alternativas cuando la traducción directa no transmite el mismo impacto."
       },
       {
-        "title": "UX Copy Adaptation",
-        "desc": "Spanish microcopy that works inside buttons, forms, flows, onboarding, errors, and product states."
+        "title": "Adaptación de copy de UX",
+        "desc": "Microcopy en español que funciona dentro de botones, formularios, flujos, onboarding, errores y estados de producto."
       },
       {
-        "title": "Terminology Guidance",
-        "desc": "Preferred terms, consistency notes, product language, and naming recommendations."
+        "title": "Guía de terminología",
+        "desc": "Términos preferidos, notas de consistencia, lenguaje de producto y recomendaciones de nombres."
       },
       {
-        "title": "Regional Fit Notes",
-        "desc": "Guidance for LatAm, US Hispanic, Spain, neutral Spanish, or specific regional markets."
+        "title": "Notas de ajuste regional",
+        "desc": "Guía para LatAm, hispanos en EE. UU., España, español neutro o mercados regionales específicos."
       },
       {
-        "title": "Cultural Adaptation Rationale",
-        "desc": "Explanation of why certain words, references, tones, or examples should be adapted."
+        "title": "Justificación de la adaptación cultural",
+        "desc": "Explicación de por qué ciertas palabras, referencias, tonos o ejemplos deben adaptarse."
       },
       {
-        "title": "QA-Ready Assets",
-        "desc": "Spanish copy prepared for internal review, implementation, or Language Assurance validation."
+        "title": "Activos listos para QA",
+        "desc": "Copy en español preparado para revisión interna, implementación o validación con Language Assurance."
       },
       {
-        "title": "Publication-Ready Content",
-        "desc": "Final-ready copy where scope includes review, revision, and final polish."
+        "title": "Contenido listo para publicar",
+        "desc": "Copy final cuando el alcance incluye revisión, corrección y pulido final."
       }
     ]
   },
   "builtFor": {
-    "eyebrow": "BUILT FOR",
-    "headline": "For teams creating Spanish experiences that users can trust.",
+    "eyebrow": "HECHO PARA",
+    "headline": "Para equipos que crean experiencias en español en las que los usuarios pueden confiar.",
     "cards": [
       {
-        "title": "Product Teams",
-        "desc": "Localize UI copy, onboarding, forms, errors, notifications, and product flows."
+        "title": "Equipos de producto",
+        "desc": "Localiza copy de UI, onboarding, formularios, errores, notificaciones y flujos de producto."
       },
       {
-        "title": "Marketing & Growth Teams",
-        "desc": "Adapt landing pages, campaigns, email flows, CTAs, and conversion copy."
+        "title": "Equipos de marketing y growth",
+        "desc": "Adapta landing pages, campañas, flujos de email, CTAs y copy de conversión."
       },
       {
-        "title": "Localization Teams",
-        "desc": "Improve Spanish quality, consistency, terminology, regional fit, and review workflows."
+        "title": "Equipos de localización",
+        "desc": "Mejora la calidad en español, la consistencia, la terminología, el ajuste regional y los flujos de revisión."
       },
       {
-        "title": "CX & Support Teams",
-        "desc": "Localize help centers, macros, support replies, chatbot scripts, and customer communication."
+        "title": "Equipos de CX y soporte",
+        "desc": "Localiza centros de ayuda, macros, respuestas de soporte, guiones de chatbot y comunicación con clientes."
       },
       {
-        "title": "EdTech Teams",
-        "desc": "Adapt lessons, quizzes, scripts, explanations, assessments, and learning experiences."
+        "title": "Equipos de EdTech",
+        "desc": "Adapta lecciones, cuestionarios, guiones, explicaciones, evaluaciones y experiencias de aprendizaje."
       },
       {
-        "title": "AI Teams",
-        "desc": "Prepare Spanish content, prompts, examples, help materials, or user-facing copy that supports AI product experiences."
+        "title": "Equipos de IA",
+        "desc": "Prepara contenido en español, prompts, ejemplos, materiales de ayuda o copy de cara al usuario que apoye las experiencias de producto con IA."
       }
     ]
   },
   "pricing": {
-    "eyebrow": "STARTING POINTS",
-    "headline": "Start with the Spanish experience your team needs now.",
-    "intro": "Localization & Adaptation engagements are scoped based on content type, volume, product context, audience, Spanish variant, level of adaptation, complexity, and timeline.",
-    "note": "Final pricing is confirmed after a short diagnostic call and scope review. Pricing depends on volume, complexity, timeline, file format, level of adaptation, and whether in-context review or final QA is included.",
+    "eyebrow": "PUNTOS DE PARTIDA",
+    "headline": "Empieza con la experiencia en español que tu equipo necesita ahora.",
+    "intro": "Los engagements de Localización y Adaptación se definen según el tipo de contenido, el volumen, el contexto del producto, la audiencia, la variante de español, el nivel de adaptación, la complejidad y el plazo.",
+    "note": "El precio final se confirma tras una breve llamada de diagnóstico y una revisión de alcance. El precio depende del volumen, la complejidad, el plazo, el formato de archivo, el nivel de adaptación y de si se incluye revisión en contexto o QA final.",
     "cards": [
       {
-        "title": "Website & Landing Page Localization",
-        "price": "From $2,500",
-        "desc": "Create or improve Spanish web pages, landing pages, service pages, FAQs, and conversion copy."
+        "title": "Localización de sitio web y landing page",
+        "price": "Desde $2,500",
+        "desc": "Crea o mejora páginas web en español, landing pages, páginas de servicios, FAQ y copy de conversión."
       },
       {
-        "title": "Product UI & UX Copy Localization",
-        "price": "From $3,000",
-        "desc": "Adapt product interfaces, onboarding, microcopy, forms, errors, and flows for Spanish-speaking users."
+        "title": "Localización de UI de producto y copy de UX",
+        "price": "Desde $3,000",
+        "desc": "Adapta interfaces de producto, onboarding, microcopy, formularios, errores y flujos para usuarios hispanohablantes."
       },
       {
-        "title": "Marketing Localization & Transcreation",
-        "price": "From $2,500",
-        "desc": "Adapt campaigns, email flows, ads, launch messaging, sales content, and product marketing copy."
+        "title": "Localización y transcreación de marketing",
+        "price": "Desde $2,500",
+        "desc": "Adapta campañas, flujos de email, anuncios, mensajes de lanzamiento, contenido de ventas y copy de marketing de producto."
       },
       {
-        "title": "Help Center & Documentation Localization",
-        "price": "From $3,000",
-        "desc": "Localize support articles, FAQs, product documentation, how-to guides, and user education content."
+        "title": "Localización de centro de ayuda y documentación",
+        "price": "Desde $3,000",
+        "desc": "Localiza artículos de soporte, FAQ, documentación de producto, guías paso a paso y contenido de formación de usuarios."
       },
       {
-        "title": "EdTech & Learning Content Localization",
-        "price": "From $4,000",
-        "desc": "Adapt lessons, quizzes, scripts, learner feedback, assessments, and educational content."
+        "title": "Localización de contenido EdTech y de aprendizaje",
+        "price": "Desde $4,000",
+        "desc": "Adapta lecciones, cuestionarios, guiones, feedback para estudiantes, evaluaciones y contenido educativo."
       },
       {
-        "title": "Localization Review & Repair",
-        "price": "From $2,500",
-        "desc": "Improve existing Spanish translations for clarity, naturalness, consistency, regional fit, and publication readiness."
+        "title": "Revisión y reparación de localización",
+        "price": "Desde $2,500",
+        "desc": "Mejora traducciones al español existentes en claridad, naturalidad, consistencia, ajuste regional y preparación para publicar."
       }
     ]
   },
   "faq": {
-    "eyebrow": "FAQ",
-    "headline": "Common questions about Localization & Adaptation.",
+    "eyebrow": "PREGUNTAS FRECUENTES",
+    "headline": "Preguntas comunes sobre Localización y Adaptación.",
     "items": [
       {
-        "q": "Is this translation or localization?",
-        "a": "It can include translation, but the goal is broader: to create Spanish content that works for the product, audience, context, and business goal."
+        "q": "¿Esto es traducción o localización?",
+        "a": "Puede incluir traducción, pero el objetivo es más amplio: crear contenido en español que funcione para el producto, la audiencia, el contexto y el objetivo de negocio."
       },
       {
-        "q": "Do you charge per word?",
-        "a": "Most Xpandia engagements are scoped by project, not by word. Word count matters, but so do product context, UX complexity, adaptation level, audience, timeline, and QA needs."
+        "q": "¿Cobran por palabra?",
+        "a": "La mayoría de los engagements de Xpandia se cotizan por proyecto, no por palabra. El número de palabras importa, pero también el contexto de producto, la complejidad de UX, el nivel de adaptación, la audiencia, el plazo y las necesidades de QA."
       },
       {
-        "q": "Can you adapt existing translations?",
-        "a": "Yes. Localization Review & Repair is designed for teams that already have Spanish translations but need them to feel more natural, consistent, audience-aware, or ready to publish."
+        "q": "¿Pueden adaptar traducciones existentes?",
+        "a": "Sí. Revisión y reparación de localización está diseñado para equipos que ya tienen traducciones al español pero necesitan que se sientan más naturales, consistentes, conscientes de la audiencia o listas para publicar."
       },
       {
-        "q": "Can you localize product UI strings?",
-        "a": "Yes. We can localize and adapt UI strings, microcopy, onboarding, forms, error messages, tooltips, notifications, and product flows."
+        "q": "¿Pueden localizar cadenas de UI de producto?",
+        "a": "Sí. Podemos localizar y adaptar cadenas de UI, microcopy, onboarding, formularios, mensajes de error, tooltips, notificaciones y flujos de producto."
       },
       {
-        "q": "Can you support LatAm, US Hispanic, or Spain Spanish?",
-        "a": "Yes. Engagements can be scoped for LatAm, US Hispanic, Spain, neutral Spanish, or specific regional markets."
+        "q": "¿Pueden apoyar español de LatAm, de hispanos en EE. UU. o de España?",
+        "a": "Sí. Los engagements pueden definirse para LatAm, hispanos en EE. UU., España, español neutro o mercados regionales específicos."
       },
       {
-        "q": "Can you also validate the localized content before launch?",
-        "a": "Yes. Localization & Adaptation can be followed by Language Assurance to validate readiness, consistency, UX friction, regional fit, and launch risk."
+        "q": "¿También pueden validar el contenido localizado antes del lanzamiento?",
+        "a": "Sí. A Localización y Adaptación le puede seguir Language Assurance para validar la preparación, la consistencia, la fricción de UX, el ajuste regional y el riesgo de lanzamiento."
       }
     ]
   },
   "finalCta": {
-    "eyebrow": "NEXT STEP",
-    "headline": "Build Spanish your audience can understand, trust, and act on.",
-    "body": "Book a diagnostic call to review your content, product surface, audience, Spanish variant, timeline, and business goal. We’ll recommend the right Localization & Adaptation path: website localization, product UI localization, marketing adaptation, documentation localization, learning content localization, or localization review and repair.",
-    "pricingNote": "Localization & Adaptation engagements start from $2,500.",
-    "ctaPrimary": "Book a diagnostic call",
-    "ctaSecondary": "Request localization review"
+    "eyebrow": "SIGUIENTE PASO",
+    "headline": "Construye un español que tu audiencia pueda entender, en el que pueda confiar y sobre el que pueda actuar.",
+    "body": "Agenda una llamada de diagnóstico para revisar tu contenido, tu superficie de producto, tu audiencia, la variante de español, el plazo y el objetivo de negocio. Te recomendaremos el camino adecuado de Localización y Adaptación: localización de sitio web, localización de UI de producto, adaptación de marketing, localización de documentación, localización de contenido de aprendizaje o revisión y reparación de localización.",
+    "pricingNote": "Los engagements de Localización y Adaptación parten desde $2,500.",
+    "ctaPrimary": "Agendar una llamada de diagnóstico",
+    "ctaSecondary": "Solicitar revisión de localización"
   }
 }
