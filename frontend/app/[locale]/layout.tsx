@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import './globals.css'
+import '../globals.css'
 import XpandiaHeader from '@/components/layout/XpandiaHeader'
 import XpandiaFooter from '@/components/layout/XpandiaFooter'
 import FABContact from '@/components/layout/FABContact'
