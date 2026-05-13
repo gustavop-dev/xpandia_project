@@ -195,36 +195,54 @@ You are a Senior QA Automation Engineer expert in TypeScript, JavaScript, and Pl
 ### Core Principle
 NEVER hardcode user-facing strings. Every text must go through the translation system.
 
-### Setup
-```typescript
-// messages/es.json
+### Setup — Xpandia layout
+One JSON file per page namespace under `messages/<locale>/`. Add a new namespace by creating both `messages/en/<ns>.json` and `messages/es/<ns>.json` with the same key tree, then register it in `i18n/request.ts`'s `NAMESPACES` list.
+
+```jsonc
+// messages/en/products.json
 {
-  "common": { "addToCart": "Agregar al carrito", "search": "Buscar" },
-  "products": { "title": "Nuestros Productos", "empty": "No se encontraron productos" }
+  "metadata": { "title": "Products | Xpandia" },
+  "hero": { "h1": "Spanish-first products", "ctaPrimary": "Book a call" },
+  "empty": "No results"
+}
+// messages/es/products.json — same key tree
+{
+  "metadata": { "title": "Productos | Xpandia" },
+  "hero": { "h1": "Productos en español primero", "ctaPrimary": "Agenda una llamada" },
+  "empty": "Sin resultados"
 }
 ```
 
 ### Usage in Components
-```typescript
-import { useTranslations } from 'next-intl'
 
-export default function ProductsPage() {
+```typescript
+// Server component
+import { getTranslations, setRequestLocale } from 'next-intl/server'
+
+export default async function ProductsPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  setRequestLocale(locale)
+  const t = await getTranslations('products')
+  return <h1>{t('hero.h1')}</h1>
+}
+
+// Client component
+'use client'
+import { useTranslations } from 'next-intl'
+export function CTAButton() {
   const t = useTranslations('products')
-  return (
-    <div>
-      <h1>{t('title')}</h1>
-      <p>{t('price', { price: product.price })}</p>
-    </div>
-  )
+  return <button>{t('hero.ctaPrimary')}</button>
 }
 ```
 
+Use `@/i18n/navigation`'s `Link` / `useRouter` / `usePathname` (not `next/link` / `next/navigation`) anywhere a path is rendered or pushed — they handle the `/es` prefix automatically.
+
 ### Routing
-```
-app/[locale]/layout.tsx    ← wraps with NextIntlClientProvider
-app/[locale]/page.tsx      ← home per locale
-app/[locale]/products/page.tsx
-```
+- `localePrefix: 'as-needed'` (config in `i18n/routing.ts`) → English unprefixed, Spanish under `/es/…`.
+- All routes live under `app/[locale]/` so the locale param is always present.
+- `app/[locale]/layout.tsx` calls `setRequestLocale(locale)` and wraps in `NextIntlClientProvider`.
+- Middleware: `proxy.ts` (Next.js 16 middleware filename) wraps `createMiddleware(routing)`.
+- For SEO, every page's `generateMetadata` should call `localizedAlternates(path)` from `@/lib/seo/alternates` to emit `en`/`es` hreflang links.
 
 ### Rules
 - Every user-facing string must be translatable

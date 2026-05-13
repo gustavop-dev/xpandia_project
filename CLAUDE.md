@@ -21,6 +21,7 @@ These should be respected ALWAYS:
 - S2: Offer strategies to enhance performance or security.
 - S3: Recommend methods for improving readability or maintainability.
 - Recommend areas for further investigation
+3. i18n: user-facing strings live in `frontend/messages/<locale>/<namespace>.json` — never hardcode copy in components. Use `getTranslations` (server) / `useTranslations` (client). Adding a new page means creating a `messages/en/<ns>.json` + `messages/es/<ns>.json` with the same keys and registering the namespace in `frontend/i18n/request.ts`.
 
 ---
 
@@ -258,8 +259,9 @@ flowchart TD
 ## Directory Structure
 
 - Backend: `base_feature_app/` Django app, `base_feature_project/` Django project root
-- Frontend: `app/` (Next.js App Router), `components/`, `lib/`, `e2e/`
-- Current Xpandia routes: `/`, `/about`, `/contact`, `/blog`, `/blog/[slug]`, `/services`, `/services/language-assurance`, `/services/localization-adaptation`, `/services/applied-cultural-intelligence`. Legacy `/services/qa`, `/services/audit`, `/services/fractional` 308-redirect to `/services/language-assurance` (configured in `frontend/next.config.ts`).
+- Frontend: `app/[locale]/` (Next.js App Router under a locale segment), `components/`, `lib/`, `messages/<locale>/`, `i18n/`, `e2e/`
+- Current Xpandia routes: bilingual site under `app/[locale]/` with `next-intl` `localePrefix: 'as-needed'`. English is unprefixed (`/`, `/about`, `/contact`, `/blog`, `/blog/[slug]`, `/services`, `/services/language-assurance`, `/services/localization-adaptation`, `/services/applied-cultural-intelligence`); Spanish lives under `/es/…` (e.g. `/es/services/language-assurance`). The header EN|ES toggle switches locale by replacing the current pathname. Legacy `/services/qa`, `/services/audit`, `/services/fractional` 308-redirect to `/services/language-assurance` (configured in `frontend/next.config.ts`).
+- i18n wiring: locale config in `frontend/i18n/routing.ts` (+ `frontend/lib/i18n/config.ts` for the locale list and date helpers); request config in `frontend/i18n/request.ts`; middleware in `frontend/proxy.ts` (Next.js 16 middleware file); copy lives in `frontend/messages/<locale>/<namespace>.json`. Spanish copy is currently a draft pending client review.
 - Current backend surface: `/api/health/`, `/api/token/`, `/api/token/refresh/`, `/api/` auth endpoints, `/api/users/`, `/api/google-captcha/`, `/api/blog/`, `/api/contact/`
 
 ---
