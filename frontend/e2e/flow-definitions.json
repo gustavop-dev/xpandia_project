@@ -154,6 +154,14 @@
       "description": "Guest clicks the ES language toggle and the preference is stored in localStorage",
       "expectedSpecs": 1
     },
+    "i18n-locale-switch": {
+      "name": "Locale switch (EN ⇄ ES)",
+      "module": "navigation",
+      "roles": ["shared"],
+      "priority": "P2",
+      "description": "Guest toggles the header EN|ES switcher; URL gains/loses the /es prefix, content language changes, <html lang> updates",
+      "expectedSpecs": 1
+    },
     "footer-links-navigation": {
       "name": "Footer links navigation",
       "module": "navigation",

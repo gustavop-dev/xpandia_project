@@ -42,6 +42,7 @@ export const MOBILE_NAVIGATION_DRAWER = ['@flow:mobile-navigation-drawer', '@mod
 export const HEADER_SERVICES_DROPDOWN = ['@flow:header-services-dropdown', '@module:navigation', '@priority:P3'];
 export const FAB_CONTACT_BUTTON = ['@flow:fab-contact-button', '@module:navigation', '@priority:P3'];
 export const LANGUAGE_TOGGLE_PREFERENCE = ['@flow:language-toggle-preference', '@module:navigation', '@priority:P3'];
+export const I18N_LOCALE_SWITCH = ['@flow:i18n-locale-switch', '@module:navigation', '@priority:P2'];
 export const FOOTER_LINKS_NAVIGATION = ['@flow:footer-links-navigation', '@module:navigation', '@priority:P4'];
 
 // ── Blog ──
