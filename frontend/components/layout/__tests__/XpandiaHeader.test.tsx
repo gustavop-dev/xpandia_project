@@ -11,7 +11,6 @@ const mockUseRouter = useRouter as jest.Mock
 
 describe('XpandiaHeader', () => {
   beforeEach(() => {
-    localStorage.clear()
     mockUsePathname.mockReturnValue('/')
     mockUseRouter.mockReturnValue({ push: jest.fn(), replace: jest.fn(), refresh: jest.fn(), back: jest.fn() })
     Object.defineProperty(window, 'scrollY', { value: 0, writable: true })

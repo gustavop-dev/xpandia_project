@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
-import { Link } from '@/i18n/navigation'
 import { localizedAlternates } from '@/lib/seo/alternates'
 import ContactForm from '@/components/contact/ContactForm'
 
