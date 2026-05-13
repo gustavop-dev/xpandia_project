@@ -20,8 +20,5 @@
   },
   "detail": {
     "backToBlog": "← BACK TO BLOG"
-  },
-  "languageToggle": {
-    "ariaLabel": "Language"
   }
 }
