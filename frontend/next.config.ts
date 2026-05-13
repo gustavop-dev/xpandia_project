@@ -1,4 +1,7 @@
 import type { NextConfig } from 'next';
+import createNextIntlPlugin from 'next-intl/plugin';
+
+const withNextIntl = createNextIntlPlugin('./i18n/request.ts');
 
 const backendOrigin = (process.env.NEXT_PUBLIC_BACKEND_ORIGIN || 'http://localhost:8000').replace(/\/$/, '');
 let backendRemotePattern: { protocol: 'http' | 'https'; hostname: string; port?: string; pathname: string } | null = null;
@@ -64,8 +67,11 @@ const nextConfig: NextConfig = {
       { source: '/services/qa', destination: '/services/language-assurance', permanent: true },
       { source: '/services/audit', destination: '/services/language-assurance', permanent: true },
       { source: '/services/fractional', destination: '/services/language-assurance', permanent: true },
+      { source: '/es/services/qa', destination: '/es/services/language-assurance', permanent: true },
+      { source: '/es/services/audit', destination: '/es/services/language-assurance', permanent: true },
+      { source: '/es/services/fractional', destination: '/es/services/language-assurance', permanent: true },
     ];
   },
 };
 
-export default nextConfig;
+export default withNextIntl(nextConfig);
