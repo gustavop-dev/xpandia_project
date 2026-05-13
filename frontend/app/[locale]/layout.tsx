@@ -1,5 +1,10 @@
+// frontend/app/[locale]/layout.tsx
 import type { Metadata } from 'next'
+import { notFound } from 'next/navigation'
+import { NextIntlClientProvider, hasLocale } from 'next-intl'
+import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server'
 import '../globals.css'
+import { routing } from '@/i18n/routing'
 import XpandiaHeader from '@/components/layout/XpandiaHeader'
 import XpandiaFooter from '@/components/layout/XpandiaFooter'
 import FABContact from '@/components/layout/FABContact'
@@ -8,29 +13,48 @@ import SiteAnimations from '@/components/animations/SiteAnimations'
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://xpandia.global'
 
-export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
-  title: 'Xpandia | Spanish Language Assurance, Localization & Cultural Intelligence',
-  description: 'Xpandia helps AI, SaaS, EdTech, and digital product teams validate, localize, and culturally adapt Spanish experiences for Hispanic and Spanish-speaking audiences.',
-  openGraph: {
-    title: 'Xpandia | Spanish that works for real users',
-    description: 'Spanish language assurance, localization, and applied cultural intelligence for AI, SaaS, EdTech, and digital product teams.',
-    type: 'website',
-    url: siteUrl,
-    siteName: 'Xpandia',
-    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Xpandia — Spanish that works for real users.' }],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Xpandia | Spanish that works for real users',
-    description: 'Spanish language assurance, localization, and applied cultural intelligence for AI, SaaS, EdTech, and digital product teams.',
-    images: ['/og-image.png'],
-  },
+export function generateStaticParams() {
+  return routing.locales.map(locale => ({ locale }))
 }
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params
+  const t = await getTranslations({ locale, namespace: 'common.metadata' })
+  return {
+    metadataBase: new URL(siteUrl),
+    title: t('title'),
+    description: t('description'),
+    openGraph: {
+      title: t('ogTitle'),
+      description: t('ogDescription'),
+      type: 'website',
+      url: locale === routing.defaultLocale ? siteUrl : `${siteUrl}/${locale}`,
+      siteName: 'Xpandia',
+      images: [{ url: '/og-image.png', width: 1200, height: 630, alt: t('ogTitle') }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: t('ogTitle'),
+      description: t('ogDescription'),
+      images: ['/og-image.png'],
+    },
+  }
+}
+
+export default async function LocaleLayout({
+  children,
+  params,
+}: {
+  children: React.ReactNode
+  params: Promise<{ locale: string }>
+}) {
+  const { locale } = await params
+  if (!hasLocale(routing.locales, locale)) notFound()
+  setRequestLocale(locale)
+  const messages = await getMessages()
+
   return (
-    <html lang="en">
+    <html lang={locale}>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -40,13 +64,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body suppressHydrationWarning>
-        <Providers>
-          <XpandiaHeader />
-          {children}
-          <XpandiaFooter />
-          <FABContact />
-          <SiteAnimations />
-        </Providers>
+        <NextIntlClientProvider messages={messages}>
+          <Providers>
+            <XpandiaHeader />
+            {children}
+            <XpandiaFooter />
+            <FABContact />
+            <SiteAnimations />
+          </Providers>
+        </NextIntlClientProvider>
       </body>
     </html>
   )
