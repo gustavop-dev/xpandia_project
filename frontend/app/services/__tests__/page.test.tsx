@@ -5,7 +5,9 @@ import ServicesPage from '../page'
 describe('ServicesPage', () => {
   it('renders the hero heading', () => {
     render(<ServicesPage />)
-    expect(screen.getByRole('heading', { level: 1 })).toBeInTheDocument()
+    expect(
+      screen.getByRole('heading', { level: 1, name: 'The Spanish expertise your product needs.' }),
+    ).toBeInTheDocument()
   })
 
   it('renders the SERVICES eyebrow label', () => {
@@ -13,24 +15,29 @@ describe('ServicesPage', () => {
     expect(screen.getByText('SERVICES')).toBeInTheDocument()
   })
 
-  it('renders a link to the AI Spanish QA Sprint service', () => {
+  it('links Explore Language Assurance to the language-assurance route', () => {
     render(<ServicesPage />)
-    expect(screen.getByRole('link', { name: /AI Spanish QA Sprint/i })).toHaveAttribute('href', '/services/qa')
+    const links = screen.getAllByRole('link', { name: /Explore Language Assurance/i })
+    expect(links[0]).toHaveAttribute('href', '/services/language-assurance')
   })
 
-  it('renders a link to the Spanish Launch Readiness Audit service', () => {
+  it('links Explore Localization & Adaptation to the localization-adaptation route', () => {
     render(<ServicesPage />)
-    expect(screen.getByRole('link', { name: /Spanish Launch Readiness Audit/i })).toHaveAttribute('href', '/services/audit')
+    const links = screen.getAllByRole('link', { name: /Explore Localization & Adaptation/i })
+    expect(links[0]).toHaveAttribute('href', '/services/localization-adaptation')
   })
 
-  it('renders a link to the Fractional Language Quality Lead service', () => {
+  it('links Explore Applied Cultural Intelligence to the applied-cultural-intelligence route', () => {
     render(<ServicesPage />)
-    expect(screen.getByRole('link', { name: /Fractional Language Quality Lead/i })).toHaveAttribute('href', '/services/fractional')
+    const links = screen.getAllByRole('link', { name: /Explore Applied Cultural Intelligence/i })
+    expect(links[0]).toHaveAttribute('href', '/services/applied-cultural-intelligence')
   })
 
   it('renders the comparison section heading', () => {
     render(<ServicesPage />)
-    expect(screen.getByText('Which engagement fits?')).toBeInTheDocument()
+    expect(
+      screen.getByText('The difference is simple: validate, adapt, or understand.'),
+    ).toBeInTheDocument()
   })
 
   it('renders a CTA link to book a diagnostic call', () => {

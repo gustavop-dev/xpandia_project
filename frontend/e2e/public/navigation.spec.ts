@@ -17,7 +17,7 @@ test.describe('Navigation', () => {
 
     await page.goto('/about', { waitUntil: 'domcontentloaded' });
     await expect(page).toHaveURL(/.*about/);
-    await expect(page.getByRole('heading', { level: 1, name: /Built by a senior operator/i })).toBeVisible();
+    await expect(page.getByRole('heading', { level: 1, name: /Spanish expertise for companies building/i })).toBeVisible();
   });
 
   test('should have working header navigation', { tag: [...NAVIGATION_HEADER] }, async ({ page }) => {
@@ -39,7 +39,7 @@ test.describe('Navigation', () => {
     const footer = page.locator('footer');
     await expect(footer).toBeVisible();
     await expect(footer.getByRole('link', { name: 'About' })).toBeVisible();
-    await expect(footer.getByText('hello@xpandia.co')).toBeVisible();
+    await expect(footer.getByText('hello@xpandia.global')).toBeVisible();
   });
 
   test('should maintain navigation across pages', { tag: [...NAVIGATION_BETWEEN_PAGES] }, async ({ page }) => {

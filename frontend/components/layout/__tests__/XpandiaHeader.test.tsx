@@ -23,16 +23,40 @@ describe('XpandiaHeader', () => {
     expect(screen.getByAltText('Xpandia')).toBeInTheDocument()
   })
 
-  it('renders the Home navigation link', () => {
+  it('links the logo to the home route', () => {
     render(<XpandiaHeader />)
-    const homeLinks = screen.getAllByRole('link', { name: 'Home' })
-    expect(homeLinks[0]).toHaveAttribute('href', '/')
+    expect(screen.getByRole('link', { name: 'Xpandia' })).toHaveAttribute('href', '/')
+  })
+
+  it('renders the Services navigation link', () => {
+    render(<XpandiaHeader />)
+    const servicesLinks = screen.getAllByRole('link', { name: 'Services' })
+    const desktopServices = servicesLinks.find(l => l.closest('nav'))
+    expect(desktopServices).toHaveAttribute('href', '/services')
+  })
+
+  it('renders the Blog navigation link', () => {
+    render(<XpandiaHeader />)
+    const blogLinks = screen.getAllByRole('link', { name: 'Blog' })
+    expect(blogLinks[0]).toHaveAttribute('href', '/blog')
   })
 
   it('renders the About navigation link', () => {
     render(<XpandiaHeader />)
     const aboutLinks = screen.getAllByRole('link', { name: 'About' })
     expect(aboutLinks[0]).toHaveAttribute('href', '/about')
+  })
+
+  it('renders the Contact navigation link', () => {
+    render(<XpandiaHeader />)
+    const contactLinks = screen.getAllByRole('link', { name: 'Contact' })
+    expect(contactLinks[0]).toHaveAttribute('href', '/contact')
+  })
+
+  it('renders the Language Assurance link in the services dropdown', () => {
+    render(<XpandiaHeader />)
+    const links = screen.getAllByRole('link', { name: /language assurance/i })
+    expect(links[0]).toHaveAttribute('href', '/services/language-assurance')
   })
 
   it('renders the CTA link to the contact page', () => {
@@ -80,6 +104,12 @@ describe('XpandiaHeader', () => {
     expect(aside).toHaveAttribute('aria-hidden', 'false')
   })
 
+  it('renders a Home link inside the mobile drawer', () => {
+    render(<XpandiaHeader />)
+    const homeLinks = screen.getAllByRole('link', { name: 'Home', hidden: true })
+    expect(homeLinks[0]).toHaveAttribute('href', '/')
+  })
+
   it('reads the language preference from localStorage on mount', () => {
     localStorage.setItem('xpandia-lang', 'es')
     render(<XpandiaHeader />)
@@ -111,16 +141,10 @@ describe('XpandiaHeader', () => {
     expect(screen.getByRole('banner')).toHaveClass('border-ink-150')
   })
 
-  it('marks the Home link as active on the home route', () => {
-    render(<XpandiaHeader />)
-    const homeLinks = screen.getAllByRole('link', { name: 'Home' })
-    expect(homeLinks[0]).toHaveClass('nav-active')
-  })
-
   it('marks the Services link as active on a services sub-route', () => {
-    mockUsePathname.mockReturnValue('/services/qa')
+    mockUsePathname.mockReturnValue('/services/language-assurance')
     render(<XpandiaHeader />)
-    const servicesLinks = screen.getAllByRole('link', { name: /services/i })
+    const servicesLinks = screen.getAllByRole('link', { name: 'Services' })
     const desktopServicesLink = servicesLinks.find(l => l.closest('nav'))
     expect(desktopServicesLink).toHaveClass('nav-active')
   })
@@ -133,11 +157,12 @@ describe('XpandiaHeader', () => {
     expect(desktopAboutLink).toHaveClass('nav-active')
   })
 
-  it('does not mark any nav link as active on an unrecognised route', () => {
+  it('does not mark the Services link as active on an unrecognised route', () => {
     mockUsePathname.mockReturnValue('/unknown')
     render(<XpandiaHeader />)
-    const homeLinks = screen.getAllByRole('link', { name: 'Home' })
-    expect(homeLinks[0]).not.toHaveClass('nav-active')
+    const servicesLinks = screen.getAllByRole('link', { name: 'Services' })
+    const desktopServicesLink = servicesLinks.find(l => l.closest('nav'))
+    expect(desktopServicesLink).not.toHaveClass('nav-active')
   })
 
   it('renders correctly on the contact route', () => {

@@ -59,6 +59,13 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  async redirects() {
+    return [
+      { source: '/services/qa', destination: '/services/language-assurance', permanent: true },
+      { source: '/services/audit', destination: '/services/language-assurance', permanent: true },
+      { source: '/services/fractional', destination: '/services/language-assurance', permanent: true },
+    ];
+  },
 };
 
 export default nextConfig;

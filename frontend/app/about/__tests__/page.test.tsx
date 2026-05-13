@@ -5,7 +5,12 @@ import AboutPage from '../page'
 describe('AboutPage', () => {
   it('renders the hero heading', () => {
     render(<AboutPage />)
-    expect(screen.getByRole('heading', { level: 1 })).toBeInTheDocument()
+    expect(
+      screen.getByRole('heading', {
+        level: 1,
+        name: /Spanish expertise for companies building across languages, cultures, and markets\./i,
+      }),
+    ).toBeInTheDocument()
   })
 
   it('renders the ABOUT XPANDIA eyebrow label', () => {
@@ -13,38 +18,44 @@ describe('AboutPage', () => {
     expect(screen.getByText('ABOUT XPANDIA')).toBeInTheDocument()
   })
 
+  it('renders the WHO WE ARE positioning eyebrow', () => {
+    render(<AboutPage />)
+    expect(screen.getByText('WHO WE ARE')).toBeInTheDocument()
+  })
+
+  it('renders the WHY XPANDIA differentiators headline', () => {
+    render(<AboutPage />)
+    expect(screen.getByText('Spanish quality needs more than a fluent speaker.')).toBeInTheDocument()
+  })
+
+  it('renders the "Senior Spanish judgment" differentiator card', () => {
+    render(<AboutPage />)
+    expect(screen.getByText('Senior Spanish judgment')).toBeInTheDocument()
+  })
+
+  it('renders the founder name', () => {
+    render(<AboutPage />)
+    expect(screen.getByText('Nestor Solano')).toBeInTheDocument()
+  })
+
   it('renders the founder portrait image', () => {
     render(<AboutPage />)
-    expect(screen.getByAltText('Founder portrait')).toBeInTheDocument()
+    expect(screen.getByAltText('Nestor Solano portrait')).toBeInTheDocument()
   })
 
-  it('renders the TRACK RECORD section label', () => {
+  it('renders the STARTING POINTS pricing eyebrow', () => {
     render(<AboutPage />)
-    expect(screen.getByText('TRACK RECORD')).toBeInTheDocument()
+    expect(screen.getByText('STARTING POINTS')).toBeInTheDocument()
   })
 
-  it('renders the years of experience statistic', () => {
+  it('renders the Diagnostics starting point card', () => {
     render(<AboutPage />)
-    expect(screen.getByText('YEARS LEADING LOCALIZATION PROGRAMS')).toBeInTheDocument()
-  })
-
-  it('renders the principles section heading', () => {
-    render(<AboutPage />)
-    expect(screen.getByText('How we operate.')).toBeInTheDocument()
-  })
-
-  it('renders the "Evidence over opinion" principle', () => {
-    render(<AboutPage />)
-    expect(screen.getByText('Evidence over opinion.')).toBeInTheDocument()
-  })
-
-  it('renders the "Senior-led, end-to-end" principle', () => {
-    render(<AboutPage />)
-    expect(screen.getByText('Senior-led, end-to-end.')).toBeInTheDocument()
+    expect(screen.getByText('Diagnostics')).toBeInTheDocument()
   })
 
   it('renders a CTA link to book a diagnostic call', () => {
     render(<AboutPage />)
-    expect(screen.getByRole('link', { name: /book a diagnostic call/i })).toHaveAttribute('href', '/contact')
+    const links = screen.getAllByRole('link', { name: /book a diagnostic call/i })
+    expect(links[0]).toHaveAttribute('href', '/contact')
   })
 })

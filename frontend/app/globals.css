@@ -1,23 +1,27 @@
 @import "tailwindcss";
 
 @theme {
-  /* Colors */
-  --color-ink-900: #0F1419;
-  --color-ink-800: #1A1F24;
-  --color-ink-700: #2A3036;
-  --color-ink-600: #4A5259;
-  --color-ink-500: #6B737A;
-  --color-ink-400: #8E959B;
-  --color-ink-300: #B8BDC2;
-  --color-ink-200: #D9DCDF;
-  --color-ink-150: #E8EAEC;
-  --color-ink-100: #F1F2F3;
-  --color-ink-50:  #F8F8F7;
-  --color-paper:   #FBFAF8;
-  --color-accent:       #2B8CC4;
-  --color-accent-hover: #1F7AB0;
-  --color-accent-soft:  #E8F2F9;
-  --color-accent-teal:  #3AA3BE;
+  /* Colors — Xpandia palette (from logo) */
+  --color-ink-900: #111827;  /* main text / dark surfaces */
+  --color-ink-800: #1E2530;
+  --color-ink-700: #374151;
+  --color-ink-600: #4B5563;  /* secondary text */
+  --color-ink-500: #6B7280;
+  --color-ink-400: #9CA3AF;
+  --color-ink-300: #B8C0C9;
+  --color-ink-200: #D9E4EA;  /* strong border */
+  --color-ink-150: #E6EDF2;  /* soft border / rules */
+  --color-ink-100: #F1F5F8;
+  --color-ink-50:  #F6FAFC;  /* alt soft background */
+  --color-paper:   #FFFFFF;
+  --color-graphite: #231F20;
+  --color-surface-card: #F8FBFD;
+  --color-primary:       #1C75BC;  /* primary blue — CTAs */
+  --color-primary-hover: #155F9A;
+  --color-accent:        #1FB5E7;  /* cyan accent */
+  --color-accent-hover:  #14A0D1;
+  --color-accent-soft:   #E7F6FC;
+  --color-accent-teal:   #1FB5E7;
 
   /* Fonts */
   --font-display: "Outfit", "Inter Tight", system-ui, sans-serif;
@@ -40,40 +44,45 @@
     position: absolute;
     left: 0; right: 0; bottom: 2px;
     height: 1px;
-    background: #2B8CC4;
+    background: var(--accent);
   }
 }
 
 /* ============================================================
    XPANDIA — Design System
    Outfit (display) + Inter (body)
-   Monochromatic + controlled blue accent
+   Light, premium, consultative — primary blue + cyan accent
    ============================================================ */
 
 :root {
-  --ink-900: #0F1419;
-  --ink-800: #1A1F24;
-  --ink-700: #2A3036;
-  --ink-600: #4A5259;
-  --ink-500: #6B737A;
-  --ink-400: #8E959B;
-  --ink-300: #B8BDC2;
-  --ink-200: #D9DCDF;
-  --ink-150: #E8EAEC;
-  --ink-100: #F1F2F3;
-  --ink-50:  #F8F8F7;
-  --paper:   #FBFAF8;
+  --ink-900: #111827;   /* main text / dark surfaces */
+  --ink-800: #1E2530;
+  --ink-700: #374151;
+  --ink-600: #4B5563;   /* secondary text */
+  --ink-500: #6B7280;
+  --ink-400: #9CA3AF;
+  --ink-300: #B8C0C9;
+  --ink-200: #D9E4EA;   /* strong border */
+  --ink-150: #E6EDF2;   /* soft border / rules */
+  --ink-100: #F1F5F8;
+  --ink-50:  #F6FAFC;   /* alt soft background */
+  --paper:   #FFFFFF;
   --white:   #FFFFFF;
+  --graphite: #231F20;
+  --surface-card: #F8FBFD;
 
-  --accent:       #2B8CC4;
-  --accent-hover: #1F7AB0;
-  --accent-soft:  #E8F2F9;
-  --accent-teal:  #3AA3BE;
+  --primary:       #1C75BC;   /* primary blue — CTAs */
+  --primary-hover: #155F9A;
+  --accent:        #1FB5E7;   /* cyan accent — underlines, small details */
+  --accent-hover:  #14A0D1;
+  --accent-soft:   #E7F6FC;
+  --accent-teal:   #1FB5E7;
 
   --fg: var(--ink-900);
   --fg-muted: var(--ink-600);
   --fg-subtle: var(--ink-500);
   --bg: var(--paper);
+  --bg-alt: var(--ink-50);
   --bg-elev: var(--white);
   --rule: var(--ink-150);
   --rule-strong: var(--ink-200);
@@ -239,12 +248,12 @@ h4, .h4 {
   transition: all .18s var(--ease);
   white-space: nowrap;
 }
-.btn-primary { background: var(--ink-900); color: var(--paper); }
-.btn-primary:hover { background: var(--ink-800); transform: translateY(-1px); }
-.btn-primary .btn-arrow { color: var(--accent-teal); }
+.btn-primary { background: var(--primary); color: #fff; }
+.btn-primary:hover { background: var(--primary-hover); transform: translateY(-1px); }
+.btn-primary .btn-arrow { color: rgba(255,255,255,0.85); }
 .btn-secondary { background: transparent; color: var(--ink-900); border-color: var(--rule-strong); }
-.btn-secondary:hover { border-color: var(--ink-900); }
-.btn-ghost { padding: 12px 0; background: transparent; color: var(--ink-900); border-radius: 0; }
+.btn-secondary:hover { border-color: var(--primary); color: var(--primary); }
+.btn-ghost { padding: 12px 0; background: transparent; color: var(--primary); border-radius: 0; }
 .btn-small { padding: 10px 16px; font-size: 13.5px; }
 
 .btn-arrow {
@@ -287,19 +296,14 @@ h4, .h4 {
 
 .hero-display .accent-underline,
 .accent-underline {
-  position: relative;
-  display: inline-block;
-  white-space: nowrap;
-}
-.hero-display .accent-underline::after,
-.accent-underline::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: -0.18em;
-  bottom: 0.06em;
-  height: 0.08em;
-  background: var(--accent);
+  /* Clean underline accent that follows the text flow (wraps with the headline)
+     and skips descenders, instead of an absolutely-positioned bar that struck
+     through letters on multi-line phrases. */
+  text-decoration-line: underline;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 0.07em;
+  text-underline-offset: 0.12em;
+  text-decoration-skip-ink: auto;
 }
 
 .hero-sub {
@@ -325,7 +329,7 @@ h4, .h4 {
   overflow: hidden;
   min-height: 380px;
 }
-.service-card:hover { border-color: var(--ink-900); transform: translateY(-2px); }
+.service-card:hover { border-color: var(--primary); transform: translateY(-2px); }
 .service-card .service-num { font-family: var(--font-mono); font-size: 12px; color: var(--fg-subtle); letter-spacing: 0.08em; }
 .service-card .service-title { font-family: var(--font-display); font-size: 26px; font-weight: 500; letter-spacing: -0.015em; line-height: 1.1; margin: 16px 0 12px; }
 .service-card .service-desc { color: var(--fg-muted); margin-bottom: 24px; font-size: var(--fs-body); line-height: 1.5; }
@@ -340,7 +344,7 @@ h4, .h4 {
 .scorecard-row { display: grid; grid-template-columns: 1.4fr 2.6fr 0.7fr; align-items: center; padding: 10px 0; font-size: 12px; gap: 16px; }
 .scorecard-label { color: var(--ink-600); letter-spacing: 0.02em; }
 .scorecard-bar { height: 6px; background: var(--ink-100); border-radius: 999px; overflow: hidden; }
-.scorecard-bar > span { display: block; height: 100%; background: var(--ink-900); border-radius: 999px; }
+.scorecard-bar > span { display: block; height: 100%; background: var(--primary); border-radius: 999px; }
 .scorecard-bar.accent > span { background: var(--accent); }
 .scorecard-value { text-align: right; color: var(--ink-900); font-weight: 500; }
 
@@ -358,8 +362,8 @@ h4, .h4 {
 .checklist { list-style: none; padding: 0; margin: 0; }
 .checklist li { padding: 14px 0; border-bottom: 1px solid var(--rule); display: flex; align-items: flex-start; gap: 16px; font-size: var(--fs-body); }
 .checklist li:last-child { border-bottom: 0; }
-.checklist .chk { flex-shrink: 0; width: 18px; height: 18px; border-radius: 50%; border: 1px solid var(--ink-900); margin-top: 3px; position: relative; }
-.checklist .chk::after { content: ""; position: absolute; left: 50%; top: 46%; width: 4px; height: 7px; border-right: 1.5px solid var(--ink-900); border-bottom: 1.5px solid var(--ink-900); transform: translate(-50%, -50%) rotate(45deg); }
+.checklist .chk { flex-shrink: 0; width: 18px; height: 18px; border-radius: 50%; border: 1px solid var(--primary); margin-top: 3px; position: relative; }
+.checklist .chk::after { content: ""; position: absolute; left: 50%; top: 46%; width: 4px; height: 7px; border-right: 1.5px solid var(--primary); border-bottom: 1.5px solid var(--primary); transform: translate(-50%, -50%) rotate(45deg); }
 .checklist .chk-x { flex-shrink: 0; width: 18px; height: 18px; border-radius: 50%; border: 1px solid var(--ink-400); margin-top: 3px; position: relative; }
 .checklist .chk-x::before, .checklist .chk-x::after { content: ""; position: absolute; left: 50%; top: 50%; width: 8px; height: 1.5px; background: var(--ink-400); transform-origin: center; }
 .checklist .chk-x::before { transform: translate(-50%, -50%) rotate(45deg); }
@@ -390,7 +394,7 @@ h4, .h4 {
 }
 .form-field textarea { min-height: 100px; resize: vertical; }
 .form-field input:focus,
-.form-field textarea:focus { border-color: var(--ink-900); }
+.form-field textarea:focus { border-color: var(--primary); }
 
 .radio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 .radio-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
@@ -405,7 +409,7 @@ h4, .h4 {
   background: var(--white);
   font-family: var(--font-body);
 }
-.radio-tile.on { border-color: var(--ink-900); background: var(--ink-900); color: var(--paper); }
+.radio-tile.on { border-color: var(--primary); background: var(--primary); color: #fff; }
 
 .newsletter-form { display: flex; gap: 10px; max-width: 560px; }
 

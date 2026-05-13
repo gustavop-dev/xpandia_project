@@ -6,9 +6,26 @@ import FABContact from '@/components/layout/FABContact'
 import Providers from './providers'
 import SiteAnimations from '@/components/animations/SiteAnimations'
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://xpandia.global'
+
 export const metadata: Metadata = {
-  title: 'Xpandia — Spanish that works. Quality you can measure.',
-  description: 'Expert Spanish/LatAm language assurance for AI, SaaS and EdTech teams.',
+  metadataBase: new URL(siteUrl),
+  title: 'Xpandia | Spanish Language Assurance, Localization & Cultural Intelligence',
+  description: 'Xpandia helps AI, SaaS, EdTech, and digital product teams validate, localize, and culturally adapt Spanish experiences for Hispanic and Spanish-speaking audiences.',
+  openGraph: {
+    title: 'Xpandia | Spanish that works for real users',
+    description: 'Spanish language assurance, localization, and applied cultural intelligence for AI, SaaS, EdTech, and digital product teams.',
+    type: 'website',
+    url: siteUrl,
+    siteName: 'Xpandia',
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Xpandia — Spanish that works for real users.' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Xpandia | Spanish that works for real users',
+    description: 'Spanish language assurance, localization, and applied cultural intelligence for AI, SaaS, EdTech, and digital product teams.',
+    images: ['/og-image.png'],
+  },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

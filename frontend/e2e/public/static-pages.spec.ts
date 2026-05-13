@@ -7,7 +7,7 @@ test.describe('Static pages', () => {
     await page.goto('/about')
     await waitForPageLoad(page)
 
-    await expect(page.getByRole('heading', { level: 1, name: /Built by a senior operator/i })).toBeVisible()
+    await expect(page.getByRole('heading', { level: 1, name: /Spanish expertise for companies building/i })).toBeVisible()
     await expect(page.getByRole('link', { name: /Book a diagnostic call/i }).first()).toBeVisible()
   })
 
@@ -15,8 +15,8 @@ test.describe('Static pages', () => {
     await page.goto('/contact')
     await waitForPageLoad(page)
 
-    await expect(page.getByRole('heading', { level: 1, name: /Tell us where your Spanish/i })).toBeVisible()
-    await expect(page.getByRole('button', { name: /Request diagnostic call/i })).toBeVisible()
-    await expect(page.locator('aside').getByText('hello@xpandia.co')).toBeVisible()
+    await expect(page.getByRole('heading', { level: 1, name: /Tell us what your team is building/i })).toBeVisible()
+    await expect(page.getByRole('button', { name: /Send request/i })).toBeVisible()
+    await expect(page.getByText('hello@xpandia.global').first()).toBeVisible()
   })
 })

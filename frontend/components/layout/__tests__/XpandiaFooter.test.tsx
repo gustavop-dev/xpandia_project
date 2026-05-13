@@ -10,22 +10,22 @@ describe('XpandiaFooter', () => {
 
   it('renders the tagline text', () => {
     render(<XpandiaFooter />)
-    expect(screen.getByText('Spanish that works. Quality you can measure.')).toBeInTheDocument()
+    expect(screen.getByText('Spanish that works for real users.')).toBeInTheDocument()
   })
 
-  it('renders a link to the AI Spanish QA Sprint page', () => {
+  it('renders a link to the Language Assurance page', () => {
     render(<XpandiaFooter />)
-    expect(screen.getByRole('link', { name: 'AI Spanish QA Sprint' })).toHaveAttribute('href', '/services/qa')
+    expect(screen.getByRole('link', { name: 'Language Assurance' })).toHaveAttribute('href', '/services/language-assurance')
   })
 
-  it('renders a link to the Launch Readiness Audit page', () => {
+  it('renders a link to the Localization & Adaptation page', () => {
     render(<XpandiaFooter />)
-    expect(screen.getByRole('link', { name: 'Launch Readiness Audit' })).toHaveAttribute('href', '/services/audit')
+    expect(screen.getByRole('link', { name: 'Localization & Adaptation' })).toHaveAttribute('href', '/services/localization-adaptation')
   })
 
-  it('renders a link to the Fractional Lead page', () => {
+  it('renders a link to the Applied Cultural Intelligence page', () => {
     render(<XpandiaFooter />)
-    expect(screen.getByRole('link', { name: 'Fractional Lead' })).toHaveAttribute('href', '/services/fractional')
+    expect(screen.getByRole('link', { name: 'Applied Cultural Intelligence' })).toHaveAttribute('href', '/services/applied-cultural-intelligence')
   })
 
   it('renders a link to the About page', () => {
@@ -39,13 +39,13 @@ describe('XpandiaFooter', () => {
     expect(contactLinks[0]).toHaveAttribute('href', '/contact')
   })
 
-  it('renders the email link to hello@xpandia.co', () => {
+  it('renders the email link to hello@xpandia.global', () => {
     render(<XpandiaFooter />)
-    expect(screen.getByRole('link', { name: 'hello@xpandia.co' })).toHaveAttribute('href', 'mailto:hello@xpandia.co')
+    expect(screen.getByRole('link', { name: 'hello@xpandia.global' })).toHaveAttribute('href', 'mailto:hello@xpandia.global')
   })
 
   it('renders the copyright notice', () => {
     render(<XpandiaFooter />)
-    expect(screen.getByText(/© 2026 XPANDIA/)).toBeInTheDocument()
+    expect(screen.getByText(/© 2026 Xpandia/)).toBeInTheDocument()
   })
 })

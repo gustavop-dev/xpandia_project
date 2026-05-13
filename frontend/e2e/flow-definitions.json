@@ -42,28 +42,28 @@
       "description": "Guest visits /services and sees the three engagement options",
       "expectedSpecs": 1
     },
-    "services-qa": {
-      "name": "AI Spanish QA Sprint",
+    "services-language-assurance": {
+      "name": "Language Assurance",
       "module": "services",
       "roles": ["shared"],
       "priority": "P2",
-      "description": "Guest visits /services/qa and sees the QA sprint service detail",
+      "description": "Guest visits /services/language-assurance and sees the Language Assurance service detail",
       "expectedSpecs": 1
     },
-    "services-audit": {
-      "name": "Launch Readiness Audit",
+    "services-localization-adaptation": {
+      "name": "Localization & Adaptation",
       "module": "services",
       "roles": ["shared"],
       "priority": "P2",
-      "description": "Guest visits /services/audit and sees the audit service detail",
+      "description": "Guest visits /services/localization-adaptation and sees the Localization & Adaptation service detail",
       "expectedSpecs": 1
     },
-    "services-fractional": {
-      "name": "Fractional Lead",
+    "services-applied-cultural-intelligence": {
+      "name": "Applied Cultural Intelligence",
       "module": "services",
       "roles": ["shared"],
       "priority": "P2",
-      "description": "Guest visits /services/fractional and sees the fractional lead service detail",
+      "description": "Guest visits /services/applied-cultural-intelligence and sees the Applied Cultural Intelligence service detail",
       "expectedSpecs": 1
     },
     "contact-page": {

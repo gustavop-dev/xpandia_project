@@ -18,9 +18,9 @@ export const NAVIGATION_FOOTER = ['@flow:navigation-footer', '@module:navigation
 
 // ── Services ──
 export const SERVICES_OVERVIEW = ['@flow:services-overview', '@module:services', '@priority:P2'];
-export const SERVICES_QA = ['@flow:services-qa', '@module:services', '@priority:P2'];
-export const SERVICES_AUDIT = ['@flow:services-audit', '@module:services', '@priority:P2'];
-export const SERVICES_FRACTIONAL = ['@flow:services-fractional', '@module:services', '@priority:P2'];
+export const SERVICES_LANGUAGE_ASSURANCE = ['@flow:services-language-assurance', '@module:services', '@priority:P2'];
+export const SERVICES_LOCALIZATION_ADAPTATION = ['@flow:services-localization-adaptation', '@module:services', '@priority:P2'];
+export const SERVICES_APPLIED_CULTURAL_INTELLIGENCE = ['@flow:services-applied-cultural-intelligence', '@module:services', '@priority:P2'];
 
 // ── Static ──
 export const CONTACT_PAGE = ['@flow:contact-page', '@module:static', '@priority:P2'];

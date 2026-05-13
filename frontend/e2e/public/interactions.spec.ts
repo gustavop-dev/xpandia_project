@@ -22,17 +22,17 @@ test.describe('Contact form', () => {
       await waitForPageLoad(page)
 
       // Radio tiles use role="button" (no native <input type="radio">)
-      await page.getByRole('button', { name: 'AI Spanish QA Sprint' }).click()
-      await page.getByRole('button', { name: '50–150' }).click()
+      await page.getByRole('button', { name: 'Language Assurance' }).click()
+      await page.getByRole('button', { name: 'LatAm' }).click()
 
       // Labels are not linked to inputs via for/id — use placeholder instead
       await page.getByPlaceholder('Jane Doe').fill('Jane Doe')
-      await page.getByPlaceholder('VP Product').fill('VP Product')
+      await page.getByPlaceholder(/VP Product/).fill('VP Product')
       await page.getByPlaceholder('jane@company.com').fill('jane@company.com')
       await page.getByPlaceholder('Company Inc.').fill('Acme Inc.')
       await page.getByPlaceholder(/e\.g\., We launched/).fill('We need a quality review of our Spanish AI outputs.')
 
-      await page.getByRole('button', { name: /Request diagnostic call/i }).click()
+      await page.getByRole('button', { name: /Send request/i }).click()
 
       await expect(page.getByText(/Request received/i)).toBeVisible()
     }
@@ -50,7 +50,7 @@ test.describe('CTA navigation', () => {
       await page.getByRole('link', { name: /Book a diagnostic call/i }).first().click()
 
       await expect(page).toHaveURL(/\/contact/)
-      await expect(page.getByRole('heading', { level: 1, name: /Tell us where your Spanish/i })).toBeVisible()
+      await expect(page.getByRole('heading', { level: 1, name: /Tell us what your team is building/i })).toBeVisible()
     }
   )
 
@@ -58,7 +58,7 @@ test.describe('CTA navigation', () => {
     'clicking the service detail CTA navigates to /contact',
     { tag: [...CTA_SERVICE_DETAIL_TO_CONTACT] },
     async ({ page }) => {
-      await page.goto('/services/qa')
+      await page.goto('/services/language-assurance')
       await waitForPageLoad(page)
 
       // Scope to .hero-ctas to avoid matching header dropdown or second CTA on page
@@ -83,10 +83,10 @@ test.describe('Services navigation', () => {
       await page.goto('/services')
       await waitForPageLoad(page)
 
-      await page.getByRole('link', { name: /AI Spanish QA Sprint/i }).first().click()
+      await page.getByRole('link', { name: /Explore Language Assurance/i }).first().click()
 
-      await expect(page).toHaveURL(/\/services\/qa/)
-      await expect(page.getByRole('heading', { level: 1, name: /Validate your AI in Spanish/i })).toBeVisible()
+      await expect(page).toHaveURL(/\/services\/language-assurance/)
+      await expect(page.getByRole('heading', { level: 1, name: /Validate Spanish before your users do/i })).toBeVisible()
     }
   )
 
@@ -94,7 +94,7 @@ test.describe('Services navigation', () => {
     'clicking the breadcrumb on a service detail page returns to /services',
     { tag: [...BREADCRUMB_BACK_TO_SERVICES] },
     async ({ page }) => {
-      await page.goto('/services/qa')
+      await page.goto('/services/language-assurance')
       await waitForPageLoad(page)
 
       // Use exact text with ← char to avoid matching "All services" in the hidden header dropdown
@@ -106,7 +106,7 @@ test.describe('Services navigation', () => {
         breadcrumb.click(),
       ])
 
-      await expect(page.getByRole('heading', { level: 1, name: /Three engagements/i })).toBeVisible()
+      await expect(page.getByRole('heading', { level: 1, name: /The Spanish expertise your product needs/i })).toBeVisible()
     }
   )
 })

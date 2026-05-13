@@ -3,8 +3,8 @@
 ## Project Identity
 
 - **Name**: Xpandia
-- **Domain**: Boutique language assurance for AI, SaaS and EdTech — structured Spanish/LatAm quality review, measurable scoring and senior oversight.
-- **Contact**: `hello@xpandia.co`
+- **Domain**: Spanish expertise firm for AI, SaaS, EdTech and digital product teams — three service lines: Language Assurance (validate), Localization & Adaptation (adapt), Applied Cultural Intelligence (understand). Helps teams validate, localize and culturally adapt Spanish experiences for Hispanic and Spanish-speaking audiences.
+- **Contact**: `hello@xpandia.global`
 - **Stack**: Django 6 + DRF (backend) / Next.js 16 + React 19 + TypeScript (frontend) / MySQL 8 / Redis / Huey
 - **Backend Django project**: `base_feature_project` (template scaffold name, kept by design)
 - **Backend Django app**: `base_feature_app` (template scaffold name, kept by design — houses User and auth infrastructure)
@@ -259,8 +259,8 @@ flowchart TD
 
 - Backend: `base_feature_app/` Django app, `base_feature_project/` Django project root
 - Frontend: `app/` (Next.js App Router), `components/`, `lib/`, `e2e/`
-- Current Xpandia routes: `/`, `/about`, `/contact`, `/services`, `/services/qa`, `/services/audit`, `/services/fractional`
-- Current backend surface: `/api/health/`, `/api/token/`, `/api/token/refresh/`, `/api/` auth endpoints, `/api/users/`, `/api/google-captcha/`
+- Current Xpandia routes: `/`, `/about`, `/contact`, `/blog`, `/blog/[slug]`, `/services`, `/services/language-assurance`, `/services/localization-adaptation`, `/services/applied-cultural-intelligence`. Legacy `/services/qa`, `/services/audit`, `/services/fractional` 308-redirect to `/services/language-assurance` (configured in `frontend/next.config.ts`).
+- Current backend surface: `/api/health/`, `/api/token/`, `/api/token/refresh/`, `/api/` auth endpoints, `/api/users/`, `/api/google-captcha/`, `/api/blog/`, `/api/contact/`
 
 ---
 

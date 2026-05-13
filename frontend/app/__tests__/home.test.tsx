@@ -3,9 +3,10 @@ import { render, screen } from '@testing-library/react'
 import HomePage from '../page'
 
 describe('HomePage', () => {
-  it('renders the hero heading', () => {
+  it('renders the hero heading text', () => {
     render(<HomePage />)
-    expect(screen.getByRole('heading', { level: 1 })).toBeInTheDocument()
+    const heading = screen.getByRole('heading', { level: 1 })
+    expect(heading).toHaveTextContent('Spanish that works for real users.')
   })
 
   it('renders a link to book a diagnostic call', () => {
@@ -20,19 +21,37 @@ describe('HomePage', () => {
     expect(links[0]).toHaveAttribute('href', '/contact')
   })
 
-  it('renders the AI Spanish QA Sprint service card', () => {
+  it('renders the new hero eyebrow', () => {
     render(<HomePage />)
-    expect(screen.getByText('AI Spanish QA Sprint')).toBeInTheDocument()
+    expect(screen.getByText('SPANISH EXPERTISE · AI · SAAS · EDTECH · DIGITAL PRODUCTS')).toBeInTheDocument()
   })
 
-  it('renders the Spanish Launch Readiness Audit service card', () => {
+  it('renders the Why Xpandia positioning headline', () => {
     render(<HomePage />)
-    expect(screen.getByText('Spanish Launch Readiness Audit')).toBeInTheDocument()
+    expect(screen.getByText('Spanish quality is product quality.')).toBeInTheDocument()
   })
 
-  it('renders the Fractional Language Quality Lead service card', () => {
+  it('renders the services overview headline', () => {
     render(<HomePage />)
-    expect(screen.getByText('Fractional Language Quality Lead')).toBeInTheDocument()
+    expect(screen.getByText('The Spanish expertise your product needs.')).toBeInTheDocument()
+  })
+
+  it('links the Language Assurance service card to its route', () => {
+    render(<HomePage />)
+    const link = screen.getByRole('link', { name: /explore language assurance/i })
+    expect(link).toHaveAttribute('href', '/services/language-assurance')
+  })
+
+  it('links the Localization & Adaptation service card to its route', () => {
+    render(<HomePage />)
+    const link = screen.getByRole('link', { name: /explore localization & adaptation/i })
+    expect(link).toHaveAttribute('href', '/services/localization-adaptation')
+  })
+
+  it('links the Applied Cultural Intelligence service card to its route', () => {
+    render(<HomePage />)
+    const link = screen.getByRole('link', { name: /explore applied cultural intelligence/i })
+    expect(link).toHaveAttribute('href', '/services/applied-cultural-intelligence')
   })
 
   it('renders the methodology section', () => {
@@ -40,17 +59,22 @@ describe('HomePage', () => {
     expect(screen.getByText('METHODOLOGY')).toBeInTheDocument()
   })
 
-  it('renders the Quality Scorecard preview', () => {
+  it('renders the deliverables headline', () => {
     render(<HomePage />)
-    expect(screen.getByText('Quality Scorecard')).toBeInTheDocument()
+    expect(screen.getByText('Evidence your team can act on.')).toBeInTheDocument()
   })
 
-  it('renders the WHY XPANDIA section', () => {
+  it('renders the Built For section headline', () => {
     render(<HomePage />)
-    expect(screen.getByText('WHY XPANDIA')).toBeInTheDocument()
+    expect(screen.getByText('For teams building products and experiences in Spanish.')).toBeInTheDocument()
   })
 
-  it('renders the CTA section', () => {
+  it('renders the buyer section headline', () => {
+    render(<HomePage />)
+    expect(screen.getByText('Built for the leaders responsible for Spanish quality.')).toBeInTheDocument()
+  })
+
+  it('renders the final CTA section', () => {
     render(<HomePage />)
     expect(screen.getByText('NEXT STEP')).toBeInTheDocument()
   })
