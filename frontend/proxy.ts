@@ -1,12 +1,9 @@
-import { NextResponse } from 'next/server';
-import type { NextRequest } from 'next/server';
+import createMiddleware from 'next-intl/middleware'
+import { routing } from './i18n/routing'
 
-export function proxy(_request: NextRequest): NextResponse {
-  return NextResponse.next();
-}
+export default createMiddleware(routing)
 
 export const config = {
-  matcher: [
-    '/((?!api|_next/static|_next/image|favicon.ico|media).*)',
-  ],
-};
+  // Skip API, Next internals, the media proxy, the icon routes, and any path with a file extension.
+  matcher: ['/((?!api|_next|_vercel|media|icon\\.png|apple-icon\\.png|.*\\..*).*)'],
+}
