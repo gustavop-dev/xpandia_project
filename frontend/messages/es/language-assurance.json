@@ -1,373 +1,373 @@
 {
   "metadata": {
-    "title": "Spanish Language Assurance for AI, Product & CX Teams | Xpandia",
-    "description": "Xpandia helps AI, SaaS, EdTech, Product, Localization, and CX teams validate Spanish quality across AI outputs, product flows, support content, and launch-ready experiences.",
-    "ogTitle": "Spanish Language Assurance for AI, Product & CX Teams | Xpandia",
-    "ogDescription": "Xpandia helps AI, SaaS, EdTech, Product, Localization, and CX teams validate Spanish quality across AI outputs, product flows, support content, and launch-ready experiences."
+    "title": "Language Assurance del español para equipos de IA, Producto y CX | Xpandia",
+    "description": "Xpandia ayuda a equipos de IA, SaaS, EdTech, Producto, Localización y CX a validar la calidad del español en las respuestas de IA, los flujos de producto, el contenido de soporte y las experiencias listas para lanzar.",
+    "ogTitle": "Language Assurance del español para equipos de IA, Producto y CX | Xpandia",
+    "ogDescription": "Xpandia ayuda a equipos de IA, SaaS, EdTech, Producto, Localización y CX a validar la calidad del español en las respuestas de IA, los flujos de producto, el contenido de soporte y las experiencias listas para lanzar."
   },
   "breadcrumb": {
-    "allServices": "← ALL SERVICES",
+    "allServices": "← TODOS LOS SERVICIOS",
     "current": "· LANGUAGE ASSURANCE"
   },
   "hero": {
     "eyebrow": "LANGUAGE ASSURANCE",
-    "h1": "Validate Spanish before your",
-    "h1Accent": "users",
-    "h1End": "do.",
-    "subheadline": "Xpandia helps AI, SaaS, EdTech, Product, Localization, and CX teams evaluate Spanish quality across AI outputs, product experiences, support content, and launch-ready journeys.",
-    "body": "We turn expert Spanish judgment into measurable findings your team can act on: scorecards, issue taxonomies, severity ratings, readiness recommendations, and remediation guidance.",
-    "ctaPrimary": "Request a Language Assurance audit",
-    "ctaSecondary": "Book a diagnostic call",
+    "h1": "Valida el español antes de que",
+    "h1Accent": "lo hagan tus usuarios",
+    "h1End": ".",
+    "subheadline": "Xpandia ayuda a equipos de IA, SaaS, EdTech, Producto, Localización y CX a evaluar la calidad del español en las respuestas de IA, las experiencias de producto, el contenido de soporte y los recorridos listos para lanzar.",
+    "body": "Convertimos el criterio experto sobre el español en hallazgos medibles sobre los que tu equipo puede actuar: tableros de calidad, taxonomías de problemas, niveles de severidad, recomendaciones de preparación y guías de remediación.",
+    "ctaPrimary": "Solicita una auditoría de Language Assurance",
+    "ctaSecondary": "Agenda una llamada de diagnóstico",
     "proofPoints": [
-      { "title": "AI outputs", "desc": "Chatbots, copilots, tutors, agents, and support flows." },
-      { "title": "Product readiness", "desc": "UX copy, onboarding, forms, errors, and launch journeys." },
-      { "title": "Decision-ready evidence", "desc": "Scorecards, severity ratings, issue logs, and executive readouts." }
+      { "title": "Respuestas de IA", "desc": "Chatbots, copilots, tutores, agentes y flujos de soporte." },
+      { "title": "Preparación del producto", "desc": "UX copy, onboarding, formularios, errores y recorridos de lanzamiento." },
+      { "title": "Evidencia lista para decidir", "desc": "Tableros de calidad, niveles de severidad, registros de problemas e informes ejecutivos." }
     ]
   },
   "photoBand": {
     "line1": "LANGUAGE ASSURANCE",
-    "line2": "EVIDENCE — READINESS — GOVERNANCE"
+    "line2": "EVIDENCIA — PREPARACIÓN — GOBERNANZA"
   },
   "positioning": {
-    "eyebrow": "WHY LANGUAGE ASSURANCE",
-    "headline": "Spanish quality is too important to leave unmeasured.",
-    "body1": "Spanish-speaking users experience your product through language: the answers your AI gives, the instructions your product provides, the support content they trust, and the messages that guide their decisions.",
-    "body2": "When Spanish quality is inconsistent, unnatural, culturally misaligned, or hard to understand, teams lose clarity, trust, adoption, and confidence before they even know where the issue started.",
-    "body3": "Language Assurance gives your team a structured way to evaluate what is working, what needs attention, how severe each issue is, and whether the experience is ready for real users.",
-    "callout": "The goal is simple: help your team know whether your Spanish is accurate, natural, trustworthy, culturally appropriate, and ready to ship."
+    "eyebrow": "POR QUÉ LANGUAGE ASSURANCE",
+    "headline": "La calidad del español es demasiado importante para dejarla sin medir.",
+    "body1": "Los usuarios hispanohablantes viven tu producto a través del lenguaje: las respuestas que da tu IA, las instrucciones que entrega tu producto, el contenido de soporte en el que confían y los mensajes que guían sus decisiones.",
+    "body2": "Cuando la calidad del español es inconsistente, poco natural, culturalmente desalineada o difícil de entender, los equipos pierden claridad, confianza, adopción y seguridad antes incluso de saber dónde empezó el problema.",
+    "body3": "Language Assurance le da a tu equipo una forma estructurada de evaluar qué está funcionando, qué necesita atención, qué tan grave es cada problema y si la experiencia está lista para usuarios reales.",
+    "callout": "El objetivo es simple: ayudar a tu equipo a saber si tu español es preciso, natural, confiable, culturalmente apropiado y está listo para publicar."
   },
   "whatWeEvaluate": {
-    "eyebrow": "WHAT WE EVALUATE",
-    "headline": "Spanish quality across every user-facing surface.",
-    "intro": "Language Assurance can be applied to any Spanish experience your users see, read, hear, follow, or rely on.",
+    "eyebrow": "QUÉ EVALUAMOS",
+    "headline": "La calidad del español en cada superficie de cara al usuario.",
+    "intro": "Language Assurance puede aplicarse a cualquier experiencia en español que tus usuarios ven, leen, escuchan, siguen o en la que confían.",
     "cards": [
       {
-        "title": "AI-generated outputs",
-        "desc": "Chatbot responses, AI tutors, copilots, agents, support replies, generated explanations, summaries, recommendations, and other model outputs in Spanish."
+        "title": "Salidas generadas por IA",
+        "desc": "Respuestas de chatbot, tutores de IA, copilots, agentes, respuestas de soporte, explicaciones generadas, resúmenes, recomendaciones y otras salidas de modelos en español."
       },
       {
-        "title": "Product experiences",
-        "desc": "Onboarding flows, UI copy, forms, empty states, error messages, notifications, tooltips, checkout flows, and release-critical product surfaces."
+        "title": "Experiencias de producto",
+        "desc": "Flujos de onboarding, copy de interfaz, formularios, estados vacíos, mensajes de error, notificaciones, tooltips, flujos de checkout y superficies de producto críticas para el lanzamiento."
       },
       {
-        "title": "Support and CX content",
-        "desc": "Help center articles, support macros, chatbot flows, escalation language, knowledge base content, and customer-facing communication."
+        "title": "Contenido de soporte y CX",
+        "desc": "Artículos del centro de ayuda, macros de soporte, flujos de chatbot, lenguaje de escalamiento, contenido de la base de conocimiento y comunicación de cara al cliente."
       },
       {
-        "title": "Marketing and conversion content",
-        "desc": "Landing pages, campaign copy, email flows, pricing pages, value propositions, trust messaging, and Spanish conversion paths."
+        "title": "Contenido de marketing y conversión",
+        "desc": "Landing pages, copy de campañas, flujos de email, páginas de precios, propuestas de valor, mensajes de confianza y rutas de conversión en español."
       },
       {
-        "title": "Localization quality",
-        "desc": "Translated or localized experiences that need expert review, consistency checks, regional fit, terminology alignment, or final sign-off."
+        "title": "Calidad de localización",
+        "desc": "Experiencias traducidas o localizadas que necesitan revisión experta, controles de consistencia, ajuste regional, alineación terminológica o aprobación final."
       },
       {
-        "title": "Launch readiness",
-        "desc": "Spanish product surfaces, AI experiences, or customer journeys that need validation before launch, relaunch, deployment, or scale."
+        "title": "Preparación para el lanzamiento",
+        "desc": "Superficies de producto en español, experiencias de IA o recorridos de cliente que necesitan validación antes de un lanzamiento, relanzamiento, despliegue o escalamiento."
       }
     ]
   },
   "whenToUse": {
-    "eyebrow": "WHEN TO USE IT",
-    "headline": "Use Language Assurance when Spanish quality needs a decision.",
+    "eyebrow": "CUÁNDO USARLO",
+    "headline": "Usa Language Assurance cuando la calidad del español necesita una decisión.",
     "items": [
-      "Your AI generates Spanish outputs, but your team needs to know if users can trust them.",
-      "Your product is translated or localized, but you are unsure if it feels natural, clear, and ready.",
-      "Your team is preparing a Spanish launch, relaunch, release, or market expansion.",
-      "Your support, help center, or chatbot experience in Spanish needs quality validation.",
-      "Your team relies on vendors, reviewers, or internal speakers without a clear QA framework.",
-      "Your Spanish content has inconsistencies in tone, terminology, clarity, or regional fit.",
-      "Your leadership team needs evidence, not opinions, before deciding what to fix or ship."
+      "Tu IA genera salidas en español, pero tu equipo necesita saber si los usuarios pueden confiar en ellas.",
+      "Tu producto está traducido o localizado, pero no estás seguro de si se siente natural, claro y listo.",
+      "Tu equipo está preparando un lanzamiento, relanzamiento, release o expansión de mercado en español.",
+      "Tu experiencia de soporte, centro de ayuda o chatbot en español necesita validación de calidad.",
+      "Tu equipo depende de proveedores, revisores o hablantes internos sin un marco de QA claro.",
+      "Tu contenido en español tiene inconsistencias de tono, terminología, claridad o ajuste regional.",
+      "Tu equipo de liderazgo necesita evidencia, no opiniones, antes de decidir qué corregir o publicar."
     ]
   },
   "qualityCriteria": {
-    "eyebrow": "QUALITY CRITERIA",
-    "headline": "The signals behind Spanish your team can trust.",
-    "intro": "Each engagement is scoped around your product, audience, use case, and risk level. Depending on the project, we evaluate the criteria that matter most for your Spanish experience.",
+    "eyebrow": "CRITERIOS DE CALIDAD",
+    "headline": "Las señales detrás de un español en el que tu equipo puede confiar.",
+    "intro": "Cada proyecto se define en función de tu producto, audiencia, caso de uso y nivel de riesgo. Según el proyecto, evaluamos los criterios que más importan para tu experiencia en español.",
     "cards": [
-      { "n": "01", "title": "Accuracy", "desc": "Does the Spanish preserve the intended meaning, facts, instructions, and product logic?" },
-      { "n": "02", "title": "Clarity", "desc": "Can users understand what to do, what is happening, and what the product is asking from them?" },
-      { "n": "03", "title": "Naturality", "desc": "Does the language sound fluent, native, and appropriate for real Spanish-speaking users?" },
-      { "n": "04", "title": "Tone and register", "desc": "Does the voice match your brand, audience, context, and level of formality?" },
-      { "n": "05", "title": "Terminology", "desc": "Are product terms, feature names, support language, and key concepts consistent and usable?" },
-      { "n": "06", "title": "Regional fit", "desc": "Does the Spanish align with the intended audience: LatAm, US Hispanic, Spain, or a specific regional variant?" },
-      { "n": "07", "title": "Cultural fit", "desc": "Does the experience respect cultural expectations, trust signals, context, and audience perception?" },
-      { "n": "08", "title": "Instruction-following", "desc": "Does the Spanish output follow the user request, product instructions (KB), task constraints, system guardrails, and expected response format?" },
-      { "n": "09", "title": "UX friction", "desc": "Does language create confusion, hesitation, errors, abandonment, or unnecessary cognitive load?" },
-      { "n": "10", "title": "AI behavior", "desc": "For AI outputs, does the system follow instructions, stay consistent, avoid risky language, and respond appropriately in Spanish?" },
-      { "n": "11", "title": "Readiness", "desc": "Is the experience ready to ship, needs targeted fixes, or requires deeper remediation before release?" }
+      { "n": "01", "title": "Precisión", "desc": "¿El español conserva el significado, los hechos, las instrucciones y la lógica de producto previstos?" },
+      { "n": "02", "title": "Claridad", "desc": "¿Pueden los usuarios entender qué hacer, qué está pasando y qué les pide el producto?" },
+      { "n": "03", "title": "Naturalidad", "desc": "¿El lenguaje suena fluido, nativo y apropiado para usuarios hispanohablantes reales?" },
+      { "n": "04", "title": "Tono y registro", "desc": "¿La voz coincide con tu marca, audiencia, contexto y nivel de formalidad?" },
+      { "n": "05", "title": "Terminología", "desc": "¿Los términos de producto, los nombres de funciones, el lenguaje de soporte y los conceptos clave son consistentes y utilizables?" },
+      { "n": "06", "title": "Ajuste regional", "desc": "¿El español se alinea con la audiencia prevista: LatAm, hispanos en EE. UU., España o una variante regional específica?" },
+      { "n": "07", "title": "Ajuste cultural", "desc": "¿La experiencia respeta las expectativas culturales, las señales de confianza, el contexto y la percepción de la audiencia?" },
+      { "n": "08", "title": "Seguimiento de instrucciones", "desc": "¿La salida en español sigue la solicitud del usuario, las instrucciones de producto (KB), las restricciones de la tarea, las barreras del sistema y el formato de respuesta esperado?" },
+      { "n": "09", "title": "Fricción de UX", "desc": "¿El lenguaje genera confusión, vacilación, errores, abandono o una carga cognitiva innecesaria?" },
+      { "n": "10", "title": "Comportamiento de la IA", "desc": "En las salidas de IA, ¿el sistema sigue las instrucciones, se mantiene consistente, evita lenguaje riesgoso y responde de forma apropiada en español?" },
+      { "n": "11", "title": "Preparación", "desc": "¿La experiencia está lista para publicar, necesita correcciones puntuales o requiere una remediación más profunda antes del release?" }
     ]
   },
   "engagements": {
-    "eyebrow": "CORE ENGAGEMENTS",
-    "headline": "Focused audits, QA sprints, and quality leadership.",
-    "intro": "Start with a focused engagement, then scale into deeper QA, remediation, governance, or ongoing advisory when needed.",
-    "engagementLabel": "ENGAGEMENT",
-    "bestForLabel": "BEST FOR",
-    "outcomeLabel": "OUTCOME",
+    "eyebrow": "PROYECTOS PRINCIPALES",
+    "headline": "Auditorías enfocadas, sprints de QA y liderazgo de calidad.",
+    "intro": "Empieza con un proyecto enfocado y, cuando haga falta, escala hacia QA más profundo, remediación, gobernanza o asesoría continua.",
+    "engagementLabel": "PROYECTO",
+    "bestForLabel": "IDEAL PARA",
+    "outcomeLabel": "RESULTADO",
     "items": [
       {
         "name": "AI Spanish Quality Audit Sprint",
         "tagline": null,
-        "bestFor": "Teams with AI outputs, chatbot responses, tutors, copilots, support agents, or generative AI experiences operating in Spanish.",
-        "outcome": "Understand quality risks, scoring, issue patterns, and readiness before users rely on the experience.",
-        "deliverablesLabel": "Sprint deliverables",
+        "bestFor": "Equipos con salidas de IA, respuestas de chatbot, tutores, copilots, agentes de soporte o experiencias de IA generativa operando en español.",
+        "outcome": "Entiende los riesgos de calidad, la puntuación, los patrones de problemas y la preparación antes de que los usuarios dependan de la experiencia.",
+        "deliverablesLabel": "Entregables del sprint",
         "deliverables": [
-          "Representative output review.",
-          "QA rubric.",
-          "Quality scorecard.",
-          "Issue taxonomy.",
-          "Severity ratings.",
-          "Remediation guidance.",
-          "Executive readout."
+          "Revisión de salidas representativas.",
+          "Rúbrica de QA.",
+          "Tablero de calidad.",
+          "Taxonomía de problemas.",
+          "Niveles de severidad.",
+          "Guía de remediación.",
+          "Informe ejecutivo."
         ],
         "extras": [],
-        "price": "From $4,500",
-        "timeline": "10 business days",
-        "cta": "Request an AI QA Sprint"
+        "price": "Desde $4,500",
+        "timeline": "10 días hábiles",
+        "cta": "Solicita un AI QA Sprint"
       },
       {
         "name": "Spanish / LatAm Launch Readiness Audit",
         "tagline": null,
-        "bestFor": "Teams launching or improving a Spanish website, app, onboarding flow, support journey, AI experience, or customer-facing product surface.",
-        "outcome": "Identify what affects clarity, trust, UX, cultural fit, and readiness before launch or relaunch.",
-        "deliverablesLabel": "Audit deliverables",
+        "bestFor": "Equipos que lanzan o mejoran un sitio web, app, flujo de onboarding, recorrido de soporte, experiencia de IA o superficie de producto de cara al cliente en español.",
+        "outcome": "Identifica qué afecta la claridad, la confianza, la UX, el ajuste cultural y la preparación antes del lanzamiento o relanzamiento.",
+        "deliverablesLabel": "Entregables de la auditoría",
         "deliverables": [
-          "Journey review.",
-          "Screenshots and annotations.",
-          "Issue log.",
+          "Revisión del recorrido.",
+          "Capturas de pantalla y anotaciones.",
+          "Registro de problemas.",
           "Quick wins.",
-          "Prioritized remediation backlog.",
-          "Readiness recommendation."
+          "Backlog de remediación priorizado.",
+          "Recomendación de preparación."
         ],
         "extras": [],
-        "price": "From $3,500",
-        "timeline": "10–12 business days",
-        "cta": "Request a Launch Readiness Audit"
+        "price": "Desde $3,500",
+        "timeline": "10–12 días hábiles",
+        "cta": "Solicita una Launch Readiness Audit"
       },
       {
         "name": "Chatbot & AI Output Audit",
         "tagline": null,
-        "bestFor": "Teams using AI chatbots, customer support bots, tutors, copilots, assistants, or automated response systems in Spanish.",
-        "outcome": "Evaluate whether AI responses are accurate, natural, useful, consistent, culturally appropriate, and safe for real Spanish-speaking users.",
-        "deliverablesLabel": "Audit deliverables",
+        "bestFor": "Equipos que usan chatbots de IA, bots de soporte al cliente, tutores, copilots, asistentes o sistemas de respuesta automatizada en español.",
+        "outcome": "Evalúa si las respuestas de la IA son precisas, naturales, útiles, consistentes, culturalmente apropiadas y seguras para usuarios hispanohablantes reales.",
+        "deliverablesLabel": "Entregables de la auditoría",
         "deliverables": [
-          "Output sample review.",
-          "Failure pattern analysis.",
-          "Severity ratings.",
-          "Prompt or response-level recommendations.",
-          "Quality scorecard.",
-          "Risk and readiness summary.",
-          "Executive readout."
+          "Revisión de muestra de salidas.",
+          "Análisis de patrones de falla.",
+          "Niveles de severidad.",
+          "Recomendaciones a nivel de prompt o de respuesta.",
+          "Tablero de calidad.",
+          "Resumen de riesgo y preparación.",
+          "Informe ejecutivo."
         ],
         "extras": [],
-        "price": "From $4,500",
-        "timeline": "10–15 business days",
-        "cta": "Request a Chatbot Audit"
+        "price": "Desde $4,500",
+        "timeline": "10–15 días hábiles",
+        "cta": "Solicita una Chatbot Audit"
       },
       {
         "name": "Language Sign-Off / LSO Review",
         "tagline": null,
-        "bestFor": "Teams that need final expert review before publishing, launching, deploying, or approving a Spanish release.",
-        "outcome": "Receive a clear release recommendation based on Spanish quality, risk, and readiness.",
-        "deliverablesLabel": "Review deliverables",
+        "bestFor": "Equipos que necesitan una revisión experta final antes de publicar, lanzar, desplegar o aprobar un release en español.",
+        "outcome": "Recibe una recomendación de release clara basada en la calidad del español, el riesgo y la preparación.",
+        "deliverablesLabel": "Entregables de la revisión",
         "deliverables": [
-          "Final quality pass.",
-          "Blocker and non-blocker issue list.",
-          "Severity notes.",
-          "Release recommendation.",
-          "Sign-off memo.",
-          "Quick remediation guidance where applicable."
+          "Pasada final de calidad.",
+          "Lista de problemas bloqueantes y no bloqueantes.",
+          "Notas de severidad.",
+          "Recomendación de release.",
+          "Memo de aprobación.",
+          "Guía rápida de remediación cuando corresponda."
         ],
         "extras": [],
-        "price": "From $1,500",
-        "timeline": "3–5 business days",
-        "cta": "Request LSO Review"
+        "price": "Desde $1,500",
+        "timeline": "3–5 días hábiles",
+        "cta": "Solicita una LSO Review"
       },
       {
         "name": "Fractional Language Quality Lead",
-        "tagline": "Senior Spanish quality leadership without a full-time hire.",
-        "bestFor": "Teams that need senior Spanish quality judgment, localization QA leadership, vendor oversight, review workflows, standards, or recurring governance across AI, product, localization, support, and content operations.",
-        "outcome": "Build a practical Spanish quality system your team can use to make better decisions, reduce review friction, align vendors and internal reviewers, and scale Spanish quality with confidence.",
-        "deliverablesLabel": "Advisory deliverables",
+        "tagline": "Liderazgo senior de calidad del español sin una contratación a tiempo completo.",
+        "bestFor": "Equipos que necesitan criterio senior sobre la calidad del español, liderazgo de QA de localización, supervisión de proveedores, flujos de revisión, estándares o gobernanza recurrente en IA, producto, localización, soporte y operaciones de contenido.",
+        "outcome": "Construye un sistema práctico de calidad del español que tu equipo puede usar para tomar mejores decisiones, reducir la fricción de revisión, alinear a proveedores y revisores internos, y escalar la calidad del español con confianza.",
+        "deliverablesLabel": "Entregables de la asesoría",
         "deliverables": [
-          "Senior Spanish quality judgment for AI, product, localization, support, and content decisions.",
-          "2–4 working sessions or reporting touchpoints per month, depending on scope.",
-          "Monthly quality dashboard with risks, progress, blockers, and priorities.",
-          "QA framework tailored to your product, audience, Spanish variant, and risk level.",
-          "Governance charter defining ownership, review stages, escalation paths, and sign-off rules.",
-          "Review workflow for internal teams, vendors, reviewers, or AI-generated content.",
-          "Terminology and style recommendations to improve consistency across touchpoints.",
-          "Vendor or reviewer scorecards to align expectations and improve quality accountability.",
-          "Issue taxonomy and severity model for recurring Spanish quality decisions.",
-          "Roadmap for continuous improvement across Spanish quality, localization, AI outputs, and product readiness."
+          "Criterio senior sobre calidad del español para decisiones de IA, producto, localización, soporte y contenido.",
+          "2–4 sesiones de trabajo o puntos de contacto de reporte al mes, según el alcance.",
+          "Tablero mensual de calidad con riesgos, avances, bloqueos y prioridades.",
+          "Marco de QA adaptado a tu producto, audiencia, variante de español y nivel de riesgo.",
+          "Carta de gobernanza que define la responsabilidad, las etapas de revisión, las rutas de escalamiento y las reglas de aprobación.",
+          "Flujo de revisión para equipos internos, proveedores, revisores o contenido generado por IA.",
+          "Recomendaciones de terminología y estilo para mejorar la consistencia entre puntos de contacto.",
+          "Tableros de evaluación de proveedores o revisores para alinear expectativas y mejorar la rendición de cuentas en calidad.",
+          "Taxonomía de problemas y modelo de severidad para decisiones recurrentes sobre la calidad del español.",
+          "Hoja de ruta de mejora continua en calidad del español, localización, salidas de IA y preparación del producto."
         ],
         "extras": [
           {
-            "label": "Overview",
-            "body": "Xpandia gives your team access to senior language quality leadership on a fractional basis — so you can get expert judgment, standards, governance, and decision support without hiring a full-time language quality leader. This engagement is designed for teams that already have Spanish content, AI outputs, localization workflows, vendors, reviewers, or recurring releases, but need a clearer operating system for quality: what to review, who owns it, how to score it, when to escalate, and how to know if Spanish is ready to ship.",
+            "label": "Resumen",
+            "body": "Xpandia le da a tu equipo acceso a liderazgo senior de calidad del lenguaje en modalidad fraccional, para que obtengas criterio experto, estándares, gobernanza y apoyo a la decisión sin contratar a un líder de calidad del lenguaje a tiempo completo. Este proyecto está diseñado para equipos que ya tienen contenido en español, salidas de IA, flujos de localización, proveedores, revisores o releases recurrentes, pero necesitan un sistema operativo más claro para la calidad: qué revisar, quién lo posee, cómo puntuarlo, cuándo escalar y cómo saber si el español está listo para publicar.",
             "items": null
           },
           {
-            "label": "Advisory rhythm",
+            "label": "Ritmo de la asesoría",
             "body": null,
             "items": [
-              "Biweekly working sessions.",
-              "Monthly executive readout.",
-              "Async review and decision support.",
-              "Quality dashboard updates.",
-              "Vendor/reviewer alignment sessions.",
-              "Quarterly roadmap review for ongoing engagements."
+              "Sesiones de trabajo quincenales.",
+              "Informe ejecutivo mensual.",
+              "Revisión asíncrona y apoyo a la decisión.",
+              "Actualizaciones del tablero de calidad.",
+              "Sesiones de alineación con proveedores/revisores.",
+              "Revisión trimestral de la hoja de ruta para proyectos en curso."
             ]
           }
         ],
-        "price": "From $3,000/month",
-        "timeline": "Monthly engagement · Recommended minimum: 3 months",
-        "note": "One month can be used for diagnosis, but three months allow us to demonstrate real value: framework, workflow, dashboard, vendor alignment and roadmap.",
-        "cta": "Explore Fractional Advisory"
+        "price": "Desde $3,000/mes",
+        "timeline": "Proyecto mensual · Mínimo recomendado: 3 meses",
+        "note": "Un mes puede usarse para diagnóstico, pero tres meses nos permiten demostrar valor real: marco, flujo de trabajo, tablero, alineación de proveedores y hoja de ruta.",
+        "cta": "Explora la asesoría fraccional"
       }
     ]
   },
   "methodology": {
-    "eyebrow": "METHODOLOGY",
-    "headline": "A structured path from Spanish review to release confidence.",
-    "intro": "Every Language Assurance engagement follows a clear process designed to move your team from uncertainty to evidence.",
+    "eyebrow": "METODOLOGÍA",
+    "headline": "Un camino estructurado de la revisión del español a la confianza para el release.",
+    "intro": "Cada proyecto de Language Assurance sigue un proceso claro diseñado para llevar a tu equipo de la incertidumbre a la evidencia.",
     "steps": [
       {
-        "title": "Scope the surface",
-        "body": "We define your audience, Spanish variant, product surface, AI use case, content type, business objective, risk level, and timeline."
+        "title": "Definir la superficie",
+        "body": "Definimos tu audiencia, variante de español, superficie de producto, caso de uso de IA, tipo de contenido, objetivo de negocio, nivel de riesgo y cronograma."
       },
       {
-        "title": "Evaluate quality",
-        "body": "We review the selected material using expert Spanish judgment and structured criteria: accuracy, clarity, naturalness, tone, terminology, regional fit, cultural fit, UX friction, and readiness."
+        "title": "Evaluar la calidad",
+        "body": "Revisamos el material seleccionado con criterio experto sobre el español y criterios estructurados: precisión, claridad, naturalidad, tono, terminología, ajuste regional, ajuste cultural, fricción de UX y preparación."
       },
       {
-        "title": "Score and classify",
-        "body": "We organize findings by severity, impact, pattern, and implementation effort so your team can understand what matters most."
+        "title": "Puntuar y clasificar",
+        "body": "Organizamos los hallazgos por severidad, impacto, patrón y esfuerzo de implementación para que tu equipo entienda qué importa más."
       },
       {
-        "title": "Deliver the evidence",
-        "body": "You receive decision-ready findings your team can use immediately: scorecards, annotated examples, issue logs, severity ratings, prioritized recommendations, rewrites, standards, and executive readouts. Each deliverable connects expert judgment to action: what is working, what needs attention, why it matters, and what your team should do next."
+        "title": "Entregar la evidencia",
+        "body": "Recibes hallazgos listos para decidir que tu equipo puede usar de inmediato: tableros de calidad, ejemplos anotados, registros de problemas, niveles de severidad, recomendaciones priorizadas, reescrituras, estándares e informes ejecutivos. Cada entregable conecta el criterio experto con la acción: qué está funcionando, qué necesita atención, por qué importa y qué debería hacer tu equipo a continuación."
       },
       {
-        "title": "Decide the next move",
-        "body": "We recommend the right path forward: ship, fix, retest, localize, adapt, train, govern, or scale."
+        "title": "Decidir el siguiente paso",
+        "body": "Recomendamos el camino correcto a seguir: publicar, corregir, volver a probar, localizar, adaptar, capacitar, gobernar o escalar."
       }
     ]
   },
   "deliverables": {
-    "eyebrow": "THE DELIVERABLES",
-    "headline": "Evidence your team can use across product, AI, localization, and CX.",
-    "intro": "Language Assurance turns subjective feedback into structured findings your team can prioritize, share, and execute.",
+    "eyebrow": "LOS ENTREGABLES",
+    "headline": "Evidencia que tu equipo puede usar en producto, IA, localización y CX.",
+    "intro": "Language Assurance convierte el feedback subjetivo en hallazgos estructurados que tu equipo puede priorizar, compartir y ejecutar.",
     "cards": [
-      { "title": "Quality Scorecard", "desc": "A measurable view of Spanish quality across the criteria that matter for your use case." },
-      { "title": "Issue Taxonomy", "desc": "A structured map of issue types, patterns, and recurring quality risks." },
-      { "title": "Severity Ratings", "desc": "Clear prioritization so your team knows what blocks launch, what should be fixed soon, and what can be improved over time." },
-      { "title": "Annotated Examples", "desc": "Specific examples that show where quality breaks down and how it affects the user experience." },
-      { "title": "Remediation Guidance", "desc": "Practical recommendations, rewrites, terminology notes, and next steps to help your team improve quickly." },
-      { "title": "Executive Readout", "desc": "A concise summary for Product, AI, Localization, CX, Support, Marketing, or leadership teams." },
-      { "title": "Readiness Recommendation", "desc": "A clear assessment of whether the Spanish experience is ready to ship, needs targeted fixes, or requires deeper remediation." }
+      { "title": "Tablero de calidad", "desc": "Una vista medible de la calidad del español según los criterios que importan para tu caso de uso." },
+      { "title": "Taxonomía de problemas", "desc": "Un mapa estructurado de tipos de problemas, patrones y riesgos de calidad recurrentes." },
+      { "title": "Niveles de severidad", "desc": "Priorización clara para que tu equipo sepa qué bloquea el lanzamiento, qué debería corregirse pronto y qué puede mejorarse con el tiempo." },
+      { "title": "Ejemplos anotados", "desc": "Ejemplos específicos que muestran dónde se rompe la calidad y cómo afecta la experiencia del usuario." },
+      { "title": "Guía de remediación", "desc": "Recomendaciones prácticas, reescrituras, notas de terminología y próximos pasos para ayudar a tu equipo a mejorar rápido." },
+      { "title": "Informe ejecutivo", "desc": "Un resumen conciso para equipos de Producto, IA, Localización, CX, Soporte, Marketing o liderazgo." },
+      { "title": "Recomendación de preparación", "desc": "Una evaluación clara de si la experiencia en español está lista para publicar, necesita correcciones puntuales o requiere una remediación más profunda." }
     ]
   },
   "scorecardPreview": {
-    "eyebrow": "A LANGUAGE ASSURANCE DELIVERABLE",
-    "headline": "Evidence, not opinions.",
-    "body": "Every engagement ends with a quality scorecard your Product, AI, Localization and CX leaders can read in minutes and act on this quarter.",
-    "criteria": ["Accuracy", "Clarity", "Naturality", "Tone & register", "Terminology", "Regional fit", "Cultural fit", "Readiness"],
-    "scorecardTitle": "Quality Scorecard",
-    "scorecardSample": "SAMPLE · N=240 OUTPUTS",
+    "eyebrow": "UN ENTREGABLE DE LANGUAGE ASSURANCE",
+    "headline": "Evidencia, no opiniones.",
+    "body": "Cada proyecto termina con un tablero de calidad que tus líderes de Producto, IA, Localización y CX pueden leer en minutos y sobre el que pueden actuar este trimestre.",
+    "criteria": ["Precisión", "Claridad", "Naturalidad", "Tono y registro", "Terminología", "Ajuste regional", "Ajuste cultural", "Preparación"],
+    "scorecardTitle": "Tablero de calidad",
+    "scorecardSample": "MUESTRA · N=240 SALIDAS",
     "rows": [
-      { "label": "Pass rate", "width": "78%", "val": "78%", "accent": true },
-      { "label": "Accuracy", "width": "86%", "val": "4.3 / 5" },
-      { "label": "Clarity", "width": "72%", "val": "3.6 / 5" },
-      { "label": "Naturality", "width": "64%", "val": "3.2 / 5" },
-      { "label": "Terminology", "width": "58%", "val": "2.9 / 5" },
-      { "label": "Regional fit", "width": "81%", "val": "4.1 / 5" },
-      { "label": "Critical error rate", "width": "12%", "val": "3.1%", "dim": true }
+      { "label": "Tasa de aprobación", "width": "78%", "val": "78%", "accent": true },
+      { "label": "Precisión", "width": "86%", "val": "4.3 / 5" },
+      { "label": "Claridad", "width": "72%", "val": "3.6 / 5" },
+      { "label": "Naturalidad", "width": "64%", "val": "3.2 / 5" },
+      { "label": "Terminología", "width": "58%", "val": "2.9 / 5" },
+      { "label": "Ajuste regional", "width": "81%", "val": "4.1 / 5" },
+      { "label": "Tasa de errores críticos", "width": "12%", "val": "3.1%", "dim": true }
     ],
-    "scorecardFooter": "READINESS: NEEDS TARGETED FIXES · USE CASE: SUPPORT COPILOT · VARIANT: es-MX · REVIEWER: XPANDIA SENIOR"
+    "scorecardFooter": "PREPARACIÓN: NECESITA CORRECCIONES PUNTUALES · CASO DE USO: COPILOT DE SOPORTE · VARIANTE: es-MX · REVISOR: XPANDIA SENIOR"
   },
   "builtFor": {
-    "eyebrow": "BUILT FOR",
-    "headline": "For teams responsible for Spanish quality.",
+    "eyebrow": "PENSADO PARA",
+    "headline": "Para equipos responsables de la calidad del español.",
     "cards": [
-      { "title": "AI & ML Product Teams", "desc": "Validate Spanish outputs from chatbots, copilots, tutors, agents, and generative AI experiences." },
-      { "title": "Product Teams", "desc": "Evaluate onboarding, UI copy, forms, errors, and Spanish product flows before launch or relaunch." },
-      { "title": "Localization Teams", "desc": "Strengthen QA standards, reviewer alignment, vendor oversight, terminology, and sign-off processes." },
-      { "title": "CX & Support Teams", "desc": "Improve Spanish support responses, help content, support macros, chatbot flows, and customer communication." },
-      { "title": "EdTech Teams", "desc": "Validate Spanish learning experiences, explanations, quizzes, tutor responses, and pedagogical clarity." },
-      { "title": "Trust & Safety Teams", "desc": "Assess Spanish responses, user-facing content, or AI outputs that may carry reputational, safety, or user trust risks." }
+      { "title": "Equipos de Producto de IA y ML", "desc": "Valida las salidas en español de chatbots, copilots, tutores, agentes y experiencias de IA generativa." },
+      { "title": "Equipos de Producto", "desc": "Evalúa el onboarding, el copy de interfaz, los formularios, los errores y los flujos de producto en español antes del lanzamiento o relanzamiento." },
+      { "title": "Equipos de Localización", "desc": "Fortalece los estándares de QA, la alineación de revisores, la supervisión de proveedores, la terminología y los procesos de aprobación." },
+      { "title": "Equipos de CX y Soporte", "desc": "Mejora las respuestas de soporte en español, el contenido de ayuda, las macros de soporte, los flujos de chatbot y la comunicación con el cliente." },
+      { "title": "Equipos de EdTech", "desc": "Valida las experiencias de aprendizaje en español, las explicaciones, los cuestionarios, las respuestas de tutores y la claridad pedagógica." },
+      { "title": "Equipos de Trust & Safety", "desc": "Evalúa las respuestas en español, el contenido de cara al usuario o las salidas de IA que pueden conllevar riesgos reputacionales, de seguridad o de confianza del usuario." }
     ]
   },
   "pricing": {
-    "eyebrow": "STARTING POINTS",
-    "headline": "Start with the level of assurance your team needs now.",
-    "intro": "Language Assurance engagements are scoped based on your product surface, audience, Spanish variant, sample size, complexity, risk level, and timeline.",
-    "note": "Final pricing is confirmed after a short diagnostic call and scope review.",
+    "eyebrow": "PUNTOS DE PARTIDA",
+    "headline": "Empieza con el nivel de aseguramiento que tu equipo necesita ahora.",
+    "intro": "Los proyectos de Language Assurance se definen según tu superficie de producto, audiencia, variante de español, tamaño de muestra, complejidad, nivel de riesgo y cronograma.",
+    "note": "El precio final se confirma tras una breve llamada de diagnóstico y una revisión del alcance.",
     "cards": [
       {
-        "title": "Diagnostic",
-        "price": "From $500",
-        "desc": "Get a fast expert read on your Spanish surface before choosing the right audit, sprint, or quality roadmap."
+        "title": "Diagnóstico",
+        "price": "Desde $500",
+        "desc": "Obtén una lectura experta rápida de tu superficie en español antes de elegir la auditoría, el sprint o la hoja de ruta de calidad correctos."
       },
       {
         "title": "Launch Readiness Audit",
-        "price": "From $3,500",
-        "desc": "Evaluate a Spanish product, website, onboarding flow, support journey, or customer-facing experience before launch or relaunch."
+        "price": "Desde $3,500",
+        "desc": "Evalúa un producto, sitio web, flujo de onboarding, recorrido de soporte o experiencia de cara al cliente en español antes del lanzamiento o relanzamiento."
       },
       {
         "title": "AI QA Sprint",
-        "price": "From $4,500",
-        "desc": "Validate AI-generated Spanish outputs before users rely on them."
+        "price": "Desde $4,500",
+        "desc": "Valida las salidas en español generadas por IA antes de que los usuarios dependan de ellas."
       },
       {
         "title": "Language Sign-Off / LSO",
-        "price": "From $1,500",
-        "desc": "Get a final expert review and release recommendation before publishing or deploying a Spanish experience."
+        "price": "Desde $1,500",
+        "desc": "Obtén una revisión experta final y una recomendación de release antes de publicar o desplegar una experiencia en español."
       },
       {
-        "title": "Fractional Advisory",
-        "price": "From $3,000/month",
-        "desc": "Bring senior Spanish quality leadership into your team without a full-time hire."
+        "title": "Asesoría fraccional",
+        "price": "Desde $3,000/mes",
+        "desc": "Suma liderazgo senior de calidad del español a tu equipo sin una contratación a tiempo completo."
       }
     ]
   },
   "faq": {
-    "eyebrow": "FAQ",
-    "headline": "Common questions about Language Assurance.",
+    "eyebrow": "PREGUNTAS FRECUENTES",
+    "headline": "Preguntas comunes sobre Language Assurance.",
     "items": [
       {
-        "q": "Is Language Assurance the same as translation?",
-        "a": "No. Language Assurance evaluates whether existing Spanish outputs, content, product flows, or localized experiences are accurate, natural, consistent, culturally appropriate, and ready for users."
+        "q": "¿Language Assurance es lo mismo que traducción?",
+        "a": "No. Language Assurance evalúa si las salidas, el contenido, los flujos de producto o las experiencias localizadas en español existentes son precisos, naturales, consistentes, culturalmente apropiados y están listos para los usuarios."
       },
       {
-        "q": "Can Xpandia review AI-generated Spanish?",
-        "a": "Yes. We evaluate AI-generated Spanish from chatbots, copilots, tutors, support agents, assistants, and other generative AI experiences."
+        "q": "¿Xpandia puede revisar español generado por IA?",
+        "a": "Sí. Evaluamos el español generado por IA en chatbots, copilots, tutores, agentes de soporte, asistentes y otras experiencias de IA generativa."
       },
       {
-        "q": "Do you only review LatAm Spanish?",
-        "a": "No. We can scope the engagement around the Spanish variant your product needs: LatAm, US Hispanic, Spain, neutral Spanish, or a specific regional market."
+        "q": "¿Solo revisan español de LatAm?",
+        "a": "No. Podemos definir el proyecto en función de la variante de español que tu producto necesita: LatAm, hispanos en EE. UU., España, español neutro o un mercado regional específico."
       },
       {
-        "q": "What do we need to provide?",
-        "a": "Usually a representative sample of outputs, product screens, flows, content, prompts, support responses, or localized assets, plus context about audience, product goals, and launch timeline."
+        "q": "¿Qué necesitamos aportar?",
+        "a": "Por lo general, una muestra representativa de salidas, pantallas de producto, flujos, contenido, prompts, respuestas de soporte o assets localizados, además de contexto sobre la audiencia, los objetivos de producto y el cronograma de lanzamiento."
       },
       {
-        "q": "Can you help us fix the issues too?",
-        "a": "Yes. Depending on scope, we can provide rewrites, remediation guidance, terminology notes, reviewer guidance, or a follow-up localization/adaptation engagement."
+        "q": "¿También nos pueden ayudar a corregir los problemas?",
+        "a": "Sí. Según el alcance, podemos ofrecer reescrituras, guía de remediación, notas de terminología, guía para revisores o un proyecto de seguimiento de localización/adaptación."
       },
       {
-        "q": "Can this become ongoing support?",
-        "a": "Yes. Teams can start with an audit or sprint and move into fractional advisory, governance, recurring QA, vendor oversight, or quality roadmap support."
+        "q": "¿Esto puede convertirse en un apoyo continuo?",
+        "a": "Sí. Los equipos pueden empezar con una auditoría o un sprint y pasar a asesoría fraccional, gobernanza, QA recurrente, supervisión de proveedores o apoyo en la hoja de ruta de calidad."
       }
     ]
   },
   "finalCta": {
-    "eyebrow": "NEXT STEP",
-    "headline": "Know if your Spanish is ready before users decide for you.",
-    "body": "Book a diagnostic call to review your Spanish surface, audience, use case, timeline, and business goal. We’ll recommend the right Language Assurance path: diagnostic, audit, AI QA sprint, LSO review, or fractional quality leadership.",
-    "pricingNote": "Language Assurance engagements start from $500.",
-    "ctaPrimary": "Book a diagnostic call",
-    "ctaSecondary": "Request a Language Assurance audit"
+    "eyebrow": "SIGUIENTE PASO",
+    "headline": "Sabe si tu español está listo antes de que los usuarios decidan por ti.",
+    "body": "Agenda una llamada de diagnóstico para revisar tu superficie en español, audiencia, caso de uso, cronograma y objetivo de negocio. Te recomendaremos el camino de Language Assurance correcto: diagnóstico, auditoría, AI QA sprint, LSO review o liderazgo fraccional de calidad.",
+    "pricingNote": "Los proyectos de Language Assurance empiezan desde $500.",
+    "ctaPrimary": "Agenda una llamada de diagnóstico",
+    "ctaSecondary": "Solicita una auditoría de Language Assurance"
   }
 }
