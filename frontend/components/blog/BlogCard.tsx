@@ -1,5 +1,5 @@
-import Link from 'next/link'
 import Image from 'next/image'
+import { Link } from '@/i18n/navigation'
 import type { BlogPostListItem } from '@/lib/services/blog'
 import { formatLocaleDate, type SupportedLocale } from '@/lib/i18n/config'
 
@@ -13,7 +13,7 @@ export default function BlogCard({ post, lang }: BlogCardProps) {
 
   return (
     <Link
-      href={`/blog/${post.slug}?lang=${lang}`}
+      href={`/blog/${post.slug}`}
       className="group flex flex-col bg-white border border-ink-150 rounded-lg overflow-hidden transition-[border-color,transform] duration-200 hover:border-ink-900 hover:-translate-y-[2px]"
     >
       <div className="relative aspect-[16/10] bg-ink-100 overflow-hidden">

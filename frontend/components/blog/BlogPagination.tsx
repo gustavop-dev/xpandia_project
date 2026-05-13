@@ -1,12 +1,10 @@
-import Link from 'next/link'
 import { getTranslations } from 'next-intl/server'
+import { Link } from '@/i18n/navigation'
 import { cn } from '@/lib/utils'
-import type { SupportedLocale } from '@/lib/i18n/config'
 
 interface BlogPaginationProps {
   currentPage: number
   totalPages: number
-  lang: SupportedLocale
 }
 
 function buildPages(current: number, total: number): (number | 'ellipsis')[] {
@@ -35,10 +33,10 @@ function PaginationArrow({ href, label, disabled }: { href: string; label: strin
   )
 }
 
-export default async function BlogPagination({ currentPage, totalPages, lang }: BlogPaginationProps) {
+export default async function BlogPagination({ currentPage, totalPages }: BlogPaginationProps) {
   const t = await getTranslations('blog')
   const pages = buildPages(currentPage, totalPages)
-  const linkFor = (p: number) => `/blog?lang=${lang}&page=${p}`
+  const linkFor = (p: number) => `/blog?page=${p}`
 
   return (
     <nav className="flex items-center justify-center gap-2 font-mono text-[12px]" aria-label={t('pagination.ariaLabel')}>

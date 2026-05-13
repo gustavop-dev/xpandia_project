@@ -27,9 +27,9 @@ describe('BlogCard', () => {
     expect(screen.getByText('A short excerpt.')).toBeInTheDocument()
   })
 
-  it('link href includes slug and current lang', () => {
+  it('link href points to the post detail route', () => {
     render(<BlogCard post={makePost({ slug: 'my-post' })} lang="es" />)
-    expect(screen.getByRole('link')).toHaveAttribute('href', '/blog/my-post?lang=es')
+    expect(screen.getByRole('link')).toHaveAttribute('href', '/blog/my-post')
   })
 
   it('formats published_at via formatLocaleDate', () => {

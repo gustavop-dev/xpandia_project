@@ -1,52 +1,47 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
-import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { getTranslations } from 'next-intl/server'
+import { getTranslations, setRequestLocale } from 'next-intl/server'
+import { Link } from '@/i18n/navigation'
 import { fetchBlogPost } from '@/lib/services/blog'
-import { formatLocaleDate, isValidLocale, type SupportedLocale } from '@/lib/i18n/config'
+import { formatLocaleDate, type SupportedLocale } from '@/lib/i18n/config'
+import { localizedAlternates } from '@/lib/seo/alternates'
 import BlogContentRenderer from '@/components/blog/BlogContentRenderer'
 
 export const dynamic = 'force-dynamic'
 
 interface BlogDetailPageProps {
-  params: Promise<{ slug: string }>
-  searchParams: Promise<{ lang?: string }>
+  params: Promise<{ locale: string; slug: string }>
 }
 
-function resolveLang(raw: string | undefined): SupportedLocale {
-  return raw && isValidLocale(raw) ? raw : 'en'
-}
-
-export async function generateMetadata({ params, searchParams }: BlogDetailPageProps): Promise<Metadata> {
-  const { slug } = await params
-  const sp = await searchParams
-  const post = await fetchBlogPost(slug, resolveLang(sp.lang))
+export async function generateMetadata({ params }: BlogDetailPageProps): Promise<Metadata> {
+  const { locale, slug } = await params
+  const post = await fetchBlogPost(slug, locale as SupportedLocale)
   if (!post) return { title: 'Not found — Xpandia' }
   return {
     title: `${post.title} — Xpandia`,
     description: post.excerpt,
+    alternates: localizedAlternates(`/blog/${slug}`),
   }
 }
 
-export default async function BlogDetailPage({ params, searchParams }: BlogDetailPageProps) {
-  const { slug } = await params
-  const sp = await searchParams
-  const lang = resolveLang(sp.lang)
-  const post = await fetchBlogPost(slug, lang)
+export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
+  const { locale, slug } = await params
+  setRequestLocale(locale)
+  const post = await fetchBlogPost(slug, locale as SupportedLocale)
   if (!post) notFound()
 
   const t = await getTranslations('blog')
 
   const dateLabel = post.published_at
-    ? formatLocaleDate(post.published_at, lang, { year: 'numeric', month: 'long', day: 'numeric' })
+    ? formatLocaleDate(post.published_at, locale as SupportedLocale, { year: 'numeric', month: 'long', day: 'numeric' })
     : ''
 
   return (
     <main>
       <section className="hero">
         <div className="container container-narrow max-w-[820px]">
-          <Link href={`/blog?lang=${lang}`} className="eyebrow mb-8 inline-flex no-bar">
+          <Link href="/blog" className="eyebrow mb-8 inline-flex no-bar">
             {t('detail.backToBlog')}
           </Link>
           {post.category_display && (
