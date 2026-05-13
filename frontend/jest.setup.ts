@@ -27,3 +27,22 @@ jest.mock('@/i18n/navigation', () => {
     getPathname: jest.fn(({ href }: any) => (typeof href === 'string' ? href : href?.pathname ?? '/')),
   }
 });
+
+// next-intl/server: mock getTranslations for async server components under Jest (jsdom runs as client)
+jest.mock('next-intl/server', () => {
+  const { createTranslator } = require('use-intl/core')
+  const { enMessages } = require('./test-utils/messages')
+
+  // Flatten the top-level namespace map into a single messages object
+  // enMessages is { common: {...}, home: {...}, ... }
+  const messages: Record<string, any> = {}
+  for (const [ns, value] of Object.entries(enMessages)) {
+    messages[ns] = value
+  }
+
+  const getTranslations = async (namespace: string) => {
+    return createTranslator({ locale: 'en', messages, namespace })
+  }
+
+  return { getTranslations }
+});

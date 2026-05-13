@@ -4,5 +4,73 @@
     "description": "Xpandia helps AI, SaaS, EdTech, and digital product teams validate, localize, and culturally adapt Spanish experiences for Hispanic and Spanish-speaking audiences.",
     "ogTitle": "Xpandia | Spanish that works for real users",
     "ogDescription": "Spanish language assurance, localization, and applied cultural intelligence for AI, SaaS, EdTech, and digital product teams."
+  },
+  "header": {
+    "logoAlt": "Xpandia",
+    "primaryNavLabel": "Primary",
+    "nav": {
+      "services": "Services",
+      "blog": "Blog",
+      "about": "About",
+      "contact": "Contact"
+    },
+    "servicesMenu": {
+      "all": {
+        "label": "All services",
+        "desc": "Overview & comparison"
+      },
+      "items": [
+        {
+          "num": "01 / VALIDATE",
+          "label": "Language Assurance",
+          "desc": "Validate Spanish before your users do."
+        },
+        {
+          "num": "02 / ADAPT",
+          "label": "Localization & Adaptation",
+          "desc": "More than translated. Built for Spanish-speaking audiences."
+        },
+        {
+          "num": "03 / UNDERSTAND",
+          "label": "Applied Cultural Intelligence",
+          "desc": "Read the invisible rules behind trust, culture, and growth."
+        }
+      ]
+    },
+    "cta": "Book a diagnostic call",
+    "menuButtonLabel": "Menu",
+    "langGroupLabel": "Language",
+    "drawerServicesHeading": "SERVICES",
+    "drawerHome": "Home"
+  },
+  "footer": {
+    "logoAlt": "Xpandia",
+    "tagline": "Spanish that works for real users.",
+    "description": "Xpandia helps AI, SaaS, EdTech, and digital product teams validate, localize, and culturally adapt Spanish experiences for Hispanic and Spanish-speaking audiences.",
+    "brandLine": "SPANISH EXPERTISE · 2026",
+    "colServices": {
+      "heading": "Services"
+    },
+    "colCompany": {
+      "heading": "Company",
+      "about": "About",
+      "contact": "Contact",
+      "bookCall": "Book a diagnostic call"
+    },
+    "colContact": {
+      "heading": "Contact",
+      "requestAudit": "Request an audit"
+    },
+    "copyright": "© 2026 Xpandia. All rights reserved.",
+    "terms": "Terms",
+    "privacy": "Privacy"
+  },
+  "fab": {
+    "label": "Book a diagnostic call"
+  },
+  "serviceLines": {
+    "languageAssurance": "Language Assurance",
+    "localizationAdaptation": "Localization & Adaptation",
+    "appliedCulturalIntelligence": "Applied Cultural Intelligence"
   }
 }
