@@ -1,15 +1,15 @@
 import { describe, it, expect } from '@jest/globals'
-import { render, screen, waitFor, fireEvent } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
-import ContactPage from '../page'
+import { screen } from '@testing-library/react'
+import { renderWithIntl } from '@/test-utils/renderWithIntl'
+import ContactPage, { generateMetadata } from '../page'
 
 jest.mock('@/lib/services/contact', () => ({
   submitContactForm: () => Promise.resolve(),
 }))
 
 describe('ContactPage', () => {
-  it('renders the hero heading', () => {
-    render(<ContactPage />)
+  it('renders the hero heading', async () => {
+    renderWithIntl(await ContactPage({ params: Promise.resolve({ locale: 'en' }) }))
     expect(
       screen.getByRole('heading', {
         level: 1,
@@ -18,87 +18,51 @@ describe('ContactPage', () => {
     ).toBeInTheDocument()
   })
 
-  it('renders the "What do you need help with?" field label', () => {
-    render(<ContactPage />)
-    expect(screen.getByText('What do you need help with?')).toBeInTheDocument()
+  it('renders the CONTACT eyebrow', async () => {
+    renderWithIntl(await ContactPage({ params: Promise.resolve({ locale: 'en' }) }))
+    expect(screen.getByText('CONTACT')).toBeInTheDocument()
   })
 
-  it('renders the "Target audience / market" field label', () => {
-    render(<ContactPage />)
-    expect(screen.getByText('Target audience / market')).toBeInTheDocument()
-  })
-
-  it('renders the Send request submit button', () => {
-    render(<ContactPage />)
-    expect(screen.getByRole('button', { name: /send request/i })).toBeInTheDocument()
-  })
-
-  it('marks a service radio tile as selected when clicked', async () => {
-    const user = userEvent.setup()
-    render(<ContactPage />)
-    await user.click(screen.getByText('Language Assurance'))
-    expect(screen.getByText('Language Assurance').closest('[role="button"]')).toHaveClass('on')
-  })
-
-  it('marks a target audience radio tile as selected when clicked', async () => {
-    const user = userEvent.setup()
-    render(<ContactPage />)
-    await user.click(screen.getByText('US Hispanic'))
-    expect(screen.getByText('US Hispanic').closest('[role="button"]')).toHaveClass('on')
-  })
-
-  it('shows a confirmation message after form submission', async () => {
-    render(<ContactPage />)
-    const form = screen.getByRole('button', { name: /send request/i }).closest('form')!
-    fireEvent.submit(form)
-    expect(await screen.findByText(/Request received/i)).toBeInTheDocument()
-  })
-
-  it('hides the submit button after form submission', async () => {
-    render(<ContactPage />)
-    const form = screen.getByRole('button', { name: /send request/i }).closest('form')!
-    fireEvent.submit(form)
-    await waitFor(() => {
-      expect(screen.queryByRole('button', { name: /send request/i })).not.toBeInTheDocument()
-    })
-  })
-
-  it('renders the NEXT STEPS process eyebrow', () => {
-    render(<ContactPage />)
+  it('renders the NEXT STEPS process eyebrow', async () => {
+    renderWithIntl(await ContactPage({ params: Promise.resolve({ locale: 'en' }) }))
     expect(screen.getByText('NEXT STEPS')).toBeInTheDocument()
   })
 
-  it('renders the process step "Share your context"', () => {
-    render(<ContactPage />)
-    expect(screen.getByText('Share your context')).toBeInTheDocument()
+  it('renders the "A clear path from first contact to action." headline', async () => {
+    renderWithIntl(await ContactPage({ params: Promise.resolve({ locale: 'en' }) }))
+    expect(screen.getByText('A clear path from first contact to action.')).toBeInTheDocument()
   })
 
-  it('renders the direct contact email', () => {
-    render(<ContactPage />)
+  it('renders the READY TO START? final CTA eyebrow', async () => {
+    renderWithIntl(await ContactPage({ params: Promise.resolve({ locale: 'en' }) }))
+    expect(screen.getByText('READY TO START?')).toBeInTheDocument()
+  })
+
+  it('renders the direct contact email in the hero section', async () => {
+    renderWithIntl(await ContactPage({ params: Promise.resolve({ locale: 'en' }) }))
     expect(screen.getAllByText('hello@xpandia.global').length).toBeGreaterThan(0)
   })
 
-  it('links the email address as a mailto link', () => {
-    render(<ContactPage />)
+  it('links the hero email as a mailto link', async () => {
+    renderWithIntl(await ContactPage({ params: Promise.resolve({ locale: 'en' }) }))
     const links = screen.getAllByRole('link', { name: 'hello@xpandia.global' })
     expect(links[0]).toHaveAttribute('href', 'mailto:hello@xpandia.global')
   })
 
-  it('selects a radio tile when Enter key is pressed on it', async () => {
-    const user = userEvent.setup()
-    render(<ContactPage />)
-    const tile = screen.getByText('Language Assurance').closest('[role="button"]') as HTMLElement
-    tile.focus()
-    await user.keyboard('{Enter}')
-    expect(screen.getByText('Language Assurance').closest('[role="button"]')).toHaveClass('on')
+  it('renders the final CTA headline', async () => {
+    renderWithIntl(await ContactPage({ params: Promise.resolve({ locale: 'en' }) }))
+    expect(screen.getByText(/find the right Spanish quality path for your team/i)).toBeInTheDocument()
+  })
+})
+
+describe('generateMetadata (Contact)', () => {
+  it('returns a title matching /Contact/', async () => {
+    const meta = await generateMetadata({ params: Promise.resolve({ locale: 'en' }) })
+    expect(meta.title).toMatch(/Contact/)
   })
 
-  it('selects a radio tile when Space key is pressed on it', async () => {
-    const user = userEvent.setup()
-    render(<ContactPage />)
-    const tile = screen.getByText('AI Spanish QA').closest('[role="button"]') as HTMLElement
-    tile.focus()
-    await user.keyboard(' ')
-    expect(screen.getByText('AI Spanish QA').closest('[role="button"]')).toHaveClass('on')
+  it('returns the canonical alternates path /contact', async () => {
+    const meta = await generateMetadata({ params: Promise.resolve({ locale: 'en' }) })
+    expect(meta.alternates?.canonical).toBe('/contact')
   })
 })

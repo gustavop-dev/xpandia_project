@@ -1,1 +1,116 @@
-{}
+{
+  "metadata": {
+    "title": "Contact Xpandia | Start a Spanish Quality Conversation",
+    "description": "Tell us what your team is building, launching, or improving in Spanish. We'll recommend the right next step: diagnostic call, audit, localization engagement, or advisory path.",
+    "ogTitle": "Contact Xpandia | Spanish Language Assurance",
+    "ogDescription": "Share your context and we'll identify the right starting point based on your product, audience, timeline, and business goal."
+  },
+  "hero": {
+    "eyebrow": "CONTACT",
+    "headline": "Tell us what your team is building, launching, or improving in Spanish.",
+    "body": "Use the form below or email us directly. We'll review your request and recommend the best next step: a diagnostic call, audit, localization engagement, CQ talk, workshop, or advisory path.",
+    "email": "hello@xpandia.global",
+    "ctaPrimary": "Book a diagnostic call",
+    "ctaSecondary": "Request an audit"
+  },
+  "form": {
+    "eyebrow": "START A CONVERSATION",
+    "title": "Start a conversation",
+    "intro": "Share a few details about your product, audience, Spanish surface, and timeline. We'll use this context to recommend the right next step.",
+    "fields": {
+      "name": { "label": "Name", "placeholder": "Jane Doe" },
+      "email": { "label": "Work email", "placeholder": "jane@company.com" },
+      "company": { "label": "Company", "placeholder": "Company Inc." },
+      "role": { "label": "Role / Team", "placeholder": "VP Product · Localization" },
+      "service": {
+        "label": "What do you need help with?",
+        "options": [
+          "Language Assurance",
+          "Localization & Adaptation",
+          "Applied Cultural Intelligence",
+          "AI Spanish QA",
+          "Fractional Advisory",
+          "Not sure yet"
+        ]
+      },
+      "audience": {
+        "label": "Target audience / market",
+        "options": [
+          "LatAm",
+          "US Hispanic",
+          "Spain",
+          "Neutral Spanish",
+          "Specific country or region",
+          "Not sure yet"
+        ]
+      },
+      "timeline": {
+        "label": "Timeline",
+        "options": [
+          "Urgent / this month",
+          "1–2 months",
+          "3+ months",
+          "Exploring options"
+        ]
+      },
+      "scope": {
+        "label": "Estimated scope",
+        "options": [
+          "Small sample or diagnostic",
+          "Product / website / content review",
+          "AI outputs or chatbot responses",
+          "Full localization or adaptation project",
+          "Workshop / talk / advisory",
+          "Not sure yet"
+        ]
+      },
+      "message": {
+        "label": "What are you working on?",
+        "placeholder": "Tell us about your product, audience, Spanish surface, website or product URL, and what you'd like us to look at. e.g., We launched our AI tutor in Spanish last quarter. Support tickets mention confusion. We need a read on quality before expanding to Mexico — site: example.com"
+      }
+    },
+    "submit": "Send request",
+    "submitting": "Sending…",
+    "microcopy": "We'll review your request and respond with the most relevant next step.",
+    "success": "✓ Request received — we'll reply within 24 hours",
+    "error": "Something went wrong. Please email us directly at hello@xpandia.global"
+  },
+  "aside": {
+    "eyebrow": "CONTACT OPTIONS",
+    "emailLabel": "EMAIL",
+    "email": "hello@xpandia.global",
+    "emailBody": "Tell us what your team is building, launching, or improving in Spanish.",
+    "startWithLabel": "START WITH",
+    "ctaPrimary": "Book a diagnostic call",
+    "ctaSecondary": "Request an audit"
+  },
+  "whatHappensNext": {
+    "eyebrow": "NEXT STEPS",
+    "headline": "A clear path from first contact to action.",
+    "steps": [
+      {
+        "title": "Share your context",
+        "body": "Tell us what your team is building, improving, validating, or launching in Spanish."
+      },
+      {
+        "title": "Get a recommendation",
+        "body": "We identify the right starting point based on your product, audience, timeline, and business goal."
+      },
+      {
+        "title": "Scope the engagement",
+        "body": "We define deliverables, timing, pricing, inputs needed, and success criteria."
+      },
+      {
+        "title": "Move forward with clarity",
+        "body": "Your team gets the expert judgment, assets, evidence, or guidance needed to act with confidence."
+      }
+    ]
+  },
+  "finalCta": {
+    "eyebrow": "READY TO START?",
+    "headline": "Let's find the right Spanish quality path for your team.",
+    "body": "Whether you need to validate AI outputs, localize a product, improve Spanish content, train a global team, or understand a Hispanic audience, Xpandia can help you choose the right next step.",
+    "ctaPrimary": "Book a diagnostic call",
+    "ctaSecondary": "Email us"
+  }
+}
