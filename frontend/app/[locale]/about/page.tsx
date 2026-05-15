@@ -101,7 +101,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
           <div className="grid grid-cols-1 tablet:grid-cols-[1fr_1.6fr] gap-16 items-start">
             <div>
               <div className="aspect-[4/5] rounded-lg relative overflow-hidden bg-ink-900">
-                <Image src="/assets/founder.jpg" alt={t('founder.imageAlt')} fill loading="lazy" className="object-cover" sizes="(max-width: 900px) 100vw, 35vw" />
+                <Image src="/assets/founder.webp" alt={t('founder.imageAlt')} fill loading="lazy" className="object-cover" sizes="(max-width: 900px) 100vw, 35vw" />
                 <div className="absolute bottom-0 right-0 w-[40%] h-[3px] bg-accent"></div>
               </div>
               <div className="mt-5">
