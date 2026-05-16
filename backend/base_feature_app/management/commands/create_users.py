@@ -20,7 +20,7 @@ class Command(BaseCommand):
 
             user = User.objects.create_user(
                 email=email,
-                password='password123',
+                password='password',
                 first_name=first_name,
                 last_name=last_name,
                 phone=phone,
