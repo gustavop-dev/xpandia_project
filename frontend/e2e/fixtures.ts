@@ -22,14 +22,20 @@ export const testCheckoutData = {
   postal_code: '10001',
 };
 
-/**
- * Wait for the page to finish loading
- * Using 'load' which waits for DOM and all resources (images, scripts)
- * but doesn't wait for network to be idle
- */
 export async function waitForPageLoad(page: any) {
   await page.waitForLoadState('load');
   await page.waitForLoadState('domcontentloaded');
+  await page.waitForFunction(
+    () => {
+      const el = document.querySelector('header') ?? document.body
+      if (!el) return false
+      return Object.keys(el).some(k =>
+        k.startsWith('__reactFiber') || k.startsWith('__reactInternalInstance'),
+      )
+    },
+    undefined,
+    { timeout: 15000 },
+  )
 }
 
 /**

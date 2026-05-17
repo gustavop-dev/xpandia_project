@@ -19,8 +19,8 @@ export default defineConfig({
   ],
   webServer: [
     {
-      command: '../backend/venv/bin/python ../backend/manage.py runserver 127.0.0.1:8000',
-      url: 'http://127.0.0.1:8000/api/health/',
+      command: '../backend/venv/bin/python ../backend/manage.py runserver 127.0.0.1:8001',
+      url: 'http://127.0.0.1:8001/api/health/',
       reuseExistingServer: !process.env.CI,
       timeout: 180_000, // 3 minutes for server startup
       stdout: 'ignore',
@@ -36,6 +36,7 @@ export default defineConfig({
   use: {
     baseURL: process.env.PLAYWRIGHT_BASE_URL || 'http://localhost:3004',
     trace: 'on-first-retry',
+    reducedMotion: 'reduce',
   },
   projects: [
     {

@@ -1,6 +1,17 @@
 import { execFileSync } from 'node:child_process'
 import path from 'node:path'
 
+const FRONTEND_URL = process.env.PLAYWRIGHT_BASE_URL ?? 'http://localhost:3004'
+
+async function warmRoute(url: string): Promise<void> {
+  try {
+    const res = await fetch(url)
+    await res.text()
+  } catch {
+    // best-effort — if the server isn't up yet, tests will handle it
+  }
+}
+
 export default async function globalSetup(): Promise<void> {
   const backendDir = path.resolve(__dirname, '../../backend')
   const python = path.join(backendDir, 'venv/bin/python')
@@ -9,4 +20,12 @@ export default async function globalSetup(): Promise<void> {
     ['manage.py', 'seed_blog_e2e'],
     { cwd: backendDir, stdio: 'inherit' },
   )
+
+  // Pre-compile routes that are slow on cold-start in dev mode.
+  // Next.js compiles each route on first request; doing it here prevents
+  // the first test to visit these pages from racing against compilation.
+  await Promise.all([
+    warmRoute(`${FRONTEND_URL}/services/language-assurance`),
+    warmRoute(`${FRONTEND_URL}/services`),
+  ])
 }
