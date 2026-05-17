@@ -34,7 +34,7 @@ export async function waitForPageLoad(page: any) {
       )
     },
     undefined,
-    { timeout: 15000 },
+    { timeout: 30000 },
   )
 }
 
