@@ -32,7 +32,12 @@ test.describe('Contact form', () => {
       await page.getByPlaceholder('Company Inc.').fill('Acme Inc.')
       await page.getByPlaceholder(/e\.g\., We launched/).fill('We need a quality review of our Spanish AI outputs.')
 
-      await page.getByRole('button', { name: /Send request/i }).click()
+      await Promise.all([
+        page.waitForResponse(resp =>
+          resp.url().endsWith('/api/contact/') && resp.status() === 201,
+        ),
+        page.getByRole('button', { name: /Send request/i }).click(),
+      ])
 
       await expect(page.getByText(/Request received/i)).toBeVisible()
     }

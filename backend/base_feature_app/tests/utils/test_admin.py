@@ -1,3 +1,4 @@
+# quality: disable global_state_leak (pytest-django settings fixture auto-reverts all mutations after each test)
 import pytest
 from django.contrib.messages.storage.fallback import FallbackStorage
 from django.core.exceptions import PermissionDenied
@@ -54,6 +55,7 @@ def test_user_admin_login_as_link_renders_admin_url():
 
 @pytest.mark.django_db
 def test_user_admin_login_as_redirects_to_frontend(settings):
+    """Verifies that login-as generates JWT access/refresh tokens and redirects to FRONTEND_URL with them in query params."""
     factory = RequestFactory()
     admin_user = User.objects.create_superuser(email='admin@example.com', password='pass1234')
     target_user = User.objects.create_user(email='target@example.com', password='pass1234')

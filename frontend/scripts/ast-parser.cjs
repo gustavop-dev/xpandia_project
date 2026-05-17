@@ -112,7 +112,15 @@ function getMemberChain(callee) {
 function classifyCall(node) {
   if (!node || node.type !== 'CallExpression') return null;
 
-  const chain = getMemberChain(node.callee);
+  let callee = node.callee;
+  if (callee && callee.type === 'CallExpression') {
+    const factoryChain = getMemberChain(callee.callee);
+    if (factoryChain.includes('each')) {
+      callee = callee.callee;
+    }
+  }
+
+  const chain = getMemberChain(callee);
   if (chain.length === 0) return null;
 
   const root = chain[0];

@@ -25,6 +25,7 @@ def test_user_list_serializer_excludes_sensitive_fields(existing_user):
 
 @pytest.mark.django_db
 def test_user_list_serializer_returns_correct_field_values():
+    """Verifies that serialized field values match the source user object, not just that the field keys are present."""
     user = User.objects.create_user(
         email='list@example.com',
         password='pass1234',

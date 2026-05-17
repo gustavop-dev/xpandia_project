@@ -13,6 +13,7 @@ const ORIGIN_ENV = process.env.NEXT_PUBLIC_BACKEND_ORIGIN
 function loadService() {
   let mod: typeof import('../blog')
   jest.isolateModules(() => {
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
     mod = require('../blog') as typeof import('../blog')
   })
   return mod!

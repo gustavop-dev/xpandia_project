@@ -25,17 +25,15 @@ describe('i18n request config', () => {
     expect(routing.locales).toContain('es')
   })
 
-  for (const ns of NAMESPACES) {
-    it(`messages/en/${ns}.json is a non-empty object`, async () => {
-      const mod = await import(`../../messages/en/${ns}.json`)
-      expect(typeof mod.default).toBe('object')
-      expect(Object.keys(mod.default).length).toBeGreaterThan(0)
-    })
+  it.each([...NAMESPACES])('messages/en/%s.json is a non-empty object', async (ns) => {
+    const mod = await import(`../../messages/en/${ns}.json`)
+    expect(typeof mod.default).toBe('object')
+    expect(Object.keys(mod.default).length).toBeGreaterThan(0)
+  })
 
-    it(`messages/es/${ns}.json is a non-empty object`, async () => {
-      const mod = await import(`../../messages/es/${ns}.json`)
-      expect(typeof mod.default).toBe('object')
-      expect(Object.keys(mod.default).length).toBeGreaterThan(0)
-    })
-  }
+  it.each([...NAMESPACES])('messages/es/%s.json is a non-empty object', async (ns) => {
+    const mod = await import(`../../messages/es/${ns}.json`)
+    expect(typeof mod.default).toBe('object')
+    expect(Object.keys(mod.default).length).toBeGreaterThan(0)
+  })
 })

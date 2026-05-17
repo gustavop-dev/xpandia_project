@@ -36,6 +36,7 @@ export default function XpandiaHeader() {
 
   function switchLocale(target: string) {
     if (target === locale) return
+    localStorage.setItem('xpandia-lang', target)
     router.replace(pathname, { locale: target })
   }
 

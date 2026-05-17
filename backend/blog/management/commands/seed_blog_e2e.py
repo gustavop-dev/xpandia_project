@@ -1,3 +1,5 @@
+from datetime import timedelta
+
 from django.core.management.base import BaseCommand
 from django.utils import timezone
 
@@ -44,7 +46,7 @@ class Command(BaseCommand):
                 category=CATEGORIES[(i - 1) % len(CATEGORIES)],
                 author='xpandia-team',
                 is_published=True,
-                published_at=now,
+                published_at=now - timedelta(seconds=PUBLISHED_COUNT - i),
             )
 
         BlogPost.objects.create(

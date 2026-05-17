@@ -4,9 +4,6 @@ from django.core.files.uploadedfile import SimpleUploadedFile
 from blog.models import BlogPost
 
 
-pytest_plugins = ['base_feature_app.tests.conftest']
-
-
 _MIN_PNG = (
     b'\x89PNG\r\n\x1a\n\x00\x00\x00\rIHDR\x00\x00\x00\x01\x00\x00\x00\x01'
     b'\x08\x06\x00\x00\x00\x1f\x15\xc4\x89\x00\x00\x00\rIDATx\x9cc\xf8\xff'
