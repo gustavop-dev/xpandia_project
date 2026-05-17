@@ -18,7 +18,7 @@ test.describe('Blog', () => {
     await expect(page.getByRole('heading', { level: 1, name: /Spanish quality/i })).toBeVisible()
     // Posts ordered by -published_at, -created_at → newest seeded post (12) appears on page 1
     await expect(page.getByRole('heading', { level: 3, name: /E2E Post 12/i })).toBeVisible()
-    await expect(page.getByRole('heading', { level: 3, name: /E2E Draft/i })).not.toBeVisible()
+    await expect(page.getByRole('heading', { level: 3, name: /E2E Draft/i })).toBeHidden()
   })
 
   test('blog detail renders title and back link', { tag: [...BLOG_DETAIL] }, async ({ page }) => {
