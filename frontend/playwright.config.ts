@@ -31,6 +31,9 @@ export default defineConfig({
       url: 'http://localhost:3004',
       reuseExistingServer: !process.env.CI,
       timeout: 180_000, // 3 minutes for server startup
+      env: {
+        NEXT_PUBLIC_BACKEND_ORIGIN: 'http://127.0.0.1:8001',
+      },
     },
   ],
   use: {
