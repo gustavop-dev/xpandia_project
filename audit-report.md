@@ -129,5 +129,5 @@ Ninguno. `npm install` falló una vez con `ENOTEMPTY` al renombrar `@next/swc-li
 - Slice: `pytest blog/tests/test_models.py -v --no-cov` → **6 passed in 0.92s**.
 
 ### Pre-flight notes
-- `backend/venv` se recreó desde cero — el venv previo estaba roto (shebangs apuntaban a `/home/dev-env/repos/xpandia_project/backend/venv/bin/python3`, es decir, otro checkout sin `_staging`).
+- `backend/venv` se recreó desde cero — el venv previo estaba roto (shebangs apuntaban a `/home/dev-env/webapps/xpandia_project/backend/venv/bin/python3`, es decir, otro checkout sin `_staging`).
 - Durante la ejecución aparecieron como modificados sin staging tres archivos de skill (`.claude/skills/vuln-audit/SKILL.md`, `.agents/skills/vuln-audit/SKILL.md`, `.windsurf/workflows/vuln-audit.md`) — no relacionados con dependencias, presumiblemente de un fleet-sync en paralelo. **No** se incluyeron en ningún commit de esta rama.
