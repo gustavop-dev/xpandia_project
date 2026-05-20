@@ -23,7 +23,6 @@ export default async function LanguageAssurancePage({ params }: { params: Promis
   const heroProofPoints = t.raw('hero.proofPoints') as Array<{ title: string; desc: string }>
   const coverageCards = t.raw('whatWeEvaluate.cards') as Array<{ title: string; desc: string }>
   const whenToUseItems = t.raw('whenToUse.items') as string[]
-  const criteriaCards = t.raw('qualityCriteria.cards') as Array<{ n: string; title: string; desc: string }>
   const engagementItems = t.raw('engagements.items') as Array<{
     name: string
     tagline: string | null
@@ -37,19 +36,8 @@ export default async function LanguageAssurancePage({ params }: { params: Promis
     note?: string
     cta: string
   }>
+  const additionalModules = t.raw('additionalModules.modules') as string[]
   const methodologySteps = t.raw('methodology.steps') as Array<{ title: string; body: string }>
-  const deliverableCards = t.raw('deliverables.cards') as Array<{ title: string; desc: string }>
-  const scorecardCriteria = t.raw('scorecardPreview.criteria') as string[]
-  const scorecardRows = t.raw('scorecardPreview.rows') as Array<{
-    label: string
-    width: string
-    val: string
-    accent?: boolean
-    dim?: boolean
-  }>
-  const audienceCards = t.raw('builtFor.cards') as Array<{ title: string; desc: string }>
-  const pricingCards = t.raw('pricing.cards') as Array<{ title: string; price: string; desc: string }>
-  const faqItems = t.raw('faq.items') as Array<{ q: string; a: string }>
 
   return (
     <main>
@@ -165,27 +153,7 @@ export default async function LanguageAssurancePage({ params }: { params: Promis
         </div>
       </section>
 
-      {/* 5. Core evaluation criteria — dark */}
-      <section className="bg-ink-900 text-paper">
-        <div className="container">
-          <div className="eyebrow no-bar !text-ink-400 mb-3">{t('qualityCriteria.eyebrow')}</div>
-          <div className="section-head" style={{ borderBottomColor: 'rgba(255,255,255,0.1)' }}>
-            <h2 className="head-title text-paper">{t('qualityCriteria.headline')}</h2>
-            <p className="head-lede text-ink-300">{t('qualityCriteria.intro')}</p>
-          </div>
-          <div data-stagger className="grid grid-cols-2 tablet:grid-cols-4 gap-px mt-12 bg-white/[0.08]">
-            {criteriaCards.map(c => (
-              <div key={c.n} className="bg-ink-900 px-6 py-8">
-                <div className="font-mono text-[11px] text-ink-400 tracking-[0.1em] mb-3">{c.n}</div>
-                <div className="font-display text-[22px] tracking-[-0.012em] mb-2">{c.title}</div>
-                <div className="text-[13.5px] text-ink-300 leading-[1.5]">{c.desc}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 6. Core engagements */}
+      {/* 5. Core services */}
       <section>
         <div className="container">
           <div className="eyebrow mb-3">{t('engagements.eyebrow')}</div>
@@ -252,6 +220,22 @@ export default async function LanguageAssurancePage({ params }: { params: Promis
         </div>
       </section>
 
+      {/* 6. Additional modules */}
+      <section>
+        <div className="container">
+          <div className="eyebrow mb-3">{t('additionalModules.eyebrow')}</div>
+          <div className="section-head">
+            <h2 className="head-title">{t('additionalModules.headline')}</h2>
+            <p className="head-lede">{t('additionalModules.body')}</p>
+          </div>
+          <div className="mt-12 flex flex-wrap gap-3">
+            {additionalModules.map(m => (
+              <span key={m} className="tag">{m}</span>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* 7. Methodology */}
       <section className="bg-ink-50">
         <div className="container">
@@ -275,121 +259,7 @@ export default async function LanguageAssurancePage({ params }: { params: Promis
         </div>
       </section>
 
-      {/* 8. Deliverables */}
-      <section>
-        <div className="container">
-          <div className="eyebrow mb-3">{t('deliverables.eyebrow')}</div>
-          <div className="section-head">
-            <h2 className="head-title">{t('deliverables.headline')}</h2>
-            <p className="head-lede">{t('deliverables.intro')}</p>
-          </div>
-          <div data-stagger className="grid grid-cols-1 sm:grid-cols-2 tablet:grid-cols-3 gap-4 mt-12">
-            {deliverableCards.map(d => (
-              <div key={d.title} className="p-7 bg-white border border-ink-150 rounded-md">
-                <div className="font-display text-[20px] font-medium tracking-[-0.012em] mb-[10px]">{d.title}</div>
-                <div className="text-ink-600 text-[15px] leading-[1.5]">{d.desc}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Scorecard preview */}
-      <section className="tight">
-        <div className="container">
-          <div className="grid grid-cols-1 tablet:grid-cols-[1fr_1.1fr] gap-16 items-center">
-            <div>
-              <div className="eyebrow">{t('scorecardPreview.eyebrow')}</div>
-              <h2 style={{ marginTop: 24 }}>{t('scorecardPreview.headline')}</h2>
-              <p className="lede" style={{ marginTop: 24 }}>{t('scorecardPreview.body')}</p>
-              <div className="mt-8 flex flex-wrap gap-2">
-                {scorecardCriteria.map(tag => (
-                  <span key={tag} className="tag">{tag}</span>
-                ))}
-              </div>
-            </div>
-            <div className="scorecard" aria-hidden="true">
-              <div className="scorecard-head">
-                <div className="scorecard-title">{t('scorecardPreview.scorecardTitle')}</div>
-                <div className="font-mono text-[11px] text-ink-500 tracking-[0.06em]">{t('scorecardPreview.scorecardSample')}</div>
-              </div>
-              {scorecardRows.map(r => (
-                <div key={r.label} className="scorecard-row">
-                  <div className="scorecard-label">{r.label}</div>
-                  <div className={`scorecard-bar${r.accent ? ' accent' : ''}`}>
-                    <span style={{ width: r.width, ...(r.dim ? { background: '#4A5259' } : {}) }}></span>
-                  </div>
-                  <div className="scorecard-value">{r.val}</div>
-                </div>
-              ))}
-              <div className="mt-[18px] pt-4 border-t border-ink-150 text-[11px] text-ink-500 leading-[1.5]">
-                {t('scorecardPreview.scorecardFooter')}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 9. Built for */}
-      <section className="tight">
-        <div className="container">
-          <div className="eyebrow mb-3">{t('builtFor.eyebrow')}</div>
-          <div className="section-head">
-            <h2 className="head-title">{t('builtFor.headline')}</h2>
-          </div>
-          <div data-stagger className="grid grid-cols-1 sm:grid-cols-2 tablet:grid-cols-3 gap-4 mt-12">
-            {audienceCards.map(c => (
-              <div key={c.title} className="p-7 bg-white border border-ink-150 rounded-md">
-                <div className="font-display text-[20px] font-medium tracking-[-0.012em] mb-[10px]">{c.title}</div>
-                <div className="text-ink-600 text-[15px] leading-[1.5]">{c.desc}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 10. Pricing */}
-      <section className="bg-ink-50">
-        <div className="container">
-          <div className="eyebrow mb-3">{t('pricing.eyebrow')}</div>
-          <div className="section-head">
-            <h2 className="head-title">{t('pricing.headline')}</h2>
-            <p className="head-lede">{t('pricing.intro')}</p>
-          </div>
-          <div data-stagger className="grid grid-cols-1 sm:grid-cols-2 tablet:grid-cols-3 gap-4 mt-12">
-            {pricingCards.map(c => (
-              <div key={c.title} className="p-7 bg-white border border-ink-150 rounded-md flex flex-col">
-                <div className="font-display text-[20px] font-medium tracking-[-0.012em] mb-1">{c.title}</div>
-                <div className="font-mono text-[13px] text-accent tracking-[0.04em] mb-3">{c.price}</div>
-                <div className="text-ink-600 text-[15px] leading-[1.5]">{c.desc}</div>
-              </div>
-            ))}
-          </div>
-          <p className="font-mono text-[11px] text-ink-500 tracking-[0.06em] mt-6">
-            {t('pricing.note')}
-          </p>
-        </div>
-      </section>
-
-      {/* 11. FAQ */}
-      <section>
-        <div className="container">
-          <div className="eyebrow mb-3">{t('faq.eyebrow')}</div>
-          <div className="section-head">
-            <h2 className="head-title">{t('faq.headline')}</h2>
-          </div>
-          <div className="grid grid-cols-1 tablet:grid-cols-2 gap-x-12 gap-y-0 mt-12">
-            {faqItems.map(f => (
-              <div key={f.q} className="py-7 border-t border-ink-150">
-                <h3 className="font-display text-[20px] font-medium tracking-[-0.012em] mb-3">{f.q}</h3>
-                <p className="text-ink-600 text-[16px] leading-[1.55]">{f.a}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 12. Final CTA */}
+      {/* 8. Final CTA */}
       <section>
         <div className="container-narrow max-w-[900px]">
           <div className="eyebrow">{t('finalCta.eyebrow')}</div>
@@ -398,9 +268,6 @@ export default async function LanguageAssurancePage({ params }: { params: Promis
           </h2>
           <p className="lede mt-7">
             {t('finalCta.body')}
-          </p>
-          <p className="font-mono text-[12px] text-ink-500 tracking-[0.06em] mt-6">
-            {t('finalCta.pricingNote')}
           </p>
           <div className="hero-ctas mt-10">
             <Link className="btn btn-primary" href="/contact">{t('finalCta.ctaPrimary')} <span className="btn-arrow"></span></Link>

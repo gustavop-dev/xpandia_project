@@ -80,7 +80,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
           </p>
           <div className="hero-ctas mt-10">
             <a className="btn btn-primary" href="#contact-form">{t('finalCta.ctaPrimary')} <span className="btn-arrow"></span></a>
-            <a className="btn btn-secondary" href={`mailto:${t('hero.email')}`}>{t('finalCta.ctaSecondary')}</a>
+            <a className="btn btn-secondary" href="#contact-form">{t('finalCta.ctaSecondary')}</a>
           </div>
         </div>
       </section>

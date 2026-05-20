@@ -5,6 +5,7 @@ export interface ContactFormData {
   email: string
   role: string
   company: string
+  website?: string
   message: string
   service?: string
   size?: string

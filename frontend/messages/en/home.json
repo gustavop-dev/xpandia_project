@@ -1,93 +1,111 @@
 {
   "metadata": {
-    "title": "Xpandia | Spanish Language Assurance, Localization & Cultural Intelligence",
-    "description": "Xpandia helps AI, SaaS, EdTech, and digital product teams validate, localize, and culturally adapt Spanish experiences for Hispanic and Spanish-speaking audiences.",
+    "title": "Xpandia | Spanish Language Assurance & Applied Cultural Intelligence",
+    "description": "Xpandia helps AI, SaaS, EdTech, Product, Localization, CX, and Marketing teams validate, improve, and culturally adapt high-impact Spanish experiences through expert human review, quality evidence, and cultural insight.",
     "ogTitle": "Xpandia | Spanish that works for real users",
-    "ogDescription": "Spanish language assurance, localization, and applied cultural intelligence for AI, SaaS, EdTech, and digital product teams."
+    "ogDescription": "Validate, improve, and culturally adapt high-impact Spanish experiences for Hispanic and Spanish-speaking audiences."
   },
   "hero": {
-    "eyebrow": "SPANISH EXPERTISE · AI · SAAS · EDTECH · DIGITAL PRODUCTS",
+    "eyebrow": "SPANISH EXPERTISE · LANGUAGE ASSURANCE · CULTURAL INTELLIGENCE",
     "h1": "Spanish that works for",
     "h1Accent": "real users",
-    "subheadline": "Xpandia helps AI, SaaS, EdTech, and digital product teams validate, localize, and culturally adapt Spanish experiences for Hispanic and Spanish-speaking audiences.",
+    "subheadline": "Xpandia helps AI, SaaS, EdTech, and product teams validate, improve, and culturally adapt their digital experiences for Hispanic and Spanish-speaking audiences.",
     "ctaPrimary": "Book a diagnostic call",
-    "ctaSecondary": "Request an audit",
+    "ctaSecondary": "Explore services",
     "proof": [
-      { "label": "20+ YEARS", "text": "Global localization and language quality experience" },
-      { "label": "SPANISH FOCUS", "text": "LatAm, US Hispanic, and regional variants" },
-      { "label": "BUILT FOR", "text": "AI, Product, Localization, CX, and EdTech teams" },
-      { "label": "MARKETS", "text": "US · Canada · Europe" }
+      { "label": "20+ YEARS", "text": "Global localization and language quality experience." },
+      { "label": "SPANISH FOCUS", "text": "LatAm, Spain, US Hispanic audiences, and regional variants." },
+      { "label": "BUILT FOR", "text": "AI, Product, Localization, CX, Marketing, and EdTech teams." },
+      { "label": "REGIONS", "text": "US · Canada · Europe · LatAm" }
     ]
   },
   "positioning": {
     "eyebrow": "WHY XPANDIA",
     "headline": "Spanish quality is product quality.",
-    "body1": "Your users experience your product through language: the answers your AI gives, the onboarding copy they follow, the support content they trust, and the messages that help them decide.",
-    "body2": "Xpandia gives teams the expert Spanish judgment, structured review, cultural insight, and measurable quality signals they need to launch, improve, and scale with confidence.",
-    "body3": "We combine senior linguistic expertise, applied cultural intelligence, and practical product judgment to help Spanish experiences perform in the real world.",
-    "calloutTitle": "Language. Culture. Product judgment.",
-    "calloutLine": "The three layers behind Spanish that works."
+    "body1": "AI and automated translation can get Spanish most of the way there. But \"mostly accurate\" is not always enough when language affects trust, conversion, customer experience, or product adoption.",
+    "body2": "Xpandia operates in that last mile between understandable Spanish and Spanish that is ready for real users. We help teams validate, improve, and deliver Spanish experiences that are accurate, clear, natural, culturally aware, and aligned with the way users think, decide, and act.",
+    "body3": "For companies where Spanish quality directly affects UX, CX, trust, and revenue, Xpandia turns expert human judgment into the evidence, recommendations, and improvements needed to move from \"good enough\" to ready.",
+    "calloutTitle": "Validate. Adapt. Understand.",
+    "calloutLine": "The three ways Xpandia makes Spanish work in the real world."
   },
   "servicesOverview": {
     "eyebrow": "SERVICES",
-    "headline": "The Spanish expertise your product needs.",
-    "intro": "Choose the right path based on what your team needs: validate what exists, create or improve Spanish content, or understand the audience behind the language.",
+    "headline": "Start with the problem your team needs to solve.",
+    "intro": "Xpandia helps teams validate the quality of existing experiences, improve what needs attention, and understand the target audience behind the language.",
     "cards": [
       {
-        "num": "01 / ASSURANCE",
+        "num": "01 / VALIDATE",
         "title": "Language Assurance",
         "tagline": "Validate Spanish before your users do.",
-        "description": "Structured audits and QA sprints for AI outputs, product flows, support content, launch readiness, and ongoing language quality governance.",
+        "description": "Structured audits and QA sprints for AI outputs, product flows, support content, launch readiness, and ongoing Spanish quality decisions.",
         "bestForLabel": "BEST FOR",
-        "bestFor": "AI products, chatbots, copilots, SaaS platforms, EdTech products, and support experiences already operating in Spanish or preparing to launch.",
+        "bestFor": "Teams already operating in Spanish or preparing to launch with AI outputs, localized content, product experiences, or customer journeys and need to know whether they are accurate, natural, consistent, culturally appropriate, and ready for users.",
+        "coreServicesLabel": "CORE SERVICES",
+        "coreServices": [
+          "AI Quality Audit Sprint",
+          "Launch Readiness Audit",
+          "Quality Advisory"
+        ],
         "whatYouGetLabel": "WHAT YOU GET",
-        "whatYouGet": "Quality scorecards, issue taxonomy, severity ratings, readiness recommendations, prioritized fixes, and executive-ready findings.",
+        "whatYouGet": "Decision-ready evidence: quality scorecards, issue taxonomies, severity ratings, prioritized fixes, and clear recommendations to help your team improve Spanish quality and make the experience user-ready.",
         "cta": "Explore Language Assurance"
       },
       {
-        "num": "02 / LOCALIZATION",
-        "title": "Localization & Adaptation",
-        "tagline": "More than translated. Spanish that feels native, clear and trusted.",
-        "description": "Customized Spanish localization, transcreation, UX copy, documentation, and regional adaptation for digital products and content.",
+        "num": "02 / ADAPT",
+        "title": "Spanish Experience Repair & Adaptation",
+        "tagline": "Turn just-translated content into user-ready experiences.",
+        "description": "Expert repair, custom adaptation, and localization of high-impact Spanish content, AI or MT outputs, product copy, support content, messaging, and customer-facing experiences.",
         "bestForLabel": "BEST FOR",
-        "bestFor": "Teams launching websites, product interfaces, help centers, marketing campaigns, learning content, or customer communications in Spanish.",
+        "bestFor": "Teams with existing Spanish content, AI-generated outputs, machine-translated copy, product copy, support materials, or marketing assets that need to feel clearer, more natural, more consistent, and better aligned with the audience.",
+        "coreServicesLabel": "CORE SERVICES",
+        "coreServices": [
+          "Spanish Experience Repair",
+          "Product & Content Adaptation"
+        ],
         "whatYouGetLabel": "WHAT YOU GET",
-        "whatYouGet": "Localized copy, adapted messaging, terminology guidance, regional fit recommendations, QA-ready content, and publication-ready Spanish assets.",
-        "cta": "Explore Localization & Adaptation"
+        "whatYouGet": "Improved Spanish copy, AI/MT output repair, rewrite recommendations, terminology guidance, tone notes, regional fit guidance, and QA-ready or publication-ready assets.",
+        "cta": "Explore Adaptation"
       },
       {
-        "num": "03 / CULTURE",
+        "num": "03 / UNDERSTAND",
         "title": "Applied Cultural Intelligence",
-        "tagline": "Make Spanish resonate.",
-        "description": "Advisory, workshops, audits, and training that help teams understand Hispanic and Spanish-speaking audiences, cultural expectations, trust signals, tone, and market fit.",
+        "tagline": "Make better decisions with cultural context.",
+        "description": "Talks, briefings, workshops, and advisory that help leaders and global teams strengthen Cultural Intelligence, understand Hispanic and Spanish-speaking audiences, avoid cultural friction, and make better product, market, communication, and people decisions.",
         "bestForLabel": "BEST FOR",
-        "bestFor": "Product, marketing, CX, localization, and leadership teams that need to connect with Spanish-speaking users across the US, Canada, Europe, and LatAm.",
+        "bestFor": "Leadership, Product, Marketing, CX, People, Localization, and Global Operations teams that need to work across cultures, enter new markets, improve team effectiveness, or understand the invisible norms that shape trust, behavior, and business outcomes.",
+        "coreServicesLabel": "CORE SERVICES",
+        "coreServices": [
+          "ACI Talk / Executive Briefing",
+          "CQ & ACI Workshops",
+          "Hispanic Audience & Messaging Review",
+          "Cultural Fit Advisory"
+        ],
         "whatYouGetLabel": "WHAT YOU GET",
-        "whatYouGet": "Cultural insight, audience-specific recommendations, messaging guidance, training sessions, market fit findings, and actionable strategy.",
+        "whatYouGet": "Practical CQ frameworks, culturalization guidance, audience-specific insights, cultural friction analysis, messaging guidance, executive briefings, team workshops, and action-ready next steps.",
         "cta": "Explore Applied Cultural Intelligence"
       }
     ]
   },
   "methodology": {
     "eyebrow": "METHODOLOGY",
-    "headline": "The method behind Spanish that works.",
-    "intro": "Every engagement follows a clear process: define the audience, evaluate the experience, identify risks, and deliver recommendations your team can act on.",
+    "headline": "The method behind Spanish that works",
+    "intro": "Every engagement is designed and follows a rigorous process to help your team understand what is working, what needs attention, why it matters, and what to do next.",
     "steps": [
-      { "title": "Define", "body": "We clarify your use case, audience, Spanish variant, product surface, business goal, and what \"good\" needs to mean for your team." },
-      { "title": "Evaluate", "body": "We review language, meaning, tone, terminology, clarity, cultural fit, UX friction, and quality risks using structured criteria." },
+      { "title": "Define", "body": "We clarify your product, audience, Spanish variant, content surface, business goal, timeline, and what \"good\" needs to mean for your team." },
+      { "title": "Evaluate", "body": "We review language, meaning, tone, terminology, clarity, cultural fit, UX friction, audience expectations, and quality risks using expert human judgment and structured criteria." },
       { "title": "Prioritize", "body": "We separate critical issues from quick wins and organize findings by severity, business impact, and implementation effort." },
-      { "title": "Improve", "body": "We deliver recommendations, rewrites, standards, scorecards, and next steps your product, localization, AI, or CX team can execute." }
+      { "title": "Improve", "body": "We deliver recommendations, rewrites, standards, scorecards, examples, and next steps your team can act on." }
     ]
   },
   "deliverables": {
-    "eyebrow": "THE DELIVERABLES",
+    "eyebrow": "WHAT YOU GET",
     "headline": "Evidence your team can act on.",
     "body": "Every Xpandia engagement turns expert judgment into practical evidence: scorecards, findings, examples, recommendations, and decision-ready guidance.",
     "cards": [
-      { "title": "Quality Scorecard", "body": "Measurable scoring across the criteria that matter for your use case: accuracy, clarity, naturalness, tone, terminology, regional fit, cultural fit, UX friction, and risk." },
-      { "title": "Issue Taxonomy", "body": "A structured list of what is breaking quality, where it happens, how severe it is, and what your team should fix first." },
-      { "title": "Executive Readout", "body": "A concise summary for product, AI, localization, CX, or leadership teams with risks, opportunities, and recommended next steps." },
-      { "title": "Remediation Guidance", "body": "Practical recommendations, rewrites, examples, and standards to help your team improve Spanish quality without slowing down delivery." }
+      { "title": "Quality Scorecard", "body": "Measurable scoring across the criteria that matter for your use case: accuracy, clarity, naturalness, tone, terminology, regional fit, cultural fit, UX friction, readiness, and risk." },
+      { "title": "Issue Taxonomy", "body": "A structured view of what is affecting quality, where it happens, how severe it is, and what your team should fix first." },
+      { "title": "Remediation Guidance", "body": "Practical recommendations, rewrites, examples, terminology notes, and standards to help your team improve Spanish quality without slowing down delivery." },
+      { "title": "Executive Readout", "body": "A concise summary for Product, AI, Localization, CX, Marketing, or leadership teams with risks, opportunities, and recommended next steps." }
     ],
     "scorecard": {
       "title": "Quality Scorecard",
@@ -112,41 +130,23 @@
     }
   },
   "builtFor": {
-    "eyebrow": "BUILT FOR",
-    "headline": "For teams building products and experiences in Spanish.",
+    "eyebrow": "WHO WE WORK WITH",
+    "headline": "Teams building products and experiences in Spanish.",
     "cards": [
       { "title": "AI & ML Product Teams", "body": "Validate Spanish outputs from chatbots, tutors, copilots, agents, and generative AI experiences before users rely on them." },
       { "title": "SaaS & Product Teams", "body": "Improve Spanish product flows, onboarding, UI copy, forms, errors, and launch readiness." },
-      { "title": "EdTech Teams", "body": "Make Spanish learning experiences clear, natural, culturally relevant, and pedagogically effective." },
-      { "title": "Localization Teams", "body": "Strengthen Spanish quality, vendor oversight, review workflows, terminology, and sign-off processes." },
+      { "title": "Localization Teams", "body": "Strengthen Spanish quality, reviewer alignment, terminology, vendor oversight, and sign-off decisions." },
       { "title": "CX & Support Teams", "body": "Improve Spanish help content, support macros, chatbot responses, and customer-facing communication." },
-      { "title": "Marketing & Growth Teams", "body": "Adapt Spanish messaging, landing pages, campaigns, and conversion copy for real Hispanic and Spanish-speaking audiences." }
-    ]
-  },
-  "buyer": {
-    "eyebrow": "WHO WE HELP",
-    "headline": "Built for the leaders responsible for Spanish quality.",
-    "roles": [
-      "Head of Product",
-      "VP Product",
-      "AI / ML Product Lead",
-      "Director of Localization",
-      "Head of Globalization",
-      "VP Customer Experience",
-      "Customer Support Leader",
-      "EdTech Content Leader",
-      "Marketing / Growth Lead",
-      "Trust & Safety Lead"
+      { "title": "Marketing & Growth Teams", "body": "Adapt messaging, landing pages, campaigns, CTAs, and conversion copy for Hispanic and Spanish-speaking audiences." },
+      { "title": "EdTech Teams", "body": "Make Spanish learning experiences clear, natural, culturally relevant, and pedagogically effective." }
     ]
   },
   "finalCta": {
     "eyebrow": "NEXT STEP",
     "headline": "Know where your Spanish stands — and what to do",
     "headlineAccent": "next",
-    "body": "In a focused diagnostic call, we review your Spanish surface, understand your audience, product context, timeline, and business goal, and recommend the right path forward: an audit, an AI QA sprint, a localization engagement, a CQ talk, or a quality roadmap.",
-    "pricingLine": "Engagements start from $500.",
-    "pricingNote": "Diagnostics, audits, AI QA sprints, localization engagements, CQ talks, and fractional advisory are scoped based on your product, audience, complexity, timeline and business priority.",
+    "body": "In a focused diagnostic call, we review your Spanish surface, audience, product context, timeline, and business goal, and then, if applicable, we recommend the right path forward: an audit, AI QA sprint, Spanish repair engagement, ACI talk, messaging review, or quality advisory path.",
     "ctaPrimary": "Book a diagnostic call",
-    "ctaSecondary": "Request an audit"
+    "ctaSecondary": "Explore services"
   }
 }

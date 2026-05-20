@@ -20,10 +20,8 @@ export default async function AppliedCulturalIntelligencePage({ params }: { para
   setRequestLocale(locale)
   const t = await getTranslations('aci')
 
-  const heroProofPoints = t.raw('hero.proofPoints') as Array<{ label: string; body: string }>
   const coverageCards = t.raw('whatWeUnderstand.cards') as Array<{ title: string; desc: string }>
   const whenToUseItems = t.raw('whenToUse.items') as string[]
-  const criteriaCards = t.raw('aciCriteria.cards') as Array<{ n: string; title: string; desc: string }>
   const engagements = t.raw('engagements.items') as Array<{
     n: string
     title: string
@@ -32,6 +30,7 @@ export default async function AppliedCulturalIntelligencePage({ params }: { para
     outcome: string
     overview?: string
     themes?: string[]
+    themesLabel?: string
     deliverables: string[]
     deliverablesLabel: string
     price: string
@@ -39,10 +38,6 @@ export default async function AppliedCulturalIntelligencePage({ params }: { para
     cta: string
   }>
   const methodologySteps = t.raw('methodology.steps') as Array<{ title: string; body: string }>
-  const deliverableCards = t.raw('deliverables.cards') as Array<{ title: string; desc: string }>
-  const builtForCards = t.raw('builtFor.cards') as Array<{ title: string; desc: string }>
-  const pricingCards = t.raw('pricing.cards') as Array<{ title: string; price: string; desc: string }>
-  const faqItems = t.raw('faq.items') as Array<{ q: string; a: string }>
 
   return (
     <main>
@@ -69,15 +64,6 @@ export default async function AppliedCulturalIntelligencePage({ params }: { para
             <Link className="btn btn-primary" href="/contact">{t('hero.ctaPrimary')} <span className="btn-arrow"></span></Link>
             <Link className="btn btn-secondary" href="/contact">{t('hero.ctaSecondary')}</Link>
           </div>
-
-          <div data-stagger className="mt-20 pt-6 border-t border-ink-150 grid grid-cols-1 sm:grid-cols-3 gap-8">
-            {heroProofPoints.map(p => (
-              <div key={p.label}>
-                <div className="eyebrow no-bar">{p.label}</div>
-                <div className="text-ink-600 text-[15px] leading-[1.5] mt-2">{p.body}</div>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 
@@ -95,6 +81,9 @@ export default async function AppliedCulturalIntelligencePage({ params }: { para
               </p>
               <p className="text-ink-600 text-[19px] max-w-[64ch] mb-5">
                 {t('positioning.body2')}
+              </p>
+              <p className="text-ink-600 text-[19px] max-w-[64ch] mb-5">
+                {t('positioning.body3')}
               </p>
               <p className="text-ink-900 text-[19px] max-w-[64ch] font-medium">
                 {t('positioning.supporting')}
@@ -159,29 +148,7 @@ export default async function AppliedCulturalIntelligencePage({ params }: { para
         </div>
       </section>
 
-      {/* 5. Core ACI Criteria — dark */}
-      <section className="bg-ink-900 text-paper">
-        <div className="container">
-          <div className="section-head" style={{ borderBottomColor: 'rgba(255,255,255,0.1)' }}>
-            <div>
-              <div className="eyebrow mb-5">{t('aciCriteria.eyebrow')}</div>
-              <h2 className="head-title text-paper">{t('aciCriteria.headline')}</h2>
-            </div>
-            <p className="head-lede text-ink-300">{t('aciCriteria.intro')}</p>
-          </div>
-          <div data-stagger className="grid grid-cols-2 tablet:grid-cols-5 gap-px mt-12 bg-white/[0.08]">
-            {criteriaCards.map(c => (
-              <div key={c.n} className="bg-ink-900 px-6 py-8">
-                <div className="font-mono text-[11px] text-ink-400 tracking-[0.1em] mb-3">{c.n}</div>
-                <div className="font-display text-[19px] tracking-[-0.012em] mb-2">{c.title}</div>
-                <div className="text-[13.5px] text-ink-300 leading-[1.5]">{c.desc}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 6. Core Engagements */}
+      {/* 5. Core Services */}
       <section>
         <div className="container">
           <div className="section-head">
@@ -211,7 +178,7 @@ export default async function AppliedCulturalIntelligencePage({ params }: { para
                     )}
                     {e.themes && (
                       <>
-                        <div className="eyebrow no-bar mt-5 mb-3">{t('engagements.talkThemesLabel')}</div>
+                        <div className="eyebrow no-bar mt-5 mb-3">{(e.themesLabel ?? t('engagements.talkThemesLabel')).toUpperCase()}</div>
                         <ul className="space-y-[6px]">
                           {e.themes.map(theme => (
                             <li key={theme} className="text-ink-600 text-[14px] leading-[1.5] pl-4 relative before:content-['—'] before:absolute before:left-0 before:text-ink-400">{theme}</li>
@@ -246,7 +213,7 @@ export default async function AppliedCulturalIntelligencePage({ params }: { para
         </div>
       </section>
 
-      {/* 7. Methodology */}
+      {/* 6. Methodology */}
       <section className="bg-ink-50">
         <div className="container">
           <div className="section-head">
@@ -269,96 +236,7 @@ export default async function AppliedCulturalIntelligencePage({ params }: { para
         </div>
       </section>
 
-      {/* 8. Deliverables */}
-      <section>
-        <div className="container">
-          <div className="section-head">
-            <div>
-              <div className="eyebrow mb-5">{t('deliverables.eyebrow')}</div>
-              <h2 className="head-title">{t('deliverables.headline')}</h2>
-            </div>
-            <p className="head-lede">{t('deliverables.intro')}</p>
-          </div>
-          <div data-stagger className="grid grid-cols-1 sm:grid-cols-2 tablet:grid-cols-4 gap-4 mt-12">
-            {deliverableCards.map(c => (
-              <div key={c.title} className="p-6 bg-white border border-ink-150 rounded-md">
-                <div className="font-display text-[18px] font-medium tracking-[-0.012em] mb-[10px]">{c.title}</div>
-                <div className="text-ink-600 text-[14px] leading-[1.5]">{c.desc}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 9. Built For */}
-      <section className="bg-ink-50">
-        <div className="container">
-          <div className="section-head">
-            <div>
-              <div className="eyebrow mb-5">{t('builtFor.eyebrow')}</div>
-              <h2 className="head-title">{t('builtFor.headline')}</h2>
-            </div>
-          </div>
-          <div data-stagger className="grid grid-cols-1 sm:grid-cols-2 tablet:grid-cols-4 gap-4 mt-12">
-            {builtForCards.map(c => (
-              <div key={c.title} className="p-6 bg-white border border-ink-150 rounded-md">
-                <div className="font-display text-[18px] font-medium tracking-[-0.012em] mb-[10px]">{c.title}</div>
-                <div className="text-ink-600 text-[14px] leading-[1.5]">{c.desc}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 10. Pricing */}
-      <section>
-        <div className="container">
-          <div className="section-head">
-            <div>
-              <div className="eyebrow mb-5">{t('pricing.eyebrow')}</div>
-              <h2 className="head-title">{t('pricing.headline')}</h2>
-            </div>
-            <p className="head-lede">{t('pricing.intro')}</p>
-          </div>
-          <div data-stagger className="grid grid-cols-1 sm:grid-cols-2 tablet:grid-cols-3 gap-4 mt-12">
-            {pricingCards.map(c => (
-              <div key={c.title} className="p-7 bg-white border border-ink-150 rounded-md flex flex-col">
-                <div className="font-display text-[20px] font-medium tracking-[-0.012em] mb-1">{c.title}</div>
-                <div className="font-mono text-[13px] text-primary tracking-[0.04em] mb-3">{c.price}</div>
-                <div className="text-ink-600 text-[14.5px] leading-[1.5]">{c.desc}</div>
-              </div>
-            ))}
-          </div>
-          <p className="text-ink-500 text-[14px] max-w-[64ch] mt-8">
-            {t('pricing.note')}
-          </p>
-        </div>
-      </section>
-
-      {/* 11. FAQ */}
-      <section className="bg-ink-50">
-        <div className="container">
-          <div className="section-head">
-            <div>
-              <div className="eyebrow mb-5">{t('faq.eyebrow')}</div>
-              <h2 className="head-title">{t('faq.headline')}</h2>
-            </div>
-          </div>
-          <div className="mt-12 max-w-[860px]">
-            {faqItems.map(f => (
-              <details key={f.q} className="border-b border-ink-150 py-5 group">
-                <summary className="font-display text-[19px] tracking-[-0.012em] cursor-pointer list-none flex justify-between items-center gap-4">
-                  {f.q}
-                  <span className="text-primary text-[20px] leading-none transition-transform group-open:rotate-45">+</span>
-                </summary>
-                <p className="text-ink-600 text-[16px] leading-[1.6] mt-3 max-w-[64ch]">{f.a}</p>
-              </details>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 12. Final CTA */}
+      {/* 7. Final CTA */}
       <section>
         <div className="container-narrow max-w-[900px]">
           <div className="eyebrow">{t('finalCta.eyebrow')}</div>
@@ -367,9 +245,6 @@ export default async function AppliedCulturalIntelligencePage({ params }: { para
           </h2>
           <p className="lede mt-7">
             {t('finalCta.body')}
-          </p>
-          <p className="font-mono text-[13px] text-primary tracking-[0.04em] mt-6">
-            {t('finalCta.pricingNote')}
           </p>
           <div className="hero-ctas mt-10">
             <Link className="btn btn-primary" href="/contact">{t('finalCta.ctaPrimary')} <span className="btn-arrow"></span></Link>

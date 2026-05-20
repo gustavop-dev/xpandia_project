@@ -27,13 +27,13 @@
         },
         {
           "num": "02 / ADAPTAR",
-          "label": "Localization & Adaptation",
-          "desc": "Más que traducido. Hecho para audiencias hispanohablantes."
+          "label": "Spanish Experience Repair & Adaptation",
+          "desc": "Improve Spanish that needs to work for real users."
         },
         {
           "num": "03 / ENTENDER",
           "label": "Applied Cultural Intelligence",
-          "desc": "Entiende las reglas culturales invisibles detrás de la confianza, la cultura y el crecimiento."
+          "desc": "Make better decisions with cultural context."
         }
       ]
     },
@@ -46,7 +46,7 @@
   "footer": {
     "logoAlt": "Xpandia",
     "tagline": "Español que funciona para usuarios reales.",
-    "description": "Xpandia ayuda a equipos de AI, SaaS, EdTech y producto digital a validar, localizar y adaptar culturalmente experiencias en español para audiencias hispanas e hispanohablantes.",
+    "description": "Xpandia helps AI, SaaS, EdTech, and digital product teams validate, improve, and culturally adapt high-impact Spanish experiences through expert human review, quality evidence, and cultural insight.",
     "brandLine": "EXPERTISE EN ESPAÑOL · 2026",
     "colServices": {
       "heading": "Servicios"
@@ -54,14 +54,16 @@
     "colCompany": {
       "heading": "Empresa",
       "about": "Nosotros",
-      "contact": "Contacto",
+      "contact": "Contacto"
+    },
+    "colStartHere": {
+      "heading": "Empieza aquí",
       "bookCall": "Agenda una llamada de diagnóstico"
     },
     "colContact": {
-      "heading": "Contacto",
-      "requestAudit": "Solicita una auditoría"
+      "heading": "Contacto"
     },
-    "copyright": "© 2026 Xpandia. Todos los derechos reservados.",
+    "copyright": "© 2013–2026 Xpandia. Todos los derechos reservados.",
     "terms": "Términos",
     "privacy": "Privacidad"
   },
@@ -70,7 +72,7 @@
   },
   "serviceLines": {
     "languageAssurance": "Language Assurance",
-    "localizationAdaptation": "Localization & Adaptation",
+    "localizationAdaptation": "Spanish Experience Repair & Adaptation",
     "appliedCulturalIntelligence": "Applied Cultural Intelligence"
   }
 }

@@ -8,28 +8,31 @@
   "hero": {
     "eyebrow": "CONTACTO",
     "headline": "Cuéntanos qué está construyendo, lanzando o mejorando tu equipo en español.",
-    "body": "Usa el formulario o escríbenos directamente. Revisaremos tu solicitud y te recomendaremos el mejor siguiente paso: una llamada de diagnóstico, una auditoría, un proyecto de localización, una charla de CQ, un taller o una ruta de asesoría.",
+    "body": "Usa el formulario o escríbenos directamente. Revisaremos tu solicitud y te recomendaremos el mejor siguiente paso: una llamada de diagnóstico, una auditoría, un proyecto de reparación en español, una charla de ACI, una revisión de mensajes, un taller o una ruta de asesoría.",
     "email": "hello@xpandia.global",
     "ctaPrimary": "Agenda una llamada de diagnóstico",
     "ctaSecondary": "Solicita una auditoría"
   },
   "form": {
-    "eyebrow": "INICIA UNA CONVERSACIÓN",
-    "title": "Inicia una conversación",
+    "eyebrow": "DISCOVERY CALL INTAKE FORM",
+    "title": "Let's talk about your Spanish products.",
     "intro": "Comparte algunos detalles sobre tu producto, audiencia, superficie en español y plazos. Usaremos este contexto para recomendarte el siguiente paso adecuado.",
     "fields": {
       "name": { "label": "Nombre", "placeholder": "Juana Pérez" },
       "email": { "label": "Email de trabajo", "placeholder": "juana@empresa.com" },
       "company": { "label": "Empresa", "placeholder": "Empresa S.A." },
       "role": { "label": "Rol / Equipo", "placeholder": "VP de Producto · Localización" },
+      "website": { "label": "Sitio web o URL del producto", "placeholder": "ejemplo.com" },
       "service": {
         "label": "¿En qué necesitas ayuda?",
         "options": [
           "Language Assurance",
-          "Localization & Adaptation",
+          "AI Spanish QA",
+          "Spanish Launch Readiness",
+          "Spanish Experience Repair",
           "Applied Cultural Intelligence",
-          "QA de IA en español",
-          "Asesoría fraccional",
+          "Hispanic Audience & Messaging Review",
+          "Spanish Quality Advisory",
           "Aún no estoy seguro"
         ]
       },
@@ -57,16 +60,16 @@
         "label": "Alcance estimado",
         "options": [
           "Muestra pequeña o diagnóstico",
-          "Revisión de producto / sitio web / contenido",
           "Salidas de IA o respuestas de chatbot",
-          "Proyecto completo de localización o adaptación",
+          "Revisión de producto / sitio web / contenido",
+          "Proyecto de reparación o adaptación en español",
           "Taller / charla / asesoría",
           "Aún no estoy seguro"
         ]
       },
       "message": {
         "label": "¿En qué estás trabajando?",
-        "placeholder": "Cuéntanos sobre tu producto, tu audiencia, tu superficie en español, la URL de tu sitio o producto y qué te gustaría que revisemos. Por ejemplo: Lanzamos nuestro tutor de IA en español el trimestre pasado. Los tickets de soporte mencionan confusión. Necesitamos una lectura de calidad antes de expandirnos a México — sitio: ejemplo.com"
+        "placeholder": "Cuéntanos sobre tu producto, tu audiencia, tu superficie en español, la URL de tu sitio o producto y qué te gustaría que revisemos. Por ejemplo: Lanzamos nuestro tutor de IA en español el trimestre pasado. Los tickets de soporte mencionan confusión. Necesitamos una lectura experta de calidad antes de expandirnos a México."
       }
     },
     "submit": "Enviar solicitud",
@@ -81,8 +84,12 @@
     "email": "hello@xpandia.global",
     "emailBody": "Cuéntanos qué está construyendo, lanzando o mejorando tu equipo en español.",
     "startWithLabel": "EMPIEZA CON",
-    "ctaPrimary": "Agenda una llamada de diagnóstico",
-    "ctaSecondary": "Solicita una auditoría"
+    "links": [
+      "Agenda una llamada de diagnóstico",
+      "Solicita una auditoría",
+      "Request Spanish Experience Repair",
+      "Book an ACI Talk"
+    ]
   },
   "whatHappensNext": {
     "eyebrow": "SIGUIENTES PASOS",
@@ -109,8 +116,8 @@
   "finalCta": {
     "eyebrow": "¿LISTO PARA EMPEZAR?",
     "headline": "Encontremos juntos la ruta de calidad en español adecuada para tu equipo.",
-    "body": "Ya sea que necesites validar salidas de IA, localizar un producto, mejorar contenido en español, capacitar a un equipo global o entender a una audiencia hispana, Xpandia puede ayudarte a elegir el siguiente paso adecuado.",
+    "body": "Ya sea que necesites validar salidas de IA, reparar contenido en español, prepararte para un lanzamiento, capacitar a un equipo global o entender a una audiencia hispana, Xpandia puede ayudarte a elegir el siguiente paso adecuado.",
     "ctaPrimary": "Agenda una llamada de diagnóstico",
-    "ctaSecondary": "Escríbenos"
+    "ctaSecondary": "Solicita una auditoría"
   }
 }
