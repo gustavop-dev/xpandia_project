@@ -9,7 +9,7 @@ export default async function XpandiaFooter() {
   return (
     <footer className="pt-20 pb-10 bg-ink-900 text-ink-300">
       <div className="w-full max-w-[1280px] mx-auto px-[clamp(24px,4vw,64px)]">
-        <div className="grid grid-cols-1 sm:grid-cols-2 tablet:grid-cols-[1.7fr_1fr_1fr_1fr] gap-8 sm:gap-10 tablet:gap-12 pb-14 border-b border-white/[0.08]">
+        <div className="grid grid-cols-1 sm:grid-cols-2 tablet:grid-cols-[1.7fr_1fr_1fr_1fr_1fr] gap-8 sm:gap-10 tablet:gap-12 pb-14 border-b border-white/[0.08]">
           <div>
             <Image
               src="/assets/logo-full-dark.svg"
@@ -41,14 +41,18 @@ export default async function XpandiaFooter() {
             <ul className="list-none p-0 m-0">
               <li className="mb-[10px] text-[14px]"><Link href="/about" className="text-ink-200 hover:text-white transition-colors">{t('colCompany.about')}</Link></li>
               <li className="mb-[10px] text-[14px]"><Link href="/contact" className="text-ink-200 hover:text-white transition-colors">{t('colCompany.contact')}</Link></li>
-              <li className="mb-[10px] text-[14px]"><Link href="/contact" className="text-ink-200 hover:text-white transition-colors">{t('colCompany.bookCall')}</Link></li>
+            </ul>
+          </div>
+          <div>
+            <h5 className="font-mono text-[11px] tracking-[0.12em] uppercase text-ink-400 mt-0 mb-4 font-medium">{t('colStartHere.heading')}</h5>
+            <ul className="list-none p-0 m-0">
+              <li className="mb-[10px] text-[14px]"><Link href="/contact" className="text-ink-200 hover:text-white transition-colors">{t('colStartHere.bookCall')}</Link></li>
             </ul>
           </div>
           <div>
             <h5 className="font-mono text-[11px] tracking-[0.12em] uppercase text-ink-400 mt-0 mb-4 font-medium">{t('colContact.heading')}</h5>
             <ul className="list-none p-0 m-0">
               <li className="mb-[10px] text-[14px]"><a href="mailto:hello@xpandia.global" className="text-ink-200 hover:text-white transition-colors">hello@xpandia.global</a></li>
-              <li className="mb-[10px] text-[14px]"><Link href="/contact" className="text-ink-200 hover:text-white transition-colors">{t('colContact.requestAudit')}</Link></li>
             </ul>
           </div>
         </div>

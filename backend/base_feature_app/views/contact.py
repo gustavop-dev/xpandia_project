@@ -11,27 +11,48 @@ from base_feature_app.serializers.contact import ContactFormSerializer
 
 logger = logging.getLogger(__name__)
 
-CONTACT_EMAIL = 'hello@xpandia.co'
+CONTACT_EMAIL = 'hello@xpandia.global'
 
 SERVICE_LABELS = {
-    'qa': 'AI Spanish QA Sprint',
-    'audit': 'Launch Readiness Audit',
-    'fractional': 'Fractional Lead',
+    'language-assurance': 'Language Assurance',
+    'ai-spanish-qa': 'AI Spanish QA',
+    'launch-readiness': 'Spanish Launch Readiness',
+    'experience-repair': 'Spanish Experience Repair',
+    'applied-cultural-intelligence': 'Applied Cultural Intelligence',
+    'messaging-review': 'Hispanic Audience & Messaging Review',
+    'quality-advisory': 'Spanish Quality Advisory',
     'unsure': 'Not sure yet',
 }
-URGENCY_LABELS = {
-    'pre-launch': 'Pre-launch',
-    'quarter': 'This quarter',
-    'half': 'This half',
-    'exploring': 'Exploring',
+AUDIENCE_LABELS = {
+    'latam': 'LatAm',
+    'us-hispanic': 'US Hispanic',
+    'spain': 'Spain',
+    'neutral': 'Neutral Spanish',
+    'specific-region': 'Specific country or region',
+    'unsure': 'Not sure yet',
+}
+TIMELINE_LABELS = {
+    'urgent': 'Urgent / this month',
+    '1-2-months': '1–2 months',
+    '3-plus-months': '3+ months',
+    'exploring': 'Exploring options',
+}
+SCOPE_LABELS = {
+    'small-sample': 'Small sample or diagnostic',
+    'ai-outputs': 'AI outputs or chatbot responses',
+    'product-review': 'Product / website / content review',
+    'repair-adaptation': 'Spanish repair or adaptation project',
+    'workshop-advisory': 'Talk / workshop / advisory',
+    'unsure': 'Not sure yet',
 }
 
 
 def _build_email_body(data: dict) -> str:
-    service = SERVICE_LABELS.get(data.get('service', ''), data.get('service', '—'))
-    urgency = URGENCY_LABELS.get(data.get('urgency', ''), data.get('urgency', '—'))
-    size = data.get('size') or '—'
-    variant = data.get('variant') or '—'
+    service = SERVICE_LABELS.get(data.get('service', ''), data.get('service', '') or '—')
+    audience = AUDIENCE_LABELS.get(data.get('size', ''), data.get('size', '') or '—')
+    timeline = TIMELINE_LABELS.get(data.get('variant', ''), data.get('variant', '') or '—')
+    scope = SCOPE_LABELS.get(data.get('urgency', ''), data.get('urgency', '') or '—')
+    website = data.get('website') or '—'
 
     return f"""New diagnostic call request from the Xpandia website.
 
@@ -40,12 +61,13 @@ Name:    {data['name']}
 Role:    {data['role']}
 Email:   {data['email']}
 Company: {data['company']}
+Website: {website}
 
 --- QUALIFIER ---
-Service:        {service}
-Company size:   {size}
-Spanish variant: {variant}
-Urgency:        {urgency}
+Service:          {service}
+Target audience:  {audience}
+Timeline:         {timeline}
+Estimated scope:  {scope}
 
 --- SITUATION ---
 {data['message']}
@@ -74,7 +96,7 @@ def contact_form(request):
     except Exception as exc:
         logger.error('contact_form email failed: %s', exc)
         return Response(
-            {'detail': 'Could not send message. Please email us directly at hello@xpandia.co'},
+            {'detail': 'Could not send message. Please email us directly at hello@xpandia.global'},
             status=status.HTTP_503_SERVICE_UNAVAILABLE,
         )
 

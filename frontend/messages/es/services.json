@@ -8,21 +8,21 @@
   "hero": {
     "eyebrow": "SERVICIOS",
     "headline": "El expertise en español que tu producto necesita.",
-    "subheadline": "Xpandia ayuda a los equipos a validar, localizar y adaptar culturalmente experiencias en español en respuestas de IA, flujos de producto, contenido de soporte, marketing y recorridos de cliente.",
+    "subheadline": "Xpandia helps teams validate, improve, and culturally adapt high-impact Spanish experiences across AI outputs, product flows, support content, marketing, and customer journeys.",
     "ctaPrimary": "Agenda una llamada de diagnóstico",
     "ctaSecondary": "Solicita una auditoría",
-    "supportingLine": "DISEÑADO PARA EQUIPOS DE IA, SAAS, EDTECH, PRODUCTO, LOCALIZACIÓN, CX Y MARKETING QUE ATIENDEN A AUDIENCIAS HISPANAS E HISPANOHABLANTES."
+    "supportingLine": "Built for AI, SaaS, EdTech, Product, Localization, CX, and Marketing teams serving Hispanic and Spanish-speaking audiences."
   },
   "decision": {
     "eyebrow": "ELIGE EL CAMINO ADECUADO",
     "headline": "¿Qué necesita resolver tu equipo?",
-    "intro": "Parte del resultado que tu equipo necesita. Xpandia estructura cada proyecto en torno a una pregunta de negocio clara: ¿tu español está listo, necesita adaptarse, o tu equipo necesita una comprensión cultural más profunda?",
+    "intro": "Parte del resultado que tu equipo necesita. Xpandia estructura cada proyecto en torno a una pregunta de negocio clara: ¿tu español está listo, necesita repararse o adaptarse, o tu equipo necesita una comprensión cultural más profunda?",
     "bestWhenLabel": "IDEAL CUANDO NECESITAS:",
     "cards": [
       {
         "title": "¿Necesitas saber si tu español está listo?",
         "choose": "Elige Language Assurance",
-        "body": "Para equipos que ya tienen contenido en español, flujos de producto, contenido de soporte, respuestas de IA o experiencias localizadas y necesitan validación experta antes de lanzar, escalar o publicar.",
+        "body": "Para equipos que ya tienen respuestas de IA, flujos de producto, contenido de soporte o experiencias localizadas en español y necesitan validación experta antes de lanzar, escalar o publicar.",
         "bestWhen": [
           "Evaluar respuestas de IA en español.",
           "Auditar un producto o recorrido de cliente en español.",
@@ -33,302 +33,193 @@
         "cta": "Explora Language Assurance"
       },
       {
-        "title": "¿Necesitas crear o mejorar contenido en español?",
-        "choose": "Elige Localization & Adaptation",
-        "body": "Para equipos que necesitan sitios web, copy de producto, documentación, contenido de soporte, marketing o materiales de aprendizaje traducidos, localizados, adaptados, reparados o que suenen más naturales en español.",
+        "title": "Need to repair or improve Spanish content?",
+        "choose": "Choose Spanish Experience Repair & Adaptation",
+        "body": "For teams with Spanish content, product copy, support content, marketing, documentation, or customer-facing experiences that need to feel clearer, more natural, more consistent, and more audience-ready.",
         "bestWhen": [
-          "Localizar un sitio web, app o interfaz de producto.",
-          "Adaptar copy de marketing para audiencias hispanohablantes.",
-          "Mejorar contenido traducido existente.",
-          "Crear contenido de soporte o centro de ayuda en español.",
-          "Adaptar terminología, tono y variantes regionales del español."
+          "Improve existing Spanish content.",
+          "Repair translated, inconsistent, or underperforming Spanish.",
+          "Adapt product, support, or marketing copy for real users.",
+          "Align terminology, tone, and regional Spanish.",
+          "Prepare Spanish assets for QA, launch, or publication."
         ],
-        "cta": "Explora Localization & Adaptation"
+        "cta": "Explore Repair & Adaptation"
       },
       {
-        "title": "¿Necesitas conectar con tu audiencia en español más allá del idioma?",
-        "choose": "Elige Applied Cultural Intelligence",
-        "body": "Para equipos que necesitan comprensión cultural, ajuste de mercado, orientación de mensajes, formación y dirección estratégica para conectar con audiencias hispanas e hispanohablantes.",
+        "title": "Need to understand your audience beyond language?",
+        "choose": "Choose Applied Cultural Intelligence",
+        "body": "For teams that need cultural insight, messaging guidance, market readiness, training, and strategic direction to connect with Hispanic and Spanish-speaking audiences.",
         "bestWhen": [
-          "Entender las expectativas culturales y las señales de confianza.",
-          "Mejorar los mensajes para audiencias hispanas.",
-          "Preparar a los equipos para mercados hispanohablantes.",
-          "Formar a los equipos en Inteligencia Cultural.",
-          "Identificar la fricción cultural antes de que afecte la adopción o la conversión.",
-          "Tomar mejores decisiones de producto, contenido y go-to-market."
+          "Understand cultural expectations and trust signals.",
+          "Improve messaging for Hispanic audiences.",
+          "Prepare teams for Spanish-speaking markets.",
+          "Train teams in Cultural Intelligence.",
+          "Identify cultural friction before it affects adoption or conversion.",
+          "Make better product, content, CX, and go-to-market decisions."
         ],
-        "cta": "Explora Applied Cultural Intelligence"
+        "cta": "Explore Applied Cultural Intelligence"
       }
     ]
   },
-  "serviceLines": {
-    "eyebrow": "LÍNEAS DE SERVICIO",
-    "headline": "Un solo partner en español. Tres capacidades especializadas.",
-    "intro": "Cada línea de servicio puede funcionar de forma independiente o como parte de una hoja de ruta de calidad más amplia. Empieza con una auditoría enfocada, un proyecto de localización o un workshop de ACI, y luego escala hacia gobernanza, formación o asesoría continua.",
-    "serviceLineLabel": "/ LÍNEA DE SERVICIO",
+  "startingPoints": {
+    "eyebrow": "CORE SERVICES",
+    "headline": "Focused engagements designed to create momentum.",
+    "intro": "Start with a clear scope, expert human review, practical deliverables, and recommendations your team can act on quickly.",
     "bestForLabel": "IDEAL PARA",
-    "engagementStartingPointsLabel": "PUNTOS DE PARTIDA",
+    "outcomeLabel": "RESULTADO",
+    "engagementStartsAtLabel": "STARTS AT",
     "timelineLabel": "PLAZOS",
-    "whenToUseLabel": "CUÁNDO USARLO",
-    "coreEngagementsLabel": "PROYECTOS PRINCIPALES",
-    "whatYouGetLabel": "QUÉ OBTIENES",
     "cards": [
       {
-        "num": "01",
-        "name": "Language Assurance",
-        "tagline": "Valida tu español antes de que lo hagan tus usuarios.",
-        "overview": "Auditorías estructuradas de QA en español, evaluaciones de respuestas de IA, revisiones de readiness para lanzamiento y liderazgo de calidad para equipos que necesitan confianza antes de publicar experiencias en español.",
-        "whenToUse": [
-          "Español generado por IA que puede ser inexacto, poco natural, inconsistente o riesgoso.",
-          "Flujos de producto que están traducidos pero no listos para usuarios reales.",
-          "Contenido en español que carece de estándares de calidad medibles.",
-          "Equipos que dependen de proveedores, revisores o hablantes internos sin un marco claro de QA.",
-          "Lanzamientos que necesitan una validación lingüística experta antes del despliegue."
+        "name": "AI Spanish Quality Audit Sprint",
+        "bestFor": "Teams with AI outputs, chatbot responses, tutors, copilots, agents, or automated support flows operating in Spanish.",
+        "outcome": "Understand quality risks, scoring, issue patterns, and readiness before users rely on the experience.",
+        "deliverablesLabel": "Deliverables",
+        "deliverables": [
+          "Representative output review.",
+          "QA rubric.",
+          "Quality scorecard.",
+          "Issue taxonomy.",
+          "Severity ratings.",
+          "Remediation guidance.",
+          "Executive readout."
         ],
-        "bestFor": "Equipos de IA, SaaS, EdTech, Producto, Localización, CX, Soporte y Trust & Safety que ya tienen contenido o experiencias en español y necesitan validar la calidad.",
-        "coreEngagements": [
-          "Sprint de Auditoría de Calidad de Español con IA.",
-          "Auditoría de Readiness para Lanzamiento en Español/LatAm.",
-          "Benchmark de Respuestas de IA.",
-          "Auditoría de Chatbots y Bots de Soporte en Español.",
-          "Revisión de Language Sign-Off / LSO.",
-          "Líder de Calidad Lingüística Fraccional.",
-          "QA de Terminología y Estilo.",
-          "Kit de Gobernanza de Calidad en Español."
-        ],
-        "whatYouGet": [
-          "Tablero de calidad (scorecard).",
-          "Taxonomía de incidencias.",
-          "Clasificación de severidad.",
-          "Recomendación de readiness.",
-          "Backlog de remediación priorizado.",
-          "Informe ejecutivo.",
-          "Rúbrica de QA o recomendaciones de gobernanza cuando se requieran."
-        ],
-        "pricing": [
-          "Diagnósticos desde $500",
-          "Auditorías de readiness para lanzamiento desde $3,500",
-          "Sprints de QA con IA desde $4,500",
-          "Asesoría fraccional desde $3,000/mes"
-        ],
-        "timeline": "La mayoría de auditorías y sprints: 7–15 días hábiles. Asesoría fraccional: contratación mensual.",
-        "cta": "Explora Language Assurance"
+        "price": ["From $4,500"],
+        "timeline": "10 business days",
+        "cta": "Request an AI QA Sprint"
       },
       {
-        "num": "02",
-        "name": "Localization & Adaptation",
-        "tagline": "No solo traducido. Adaptado para audiencias hispanohablantes.",
-        "overview": "Localización al español a medida, transcreación, copy de UX, documentación y adaptación regional para productos y contenido digital.",
-        "whenToUse": [
-          "Productos o contenido pensados primero en inglés que necesitan una versión profesional en español.",
-          "Traducciones existentes que suenan literales, inconsistentes o desconectadas de la audiencia, y que no convierten como deberían.",
-          "UI de producto, contenido de ayuda o copy de marketing que necesita sentirse natural en español.",
-          "Experiencias en español que necesitan adaptación regional para LatAm, hispanos en EE. UU. o mercados específicos.",
-          "Contenido que necesita impulsar la conversión, la claridad, la confianza y la acción del usuario."
+        "name": "Spanish Launch Readiness Audit",
+        "bestFor": "Teams launching or preparing a Spanish website, app, onboarding flow, support journey, AI experience, or customer-facing product surface.",
+        "outcome": "Identify what affects clarity, trust, UX, cultural fit, conversion, and readiness before launch or relaunch.",
+        "deliverablesLabel": "Deliverables",
+        "deliverables": [
+          "Journey review.",
+          "Screenshots and annotations.",
+          "Issue log.",
+          "Quick wins.",
+          "Prioritized remediation backlog.",
+          "Readiness recommendation."
         ],
-        "bestFor": "Equipos de SaaS, EdTech, IA, Producto, Marketing, CX, Soporte y Localización que lanzan o mejoran contenido, interfaces, campañas, documentación o experiencias de aprendizaje en español.",
-        "coreEngagements": [
-          "Localización de Contenido.",
-          "Localización de UI de Producto.",
-          "Localización y Transcreación de Marketing.",
-          "Localización de Centro de Ayuda / Documentación.",
-          "Localización de Contenido EdTech.",
-          "Adaptación de Macros de Soporte.",
-          "Adaptación Regional del Español.",
-          "Revisión y Reparación de Localización.",
-          "Adaptación de Copy en Español."
-        ],
-        "whatYouGet": [
-          "Copy localizado al español.",
-          "Contenido de producto o marketing adaptado.",
-          "Opciones de transcreación cuando se requieran.",
-          "Orientación de terminología.",
-          "Recomendaciones de ajuste regional.",
-          "Archivos listos para QA.",
-          "Recursos en español listos para publicación."
-        ],
-        "pricing": [
-          "Proyectos de revisión y reparación desde $2,500",
-          "Localización de contenido/producto desde $3,000+",
-          "Transcreación/adaptación estratégica cotizada por campaña o tipo de contenido"
-        ],
-        "timeline": "Proyectos enfocados: 5–10 días hábiles. Proyectos de localización más grandes: 2–6 semanas, según el alcance.",
-        "cta": "Explora Localization & Adaptation"
+        "price": ["From $3,500"],
+        "timeline": "10–12 business days",
+        "cta": "Request a Launch Readiness Audit"
       },
       {
-        "num": "03",
-        "name": "Applied Cultural Intelligence",
-        "tagline": "Lee las reglas invisibles detrás de la confianza, la cultura y el crecimiento.",
-        "overview": "Auditorías de inteligencia cultural, charlas, briefings ejecutivos, workshops y asesoría para equipos que necesitan entender a las audiencias hispanas e hispanohablantes, reducir la fricción cultural y tomar mejores decisiones de producto, contenido, marketing, CX y go-to-market.",
-        "whenToUse": [
-          "El contenido en español es correcto, pero no conecta del todo con la audiencia.",
-          "Los mensajes no aciertan con las señales de confianza, el tono, el contexto o las expectativas culturales.",
-          "Los equipos de producto, marketing, CX o localización necesitan una comprensión cultural más sólida antes de tomar decisiones.",
-          "Los equipos entran en mercados hispanos, de LatAm, de hispanos en EE. UU. o hispanohablantes sin un marco claro de audiencia.",
-          "Los equipos globales necesitan mejorar la comunicación intercultural, la colaboración y su preparación de negocio.",
-          "Los líderes necesitan entender los protocolos invisibles, las líneas rojas y las expectativas que moldean cómo la gente trabaja, compra, decide y responde."
+        "name": "Spanish Experience Repair",
+        "bestFor": "Teams with existing Spanish content that sounds translated, inconsistent, unclear, generic, too literal, or not ready for real users.",
+        "outcome": "Turn underperforming Spanish into content that feels clear, natural, trustworthy, and aligned with your product, audience, and business goal.",
+        "themesLabel": "Can include",
+        "themes": [
+          "Product copy.",
+          "Website or landing page copy.",
+          "Support content.",
+          "Help center content.",
+          "AI response patterns.",
+          "Marketing copy.",
+          "Terminology and tone fixes.",
+          "Regional adaptation."
         ],
-        "bestFor": "Equipos de Producto, Marketing, Growth, CX, Localización, EdTech, Liderazgo, People, Operaciones Globales e IA que atienden a audiencias hispanas, de LatAm, de hispanos en EE. UU. o hispanohablantes.",
-        "coreEngagements": [
-          "Auditoría de Ajuste de Mercado en Español.",
-          "Revisión de Mensajes para Audiencias Hispanas.",
-          "Auditoría de Culturalización.",
-          "Estrategia de Ajuste Regional.",
-          "Charlas de Inteligencia Cultural.",
-          "Briefings Ejecutivos.",
-          "Workshops de CQ / ACI.",
-          "Asesoría Cultural de Go-to-Market.",
-          "Revisión de Comunicación en Español Inclusiva y Accesible."
+        "deliverablesLabel": "Deliverables",
+        "deliverables": [
+          "Revised Spanish copy.",
+          "Rewrite recommendations.",
+          "Terminology and tone notes.",
+          "Before/after examples.",
+          "Priority fixes.",
+          "Implementation guidance."
         ],
-        "whatYouGet": [
-          "Informe de comprensión cultural.",
-          "Recomendaciones específicas por audiencia.",
-          "Orientación de mensajes.",
-          "Mapa de fricción cultural.",
-          "Hallazgos de ajuste de mercado.",
-          "Materiales de charla, briefing o workshop.",
-          "Marco práctico de CQ.",
-          "Estrategia accionable para equipos de producto, contenido, marketing, CX, liderazgo o go-to-market."
+        "price": ["From $2,500"],
+        "timeline": "5–10 business days depending on scope",
+        "cta": "Request Spanish Experience Repair"
+      },
+      {
+        "name": "ACI Talk / Executive Briefing",
+        "bestFor": "Leadership, Product, Marketing, CX, Localization, People, and Global Operations teams working across cultures, markets, languages, or international teams.",
+        "outcome": "Help your team understand how culture shapes trust, communication, feedback, decision-making, market readiness, and audience expectations.",
+        "deliverablesLabel": "Deliverables",
+        "deliverables": [
+          "45–60 minute live talk or executive briefing.",
+          "Pre-call to understand audience and business context.",
+          "Practical CQ / ACI framework.",
+          "Real business examples tailored to your audience.",
+          "Optional Q&A.",
+          "One-page summary or team checklist.",
+          "Recommended next steps."
         ],
-        "pricing": [
-          "Auditorías de ACI enfocadas desde $3,500",
-          "Charlas de Inteligencia Cultural desde $1,500",
-          "Briefings ejecutivos desde $2,500",
-          "Workshops a medida desde $4,500",
-          "Asesoría estratégica desde $3,000/mes"
+        "price": ["Talks from $1,500 · Executive briefings from $2,500"],
+        "timeline": "Single session",
+        "cta": "Book an ACI Talk"
+      },
+      {
+        "name": "Hispanic Audience & Messaging Review",
+        "bestFor": "Marketing, Growth, Product Marketing, CX, Localization, and leadership teams adapting messages for Hispanic, LatAm, US Hispanic, or Spanish-speaking audiences.",
+        "outcome": "Identify whether your message is clear, credible, culturally aligned, persuasive, and built around the trust signals your audience needs.",
+        "deliverablesLabel": "Deliverables",
+        "deliverables": [
+          "Messaging review.",
+          "Audience fit findings.",
+          "Trust signal analysis.",
+          "Tone and context recommendations.",
+          "Cultural friction notes.",
+          "Suggested rewrites or message directions.",
+          "Executive summary."
         ],
-        "timeline": "Charlas y briefings: sesión única. Workshops: sesión única o media jornada. Auditorías: 7–15 días hábiles. Asesoría: contratación mensual.",
-        "cta": "Explora Applied Cultural Intelligence"
+        "price": ["From $3,500"],
+        "timeline": "7–10 business days",
+        "cta": "Request Messaging Review"
+      },
+      {
+        "name": "Spanish Quality Advisory",
+        "bestFor": "Teams that need ongoing senior Spanish quality judgment, review workflows, QA standards, vendor/reviewer alignment, terminology guidance, or recurring quality decisions.",
+        "outcome": "Build a practical Spanish quality system your team can use to make better decisions, reduce review friction, and scale quality with confidence.",
+        "deliverablesLabel": "Can include",
+        "deliverables": [
+          "Monthly advisory sessions.",
+          "Quality roadmap.",
+          "Retesting.",
+          "Sign-off guidance.",
+          "Terminology and style standards.",
+          "Vendor/reviewer alignment.",
+          "QA criteria.",
+          "Lightweight governance.",
+          "Decision support."
+        ],
+        "price": ["From $3,000/month"],
+        "timeline": "Monthly engagement · Recommended minimum: 3 months",
+        "cta": "Explore Spanish Quality Advisory"
       }
     ]
   },
   "comparison": {
     "eyebrow": "CÓMO ELEGIR",
-    "headline": "La diferencia es simple: validar, adaptar o entender.",
-    "intro": "Muchos equipos empiezan con una auditoría y luego avanzan hacia localización, adaptación cultural, formación o liderazgo de calidad continuo. Xpandia puede atender una necesidad puntual o ayudarte a construir una hoja de ruta de calidad en español más amplia.",
+    "headline": "The difference is simple: validate, repair, or understand.",
+    "intro": "Many teams start with an audit, then move into repair, retesting, sign-off, cultural insight, or ongoing advisory. Xpandia can support a focused need or help build a broader Spanish quality roadmap.",
     "headers": [
-      "SI TU EQUIPO NECESITA…",
-      "ELIGE",
-      "RESULTADO PRINCIPAL"
+      "If your team needs to…",
+      "Choose",
+      "Primary outcome"
     ],
     "rows": [
       {
-        "need": "Saber si las respuestas en español, los flujos de producto o el contenido de soporte están listos para publicarse",
+        "need": "Know whether Spanish AI outputs, product flows, or support content are ready to ship",
         "choose": "Language Assurance",
-        "outcome": "Validación de calidad y readiness"
+        "outcome": "Quality validation and readiness"
       },
       {
-        "need": "Crear, mejorar o reparar contenido, UI, documentación o marketing en español",
-        "choose": "Localization & Adaptation",
-        "outcome": "Contenido en español pensado para usuarios reales"
+        "need": "Improve Spanish content that exists but does not feel natural, clear, or audience-ready",
+        "choose": "Spanish Experience Repair & Adaptation",
+        "outcome": "Spanish content built for real users"
       },
       {
-        "need": "Entender a las audiencias hispanas/de LatAm, las expectativas culturales, la confianza y el ajuste de mercado",
+        "need": "Understand Hispanic/LatAm audiences, cultural expectations, trust, and market fit",
         "choose": "Applied Cultural Intelligence",
-        "outcome": "Mejores decisiones para mercados hispanohablantes"
-      }
-    ]
-  },
-  "startingPoints": {
-    "eyebrow": "EMPIEZA AQUÍ",
-    "headline": "Proyectos enfocados, diseñados para generar impulso.",
-    "intro": "Empieza con un alcance definido, entregables claros y recomendaciones prácticas sobre las que tu equipo puede actuar rápidamente.",
-    "bestForLabel": "IDEAL PARA",
-    "outcomeLabel": "RESULTADO",
-    "engagementStartsAtLabel": "EL PROYECTO INICIA DESDE",
-    "timelineLabel": "PLAZOS",
-    "cards": [
-      {
-        "name": "Sprint de Auditoría de Calidad de Español con IA",
-        "bestFor": "Equipos con respuestas de IA, respuestas de chatbot, tutores, copilotos o agentes que operan en español.",
-        "outcome": "Entiende los riesgos de calidad, la puntuación, los patrones de incidencias y el readiness antes de que los usuarios dependan de la experiencia.",
-        "deliverablesLabel": "Entregables del sprint",
-        "deliverables": [
-          "Revisión de una muestra representativa de respuestas.",
-          "Rúbrica de QA.",
-          "Tablero de calidad (scorecard).",
-          "Taxonomía de incidencias.",
-          "Clasificación de severidad.",
-          "Orientación de remediación.",
-          "Informe ejecutivo."
-        ],
-        "price": [
-          "Desde $4,500"
-        ],
-        "timeline": "10 días hábiles",
-        "cta": "Solicita un Sprint de QA con IA"
+        "outcome": "Better decisions for Spanish-speaking markets"
       },
       {
-        "name": "Auditoría de Readiness para Lanzamiento en Español / LatAm",
-        "bestFor": "Equipos que lanzan o mejoran un sitio web, app, flujo de onboarding, recorrido de soporte o experiencia de cliente en español.",
-        "outcome": "Identifica qué afecta la claridad, la confianza, la UX, el ajuste cultural y el readiness antes del lanzamiento o relanzamiento.",
-        "deliverablesLabel": "Entregables de la auditoría",
-        "deliverables": [
-          "Revisión del recorrido.",
-          "Capturas de pantalla y anotaciones.",
-          "Registro de incidencias.",
-          "Quick wins.",
-          "Backlog de remediación priorizado.",
-          "Recomendación de readiness."
-        ],
-        "price": [
-          "Desde $3,500"
-        ],
-        "timeline": "10–12 días hábiles",
-        "cta": "Solicita una Auditoría de Readiness para Lanzamiento"
-      },
-      {
-        "name": "Revisión y Reparación de Localización",
-        "bestFor": "Equipos con traducciones al español existentes que necesitan mejora, consistencia, adaptación o preparación para publicación.",
-        "outcome": "Convierte el español traducido en contenido que se siente natural, claro, confiable y alineado con tu audiencia.",
-        "deliverablesLabel": "Entregables de la revisión",
-        "deliverables": [
-          "Revisión de contenido.",
-          "Recomendaciones de reescritura.",
-          "Notas de terminología.",
-          "Orientación de ajuste regional.",
-          "Checklist de QA.",
-          "Copy listo para publicación cuando el alcance lo permita."
-        ],
-        "price": [
-          "Desde $2,500"
-        ],
-        "timeline": "5–10 días hábiles",
-        "cta": "Solicita una Revisión de Localización"
-      },
-      {
-        "name": "Charlas de Inteligencia Cultural",
-        "tagline": "Lee las reglas invisibles de los negocios globales.",
-        "overview": "La cultura es el sistema operativo oculto detrás de cada interacción global. Moldea cómo las personas construyen confianza, leen los tiempos, responden a la jerarquía, dan feedback, gestionan el riesgo, toman decisiones e interpretan lo que se dice — y lo que se calla. Las Charlas de Xpandia ayudan a líderes y equipos a descifrar esas reglas invisibles con claridad, para comunicar de forma más efectiva, reducir fricciones costosas y construir relaciones más sólidas entre mercados, idiomas y audiencias.",
-        "bestFor": "Equipos de Liderazgo, Producto, Marketing, CX, Localización, People y Operaciones Globales que trabajan entre culturas, mercados, idiomas o equipos internacionales.",
-        "outcome": "Tu equipo se lleva una comprensión práctica de cómo la Inteligencia Cultural puede mejorar la colaboración, reducir la fricción, fortalecer la confianza y apoyar mejores decisiones de negocio entre culturas.",
-        "themesLabel": "Temas de la charla",
-        "themes": [
-          "Inteligencia Cultural (CQ) para negocios globales.",
-          "Los protocolos invisibles detrás de la confianza y la comunicación.",
-          "Las líneas rojas culturales y cómo evitar cruzarlas.",
-          "Cómo la cultura moldea el feedback, la jerarquía, el tiempo y la toma de decisiones.",
-          "Culturalización para productos, contenido y experiencia de cliente.",
-          "Las expectativas de las audiencias hispanas e hispanohablantes.",
-          "Cambios de mentalidad para equipos globales más productivos."
-        ],
-        "deliverablesLabel": "Entregables de la charla",
-        "deliverables": [
-          "Charla en vivo o briefing ejecutivo de 45–60 minutos.",
-          "Llamada previa para entender la audiencia y el contexto de negocio.",
-          "Marco práctico de CQ.",
-          "Ejemplos reales de negocio adaptados a la audiencia.",
-          "Q&A opcional.",
-          "Resumen de una página o checklist para el equipo.",
-          "Próximos pasos recomendados para workshop, auditoría o asesoría."
-        ],
-        "price": [
-          "Charlas virtuales desde $1,500",
-          "Briefings ejecutivos desde $2,500",
-          "Workshops a medida desde $4,500"
-        ],
-        "timeline": "Sesión única. Los workshops a medida y las asesorías se cotizan según la audiencia, el formato y el nivel de personalización.",
-        "cta": "Agenda una Charla de CQ"
+        "need": "Build repeatable standards and ongoing quality support",
+        "choose": "Spanish Quality Advisory",
+        "outcome": "A scalable quality system"
       }
     ]
   },
@@ -342,62 +233,23 @@
       },
       {
         "title": "Revisar la experiencia",
-        "body": "Evaluamos el material seleccionado con criterio experto, criterios estructurados y la combinación adecuada de señales de calidad lingüística, cultural, de UX y de producto."
+        "body": "Evaluamos o adaptamos el material seleccionado con criterio humano experto y la combinación adecuada de señales de calidad lingüística, cultural, de UX y de producto."
       },
       {
         "title": "Entregar la evidencia",
-        "body": "Recibes hallazgos listos para decidir que tu equipo puede usar de inmediato: tableros de calidad, ejemplos anotados, registros de incidencias, clasificaciones de severidad, recomendaciones priorizadas, reescrituras, estándares y materiales de formación. Cada entregable conecta el criterio experto con la acción: qué funciona, qué necesita atención, por qué importa y qué debería hacer tu equipo a continuación."
+        "body": "Recibes hallazgos listos para decidir que tu equipo puede usar de inmediato: tableros de calidad, ejemplos anotados, registros de incidencias, clasificaciones de severidad, recomendaciones priorizadas, reescrituras, estándares o materiales de formación."
       },
       {
         "title": "Decidir el siguiente paso",
-        "body": "Recomendamos el siguiente paso adecuado: publicar, corregir, localizar, adaptar, formar, gobernar o escalar."
+        "body": "Recomendamos el siguiente paso adecuado: publicar, corregir, retestear, localizar, adaptar, formar, gobernar o escalar."
       }
     ]
-  },
-  "pricing": {
-    "eyebrow": "PRECIOS",
-    "headline": "Puntos de partida simples para trabajo enfocado.",
-    "body": "El precio depende del alcance, el volumen, el tipo de contenido, la complejidad del producto y el plazo. La mayoría de los equipos empieza con una auditoría enfocada, un sprint, un workshop o una revisión de localización.",
-    "cards": [
-      {
-        "name": "Diagnósticos",
-        "price": "Desde $500",
-        "desc": "Obtén una lectura experta rápida antes de que los problemas de español se conviertan en fricción para el usuario, retrasos de lanzamiento o reproceso evitable. Ideal cuando tu equipo necesita entender qué está pasando, qué importa más y qué proyecto creará el camino más rápido para avanzar."
-      },
-      {
-        "name": "Auditorías de Readiness para Lanzamiento",
-        "price": "Desde $3,500",
-        "desc": "Encuentra los problemas que afectan la claridad, la confianza, la UX, la conversión o la seguridad del cliente en tu experiencia en español. Diseñadas para equipos de producto, IA, localización, soporte, CX y marketing que necesitan hallazgos estructurados, clasificaciones de severidad y recomendaciones priorizadas sobre las que actuar ya."
-      },
-      {
-        "name": "Sprints de QA con IA",
-        "price": "Desde $4,500",
-        "desc": "Valida el español generado por IA antes de que los usuarios dependan de él o se quejen de él. Para equipos que evalúan respuestas de chatbot, copilotos, tutores, agentes, flujos de soporte u otras respuestas de IA que necesitan ser precisas, naturales, seguras, consistentes y estar listas para usuarios hispanohablantes reales."
-      },
-      {
-        "name": "Localización y Adaptación",
-        "price": "Desde $2,500",
-        "desc": "Convierte el contenido pensado primero en inglés o el español de bajo rendimiento en experiencias que se sienten claras, naturales y pensadas para tu audiencia. Para sitios web, copy de producto, contenido de ayuda, campañas, materiales de aprendizaje y contenido en español que necesita impulsar la confianza, la conversión, la comprensión y la acción."
-      },
-      {
-        "name": "Charlas y Workshops de Inteligencia Cultural",
-        "price": "Charlas desde $1,500 · Briefings desde $2,500 · Workshops desde $4,500",
-        "desc": "Ayuda a los equipos globales a leer las reglas invisibles detrás de la confianza, la comunicación, la toma de decisiones y la preparación de mercado. Para líderes y equipos que necesitan charlas de Inteligencia Cultural, briefings ejecutivos o workshops a medida sobre comunicación intercultural, culturalización, audiencias hispanohablantes y crecimiento de negocio global."
-      },
-      {
-        "name": "Asesoría Fraccional",
-        "price": "Desde $3,000/mes",
-        "desc": "Incorpora un liderazgo senior de QA de Localización en español a tu equipo sin una contratación de tiempo completo. Para empresas que necesitan gobernanza continua, supervisión de operaciones con proveedores, marcos de QA, flujos de revisión, estándares de terminología, dashboards de calidad u orientación estratégica para escalar la calidad del español con confianza."
-      }
-    ],
-    "noteTitle": "El precio final se confirma tras una breve llamada de diagnóstico y una revisión de alcance.",
-    "noteBody": "Te ayudaremos a identificar el camino más rápido y práctico para mejorar la calidad del español, reducir el riesgo y hacer avanzar tu producto, contenido o equipo."
   },
   "finalCta": {
     "eyebrow": "SIGUIENTE PASO",
     "headline": "Identifiquemos el camino de calidad en español adecuado para tu equipo.",
-    "body": "Cuéntanos qué está construyendo, lanzando, localizando o mejorando tu equipo. Te recomendaremos el proyecto adecuado según tu producto, tu audiencia, tu plazo y tu objetivo de negocio.",
+    "body": "Cuéntanos qué está construyendo, lanzando, localizando, validando o mejorando tu equipo. Te recomendaremos el proyecto adecuado según tu producto, tu audiencia, tu plazo y tu objetivo de negocio.",
     "ctaPrimary": "Agenda una llamada de diagnóstico",
-    "ctaSecondary": "Solicita una auditoría"
+    "ctaSecondary": "Request an AI QA Audit"
   }
 }
