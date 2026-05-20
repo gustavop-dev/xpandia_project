@@ -30,7 +30,7 @@ test.describe('Contact form', () => {
       await page.getByPlaceholder(/VP Product/).fill('VP Product')
       await page.getByPlaceholder('jane@company.com').fill('jane@company.com')
       await page.getByPlaceholder('Company Inc.').fill('Acme Inc.')
-      await page.getByPlaceholder(/e\.g\., We launched/).fill('We need a quality review of our Spanish AI outputs.')
+      await page.getByPlaceholder(/Example: We launched/).fill('We need a quality review of our Spanish AI outputs.')
 
       await Promise.all([
         page.waitForResponse(resp =>
