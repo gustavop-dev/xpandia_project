@@ -22,10 +22,10 @@ describe('XpandiaFooter', () => {
     expect(screen.getByRole('link', { name: 'Language Assurance' })).toHaveAttribute('href', '/services/language-assurance')
   })
 
-  it('renders a link to the Localization & Adaptation page', async () => {
+  it('renders a link to the Spanish Experience Repair & Adaptation page', async () => {
     const ui = await XpandiaFooter()
     renderWithIntl(ui)
-    expect(screen.getByRole('link', { name: 'Localization & Adaptation' })).toHaveAttribute('href', '/services/localization-adaptation')
+    expect(screen.getByRole('link', { name: 'Spanish Experience Repair & Adaptation' })).toHaveAttribute('href', '/services/localization-adaptation')
   })
 
   it('renders a link to the Applied Cultural Intelligence page', async () => {
@@ -56,6 +56,6 @@ describe('XpandiaFooter', () => {
   it('renders the copyright notice', async () => {
     const ui = await XpandiaFooter()
     renderWithIntl(ui)
-    expect(screen.getByText(/© 2026 Xpandia/)).toBeInTheDocument()
+    expect(screen.getByText(/© 2013–2026 Xpandia/)).toBeInTheDocument()
   })
 })

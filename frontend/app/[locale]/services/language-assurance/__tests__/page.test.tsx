@@ -22,9 +22,9 @@ describe('LanguageAssurancePage', () => {
     expect(screen.getByRole('link', { name: /all services/i })).toHaveAttribute('href', '/services')
   })
 
-  it('renders the request audit CTA link', async () => {
+  it('renders the request AI QA Sprint CTA link', async () => {
     renderWithIntl(await LanguageAssurancePage({ params: makeParams() }))
-    const links = screen.getAllByRole('link', { name: /request a language assurance audit/i })
+    const links = screen.getAllByRole('link', { name: /request an ai qa sprint/i })
     expect(links[0]).toHaveAttribute('href', '/contact')
   })
 
@@ -38,14 +38,9 @@ describe('LanguageAssurancePage', () => {
     expect(screen.getByText('WHAT WE EVALUATE')).toBeInTheDocument()
   })
 
-  it('renders the QUALITY CRITERIA eyebrow', async () => {
+  it('renders the CORE SERVICES section eyebrow', async () => {
     renderWithIntl(await LanguageAssurancePage({ params: makeParams() }))
-    expect(screen.getByText('QUALITY CRITERIA')).toBeInTheDocument()
-  })
-
-  it('renders the CORE ENGAGEMENTS section eyebrow', async () => {
-    renderWithIntl(await LanguageAssurancePage({ params: makeParams() }))
-    expect(screen.getByText('CORE ENGAGEMENTS')).toBeInTheDocument()
+    expect(screen.getByText('CORE SERVICES')).toBeInTheDocument()
   })
 
   it('renders the methodology headline', async () => {

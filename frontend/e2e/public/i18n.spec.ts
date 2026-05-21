@@ -32,6 +32,6 @@ test.describe('i18n locale switch', () => {
     await page.goto('/es/services/applied-cultural-intelligence')
     await waitForPageLoad(page)
     await expect(page.locator('html')).toHaveAttribute('lang', 'es')
-    await expect(page.getByText(/reglas invisibles/i).first()).toBeVisible()
+    await expect(page.getByText(/señales invisibles/i).first()).toBeVisible()
   })
 })
