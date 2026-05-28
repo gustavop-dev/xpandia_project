@@ -1,0 +1,62 @@
+export const contact = {
+  seo: {
+    title: 'Contact Xpandia | Start a Language Quality Conversation',
+    description: 'Contact Xpandia to discuss Spanish and English Language Assurance, Language Experience Repair, Applied Cultural Intelligence, AI QA sprint, launch readiness, or quality advisory support.',
+  },
+  hero: {
+    eyebrow: 'CONTACT',
+    h1: 'Tell us what your team is building, launching, or improving in Spanish/English.',
+    sub: "Use the form below or email us directly. We\u2019ll review your request and recommend the best next step: a diagnostic call, audit, Language repair engagement, ACI talk, messaging review, workshop, or advisory path.",
+    email: 'hello@xpandia.global',
+  },
+  form: {
+    eyebrow: 'DISCOVERY CALL INTAKE FORM',
+    headline: "Let\u2019s talk about your Spanish/English products.",
+    intro: "Share a few details about your product, audience, language, surface, and timeline. We\u2019ll use this context to recommend the right next step.",
+    fields: {
+      name: 'Name',
+      workEmail: 'Work email',
+      company: 'Company',
+      role: 'Role / Team',
+      website: 'Website or product URL',
+      helpWith: 'What do you need help with?',
+      helpOptions: ['Language Assurance', 'AI QA Sprint', 'Launch Readiness Audit', 'Language Experience Repair', 'Applied Cultural Intelligence', 'Hispanic Audience & Messaging Review', 'Language Quality Advisory', 'Not sure yet'],
+      audience: 'Target audience / market',
+      audienceOptions: ['LatAm', 'US Hispanic', 'Spain', 'Neutral Spanish', 'American English', 'Specific country or region', 'Not sure yet'],
+      timeline: 'Timeline',
+      timelineOptions: ['Urgent / this month', '1\u20132 months', '3+ months', 'Exploring options'],
+      scope: 'Estimated scope',
+      scopeOptions: ['Small sample or diagnostic', 'AI outputs or chatbot responses', 'Product / website / content review', 'Language repair or adaptation project', 'Talk / workshop / advisory', 'Not sure yet'],
+      message: 'Tell us about your product, audience, language, surface, website or product URL, and what you\u2019d like us to look at.',
+      messagePlaceholder: 'Example: We launched our AI tutor in Spanish last quarter. Support tickets mention confusion. We need an expert read on quality before expanding to Mexico.',
+    },
+    submit: 'Send Request',
+    microcopy: "We\u2019ll review your request and respond with the most relevant next step.",
+  },
+  sidebar: {
+    eyebrow: 'CONTACT OPTIONS',
+    email: 'hello@xpandia.global',
+    quickLinks: [
+      { label: 'Book a diagnostic call' },
+      { label: 'Request an audit' },
+      { label: 'Request Language Experience Repair' },
+      { label: 'Book an ACI Talk' },
+    ],
+  },
+  nextSteps: {
+    eyebrow: 'NEXT STEPS',
+    headline: 'A clear path from first contact to action.',
+    steps: [
+      { num: '01', title: 'Share your context', body: 'Tell us what your team is building, improving, validating, or launching in Spanish.' },
+      { num: '02', title: 'Get a recommendation', body: 'We identify the right starting point based on your product, audience, timeline, and business goal.' },
+      { num: '03', title: 'Scope the engagement', body: 'We define deliverables, timing, pricing, inputs needed, and success criteria.' },
+      { num: '04', title: 'Move forward with clarity', body: 'Your team gets the expert judgment, assets, evidence, or guidance needed to act with confidence.' },
+    ],
+  },
+  finalCta: {
+    eyebrow: 'READY TO START?',
+    headline: "Let\u2019s find the right Spanish/English quality path for your team.",
+    body: 'Whether you need to validate AI outputs, repair Spanish/English content, prepare for launch, train a global team, or understand a Hispanic audience, Xpandia can help you choose the right next step.',
+    primaryCta: 'Talk to an Expert',
+  },
+}

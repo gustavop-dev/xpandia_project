@@ -1,13 +1,15 @@
-import { Link } from '@/i18n/navigation'
-import { getTranslations } from 'next-intl/server'
+'use client'
 
-export default async function FABContact() {
-  const t = await getTranslations('common.fab')
+import Link from 'next/link'
+import { useTranslations } from '@/lib/i18n/useTranslations'
+
+export default function FABContact() {
+  const t = useTranslations()
 
   return (
     <Link
       href="/contact"
-      aria-label={t('label')}
+      aria-label={t.global.fab}
       className="group fixed bottom-5 right-5 sm:bottom-7 sm:right-7 z-[900] inline-flex items-center gap-[10px] pl-[14px] pr-[18px] py-3 sm:pl-[18px] sm:pr-[22px] sm:py-[14px] bg-ink-900 text-paper rounded-full font-display text-[13px] sm:text-[14px] font-medium tracking-[-0.005em] shadow-[0_1px_2px_rgba(15,20,25,0.08),0_8px_24px_rgba(15,20,25,0.16),0_0_0_1px_rgba(15,20,25,0.04)] transition-all duration-[250ms] hover:bg-ink-800 hover:-translate-y-0.5 hover:shadow-[0_2px_4px_rgba(15,20,25,0.08),0_14px_32px_rgba(15,20,25,0.22),0_0_0_1px_rgba(15,20,25,0.04)]"
     >
       <span
@@ -18,7 +20,7 @@ export default async function FABContact() {
           <path d="M4 6L12 13L20 6M4 6V18H20V6M4 6H20" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
       </span>
-      <span className="whitespace-nowrap text-paper">{t('label')}</span>
+      <span className="whitespace-nowrap text-paper">{t.global.fab}</span>
     </Link>
   )
 }

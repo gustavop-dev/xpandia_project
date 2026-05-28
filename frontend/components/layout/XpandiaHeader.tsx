@@ -1,21 +1,22 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
-import { Link, useRouter, usePathname } from '@/i18n/navigation'
+import { usePathname } from 'next/navigation'
+import Link from 'next/link'
 import Image from 'next/image'
 import { cn } from '@/lib/utils'
-import { useTranslations, useLocale } from 'next-intl'
+import { useLocale } from '@/lib/i18n/context'
+import { useTranslations } from '@/lib/i18n/useTranslations'
+import type { SupportedLocale } from '@/lib/i18n/config'
 
 export default function XpandiaHeader() {
   const pathname = usePathname()
-  const t = useTranslations('common.header')
-  const locale = useLocale()
-  const router = useRouter()
-
+  const { locale, setLocale } = useLocale()
+  const t = useTranslations()
   const activePage = pathname === '/' ? 'home'
     : pathname.startsWith('/services') ? 'services'
-    : pathname.startsWith('/blog') ? 'blog'
     : pathname === '/about' ? 'about'
+    : pathname.startsWith('/blogs') ? 'blog'
     : pathname === '/contact' ? 'contact'
     : ''
   const [scrolled, setScrolled] = useState(false)
@@ -34,23 +35,12 @@ export default function XpandiaHeader() {
     return () => { document.body.style.overflow = '' }
   }, [drawerOpen])
 
-  function switchLocale(target: string) {
-    if (target === locale) return
-    localStorage.setItem('xpandia-lang', target)
-    router.replace(pathname, { locale: target })
-  }
-
   function closeDrawer() { setDrawerOpen(false) }
 
   const linkBase = "text-[14px] font-[450] text-ink-700 relative py-2 transition-colors duration-[150ms] hover:text-ink-900"
   const linkActive = "text-ink-900 nav-active"
 
-  const serviceItems = t.raw('servicesMenu.items') as Array<{ num: string; label: string; desc: string }>
-  const serviceHrefs = [
-    '/services/language-assurance',
-    '/services/localization-adaptation',
-    '/services/applied-cultural-intelligence',
-  ]
+  const { nav, cta, servicesDropdown } = t.global.header
 
   return (
     <>
@@ -65,30 +55,32 @@ export default function XpandiaHeader() {
       >
         <div className="max-w-[1280px] mx-auto px-5 py-[14px] tablet:px-[clamp(24px,4vw,64px)] tablet:py-[18px] flex items-center justify-between gap-4 tablet:gap-8">
 
-          <Link className="h-[22px] sm:h-[26px] flex items-center shrink-0" href="/" aria-label={t('logoAlt')}>
-            <Image src="/assets/logo-full-light.webp" alt={t('logoAlt')} width={138} height={26} className="h-full w-auto" priority />
+          <Link className="h-[22px] sm:h-[26px] flex items-center shrink-0" href="/" aria-label="Xpandia">
+            <Image src="/assets/logo-full-light.png" alt="Xpandia" width={120} height={26} priority />
           </Link>
 
           {/* Desktop nav links */}
-          <nav className="hidden tablet:flex items-center gap-7" aria-label={t('primaryNavLabel')}>
+          <nav className="hidden tablet:flex items-center gap-7" aria-label="Primary">
+            <Link className={cn(linkBase, activePage === 'home' && linkActive)} href="/">Home</Link>
+
             <div className="relative group">
               <Link className={cn(linkBase, "inline-flex items-center", activePage === 'services' && linkActive)} href="/services">
-                {t('nav.services')}
+                {nav.services}
                 <svg width="10" height="6" viewBox="0 0 10 6" fill="none" className="ml-1 shrink-0">
                   <path d="M1 1L5 5L9 1" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round"/>
                 </svg>
               </Link>
               <div
-                className="absolute top-[calc(100%+6px)] left-[-20px] w-[400px] bg-white border border-ink-150 rounded-xl p-[10px] shadow-[0_14px_40px_rgba(15,24,39,0.10),0_2px_6px_rgba(15,24,39,0.05)] opacity-0 invisible -translate-y-1 transition-all duration-[150ms] group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 group-focus-within:opacity-100 group-focus-within:visible group-focus-within:translate-y-0"
+                className="absolute top-[calc(100%+6px)] left-[-20px] w-[380px] bg-white border border-ink-150 rounded-xl p-[10px] shadow-[0_14px_40px_rgba(15,20,25,0.08),0_2px_6px_rgba(15,20,25,0.04)] opacity-0 invisible -translate-y-1 transition-all duration-[150ms] group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 group-focus-within:opacity-100 group-focus-within:visible group-focus-within:translate-y-0"
                 role="menu"
               >
                 <Link href="/services" className="block px-4 py-[14px] rounded-t-lg rounded-b-none mb-[6px] pb-4 border-b border-ink-150 transition-colors duration-[120ms] hover:bg-ink-50">
-                  <div className="font-display text-[16px] tracking-[-0.01em] text-ink-900 font-medium mb-[3px]">{t('servicesMenu.all.label')}</div>
-                  <div className="text-[12.5px] text-ink-600 leading-[1.4]">{t('servicesMenu.all.desc')}</div>
+                  <div className="font-display text-[16px] tracking-[-0.01em] text-ink-900 font-medium mb-[3px]">{servicesDropdown.allTitle}</div>
+                  <div className="text-[12.5px] text-ink-600 leading-[1.4]">{servicesDropdown.allDesc}</div>
                 </Link>
-                {serviceItems.map((item, i) => (
-                  <Link key={serviceHrefs[i]} href={serviceHrefs[i]} className="block px-4 py-[14px] rounded-lg transition-colors duration-[120ms] hover:bg-ink-50">
-                    <div className="font-mono text-[10px] tracking-[0.12em] text-primary mb-[6px]">{item.num}</div>
+                {servicesDropdown.items.map(item => (
+                  <Link key={item.href} href={item.href} className="block px-4 py-[14px] rounded-lg transition-colors duration-[120ms] hover:bg-ink-50">
+                    <div className="font-mono text-[10px] tracking-[0.12em] text-ink-500 mb-[6px]">{item.num}</div>
                     <div className="font-display text-[16px] tracking-[-0.01em] text-ink-900 font-medium mb-[3px]">{item.label}</div>
                     <div className="text-[12.5px] text-ink-600 leading-[1.4]">{item.desc}</div>
                   </Link>
@@ -96,28 +88,27 @@ export default function XpandiaHeader() {
               </div>
             </div>
 
-            <Link className={cn(linkBase, activePage === 'blog' && linkActive)} href="/blog">{t('nav.blog')}</Link>
-            <Link className={cn(linkBase, activePage === 'about' && linkActive)} href="/about">{t('nav.about')}</Link>
-            <Link className={cn(linkBase, activePage === 'contact' && linkActive)} href="/contact">{t('nav.contact')}</Link>
+            <Link className={cn(linkBase, activePage === 'about' && linkActive)} href="/about">{nav.about}</Link>
+            <Link className={cn(linkBase, activePage === 'blog' && linkActive)} href="/blogs">{nav.blog}</Link>
           </nav>
 
           <div className="flex items-center gap-4">
             {/* Language toggle — desktop only */}
-            <div className="hidden tablet:inline-flex font-mono text-[11px] tracking-[0.08em] border border-ink-200 rounded-full overflow-hidden text-ink-500" role="group" aria-label={t('langGroupLabel')}>
+            <div className="hidden tablet:inline-flex font-mono text-[11px] tracking-[0.08em] border border-ink-200 rounded-full overflow-hidden text-ink-500" role="group" aria-label="Language">
               <button
                 className={cn("border-0 px-[10px] py-[6px] cursor-pointer transition-colors", locale === 'en' ? "bg-ink-900 text-paper" : "bg-transparent")}
-                onClick={() => switchLocale('en')}
+                onClick={() => setLocale('en')}
               >EN</button>
               <button
                 className={cn("border-0 px-[10px] py-[6px] cursor-pointer transition-colors", locale === 'es' ? "bg-ink-900 text-paper" : "bg-transparent")}
-                onClick={() => switchLocale('es')}
+                onClick={() => setLocale('es')}
               >ES</button>
             </div>
 
             {/* CTA button — desktop only */}
             <div className="hidden tablet:block">
               <Link className="btn btn-primary btn-small" href="/contact">
-                {t('cta')} <span className="btn-arrow"></span>
+                {cta} <span className="btn-arrow"></span>
               </Link>
             </div>
 
@@ -125,7 +116,7 @@ export default function XpandiaHeader() {
             <button
               className="inline-flex tablet:hidden w-10 h-10 border border-ink-150 rounded-full bg-transparent cursor-pointer items-center justify-center"
               id="nav-burger"
-              aria-label={t('menuButtonLabel')}
+              aria-label="Menu"
               aria-expanded={drawerOpen}
               onClick={() => setDrawerOpen(!drawerOpen)}
             >
@@ -145,31 +136,31 @@ export default function XpandiaHeader() {
         )}
         aria-hidden={!drawerOpen}
       >
-        <Link href="/" className="block py-[18px] border-b border-ink-150 font-display text-[22px] text-ink-900" onClick={closeDrawer}>{t('drawerHome')}</Link>
-        <div className="mt-5 pb-1 font-mono text-[11px] tracking-[0.14em] text-ink-500">{t('drawerServicesHeading')}</div>
-        {[
-          { href: '/services', num: 'ALL', label: t('servicesMenu.all.label') },
-          ...serviceItems.map((item, i) => ({ href: serviceHrefs[i], num: item.num, label: item.label })),
-        ].map(item => (
+        <Link href="/" className="block py-[18px] border-b border-ink-150 font-display text-[22px] text-ink-900" onClick={closeDrawer}>Home</Link>
+        <div className="mt-5 pb-1 font-mono text-[11px] tracking-[0.14em] text-ink-500">{nav.services.toUpperCase()}</div>
+        <Link href="/services" className="block py-[10px] pl-5 text-[15px] text-ink-600 border-b border-ink-150" onClick={closeDrawer}>
+          <span className="block font-mono text-[10px] tracking-[0.12em] text-accent mb-1">ALL</span>
+          {servicesDropdown.allTitle}
+        </Link>
+        {servicesDropdown.items.map(item => (
           <Link key={item.href} href={item.href} className="block py-[10px] pl-5 text-[15px] text-ink-600 border-b border-ink-150" onClick={closeDrawer}>
-            <span className="block font-mono text-[10px] tracking-[0.12em] text-primary mb-1">{item.num}</span>
+            <span className="block font-mono text-[10px] tracking-[0.12em] text-accent mb-1">{item.num}</span>
             {item.label}
           </Link>
         ))}
-        <Link href="/blog" className="block mt-5 py-[18px] border-b border-ink-150 font-display text-[22px] text-ink-900" onClick={closeDrawer}>{t('nav.blog')}</Link>
-        <Link href="/about" className="block py-[18px] border-b border-ink-150 font-display text-[22px] text-ink-900" onClick={closeDrawer}>{t('nav.about')}</Link>
-        <Link href="/contact" className="block py-[18px] border-b border-ink-150 font-display text-[22px] text-ink-900" onClick={closeDrawer}>{t('nav.contact')}</Link>
+        <Link href="/about" className="block mt-5 py-[18px] border-b border-ink-150 font-display text-[22px] text-ink-900" onClick={closeDrawer}>{nav.about}</Link>
+        <Link href="/blogs" className="block py-[18px] border-b border-ink-150 font-display text-[22px] text-ink-900" onClick={closeDrawer}>{nav.blog}</Link>
         <Link href="/contact" className="btn btn-primary mt-8 w-full justify-center" onClick={closeDrawer}>
-          {t('cta')} <span className="btn-arrow"></span>
+          {cta} <span className="btn-arrow"></span>
         </Link>
         <div className="mt-8 flex gap-1 pt-5 border-t border-ink-150">
           <button
             className={cn("px-[14px] py-2 rounded-full font-mono text-[11px] border transition-colors", locale === 'en' ? "bg-ink-900 text-paper border-transparent" : "bg-transparent text-ink-900 border-ink-200")}
-            onClick={() => switchLocale('en')}
+            onClick={() => setLocale('en')}
           >EN</button>
           <button
             className={cn("px-[14px] py-2 rounded-full font-mono text-[11px] border transition-colors", locale === 'es' ? "bg-ink-900 text-paper border-transparent" : "bg-transparent text-ink-900 border-ink-200")}
-            onClick={() => switchLocale('es')}
+            onClick={() => setLocale('es')}
           >ES</button>
         </div>
       </aside>

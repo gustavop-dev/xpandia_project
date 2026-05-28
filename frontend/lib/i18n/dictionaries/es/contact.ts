@@ -1,0 +1,62 @@
+export const contact = {
+  seo: {
+    title: 'Contacta a Xpandia | Inicia una conversaci\u00f3n sobre calidad ling\u00fc\u00edstica',
+    description: 'Contacta a Xpandia para hablar sobre Language Assurance, Experience Repair, Applied Cultural Intelligence, AI QA, launch readiness o advisory para productos y experiencias en otros idiomas.',
+  },
+  hero: {
+    eyebrow: 'CONTACTO',
+    h1: 'Cu\u00e9ntanos qu\u00e9 est\u00e1 construyendo, lanzando o mejorando tu equipo en otro idioma.',
+    sub: 'Usa el formulario de abajo o escr\u00edbenos directamente. Revisaremos tu solicitud y recomendaremos el mejor siguiente paso: llamada diagn\u00f3stica, auditor\u00eda, reparaci\u00f3n de experiencia, ACI talk, messaging review, workshop o advisory.',
+    email: 'hello@xpandia.global',
+  },
+  form: {
+    eyebrow: 'FORMULARIO DE CONTACTO PARA DISCOVERY CALL',
+    headline: 'Hablemos sobre tus productos en otros idiomas.',
+    intro: 'Comparte algunos detalles sobre tu producto, audiencia, superficie ling\u00fc\u00edstica y timeline requerido. Usaremos ese contexto para recomendar el siguiente paso correcto.',
+    fields: {
+      name: 'Nombre',
+      workEmail: 'Email corporativo',
+      company: 'Empresa',
+      role: 'Cargo / Equipo',
+      website: 'Website o URL del producto',
+      helpWith: '\u00bfCon qu\u00e9 necesitas ayuda?',
+      helpOptions: ['Language Assurance', 'AI Language QA', 'Launch Readiness', 'Experience Repair', 'Applied Cultural Intelligence', 'Hispanic Audience & Messaging Review', 'Quality Advisory', 'A\u00fan no estoy seguro'],
+      audience: 'Audiencia / mercado objetivo',
+      audienceOptions: ['LatAm', 'US Hispanic', 'EE. UU.', 'Canad\u00e1', 'Europa', 'Espa\u00f1a', 'Ingl\u00e9s global', 'Espa\u00f1ol neutro', 'Pa\u00eds o regi\u00f3n espec\u00edfica', 'A\u00fan no estoy seguro'],
+      timeline: 'Timeline',
+      timelineOptions: ['Urgente / este mes', '1\u20132 meses', '3+ meses', 'Explorando opciones'],
+      scope: 'Alcance estimado',
+      scopeOptions: ['Muestra peque\u00f1a o diagn\u00f3stico', 'Outputs de IA o respuestas de chatbot', 'Revisi\u00f3n de producto / website / contenido', 'Proyecto de repair o adaptation', 'Talk / workshop / advisory', 'A\u00fan no estoy seguro'],
+      message: 'Cu\u00e9ntanos sobre tu producto, audiencia, superficie ling\u00fc\u00edstica, website o URL del producto, y qu\u00e9 te gustar\u00eda que revisemos.',
+      messagePlaceholder: 'Ejemplo: Lanzamos nuestra plataforma en ingl\u00e9s el trimestre pasado. Algunos usuarios reportan confusi\u00f3n en el onboarding. Necesitamos una lectura experta de calidad antes de expandir la campa\u00f1a.',
+    },
+    submit: 'Enviar solicitud',
+    microcopy: 'Revisaremos tu solicitud y responderemos a la mayor brevedad con los siguientes pasos.',
+  },
+  sidebar: {
+    eyebrow: 'OPCIONES DE CONTACTO',
+    email: 'hello@xpandia.global',
+    quickLinks: [
+      { label: 'Agendar diagn\u00f3stico' },
+      { label: 'Solicitar auditor\u00eda' },
+      { label: 'Solicitar Experience Repair' },
+      { label: 'Reservar ACI Talk' },
+    ],
+  },
+  nextSteps: {
+    eyebrow: 'PASOS A SEGUIR',
+    headline: 'Un camino claro desde el primer contacto hasta la acci\u00f3n.',
+    steps: [
+      { num: '01', title: 'Nos compartes el contexto', body: 'Cu\u00e9ntanos qu\u00e9 est\u00e1 construyendo, mejorando, validando o lanzando tu equipo en otro idioma.' },
+      { num: '02', title: 'Te damos una recomendaci\u00f3n', body: 'Identificamos el mejor punto de partida seg\u00fan tu producto, audiencia, timeline y objetivo de negocio.' },
+      { num: '03', title: 'Mapeamos el alcance del engagement', body: 'Definimos entregables, tiempos, precio, inputs necesarios y criterios de \u00e9xito.' },
+      { num: '04', title: 'Avanzas con claridad', body: 'Tu equipo recibe el criterio experto, activos, evidencia o gu\u00eda que necesita para actuar con confianza.' },
+    ],
+  },
+  finalCta: {
+    eyebrow: '\u00bfLISTO PARA COMENZAR?',
+    headline: 'Encontremos el camino correcto de calidad para tu equipo.',
+    body: 'Ya sea que necesites validar outputs de IA, reparar contenido traducido, preparar un lanzamiento, entrenar un equipo global o entender una audiencia de habla inglesa o hispana, Xpandia puede ayudarte a elegir el siguiente paso correcto.',
+    primaryCta: 'Hablar con un experto',
+  },
+}
