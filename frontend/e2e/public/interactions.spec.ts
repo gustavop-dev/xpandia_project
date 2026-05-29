@@ -52,7 +52,7 @@ test.describe('CTA navigation', () => {
       await page.goto('/')
       await waitForPageLoad(page)
 
-      await page.getByRole('link', { name: /Book a diagnostic call/i }).first().click()
+      await page.getByRole('link', { name: /Talk to an Expert/i }).first().click()
 
       await expect(page).toHaveURL(/\/contact/)
       await expect(page.getByRole('heading', { level: 1, name: /Tell us what your team is building/i })).toBeVisible()
@@ -162,7 +162,7 @@ test.describe('Navigation interactions', () => {
       await page.goto('/')
       await waitForPageLoad(page)
 
-      await page.getByRole('link', { name: 'Book a diagnostic call' }).filter({ hasText: 'Book a diagnostic call' }).last().click()
+      await page.getByRole('link', { name: /let.s talk/i }).click()
 
       await expect(page).toHaveURL(/\/contact/)
     }

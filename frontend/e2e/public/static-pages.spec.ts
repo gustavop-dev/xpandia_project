@@ -8,7 +8,7 @@ test.describe('Static pages', () => {
     await waitForPageLoad(page)
 
     await expect(page.getByRole('heading', { level: 1, name: /Spanish expertise for companies building/i })).toBeVisible()
-    await expect(page.getByRole('link', { name: /Book a diagnostic call/i }).first()).toBeVisible()
+    await expect(page.getByRole('link', { name: /Talk to an Expert/i }).first()).toBeVisible()
   })
 
   test('contact page loads with contact section', { tag: [...CONTACT_PAGE] }, async ({ page }) => {

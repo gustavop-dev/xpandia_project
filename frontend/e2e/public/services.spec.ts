@@ -13,7 +13,7 @@ test.describe('Services', () => {
     await waitForPageLoad(page)
 
     await expect(page.getByRole('heading', { level: 1, name: /The Spanish expertise your product needs/i })).toBeVisible()
-    await expect(page.getByRole('link', { name: /Book a diagnostic call/i }).first()).toBeVisible()
+    await expect(page.getByRole('link', { name: /Talk to an Expert/i }).first()).toBeVisible()
   })
 
   test('Language Assurance service page loads', { tag: [...SERVICES_LANGUAGE_ASSURANCE] }, async ({ page }) => {

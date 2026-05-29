@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from '@/i18n/navigation'
 import Link from 'next/link'
 import Image from 'next/image'
 import { cn } from '@/lib/utils'
@@ -11,7 +11,15 @@ import type { SupportedLocale } from '@/lib/i18n/config'
 
 export default function XpandiaHeader() {
   const pathname = usePathname()
+  const router = useRouter()
   const { locale, setLocale } = useLocale()
+
+  function switchLocale(next: SupportedLocale) {
+    if (locale !== next) {
+      setLocale(next)
+      router.replace(pathname, { locale: next })
+    }
+  }
   const t = useTranslations()
   const activePage = pathname === '/' ? 'home'
     : pathname.startsWith('/services') ? 'services'
@@ -97,11 +105,11 @@ export default function XpandiaHeader() {
             <div className="hidden tablet:inline-flex font-mono text-[11px] tracking-[0.08em] border border-ink-200 rounded-full overflow-hidden text-ink-500" role="group" aria-label="Language">
               <button
                 className={cn("border-0 px-[10px] py-[6px] cursor-pointer transition-colors", locale === 'en' ? "bg-ink-900 text-paper" : "bg-transparent")}
-                onClick={() => setLocale('en')}
+                onClick={() => switchLocale('en')}
               >EN</button>
               <button
                 className={cn("border-0 px-[10px] py-[6px] cursor-pointer transition-colors", locale === 'es' ? "bg-ink-900 text-paper" : "bg-transparent")}
-                onClick={() => setLocale('es')}
+                onClick={() => switchLocale('es')}
               >ES</button>
             </div>
 
@@ -156,11 +164,11 @@ export default function XpandiaHeader() {
         <div className="mt-8 flex gap-1 pt-5 border-t border-ink-150">
           <button
             className={cn("px-[14px] py-2 rounded-full font-mono text-[11px] border transition-colors", locale === 'en' ? "bg-ink-900 text-paper border-transparent" : "bg-transparent text-ink-900 border-ink-200")}
-            onClick={() => setLocale('en')}
+            onClick={() => switchLocale('en')}
           >EN</button>
           <button
             className={cn("px-[14px] py-2 rounded-full font-mono text-[11px] border transition-colors", locale === 'es' ? "bg-ink-900 text-paper border-transparent" : "bg-transparent text-ink-900 border-ink-200")}
-            onClick={() => setLocale('es')}
+            onClick={() => switchLocale('es')}
           >ES</button>
         </div>
       </aside>
