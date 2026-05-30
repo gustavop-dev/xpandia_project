@@ -14,9 +14,9 @@ export default function XpandiaFooter() {
         <div className="grid grid-cols-1 sm:grid-cols-2 tablet:grid-cols-[1.6fr_1fr_1fr_1fr] gap-8 sm:gap-10 tablet:gap-12 pb-14 border-b border-white/[0.08]">
           <div>
             <Image
-              src="/assets/logo-full-dark.png"
+              src="/assets/logo-full-dark.svg"
               alt="Xpandia"
-              width={120}
+              width={113}
               height={32}
               className="h-8 w-auto block mb-5"
             />
