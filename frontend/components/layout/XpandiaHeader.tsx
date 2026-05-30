@@ -64,7 +64,7 @@ export default function XpandiaHeader() {
         <div className="max-w-[1280px] mx-auto px-5 py-[14px] tablet:px-[clamp(24px,4vw,64px)] tablet:py-[18px] flex items-center justify-between gap-4 tablet:gap-8">
 
           <Link className="h-[22px] sm:h-[26px] flex items-center shrink-0" href="/" aria-label="Xpandia">
-            <Image src="/assets/logo-full-light.png" alt="Xpandia" width={120} height={26} priority />
+            <Image src="/assets/logo-full-light.webp" alt="Xpandia" width={138} height={26} className="h-full w-auto" priority />
           </Link>
 
           {/* Desktop nav links */}
