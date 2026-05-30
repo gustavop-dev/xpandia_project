@@ -7,5 +7,5 @@ test('home page loads', { tag: [...HOME_LOADS] }, async ({ page }) => {
   await expect(page.getByRole('heading', { level: 1, name: /Spanish that works/i })).toBeVisible();
   await expect(page.getByRole('banner')).toBeVisible();
   await expect(page.getByRole('contentinfo')).toBeVisible();
-  await expect(page.getByRole('link', { name: /Book a diagnostic call/i }).first()).toBeVisible();
+  await expect(page.getByRole('link', { name: /Talk to an Expert/i }).first()).toBeVisible();
 });

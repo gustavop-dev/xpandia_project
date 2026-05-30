@@ -26,7 +26,7 @@ describe('AboutPage', () => {
 
   it('renders the WHY XPANDIA differentiators headline', async () => {
     renderWithIntl(await AboutPage({ params: Promise.resolve({ locale: 'en' }) }))
-    expect(screen.getByText('Spanish quality needs more than a fluent speaker.')).toBeInTheDocument()
+    expect(screen.getByText('Spanish quality shapes trust, adoption, and growth.')).toBeInTheDocument()
   })
 
   it('renders the "Senior Spanish judgment" differentiator card', async () => {

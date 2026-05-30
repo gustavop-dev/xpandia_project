@@ -31,7 +31,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
       <section className="hero">
         <div className="container">
           <div className="eyebrow mb-8">{t('hero.eyebrow')}</div>
-          <h1 className="hero-display text-[clamp(40px,5.4vw,82px)] max-w-[22ch]">
+          <h1 className="hero-display text-[clamp(32px,4.2vw,62px)] max-w-[24ch]">
             {t('hero.h1')}
           </h1>
           <p className="hero-sub mt-8 max-w-[64ch]">
@@ -42,7 +42,6 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
           </p>
           <div className="hero-ctas mt-10">
             <Link className="btn btn-primary" href="/contact">{t('hero.ctaPrimary')} <span className="btn-arrow"></span></Link>
-            <Link className="btn btn-secondary" href="/contact">{t('hero.ctaSecondary')}</Link>
           </div>
         </div>
       </section>
@@ -98,10 +97,22 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
       {/* 4. Founder / Leadership */}
       <section className="bg-ink-50">
         <div className="container">
-          <div className="grid grid-cols-1 tablet:grid-cols-[1fr_1.6fr] gap-16 items-start">
+          <div className="max-w-[760px]">
+            <div className="eyebrow">{t('founder.eyebrow')}</div>
+            <h2 style={{ marginTop: 24, fontSize: 'clamp(26px,2.8vw,42px)', lineHeight: 1.1, letterSpacing: '-0.02em' }}>
+              {t('founder.headline')}
+            </h2>
+            <p className="text-ink-600 text-[19px] leading-[1.55] mt-7 mb-5">
+              {t('founder.body1')}
+            </p>
+            <p className="text-ink-600 text-[19px] leading-[1.55]">
+              {t('founder.body2')}
+            </p>
+          </div>
+          <div className="grid grid-cols-1 tablet:grid-cols-[0.85fr_1.6fr] gap-10 items-start mt-12">
             <div>
               <div className="aspect-[4/5] rounded-lg relative overflow-hidden bg-ink-900">
-                <Image src="/assets/founder.webp" alt={t('founder.imageAlt')} fill loading="lazy" className="object-cover" sizes="(max-width: 900px) 100vw, 35vw" />
+                <Image src="/assets/founder.webp" alt={t('founder.imageAlt')} fill loading="lazy" className="object-cover" sizes="(max-width: 900px) 100vw, 30vw" />
                 <div className="absolute bottom-0 right-0 w-[40%] h-[3px] bg-accent"></div>
               </div>
               <div className="mt-5">
@@ -109,25 +120,13 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
                 <div className="font-mono text-[11px] text-ink-500 tracking-[0.08em] mt-1">{t('founder.title')}</div>
               </div>
             </div>
-            <div>
-              <div className="eyebrow">{t('founder.eyebrow')}</div>
-              <h2 style={{ marginTop: 24, fontSize: 'clamp(26px,2.8vw,42px)', lineHeight: 1.1, letterSpacing: '-0.02em' }}>
-                {t('founder.headline')}
-              </h2>
-              <p className="text-ink-600 text-[19px] leading-[1.55] mt-7 mb-5">
-                {t('founder.body1')}
+            <div className="p-7 bg-white border border-ink-150 rounded-lg">
+              <p className="text-ink-600 text-[15.5px] leading-[1.6] mb-4">
+                {t('founder.bio1')}
               </p>
-              <p className="text-ink-600 text-[19px] leading-[1.55] mb-8">
-                {t('founder.body2')}
+              <p className="text-ink-600 text-[15.5px] leading-[1.6]">
+                {t('founder.bio2')}
               </p>
-              <div className="p-7 bg-white border border-ink-150 rounded-lg">
-                <p className="text-ink-600 text-[15.5px] leading-[1.6] mb-4">
-                  {t('founder.bio1')}
-                </p>
-                <p className="text-ink-600 text-[15.5px] leading-[1.6]">
-                  {t('founder.bio2')}
-                </p>
-              </div>
             </div>
           </div>
         </div>

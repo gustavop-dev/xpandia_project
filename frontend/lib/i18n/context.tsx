@@ -16,8 +16,8 @@ const I18nContext = createContext<I18nContextValue>({
 
 const STORAGE_KEY = 'xpandia-lang'
 
-export function I18nProvider({ children }: { children: React.ReactNode }) {
-  const [locale, setLocaleState] = useState<SupportedLocale>(DEFAULT_LOCALE)
+export function I18nProvider({ children, initialLocale = DEFAULT_LOCALE }: { children: React.ReactNode; initialLocale?: SupportedLocale }) {
+  const [locale, setLocaleState] = useState<SupportedLocale>(initialLocale)
 
   useEffect(() => {
     const stored = localStorage.getItem(STORAGE_KEY)

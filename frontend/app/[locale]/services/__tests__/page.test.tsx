@@ -24,9 +24,9 @@ describe('ServicesPage', () => {
     expect(links[0]).toHaveAttribute('href', '/services/language-assurance')
   })
 
-  it('links Explore Localization & Adaptation to the localization-adaptation route', async () => {
+  it('links Explore Repair & Adaptation to the localization-adaptation route', async () => {
     renderWithIntl(await ServicesPage({ params: makeParams() }))
-    const links = screen.getAllByRole('link', { name: /Explore Localization & Adaptation/i })
+    const links = screen.getAllByRole('link', { name: /Explore Repair & Adaptation/i })
     expect(links[0]).toHaveAttribute('href', '/services/localization-adaptation')
   })
 
@@ -39,7 +39,7 @@ describe('ServicesPage', () => {
   it('renders the comparison section heading', async () => {
     renderWithIntl(await ServicesPage({ params: makeParams() }))
     expect(
-      screen.getByText('The difference is simple: validate, adapt, or understand.'),
+      screen.getByText('The difference is simple: validate, repair, or understand.'),
     ).toBeInTheDocument()
   })
 

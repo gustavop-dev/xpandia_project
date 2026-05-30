@@ -13,9 +13,9 @@ describe('LocalizationAdaptationPage', () => {
     )
   })
 
-  it('renders the LOCALIZATION & ADAPTATION eyebrow label', async () => {
+  it('renders the SPANISH EXPERIENCE REPAIR & ADAPTATION eyebrow label', async () => {
     renderWithIntl(await LocalizationAdaptationPage({ params: makeParams() }))
-    const eyebrows = screen.getAllByText('LOCALIZATION & ADAPTATION')
+    const eyebrows = screen.getAllByText('SPANISH EXPERIENCE REPAIR & ADAPTATION')
     expect(eyebrows.length).toBeGreaterThan(0)
   })
 
@@ -24,16 +24,16 @@ describe('LocalizationAdaptationPage', () => {
     expect(screen.getByRole('link', { name: /all services/i })).toHaveAttribute('href', '/services')
   })
 
-  it('renders the request a localization review CTA link', async () => {
+  it('renders the request Spanish Experience Repair CTA link', async () => {
     renderWithIntl(await LocalizationAdaptationPage({ params: makeParams() }))
-    const links = screen.getAllByRole('link', { name: /request a localization review/i })
+    const links = screen.getAllByRole('link', { name: /request spanish experience repair/i })
     expect(links[0]).toHaveAttribute('href', '/contact')
   })
 
   it('renders the positioning section headline', async () => {
     renderWithIntl(await LocalizationAdaptationPage({ params: makeParams() }))
     expect(
-      screen.getByText('Translation helps users read. Localization helps users trust, understand, and act.')
+      screen.getByText('Translation helps users read. Adaptation helps users trust, understand, and act.')
     ).toBeInTheDocument()
   })
 
@@ -42,20 +42,15 @@ describe('LocalizationAdaptationPage', () => {
     expect(screen.getByText('WHAT WE ADAPT')).toBeInTheDocument()
   })
 
-  it('renders the ADAPTATION CRITERIA eyebrow', async () => {
+  it('renders the CORE SERVICES eyebrow', async () => {
     renderWithIntl(await LocalizationAdaptationPage({ params: makeParams() }))
-    expect(screen.getByText('ADAPTATION CRITERIA')).toBeInTheDocument()
-  })
-
-  it('renders the CORE ENGAGEMENTS eyebrow', async () => {
-    renderWithIntl(await LocalizationAdaptationPage({ params: makeParams() }))
-    expect(screen.getByText('CORE ENGAGEMENTS')).toBeInTheDocument()
+    expect(screen.getByText('CORE SERVICES')).toBeInTheDocument()
   })
 
   it('renders the methodology headline', async () => {
     renderWithIntl(await LocalizationAdaptationPage({ params: makeParams() }))
     expect(
-      screen.getByText('A practical path from English-first to audience-ready Spanish.')
+      screen.getByText('A practical path from existing Spanish to audience-ready Spanish.')
     ).toBeInTheDocument()
   })
 
@@ -67,9 +62,9 @@ describe('LocalizationAdaptationPage', () => {
 })
 
 describe('generateMetadata — localization page', () => {
-  it('returns a title matching Localization & Adaptation', async () => {
+  it('returns a title matching Spanish Experience Repair & Adaptation', async () => {
     const meta = await generateMetadata({ params: makeParams() })
-    expect(meta.title).toMatch(/Localization & Adaptation/i)
+    expect(meta.title).toMatch(/Spanish Experience Repair & Adaptation/i)
   })
 
   it('returns the canonical alternates for the localization page', async () => {

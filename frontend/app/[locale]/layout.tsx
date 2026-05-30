@@ -9,6 +9,7 @@ import XpandiaHeader from '@/components/layout/XpandiaHeader'
 import XpandiaFooter from '@/components/layout/XpandiaFooter'
 import FABContact from '@/components/layout/FABContact'
 import Providers from './providers'
+import type { SupportedLocale } from '@/lib/i18n/config'
 import SiteAnimations from '@/components/animations/SiteAnimations'
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://xpandia.global'
@@ -65,7 +66,7 @@ export default async function LocaleLayout({
       </head>
       <body suppressHydrationWarning>
         <NextIntlClientProvider messages={messages}>
-          <Providers>
+          <Providers locale={locale as SupportedLocale}>
             <XpandiaHeader />
             {children}
             <XpandiaFooter />

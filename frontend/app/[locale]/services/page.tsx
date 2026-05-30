@@ -33,20 +33,6 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
     cta: string
   }>
 
-  const serviceLineCards = t.raw('serviceLines.cards') as Array<{
-    num: string
-    name: string
-    tagline: string
-    overview: string
-    whenToUse: string[]
-    bestFor: string
-    coreEngagements: string[]
-    whatYouGet: string[]
-    pricing: string[]
-    timeline: string
-    cta: string
-  }>
-
   const comparisonRows = t.raw('comparison.rows') as Array<{
     need: string
     choose: string
@@ -73,12 +59,6 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
   const engagementSteps = t.raw('engagementModel.steps') as Array<{
     title: string
     body: string
-  }>
-
-  const pricingCards = t.raw('pricing.cards') as Array<{
-    name: string
-    price: string
-    desc: string
   }>
 
   return (
@@ -153,141 +133,7 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
         </div>
       </section>
 
-      {/* 3. Service Line Cards */}
-      <section>
-        <div className="container">
-          <div className="section-head">
-            <div>
-              <div className="eyebrow">{t('serviceLines.eyebrow')}</div>
-              <h2 className="head-title mt-5">{t('serviceLines.headline')}</h2>
-            </div>
-            <p className="head-lede">
-              {t('serviceLines.intro')}
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 gap-6 mt-12">
-            {serviceLineCards.map((line, i) => (
-              <div
-                key={line.name}
-                className="grid grid-cols-1 tablet:grid-cols-[1fr_1.4fr] gap-10 p-8 tablet:p-10 bg-white border border-ink-150 rounded-lg"
-              >
-                <div>
-                  <div className="font-mono text-[12px] tracking-[0.1em] text-ink-500">{line.num} {t('serviceLines.serviceLineLabel')}</div>
-                  <h3 className="font-display text-[clamp(26px,2.8vw,38px)] font-medium tracking-[-0.02em] leading-[1.08] mt-3 text-ink-900">
-                    {line.name}
-                  </h3>
-                  <p className="text-accent font-medium text-[16px] mt-3">{line.tagline}</p>
-                  <p className="text-ink-600 text-[16px] leading-[1.55] mt-5">{line.overview}</p>
-                  <div className="mt-8">
-                    <div className="font-mono text-[11px] tracking-[0.1em] text-ink-500 mb-2">{t('serviceLines.bestForLabel')}</div>
-                    <p className="text-ink-600 text-[15px] leading-[1.55]">{line.bestFor}</p>
-                  </div>
-                  <div className="mt-8">
-                    <div className="font-mono text-[11px] tracking-[0.1em] text-ink-500 mb-3">
-                      {t('serviceLines.engagementStartingPointsLabel')}
-                    </div>
-                    <ul className="space-y-1.5">
-                      {line.pricing.map(p => (
-                        <li key={p} className="text-ink-900 text-[15px] font-medium">{p}</li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div className="mt-6">
-                    <div className="font-mono text-[11px] tracking-[0.1em] text-ink-500 mb-2">{t('serviceLines.timelineLabel')}</div>
-                    <p className="text-ink-600 text-[15px] leading-[1.55]">{line.timeline}</p>
-                  </div>
-                  <div className="mt-8">
-                    <Link href={serviceHrefs[i]} className="btn btn-primary">
-                      {line.cta} <span className="btn-arrow"></span>
-                    </Link>
-                  </div>
-                </div>
-
-                <div className="border-t border-ink-150 pt-8 tablet:border-t-0 tablet:border-l tablet:border-ink-150 tablet:pt-0 tablet:pl-10">
-                  <div className="font-mono text-[11px] tracking-[0.1em] text-ink-500 mb-3">{t('serviceLines.whenToUseLabel')}</div>
-                  <ul className="space-y-2 text-ink-600 text-[15px] leading-[1.5]">
-                    {line.whenToUse.map(w => (
-                      <li key={w} className="flex gap-2.5">
-                        <span className="text-accent mt-px">·</span>
-                        <span>{w}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  <div className="font-mono text-[11px] tracking-[0.1em] text-ink-500 mb-3 mt-8">
-                    {t('serviceLines.coreEngagementsLabel')}
-                  </div>
-                  <ul className="space-y-2 text-ink-600 text-[15px] leading-[1.5]">
-                    {line.coreEngagements.map(e => (
-                      <li key={e} className="flex gap-2.5">
-                        <span className="text-accent mt-px">·</span>
-                        <span>{e}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  <div className="font-mono text-[11px] tracking-[0.1em] text-ink-500 mb-3 mt-8">
-                    {t('serviceLines.whatYouGetLabel')}
-                  </div>
-                  <ul className="checklist">
-                    {line.whatYouGet.map(g => (
-                      <li key={g}>
-                        <span className="chk"></span>
-                        <span>{g}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 4. Comparison Section */}
-      <section className="bg-ink-50">
-        <div className="container">
-          <div className="section-head">
-            <div>
-              <div className="eyebrow">{t('comparison.eyebrow')}</div>
-              <h2 className="head-title mt-5">{t('comparison.headline')}</h2>
-            </div>
-            <p className="head-lede">
-              {t('comparison.intro')}
-            </p>
-          </div>
-
-          <div className="comparison-wrap mt-12">
-            <table className="comparison-table w-full border-collapse bg-white border border-ink-150 rounded-lg overflow-hidden text-left">
-              <thead>
-                <tr className="bg-ink-900 text-paper">
-                  <th className="px-6 py-4 font-mono text-[11px] tracking-[0.1em] font-normal">
-                    {comparisonHeaders[0]}
-                  </th>
-                  <th className="px-6 py-4 font-mono text-[11px] tracking-[0.1em] font-normal">{comparisonHeaders[1]}</th>
-                  <th className="px-6 py-4 font-mono text-[11px] tracking-[0.1em] font-normal">
-                    {comparisonHeaders[2]}
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {comparisonRows.map(row => (
-                  <tr key={row.choose} className="border-t border-ink-150 align-top">
-                    <td className="px-6 py-5 text-ink-600 text-[15px] leading-[1.5]">{row.need}</td>
-                    <td className="px-6 py-5 text-ink-900 text-[15px] font-medium whitespace-nowrap">
-                      {row.choose}
-                    </td>
-                    <td className="px-6 py-5 text-ink-600 text-[15px] leading-[1.5]">{row.outcome}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-
-      {/* 5. Recommended Starting Points */}
+      {/* 3. Core services */}
       <section>
         <div className="container">
           <div className="section-head">
@@ -376,8 +222,50 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
         </div>
       </section>
 
-      {/* 6. Engagement Model */}
+      {/* 4. How to choose */}
       <section className="bg-ink-50">
+        <div className="container">
+          <div className="section-head">
+            <div>
+              <div className="eyebrow">{t('comparison.eyebrow')}</div>
+              <h2 className="head-title mt-5">{t('comparison.headline')}</h2>
+            </div>
+            <p className="head-lede">
+              {t('comparison.intro')}
+            </p>
+          </div>
+
+          <div className="comparison-wrap mt-12">
+            <table className="comparison-table w-full border-collapse bg-white border border-ink-150 rounded-lg overflow-hidden text-left">
+              <thead>
+                <tr className="bg-ink-900 text-paper">
+                  <th className="px-6 py-4 font-mono text-[11px] tracking-[0.1em] font-normal">
+                    {comparisonHeaders[0]}
+                  </th>
+                  <th className="px-6 py-4 font-mono text-[11px] tracking-[0.1em] font-normal">{comparisonHeaders[1]}</th>
+                  <th className="px-6 py-4 font-mono text-[11px] tracking-[0.1em] font-normal">
+                    {comparisonHeaders[2]}
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {comparisonRows.map(row => (
+                  <tr key={row.choose} className="border-t border-ink-150 align-top">
+                    <td className="px-6 py-5 text-ink-600 text-[15px] leading-[1.5]">{row.need}</td>
+                    <td className="px-6 py-5 text-ink-900 text-[15px] font-medium whitespace-nowrap">
+                      {row.choose}
+                    </td>
+                    <td className="px-6 py-5 text-ink-600 text-[15px] leading-[1.5]">{row.outcome}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      {/* 5. Engagement Model */}
+      <section>
         <div className="container">
           <div className="grid grid-cols-1 tablet:grid-cols-[1fr_1.6fr] gap-16 items-start">
             <div>
@@ -398,45 +286,7 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
         </div>
       </section>
 
-      {/* 7. Pricing */}
-      <section>
-        <div className="container">
-          <div className="section-head">
-            <div>
-              <div className="eyebrow">{t('pricing.eyebrow')}</div>
-              <h2 className="head-title mt-5">{t('pricing.headline')}</h2>
-            </div>
-            <p className="head-lede">
-              {t('pricing.body')}
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 tablet:grid-cols-3 gap-5 mt-12">
-            {pricingCards.map(card => (
-              <div key={card.name} className="flex flex-col p-7 bg-white border border-ink-150 rounded-lg">
-                <div className="font-display text-[19px] font-medium tracking-[-0.012em] text-ink-900">
-                  {card.name}
-                </div>
-                <div className="font-display text-[clamp(22px,2vw,30px)] font-medium tracking-[-0.02em] text-primary mt-2">
-                  {card.price}
-                </div>
-                <p className="text-ink-600 text-[14.5px] leading-[1.55] mt-4">{card.desc}</p>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-10 max-w-[64ch] text-ink-600 text-[15px] leading-[1.6]">
-            <p className="font-medium text-ink-900">
-              {t('pricing.noteTitle')}
-            </p>
-            <p className="mt-2">
-              {t('pricing.noteBody')}
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* 8. CTA */}
+      {/* 6. CTA */}
       <section>
         <div className="container-narrow" style={{ maxWidth: 900 }}>
           <div className="eyebrow">{t('finalCta.eyebrow')}</div>

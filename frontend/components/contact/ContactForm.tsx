@@ -20,6 +20,7 @@ export default function ContactForm() {
   const [role, setRole] = useState('')
   const [email, setEmail] = useState('')
   const [company, setCompany] = useState('')
+  const [website, setWebsite] = useState('')
   const [message, setMessage] = useState('')
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
@@ -39,6 +40,7 @@ export default function ContactForm() {
         email,
         role,
         company,
+        website,
         message,
         service: selections.service,
         size: selections.size,
@@ -71,10 +73,12 @@ export default function ContactForm() {
   const serviceOptions = t.raw('form.fields.service.options') as string[]
   const serviceValues = [
     'language-assurance',
-    'localization',
-    'cultural-intelligence',
     'ai-spanish-qa',
-    'fractional',
+    'launch-readiness',
+    'experience-repair',
+    'applied-cultural-intelligence',
+    'messaging-review',
+    'quality-advisory',
     'unsure',
   ]
 
@@ -94,12 +98,14 @@ export default function ContactForm() {
   const scopeOptions = t.raw('form.fields.scope.options') as string[]
   const scopeValues = [
     'small-sample',
-    'product-review',
     'ai-outputs',
-    'full-localization',
+    'product-review',
+    'repair-adaptation',
     'workshop-advisory',
     'unsure',
   ]
+
+  const asideLinks = t.raw('aside.links') as string[]
 
   return (
     <section className="tight pt-6 pb-[120px]">
@@ -138,6 +144,11 @@ export default function ContactForm() {
                 <label htmlFor="contact-role">{t('form.fields.role.label')}</label>
                 <input id="contact-role" type="text" placeholder={t('form.fields.role.placeholder')} value={role} onChange={e => setRole(e.target.value)} required />
               </div>
+            </div>
+
+            <div className="form-field">
+              <label htmlFor="contact-website">{t('form.fields.website.label')}</label>
+              <input id="contact-website" type="text" placeholder={t('form.fields.website.placeholder')} value={website} onChange={e => setWebsite(e.target.value)} />
             </div>
 
             <div className="form-field">
@@ -223,8 +234,16 @@ export default function ContactForm() {
             <div className="mt-6 p-6 bg-ink-50 border border-ink-150 rounded-xl">
               <div className="font-mono text-[11px] text-ink-500 tracking-[0.1em] mb-[14px]">{t('aside.startWithLabel')}</div>
               <div className="flex flex-col gap-3">
-                <a className="btn btn-primary justify-center" href="#contact-form">{t('aside.ctaPrimary')} <span className="btn-arrow"></span></a>
-                <a className="btn btn-secondary justify-center" href="#contact-form">{t('aside.ctaSecondary')}</a>
+                {asideLinks.map((label, i) => (
+                  <a
+                    key={label}
+                    className={cn('justify-center', i === 0 ? 'btn btn-primary' : 'btn btn-secondary')}
+                    href="#contact-form"
+                  >
+                    {label}
+                    {i === 0 && <span className="btn-arrow"></span>}
+                  </a>
+                ))}
               </div>
             </div>
           </aside>

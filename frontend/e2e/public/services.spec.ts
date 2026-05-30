@@ -13,7 +13,7 @@ test.describe('Services', () => {
     await waitForPageLoad(page)
 
     await expect(page.getByRole('heading', { level: 1, name: /The Spanish expertise your product needs/i })).toBeVisible()
-    await expect(page.getByRole('link', { name: /Book a diagnostic call/i }).first()).toBeVisible()
+    await expect(page.getByRole('link', { name: /Talk to an Expert/i }).first()).toBeVisible()
   })
 
   test('Language Assurance service page loads', { tag: [...SERVICES_LANGUAGE_ASSURANCE] }, async ({ page }) => {
@@ -25,7 +25,7 @@ test.describe('Services', () => {
     await expect(page.locator('.hero-ctas').getByRole('link').first()).toHaveAttribute('href', '/contact')
   })
 
-  test('Localization & Adaptation service page loads', { tag: [...SERVICES_LOCALIZATION_ADAPTATION] }, async ({ page }) => {
+  test('Spanish Experience Repair & Adaptation service page loads', { tag: [...SERVICES_LOCALIZATION_ADAPTATION] }, async ({ page }) => {
     await page.goto('/services/localization-adaptation')
     await waitForPageLoad(page)
 
@@ -38,7 +38,7 @@ test.describe('Services', () => {
     await page.goto('/services/applied-cultural-intelligence')
     await waitForPageLoad(page)
 
-    await expect(page.getByRole('heading', { level: 1, name: /Read the invisible rules behind/i })).toBeVisible()
+    await expect(page.getByRole('heading', { level: 1, name: /Make better decisions with cultural context/i })).toBeVisible()
     await expect(page.getByRole('link', { name: /all services/i }).first()).toBeVisible()
     await expect(page.locator('.hero-ctas').getByRole('link').first()).toHaveAttribute('href', '/contact')
   })

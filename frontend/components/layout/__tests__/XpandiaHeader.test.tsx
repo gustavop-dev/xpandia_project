@@ -11,6 +11,7 @@ const mockUseRouter = useRouter as jest.Mock
 
 describe('XpandiaHeader', () => {
   beforeEach(() => {
+    localStorage.clear()
     mockUsePathname.mockReturnValue('/')
     mockUseRouter.mockReturnValue({ push: jest.fn(), replace: jest.fn(), refresh: jest.fn(), back: jest.fn() })
     Object.defineProperty(window, 'scrollY', { value: 0, writable: true })
@@ -36,7 +37,7 @@ describe('XpandiaHeader', () => {
   it('renders the Blog navigation link', () => {
     renderWithIntl(<XpandiaHeader />)
     const blogLinks = screen.getAllByRole('link', { name: 'Blog' })
-    expect(blogLinks[0]).toHaveAttribute('href', '/blog')
+    expect(blogLinks[0]).toHaveAttribute('href', '/blogs')
   })
 
   it('renders the About navigation link', () => {
@@ -47,8 +48,9 @@ describe('XpandiaHeader', () => {
 
   it('renders the Contact navigation link', () => {
     renderWithIntl(<XpandiaHeader />)
-    const contactLinks = screen.getAllByRole('link', { name: 'Contact' })
-    expect(contactLinks[0]).toHaveAttribute('href', '/contact')
+    const aside = screen.getByRole('complementary', { hidden: true })
+    const drawerCta = within(aside).getByRole('link', { name: /talk to an expert/i, hidden: true })
+    expect(drawerCta).toHaveAttribute('href', '/contact')
   })
 
   it('renders the Language Assurance link in the services dropdown', () => {
@@ -59,7 +61,7 @@ describe('XpandiaHeader', () => {
 
   it('renders the CTA link to the contact page', () => {
     renderWithIntl(<XpandiaHeader />)
-    const ctaLinks = screen.getAllByRole('link', { name: /book a diagnostic call/i })
+    const ctaLinks = screen.getAllByRole('link', { name: /talk to an expert/i })
     expect(ctaLinks.length).toBeGreaterThan(0)
     expect(ctaLinks[0]).toHaveAttribute('href', '/contact')
   })
@@ -172,6 +174,7 @@ describe('XpandiaHeader', () => {
     renderWithIntlEs(<XpandiaHeader />)
     const servicesLinks = screen.getAllByRole('link', { name: 'Servicios' })
     const desktopServices = servicesLinks.find(l => l.closest('nav'))
+    expect(desktopServices).toBeDefined()
     expect(desktopServices).toHaveAttribute('href', '/services')
   })
 })

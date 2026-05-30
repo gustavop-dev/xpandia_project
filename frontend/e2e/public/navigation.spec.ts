@@ -29,7 +29,7 @@ test.describe('Navigation', () => {
     // Logo links to home
     await expect(header.getByRole('link', { name: 'Xpandia' })).toHaveAttribute('href', '/');
     // Header CTA
-    await expect(header.getByRole('link', { name: /Book a diagnostic call/i })).toBeVisible();
+    await expect(header.getByRole('link', { name: /Talk to an Expert/i })).toBeVisible();
   });
 
   test('should have working footer', { tag: [...NAVIGATION_FOOTER] }, async ({ page }) => {

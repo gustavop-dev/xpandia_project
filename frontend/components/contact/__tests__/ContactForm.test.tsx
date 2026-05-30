@@ -11,7 +11,7 @@ jest.mock('@/lib/services/contact', () => ({
 describe('ContactForm', () => {
   it('renders the form title', () => {
     renderWithIntl(<ContactForm />)
-    expect(screen.getByRole('heading', { level: 3, name: /start a conversation/i })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { level: 3, name: /let's talk about your spanish products/i })).toBeInTheDocument()
   })
 
   it('renders the Send request submit button', () => {

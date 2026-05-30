@@ -33,6 +33,8 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
     description: string
     bestForLabel: string
     bestFor: string
+    coreServicesLabel: string
+    coreServices: string[]
     whatYouGetLabel: string
     whatYouGet: string
     cta: string
@@ -48,7 +50,6 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   }>
   const scorecardCriteria = t.raw('deliverables.scorecard.criteria') as string[]
   const audienceCards = t.raw('builtFor.cards') as Array<{ title: string; body: string }>
-  const buyerRoles = t.raw('buyer.roles') as string[]
 
   return (
     <main>
@@ -65,7 +66,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           </p>
           <div className="hero-ctas">
             <Link className="btn btn-primary" href="/contact">{t('hero.ctaPrimary')} <span className="btn-arrow"></span></Link>
-            <Link className="btn btn-secondary" href="/contact">{t('hero.ctaSecondary')}</Link>
+            <Link className="btn btn-secondary" href="/services">{t('hero.ctaSecondary')}</Link>
           </div>
           <div className="mt-24 pt-7 border-t border-ink-150 grid grid-cols-2 tablet:grid-cols-4 gap-8">
             {proofItems.map(({ label, text }) => (
@@ -126,6 +127,17 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 <div className="text-[13px] leading-[1.5] text-ink-600 mb-4">
                   <span className="font-mono text-[11px] tracking-[0.06em] text-ink-500 block mb-1">{s.bestForLabel}</span>
                   {s.bestFor}
+                </div>
+                <div className="mb-4">
+                  <span className="font-mono text-[11px] tracking-[0.06em] text-ink-500 block mb-1.5">{s.coreServicesLabel}</span>
+                  <ul className="space-y-1">
+                    {s.coreServices.map(item => (
+                      <li key={item} className="flex gap-2 text-[13px] leading-[1.5] text-ink-700">
+                        <span className="text-accent mt-px">·</span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
                 <div className="text-[13px] leading-[1.5] text-ink-600 mb-6">
                   <span className="font-mono text-[11px] tracking-[0.06em] text-ink-500 block mb-1">{s.whatYouGetLabel}</span>
@@ -231,23 +243,6 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         </div>
       </section>
 
-      {/* Buyer — Who we help */}
-      <section className="tight">
-        <div className="container">
-          <div className="grid grid-cols-1 tablet:grid-cols-[1fr_2fr] gap-8 py-14 border-t border-b border-ink-150 items-start">
-            <div>
-              <div className="eyebrow">{t('buyer.eyebrow')}</div>
-              <h2 style={{ marginTop: 24, fontSize: 'clamp(26px,2.6vw,40px)', lineHeight: 1.1, letterSpacing: '-0.02em' }}>{t('buyer.headline')}</h2>
-            </div>
-            <ul className="checklist">
-              {buyerRoles.map(role => (
-                <li key={role}><span className="chk"></span><span>{role}</span></li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </section>
-
       {/* Final CTA */}
       <section>
         <div className="container-narrow" style={{ maxWidth: 900 }}>
@@ -262,13 +257,9 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           <p className="lede" style={{ marginTop: 28 }}>
             {t('finalCta.body')}
           </p>
-          <p className="text-ink-900 font-medium text-[17px]" style={{ marginTop: 20 }}>{t('finalCta.pricingLine')}</p>
-          <p className="text-ink-600 text-[15px] max-w-[60ch]" style={{ marginTop: 8 }}>
-            {t('finalCta.pricingNote')}
-          </p>
           <div className="hero-ctas mt-10">
             <Link className="btn btn-primary" href="/contact">{t('finalCta.ctaPrimary')} <span className="btn-arrow"></span></Link>
-            <Link className="btn btn-secondary" href="/contact">{t('finalCta.ctaSecondary')}</Link>
+            <Link className="btn btn-secondary" href="/services">{t('finalCta.ctaSecondary')}</Link>
           </div>
         </div>
       </section>

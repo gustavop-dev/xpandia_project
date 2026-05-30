@@ -9,7 +9,7 @@ describe('AppliedCulturalIntelligencePage', () => {
   it('renders the hero heading', async () => {
     renderWithIntl(await AppliedCulturalIntelligencePage({ params: makeParams() }))
     expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(
-      /read the invisible rules behind/i
+      /make better decisions with cultural context/i
     )
   })
 
@@ -36,14 +36,9 @@ describe('AppliedCulturalIntelligencePage', () => {
     expect(screen.getByText('WHAT WE HELP YOU UNDERSTAND')).toBeInTheDocument()
   })
 
-  it('renders the ACI CRITERIA eyebrow', async () => {
+  it('renders the CORE SERVICES eyebrow', async () => {
     renderWithIntl(await AppliedCulturalIntelligencePage({ params: makeParams() }))
-    expect(screen.getByText('ACI CRITERIA')).toBeInTheDocument()
-  })
-
-  it('renders the CORE ENGAGEMENTS eyebrow', async () => {
-    renderWithIntl(await AppliedCulturalIntelligencePage({ params: makeParams() }))
-    expect(screen.getByText('CORE ENGAGEMENTS')).toBeInTheDocument()
+    expect(screen.getByText('CORE SERVICES')).toBeInTheDocument()
   })
 
   it('renders the methodology section headline', async () => {
@@ -53,16 +48,9 @@ describe('AppliedCulturalIntelligencePage', () => {
     ).toBeInTheDocument()
   })
 
-  it('renders the FAQ section headline', async () => {
+  it('renders the book an ACI talk CTA link', async () => {
     renderWithIntl(await AppliedCulturalIntelligencePage({ params: makeParams() }))
-    expect(
-      screen.getByText('Common questions about Applied Cultural Intelligence.')
-    ).toBeInTheDocument()
-  })
-
-  it('renders the book a CQ talk CTA link', async () => {
-    renderWithIntl(await AppliedCulturalIntelligencePage({ params: makeParams() }))
-    const links = screen.getAllByRole('link', { name: /book a cq talk/i })
+    const links = screen.getAllByRole('link', { name: /book an aci talk/i })
     expect(links[0]).toHaveAttribute('href', '/contact')
   })
 
