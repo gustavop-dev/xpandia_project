@@ -11,7 +11,7 @@ jest.mock('@/lib/services/contact', () => ({
 describe('ContactForm', () => {
   it('renders the form title', () => {
     renderWithIntl(<ContactForm />)
-    expect(screen.getByRole('heading', { level: 3, name: /let's talk about your spanish products/i })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { level: 3, name: /let's talk about your spanish\/english products/i })).toBeInTheDocument()
   })
 
   it('renders the Send request submit button', () => {
@@ -76,10 +76,10 @@ describe('ContactForm', () => {
   it('selects a radio tile when Space key is pressed on it', async () => {
     const user = userEvent.setup()
     renderWithIntl(<ContactForm />)
-    const tile = screen.getByText('AI Spanish QA').closest('[role="button"]') as HTMLElement
+    const tile = screen.getByText('AI Language QA').closest('[role="button"]') as HTMLElement
     tile.focus()
     await user.keyboard(' ')
-    expect(screen.getByText('AI Spanish QA').closest('[role="button"]')).toHaveClass('on')
+    expect(screen.getByText('AI Language QA').closest('[role="button"]')).toHaveClass('on')
   })
 
   it('shows a confirmation message after form submission', async () => {

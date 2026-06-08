@@ -40,7 +40,7 @@ describe('LanguageAssurancePage', () => {
 
   it('renders the CORE SERVICES section eyebrow', async () => {
     renderWithIntl(await LanguageAssurancePage({ params: makeParams() }))
-    expect(screen.getByText('CORE SERVICES')).toBeInTheDocument()
+    expect(screen.getByText('CORE ENGAGEMENTS')).toBeInTheDocument()
   })
 
   it('renders the methodology headline', async () => {
@@ -50,7 +50,7 @@ describe('LanguageAssurancePage', () => {
 
   it('renders a book diagnostic call CTA link', async () => {
     renderWithIntl(await LanguageAssurancePage({ params: makeParams() }))
-    const links = screen.getAllByRole('link', { name: /book a diagnostic call/i })
+    const links = screen.getAllByRole('link', { name: /talk to an expert/i })
     expect(links[0]).toHaveAttribute('href', '/contact')
   })
 })

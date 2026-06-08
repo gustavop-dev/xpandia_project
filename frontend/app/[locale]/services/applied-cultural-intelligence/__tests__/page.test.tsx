@@ -38,7 +38,7 @@ describe('AppliedCulturalIntelligencePage', () => {
 
   it('renders the CORE SERVICES eyebrow', async () => {
     renderWithIntl(await AppliedCulturalIntelligencePage({ params: makeParams() }))
-    expect(screen.getByText('CORE SERVICES')).toBeInTheDocument()
+    expect(screen.getByText('CORE ENGAGEMENTS')).toBeInTheDocument()
   })
 
   it('renders the methodology section headline', async () => {
@@ -50,13 +50,13 @@ describe('AppliedCulturalIntelligencePage', () => {
 
   it('renders the book an ACI talk CTA link', async () => {
     renderWithIntl(await AppliedCulturalIntelligencePage({ params: makeParams() }))
-    const links = screen.getAllByRole('link', { name: /book an aci talk/i })
+    const links = screen.getAllByRole('link', { name: /talk to an expert/i })
     expect(links[0]).toHaveAttribute('href', '/contact')
   })
 
   it('renders the book a diagnostic call CTA link', async () => {
     renderWithIntl(await AppliedCulturalIntelligencePage({ params: makeParams() }))
-    const links = screen.getAllByRole('link', { name: /book a diagnostic call/i })
+    const links = screen.getAllByRole('link', { name: /talk to an expert/i })
     expect(links[0]).toHaveAttribute('href', '/contact')
   })
 })

@@ -14,7 +14,7 @@ describe('HomePage', () => {
 
   it('renders a link to book a diagnostic call', async () => {
     renderWithIntl(await HomePage({ params: makeParams() }))
-    const links = screen.getAllByRole('link', { name: /book a diagnostic call/i })
+    const links = screen.getAllByRole('link', { name: /talk to an expert/i })
     expect(links[0]).toHaveAttribute('href', '/contact')
   })
 
@@ -25,12 +25,12 @@ describe('HomePage', () => {
 
   it('renders the Why Xpandia positioning headline', async () => {
     renderWithIntl(await HomePage({ params: makeParams() }))
-    expect(screen.getByText('Spanish quality is product quality.')).toBeInTheDocument()
+    expect(screen.getByText('Language quality is product quality.')).toBeInTheDocument()
   })
 
   it('renders the services overview headline', async () => {
     renderWithIntl(await HomePage({ params: makeParams() }))
-    expect(screen.getByText('Start with the problem your team needs to solve.')).toBeInTheDocument()
+    expect(screen.getByText('Identify the problem your team needs to solve.')).toBeInTheDocument()
   })
 
   it('links the Language Assurance service card to its route', async () => {
@@ -63,7 +63,7 @@ describe('HomePage', () => {
 
   it('renders the Built For section headline', async () => {
     renderWithIntl(await HomePage({ params: makeParams() }))
-    expect(screen.getByText('Teams building products and experiences in Spanish.')).toBeInTheDocument()
+    expect(screen.getByText('Teams building products and experiences in Spanish and English.')).toBeInTheDocument()
   })
 
   it('renders the final CTA section eyebrow', async () => {
