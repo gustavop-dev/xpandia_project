@@ -45,3 +45,121 @@ def test_send_verification_code_returns_false_when_util_fails():
         result = EmailService.send_verification_code('user@example.com', '654321')
 
     assert result is False
+
+
+# ---------------------------------------------------------------------------
+# Contact notification
+# ---------------------------------------------------------------------------
+
+CONTACT_DATA = {
+    'name': 'Ana García',
+    'email': 'ana@example.com',
+    'role': 'Product Manager',
+    'company': 'Acme Corp',
+    'website': 'https://acme.com',
+    'message': 'We need Spanish QA for our product.',
+    'service': 'language-assurance',
+    'size': 'latam',
+    'variant': 'urgent',
+    'urgency': 'product-review',
+}
+
+
+def test_send_contact_notification_returns_true_on_success():
+    with patch(
+        'base_feature_app.services.email_service.EmailMessage',
+    ) as MockEmail:
+        MockEmail.return_value.send.return_value = None
+        result = EmailService.send_contact_notification(CONTACT_DATA)
+
+    assert result is True
+
+
+def test_send_contact_notification_sends_to_xpandia_inbox():
+    with patch(
+        'base_feature_app.services.email_service.EmailMessage',
+    ) as MockEmail:
+        MockEmail.return_value.send.return_value = None
+        EmailService.send_contact_notification(CONTACT_DATA)
+
+    _, kwargs = MockEmail.call_args
+    assert 'hello@xpandia.global' in kwargs['to']
+
+
+def test_send_contact_notification_sets_reply_to_submitter():
+    with patch(
+        'base_feature_app.services.email_service.EmailMessage',
+    ) as MockEmail:
+        MockEmail.return_value.send.return_value = None
+        EmailService.send_contact_notification(CONTACT_DATA)
+
+    _, kwargs = MockEmail.call_args
+    assert CONTACT_DATA['email'] in kwargs['reply_to']
+
+
+def test_send_contact_notification_includes_company_in_subject():
+    with patch(
+        'base_feature_app.services.email_service.EmailMessage',
+    ) as MockEmail:
+        MockEmail.return_value.send.return_value = None
+        EmailService.send_contact_notification(CONTACT_DATA)
+
+    _, kwargs = MockEmail.call_args
+    assert CONTACT_DATA['company'] in kwargs['subject']
+
+
+def test_send_contact_notification_returns_false_on_smtp_error():
+    with patch(
+        'base_feature_app.services.email_service.EmailMessage',
+    ) as MockEmail:
+        MockEmail.return_value.send.side_effect = Exception('SMTP error')
+        result = EmailService.send_contact_notification(CONTACT_DATA)
+
+    assert result is False
+
+
+# ---------------------------------------------------------------------------
+# Contact confirmation
+# ---------------------------------------------------------------------------
+
+
+def test_send_contact_confirmation_returns_true_on_success():
+    with patch(
+        'base_feature_app.services.email_service.EmailMessage',
+    ) as MockEmail:
+        MockEmail.return_value.send.return_value = None
+        result = EmailService.send_contact_confirmation(CONTACT_DATA)
+
+    assert result is True
+
+
+def test_send_contact_confirmation_sends_to_submitter():
+    with patch(
+        'base_feature_app.services.email_service.EmailMessage',
+    ) as MockEmail:
+        MockEmail.return_value.send.return_value = None
+        EmailService.send_contact_confirmation(CONTACT_DATA)
+
+    _, kwargs = MockEmail.call_args
+    assert CONTACT_DATA['email'] in kwargs['to']
+
+
+def test_send_contact_confirmation_sets_reply_to_xpandia():
+    with patch(
+        'base_feature_app.services.email_service.EmailMessage',
+    ) as MockEmail:
+        MockEmail.return_value.send.return_value = None
+        EmailService.send_contact_confirmation(CONTACT_DATA)
+
+    _, kwargs = MockEmail.call_args
+    assert 'hello@xpandia.global' in kwargs['reply_to']
+
+
+def test_send_contact_confirmation_returns_false_on_smtp_error():
+    with patch(
+        'base_feature_app.services.email_service.EmailMessage',
+    ) as MockEmail:
+        MockEmail.return_value.send.side_effect = Exception('SMTP error')
+        result = EmailService.send_contact_confirmation(CONTACT_DATA)
+
+    assert result is False
