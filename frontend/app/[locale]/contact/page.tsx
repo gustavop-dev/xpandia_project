@@ -36,10 +36,10 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
           <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-3">
             <a href={`mailto:${t('hero.email')}`} className="text-primary font-medium text-[16px] hover:underline">{t('hero.email')}</a>
           </div>
-          <div className="hero-ctas mt-8">
-            <a className="btn btn-primary" href="#contact-form">{t('hero.ctaPrimary')} <span className="btn-arrow"></span></a>
-            <a className="btn btn-secondary" href="#contact-form">{t('hero.ctaSecondary')}</a>
-          </div>
+          {(t('hero.ctaPrimary') || t('hero.ctaSecondary')) && <div className="hero-ctas mt-8">
+            {t('hero.ctaPrimary') && <a className="btn btn-primary" href="#contact-form">{t('hero.ctaPrimary')} <span className="btn-arrow"></span></a>}
+            {t('hero.ctaSecondary') && <a className="btn btn-secondary" href="#contact-form">{t('hero.ctaSecondary')}</a>}
+          </div>}
         </div>
       </section>
 
@@ -79,8 +79,8 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
             {t('finalCta.body')}
           </p>
           <div className="hero-ctas mt-10">
-            <a className="btn btn-primary" href="#contact-form">{t('finalCta.ctaPrimary')} <span className="btn-arrow"></span></a>
-            <a className="btn btn-secondary" href="#contact-form">{t('finalCta.ctaSecondary')}</a>
+            {t('finalCta.ctaPrimary') && <a className="btn btn-primary" href="#contact-form">{t('finalCta.ctaPrimary')} <span className="btn-arrow"></span></a>}
+            {t('finalCta.ctaSecondary') && <a className="btn btn-secondary" href={`mailto:${t('hero.email')}`}>{t('finalCta.ctaSecondary')}</a>}
           </div>
         </div>
       </section>

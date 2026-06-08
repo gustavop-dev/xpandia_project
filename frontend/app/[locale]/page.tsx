@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { Link } from '@/i18n/navigation'
 import { localizedAlternates } from '@/lib/seo/alternates'
+import AiEcosystemCarousel from '@/components/home/AiEcosystemCarousel'
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params
@@ -50,6 +51,8 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   }>
   const scorecardCriteria = t.raw('deliverables.scorecard.criteria') as string[]
   const audienceCards = t.raw('builtFor.cards') as Array<{ title: string; body: string }>
+  const buyerRoles = t.raw('buyer.roles') as string[]
+  const aiLogos = t.raw('aiEcosystem.logos') as Array<{ name: string; file: string }>
 
   return (
     <main>
@@ -243,6 +246,33 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         </div>
       </section>
 
+      {/* Buyer — Who we help */}
+      <section className="tight">
+        <div className="container">
+          <div className="grid grid-cols-1 tablet:grid-cols-[1fr_2fr] gap-8 py-14 border-t border-b border-ink-150 items-start">
+            <div>
+              <div className="eyebrow">{t('buyer.eyebrow')}</div>
+              <h2 style={{ marginTop: 24, fontSize: 'clamp(26px,2.6vw,40px)', lineHeight: 1.1, letterSpacing: '-0.02em' }}>{t('buyer.headline')}</h2>
+            </div>
+            <ul className="checklist">
+              {buyerRoles.map(role => (
+                <li key={role}><span className="chk"></span><span>{role}</span></li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* AI Ecosystem */}
+      <section className="bg-ink-50">
+        <div className="container">
+          <div className="eyebrow">{t('aiEcosystem.eyebrow')}</div>
+          <h2 style={{ marginTop: 24 }}>{t('aiEcosystem.headline')}</h2>
+          <p className="lede" style={{ marginTop: 16, maxWidth: '72ch' }}>{t('aiEcosystem.intro')}</p>
+          <AiEcosystemCarousel logos={aiLogos} />
+        </div>
+      </section>
+
       {/* Final CTA */}
       <section>
         <div className="container-narrow" style={{ maxWidth: 900 }}>
@@ -257,9 +287,13 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           <p className="lede" style={{ marginTop: 28 }}>
             {t('finalCta.body')}
           </p>
+          {t('finalCta.pricingLine') && <p className="text-ink-900 font-medium text-[17px]" style={{ marginTop: 20 }}>{t('finalCta.pricingLine')}</p>}
+          {t('finalCta.pricingNote') && <p className="text-ink-600 text-[15px] max-w-[60ch]" style={{ marginTop: 8 }}>
+            {t('finalCta.pricingNote')}
+          </p>}
           <div className="hero-ctas mt-10">
-            <Link className="btn btn-primary" href="/contact">{t('finalCta.ctaPrimary')} <span className="btn-arrow"></span></Link>
-            <Link className="btn btn-secondary" href="/services">{t('finalCta.ctaSecondary')}</Link>
+            {t('finalCta.ctaPrimary') && <Link className="btn btn-primary" href="/contact">{t('finalCta.ctaPrimary')} <span className="btn-arrow"></span></Link>}
+            {t('finalCta.ctaSecondary') && <Link className="btn btn-secondary" href="/contact">{t('finalCta.ctaSecondary')}</Link>}
           </div>
         </div>
       </section>
