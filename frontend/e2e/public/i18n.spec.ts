@@ -13,7 +13,7 @@ test.describe('i18n locale switch', () => {
 
     await expect(page).toHaveURL(/\/es\/?$/)
     await expect(page.locator('html')).toHaveAttribute('lang', 'es')
-    await expect(page.getByRole('heading', { level: 1, name: /Español que funciona para usuarios reales/i })).toBeVisible()
+    await expect(page.getByRole('heading', { level: 1, name: /Traducciones que funcionan para usuarios reales/i })).toBeVisible()
   })
 
   test('switching ES→EN removes the /es prefix and restores English', { tag: [...I18N_LOCALE_SWITCH] }, async ({ page }) => {
