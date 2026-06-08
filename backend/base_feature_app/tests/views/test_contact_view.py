@@ -67,7 +67,8 @@ def test_contact_form_returns_201_even_when_confirmation_fails(mock_notify, mock
 @patch('base_feature_app.views.contact.EmailService.send_contact_confirmation', return_value=True)
 @patch('base_feature_app.views.contact.EmailService.send_contact_notification', return_value=True)
 def test_contact_form_calls_both_email_services(mock_notify, mock_confirm, api_client):
-    api_client.post(reverse(URL), VALID_PAYLOAD, format='json')
+    response = api_client.post(reverse(URL), VALID_PAYLOAD, format='json')
 
+    assert response.status_code == status.HTTP_201_CREATED
     mock_notify.assert_called_once()
     mock_confirm.assert_called_once()
