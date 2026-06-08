@@ -278,12 +278,12 @@ export default async function LocalizationAdaptationPage({ params }: { params: P
             {t('finalCta.body')}
           </p>
           <div className="hero-ctas mt-10">
-            <Link className="btn btn-primary" href="/contact">
+            {t('finalCta.ctaPrimary') && <Link className="btn btn-primary" href="/contact">
               {t('finalCta.ctaPrimary')} <span className="btn-arrow"></span>
-            </Link>
-            <Link className="btn btn-secondary" href="/contact">
+            </Link>}
+            {t('finalCta.ctaSecondary') && <Link className="btn btn-secondary" href="/contact">
               {t('finalCta.ctaSecondary')}
-            </Link>
+            </Link>}
           </div>
         </div>
       </section>

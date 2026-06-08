@@ -9,7 +9,7 @@ describe('AboutPage', () => {
     expect(
       screen.getByRole('heading', {
         level: 1,
-        name: /spanish expertise for companies building across languages, cultures, and markets\./i,
+        name: /spanish and english expertise for companies building across languages, cultures, and markets\./i,
       }),
     ).toBeInTheDocument()
   })
@@ -31,7 +31,7 @@ describe('AboutPage', () => {
 
   it('renders the "Senior Spanish judgment" differentiator card', async () => {
     renderWithIntl(await AboutPage({ params: Promise.resolve({ locale: 'en' }) }))
-    expect(screen.getByText('Senior Spanish judgment')).toBeInTheDocument()
+    expect(screen.getByText('Senior language judgment')).toBeInTheDocument()
   })
 
   it('renders the founder name', async () => {
@@ -51,12 +51,12 @@ describe('AboutPage', () => {
 
   it('renders the Diagnostics starting point card', async () => {
     renderWithIntl(await AboutPage({ params: Promise.resolve({ locale: 'en' }) }))
-    expect(screen.getByText('Diagnostics')).toBeInTheDocument()
+    expect(screen.getByText('QA Diagnostics')).toBeInTheDocument()
   })
 
   it('renders CTA links to book a diagnostic call', async () => {
     renderWithIntl(await AboutPage({ params: Promise.resolve({ locale: 'en' }) }))
-    const links = screen.getAllByRole('link', { name: /book a diagnostic call/i })
+    const links = screen.getAllByRole('link', { name: /talk to an expert/i })
     expect(links[0]).toHaveAttribute('href', '/contact')
   })
 

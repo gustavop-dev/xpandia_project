@@ -45,7 +45,7 @@ describe('ServicesPage', () => {
 
   it('renders a CTA link to book a diagnostic call', async () => {
     renderWithIntl(await ServicesPage({ params: makeParams() }))
-    const links = screen.getAllByRole('link', { name: /book a diagnostic call/i })
+    const links = screen.getAllByRole('link', { name: /talk to an expert/i })
     expect(links[0]).toHaveAttribute('href', '/contact')
   })
 })

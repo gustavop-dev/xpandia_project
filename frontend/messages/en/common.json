@@ -1,9 +1,9 @@
 {
   "metadata": {
-    "title": "Xpandia | Spanish Language Assurance & Applied Cultural Intelligence",
-    "description": "Xpandia helps AI, SaaS, EdTech, and digital product teams validate, improve, and culturally adapt high-impact Spanish experiences through expert human review, quality evidence, and cultural insight.",
-    "ogTitle": "Xpandia | Spanish that works for real users",
-    "ogDescription": "Spanish Language Assurance, Spanish Experience Repair & Adaptation, and Applied Cultural Intelligence for AI, SaaS, EdTech, and digital product teams."
+    "title": "Xpandia | Spanish-English Language Assurance & Applied Cultural Intelligence",
+    "description": "Xpandia helps AI, SaaS, EdTech, Product, Localization, CX, and Marketing teams validate, improve, and culturally adapt high-impact Spanish and English experiences through expert human review, quality evidence, and cultural insight.",
+    "ogTitle": "Xpandia | Spanish-English Language Assurance & Applied Cultural Intelligence",
+    "ogDescription": "Xpandia helps AI, SaaS, EdTech, Product, Localization, CX, and Marketing teams validate, improve, and culturally adapt high-impact Spanish and English experiences through expert human review, quality evidence, and cultural insight."
   },
   "header": {
     "logoAlt": "Xpandia",
@@ -27,7 +27,7 @@
         },
         {
           "num": "02 / ADAPT",
-          "label": "Spanish Experience Repair & Adaptation",
+          "label": "Language Experience Repair & Adaptation",
           "desc": "Improve Spanish that needs to work for real users."
         },
         {
@@ -37,7 +37,7 @@
         }
       ]
     },
-    "cta": "Book a diagnostic call",
+    "cta": "Talk to an Expert",
     "menuButtonLabel": "Menu",
     "langGroupLabel": "Language",
     "drawerServicesHeading": "SERVICES",
@@ -45,34 +45,32 @@
   },
   "footer": {
     "logoAlt": "Xpandia",
-    "tagline": "Spanish that works for real users.",
-    "description": "Xpandia helps AI, SaaS, EdTech, and digital product teams validate, improve, and culturally adapt high-impact Spanish experiences through expert human review, quality evidence, and cultural insight.",
-    "brandLine": "SPANISH EXPERTISE · 2026",
+    "tagline": "Spanish and English that work for real users.",
+    "description": "Xpandia helps AI, SaaS, EdTech, and digital product teams validate, improve, and culturally adapt high-impact digital experiences for English and Spanish-speaking audiences.",
+    "brandLine": "LANGUAGE EXPERTISE · 2026",
     "colServices": {
       "heading": "Services"
     },
     "colCompany": {
       "heading": "Company",
       "about": "About",
-      "contact": "Contact"
-    },
-    "colStartHere": {
-      "heading": "Start here",
-      "bookCall": "Book a diagnostic call"
+      "contact": "Contact",
+      "bookCall": "Talk to an Expert"
     },
     "colContact": {
-      "heading": "Contact"
+      "heading": "Contact",
+      "requestAudit": "Request an audit"
     },
-    "copyright": "© 2013–2026 Xpandia. All rights reserved.",
+    "copyright": "©2013-2026 Xpandia. All rights reserved.",
     "terms": "Terms",
     "privacy": "Privacy"
   },
   "fab": {
-    "label": "Book a diagnostic call"
+    "label": "Let's talk"
   },
   "serviceLines": {
     "languageAssurance": "Language Assurance",
-    "localizationAdaptation": "Spanish Experience Repair & Adaptation",
+    "localizationAdaptation": "Experience Repair & Adaptation",
     "appliedCulturalIntelligence": "Applied Cultural Intelligence"
   }
 }

@@ -13,7 +13,7 @@ describe('ContactPage', () => {
     expect(
       screen.getByRole('heading', {
         level: 1,
-        name: /Tell us what your team is building, launching, or improving in Spanish\./i,
+        name: /Tell us what your team is building, launching, or improving in Spanish\/English\./i,
       }),
     ).toBeInTheDocument()
   })
@@ -51,7 +51,7 @@ describe('ContactPage', () => {
 
   it('renders the final CTA headline', async () => {
     renderWithIntl(await ContactPage({ params: Promise.resolve({ locale: 'en' }) }))
-    expect(screen.getByText(/find the right Spanish quality path for your team/i)).toBeInTheDocument()
+    expect(screen.getByText(/find the right Spanish\/English quality path for your team/i)).toBeInTheDocument()
   })
 })
 

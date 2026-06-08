@@ -73,11 +73,11 @@ export default function ContactForm() {
   const serviceOptions = t.raw('form.fields.service.options') as string[]
   const serviceValues = [
     'language-assurance',
-    'ai-spanish-qa',
+    'ai-language-qa',
     'launch-readiness',
     'experience-repair',
-    'applied-cultural-intelligence',
-    'messaging-review',
+    'cultural-intelligence',
+    'hispanic-messaging-review',
     'quality-advisory',
     'unsure',
   ]
@@ -86,8 +86,12 @@ export default function ContactForm() {
   const audienceValues = [
     'latam',
     'us-hispanic',
+    'usa',
+    'canada',
+    'europe',
     'spain',
-    'neutral',
+    'global-english',
+    'neutral-spanish',
     'specific-region',
     'unsure',
   ]

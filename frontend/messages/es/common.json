@@ -1,7 +1,7 @@
 {
   "metadata": {
     "title": "Xpandia | Language Assurance, localización e inteligencia cultural en español",
-    "description": "Xpandia ayuda a equipos de AI, SaaS, EdTech y producto digital a validar, localizar y adaptar culturalmente experiencias en español para audiencias hispanas e hispanohablantes.",
+    "description": "Xpandia ayuda a equipos de AI, SaaS, EdTech y productos digitales a validar, mejorar y adaptar culturalmente experiencias de alto impacto para audiencias de habla inglesa e hispana.",
     "ogTitle": "Xpandia | Español que funciona para usuarios reales",
     "ogDescription": "Language assurance, localización e inteligencia cultural aplicada en español para equipos de AI, SaaS, EdTech y producto digital."
   },
@@ -17,27 +17,27 @@
     "servicesMenu": {
       "all": {
         "label": "Todos los servicios",
-        "desc": "Visión general y comparación"
+        "desc": "Vista general y comparación"
       },
       "items": [
         {
-          "num": "01 / VALIDAR",
+          "num": "01 / VALIDATE",
           "label": "Language Assurance",
-          "desc": "Valida el español antes de que lo hagan tus usuarios."
+          "desc": "Valida la calidad de tus productos en otros idiomas antes de que lo hagan tus usuarios."
         },
         {
-          "num": "02 / ADAPTAR",
-          "label": "Spanish Experience Repair & Adaptation",
-          "desc": "Improve Spanish that needs to work for real users."
+          "num": "02 / ADAPT",
+          "label": "Experience Repair & Adaptation",
+          "desc": "Convierte traducciones y contenidos localizados en experiencias listas para usuarios reales."
         },
         {
-          "num": "03 / ENTENDER",
+          "num": "03 / UNDERSTAND",
           "label": "Applied Cultural Intelligence",
-          "desc": "Make better decisions with cultural context."
+          "desc": "Toma mejores decisiones con contexto cultural."
         }
       ]
     },
-    "cta": "Agenda una llamada de diagnóstico",
+    "cta": "Hablar con un experto",
     "menuButtonLabel": "Menú",
     "langGroupLabel": "Idioma",
     "drawerServicesHeading": "SERVICIOS",
@@ -45,34 +45,32 @@
   },
   "footer": {
     "logoAlt": "Xpandia",
-    "tagline": "Español que funciona para usuarios reales.",
-    "description": "Xpandia helps AI, SaaS, EdTech, and digital product teams validate, improve, and culturally adapt high-impact Spanish experiences through expert human review, quality evidence, and cultural insight.",
-    "brandLine": "EXPERTISE EN ESPAÑOL · 2026",
+    "tagline": "Español e inglés que funcionan para usuarios reales.",
+    "description": "Xpandia ayuda a equipos de AI, SaaS, EdTech y productos digitales a validar, mejorar y adaptar culturalmente experiencias de alto impacto para audiencias de habla inglesa e hispana.",
+    "brandLine": "EXPERTISE LINGÜÍSTICA · 2026",
     "colServices": {
       "heading": "Servicios"
     },
     "colCompany": {
-      "heading": "Empresa",
+      "heading": "Compañía",
       "about": "Nosotros",
-      "contact": "Contacto"
-    },
-    "colStartHere": {
-      "heading": "Empieza aquí",
-      "bookCall": "Agenda una llamada de diagnóstico"
+      "contact": "Contacto",
+      "bookCall": "Hablar con un experto"
     },
     "colContact": {
-      "heading": "Contacto"
+      "heading": "Iniciar aquí",
+      "requestAudit": "Hablar con un experto"
     },
-    "copyright": "© 2013–2026 Xpandia. Todos los derechos reservados.",
+    "copyright": "©2013-2026 Xpandia. Todos los derechos reservados.",
     "terms": "Términos",
     "privacy": "Privacidad"
   },
   "fab": {
-    "label": "Agenda una llamada de diagnóstico"
+    "label": "Hablemos"
   },
   "serviceLines": {
     "languageAssurance": "Language Assurance",
-    "localizationAdaptation": "Spanish Experience Repair & Adaptation",
+    "localizationAdaptation": "Experience Repair & Adaptation",
     "appliedCulturalIntelligence": "Applied Cultural Intelligence"
   }
 }

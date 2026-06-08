@@ -1,152 +1,361 @@
 {
   "metadata": {
-    "title": "Xpandia | Language Assurance, localización e inteligencia cultural en español",
-    "description": "Xpandia ayuda a equipos de AI, SaaS, EdTech y producto digital a validar, localizar y adaptar culturalmente experiencias en español para audiencias hispanas e hispanohablantes.",
-    "ogTitle": "Xpandia | Español que funciona para usuarios reales",
-    "ogDescription": "Language assurance, localización e inteligencia cultural aplicada en español para equipos de AI, SaaS, EdTech y producto digital."
+    "title": "Xpandia | Language Assurance & Applied Cultural Intelligence para productos globales",
+    "description": "Xpandia ayuda a equipos de AI, SaaS, EdTech, Producto, Localization, CX y Marketing a validar, mejorar y adaptar culturalmente sus experiencias digitales en inglés, español y otros idiomas mediante revisión experta, evidencia de calidad e insights culturales.",
+    "ogTitle": "Xpandia | Language Assurance & Applied Cultural Intelligence para productos globales",
+    "ogDescription": "Xpandia ayuda a equipos de AI, SaaS, EdTech, Producto, Localization, CX y Marketing a validar, mejorar y adaptar culturalmente sus experiencias digitales en inglés, español y otros idiomas."
   },
   "hero": {
-    "eyebrow": "SPANISH EXPERTISE · LANGUAGE ASSURANCE · CULTURAL INTELLIGENCE",
-    "h1": "Español que funciona para",
-    "h1Accent": "usuarios reales",
-    "subheadline": "Xpandia helps AI, SaaS, EdTech, and product teams validate, improve, and culturally adapt their digital experiences for Hispanic and Spanish-speaking audiences.",
-    "ctaPrimary": "Agenda una llamada de diagnóstico",
-    "ctaSecondary": "Explore services",
+    "eyebrow": "EXPERTISE LINGÜÍSTICA · LANGUAGE ASSURANCE · CULTURAL INTELLIGENCE",
+    "h1": "Traducciones que funcionan para",
+    "h1Accent": "usuarios reales.",
+    "subheadline": "Xpandia ayuda a equipos de AI, SaaS, EdTech y producto a validar, mejorar y adaptar sus experiencias digitales en otros idiomas para que sean claras, confiables, naturales y listas para mercados internacionales.",
+    "ctaPrimary": "Hablar con un experto",
+    "ctaSecondary": "Explorar servicios",
     "proof": [
-      { "label": "20+ YEARS", "text": "Global localization and language quality experience." },
-      { "label": "SPANISH FOCUS", "text": "LatAm, Spain, US Hispanic audiences, and regional variants." },
-      { "label": "BUILT FOR", "text": "AI, Product, Localization, CX, Marketing, and EdTech teams." },
-      { "label": "REGIONS", "text": "US · Canada · Europe · LatAm" }
+      {
+        "label": "20+ años",
+        "text": "Experiencia global en localización, calidad lingüística y comunicación intercultural."
+      },
+      {
+        "label": "Enfoque bilingüe",
+        "text": "Inglés-español, LatAm, US Hispanic, España y variantes regionales."
+      },
+      {
+        "label": "Ideal para",
+        "text": "Equipos de AI, Producto, Localization, CX, Marketing y EdTech."
+      },
+      {
+        "label": "Regiones",
+        "text": "LatAm · EE. UU. · Canadá · Europa"
+      }
     ]
   },
   "positioning": {
     "eyebrow": "POR QUÉ XPANDIA",
-    "headline": "La calidad del español es calidad de producto.",
-    "body1": "AI and automated translation can get Spanish most of the way there. But \"mostly accurate\" is not always enough when language affects trust, conversion, customer experience, or product adoption.",
-    "body2": "Xpandia operates in that last mile between understandable Spanish and Spanish that is ready for real users. We help teams validate, improve, and deliver Spanish experiences that are accurate, clear, natural, culturally aware, and aligned with the way users think, decide, and act.",
-    "body3": "For companies where Spanish quality directly affects UX, CX, trust, and revenue, Xpandia turns expert human judgment into the evidence, recommendations, and improvements needed to move from \"good enough\" to ready.",
-    "calloutTitle": "Validate. Adapt. Understand.",
-    "calloutLine": "The three ways Xpandia makes Spanish work in the real world."
+    "headline": "La calidad de tus traducciones es la calidad de tu producto.",
+    "body1": "La IA y la traducción automática pueden llevar tus contenidos muy lejos. Pero una traducción \"entendible\" no es suficiente cuando el lenguaje afecta directamente la confianza, la conversión, la experiencia del usuario (UX) o la adopción del producto.",
+    "body2": "Xpandia opera en esa última milla crítica, en donde un texto entendible no es suficiente para brindar la experiencia que se desea al usuario final. Ayudamos a equipos a validar, mejorar y entregar experiencias en otros idiomas que sean precisas, claras, naturales, culturalmente conscientes y alineadas con la forma en que los usuarios globales reales piensan, deciden y actúan.",
+    "body3": "Para empresas donde la calidad lingüística impacta directamente el revenue y la confianza del cliente, Xpandia transforma el criterio experto humano en evidencia clara y mejoras accionables, llevando el idioma de sus productos de entendible a listo para usar con usuarios reales.",
+    "calloutTitle": "Validar. Adaptar. Entender.",
+    "calloutLine": "Las tres formas en que Xpandia hace que tus experiencias traducidas funcionen en el mundo real."
   },
   "servicesOverview": {
     "eyebrow": "SERVICIOS",
-    "headline": "Start with the problem your team needs to solve.",
-    "intro": "Xpandia helps teams validate the quality of existing experiences, improve what needs attention, and understand the target audience behind the language.",
+    "headline": "Identifica el problema que tu equipo necesita resolver.",
+    "intro": "Xpandia ayuda a equipos a validar la calidad de experiencias existentes, mejorar lo que necesita atención y entender a la audiencia detrás del idioma.",
     "cards": [
       {
-        "num": "01 / VALIDATE",
+        "num": "01 / VALIDAR",
         "title": "Language Assurance",
-        "tagline": "Validate Spanish before your users do.",
-        "description": "Structured audits and QA sprints for AI outputs, product flows, support content, launch readiness, and ongoing Spanish quality decisions.",
+        "tagline": "Valida la calidad de tus traducciones antes de que lo hagan tus usuarios.",
+        "description": "Auditorías estructuradas y sprints de calidad (QA) para outputs de IA, flujos de producto, contenido de soporte, preparación de lanzamientos y decisiones continuas de calidad lingüística.",
         "bestForLabel": "IDEAL PARA",
-        "bestFor": "Teams already operating in Spanish or preparing to launch with AI outputs, localized content, product experiences, or customer journeys and need to know whether they are accurate, natural, consistent, culturally appropriate, and ready for users.",
+        "bestFor": "Equipos que ya operan en inglés, español u otros idiomas, o que se preparan para lanzar outputs de IA, contenido localizado, experiencias de producto o journeys de cliente y necesitan saber si son precisos, naturales, consistentes, culturalmente adecuados y listos para usuarios reales.",
+        "whatYouGetLabel": "QUÉ RECIBES",
+        "whatYouGet": "Evidencia lista para decidir: scorecards de calidad, taxonomías de hallazgos, niveles de severidad, correcciones por priorizar y recomendaciones claras para mejorar la calidad lingüística y dejar la experiencia lista para usuarios.",
+        "cta": "Explorar Language Assurance",
         "coreServicesLabel": "CORE SERVICES",
         "coreServices": [
           "AI Quality Audit Sprint",
           "Launch Readiness Audit",
           "Quality Advisory"
-        ],
-        "whatYouGetLabel": "QUÉ OBTIENES",
-        "whatYouGet": "Decision-ready evidence: quality scorecards, issue taxonomies, severity ratings, prioritized fixes, and clear recommendations to help your team improve Spanish quality and make the experience user-ready.",
-        "cta": "Explore Language Assurance"
+        ]
       },
       {
-        "num": "02 / ADAPT",
-        "title": "Spanish Experience Repair & Adaptation",
-        "tagline": "Turn just-translated content into user-ready experiences.",
-        "description": "Expert repair, custom adaptation, and localization of high-impact Spanish content, AI or MT outputs, product copy, support content, messaging, and customer-facing experiences.",
+        "num": "02 / ADAPTAR",
+        "title": "Experience Repair & Adaptation",
+        "tagline": "Convierte contenido traducido en experiencias listas para usuarios reales.",
+        "description": "Reparación experta, adaptación personalizada y localización de contenido de alto impacto: outputs de IA o traducción automática, product copy, contenido de soporte, messaging y experiencias de interacción con clientes.",
         "bestForLabel": "IDEAL PARA",
-        "bestFor": "Teams with existing Spanish content, AI-generated outputs, machine-translated copy, product copy, support materials, or marketing assets that need to feel clearer, more natural, more consistent, and better aligned with the audience.",
+        "bestFor": "Equipos con contenido generado por IA o traducido automáticamente, product copy, materiales de soporte, centros de ayuda o activos de marketing que necesiten sentirse más claros, naturales, consistentes y alineados con la audiencia objetivo.",
+        "whatYouGetLabel": "QUÉ RECIBES",
+        "whatYouGet": "Copy mejorado, reparación de outputs de IA/MT, recomendaciones de reescritura, guía terminológica, notas de tono, recomendaciones de ajuste regional y activos listos para QA o publicación.",
+        "cta": "Explorar Adaptation",
         "coreServicesLabel": "CORE SERVICES",
         "coreServices": [
           "Spanish Experience Repair",
           "Product & Content Adaptation"
-        ],
-        "whatYouGetLabel": "QUÉ OBTIENES",
-        "whatYouGet": "Improved Spanish copy, AI/MT output repair, rewrite recommendations, terminology guidance, tone notes, regional fit guidance, and QA-ready or publication-ready assets.",
-        "cta": "Explore Adaptation"
+        ]
       },
       {
-        "num": "03 / UNDERSTAND",
+        "num": "03 / ENTENDER",
         "title": "Applied Cultural Intelligence",
-        "tagline": "Make better decisions with cultural context.",
-        "description": "Talks, briefings, workshops, and advisory that help leaders and global teams strengthen Cultural Intelligence, understand Hispanic and Spanish-speaking audiences, avoid cultural friction, and make better product, market, communication, and people decisions.",
+        "tagline": "Toma mejores decisiones con contexto cultural.",
+        "description": "Charlas, briefings, workshops y asesorías a líderes y equipos globales para implementar, reforzar o mejorar su inteligencia cultural (CQ), entender audiencias hispanas e internacionales, evitar fricción cultural y tomar mejores decisiones de producto, mercado, comunicación y negocios.",
         "bestForLabel": "IDEAL PARA",
-        "bestFor": "Leadership, Product, Marketing, CX, People, Localization, and Global Operations teams that need to work across cultures, enter new markets, improve team effectiveness, or understand the invisible norms that shape trust, behavior, and business outcomes.",
+        "bestFor": "Equipos de liderazgo, Producto, Marketing, CX, People (RRHH), Localization y Global Operations que necesitan trabajar entre culturas, entrar a nuevos mercados, mejorar la efectividad de sus equipos o entender las normas invisibles que moldean la confianza, el comportamiento y aceleran o estropean resultados en negocios internacionales.",
+        "whatYouGetLabel": "QUÉ RECIBES",
+        "whatYouGet": "Frameworks prácticos de CQ, guía de culturalización, insights específicos de audiencia, análisis de fricción cultural, orientación de messaging, executive briefings, workshops de equipo y próximos pasos accionables.",
+        "cta": "Explorar Applied Cultural Intelligence",
         "coreServicesLabel": "CORE SERVICES",
         "coreServices": [
           "ACI Talk / Executive Briefing",
           "CQ & ACI Workshops",
           "Hispanic Audience & Messaging Review",
           "Cultural Fit Advisory"
-        ],
-        "whatYouGetLabel": "QUÉ OBTIENES",
-        "whatYouGet": "Practical CQ frameworks, culturalization guidance, audience-specific insights, cultural friction analysis, messaging guidance, executive briefings, team workshops, and action-ready next steps.",
-        "cta": "Explore Applied Cultural Intelligence"
+        ]
       }
     ]
   },
   "methodology": {
-    "eyebrow": "METODOLOGÍA",
-    "headline": "El método detrás de un español que funciona",
-    "intro": "Every engagement is designed and follows a rigorous process to help your team understand what is working, what needs attention, why it matters, and what to do next.",
+    "eyebrow": "METHODOLOGY",
+    "headline": "El método detrás de experiencias traducidas que sí funcionan",
+    "intro": "Cada engagement se diseña y sigue un proceso riguroso para que tu equipo entienda qué funciona, qué necesita atención, por qué importa y qué hacer después.",
     "steps": [
-      { "title": "Definir", "body": "We clarify your product, audience, Spanish variant, content surface, business goal, timeline, and what \"good\" needs to mean for your team." },
-      { "title": "Evaluar", "body": "We review language, meaning, tone, terminology, clarity, cultural fit, UX friction, audience expectations, and quality risks using expert human judgment and structured criteria." },
-      { "title": "Priorizar", "body": "We separate critical issues from quick wins and organize findings by severity, business impact, and implementation effort." },
-      { "title": "Mejorar", "body": "We deliver recommendations, rewrites, standards, scorecards, examples, and next steps your team can act on." }
+      {
+        "title": "Definir",
+        "body": "Aclaramos tu producto, audiencia, idioma o variante objetivo, superficie de contenido, objetivo de negocio, timeline y qué debe significar \"bien hecho\" para tu equipo."
+      },
+      {
+        "title": "Evaluar",
+        "body": "Revisamos lenguaje, significado, tono, terminología, claridad, ajuste cultural, fricción UX, expectativas de audiencia y riesgos de calidad con criterio experto humano y criterios estructurados."
+      },
+      {
+        "title": "Priorizar",
+        "body": "Separamos problemas críticos reales de \"suposiciones\" y organizamos hallazgos por severidad, impacto de negocio y esfuerzo de implementación."
+      },
+      {
+        "title": "Mejorar",
+        "body": "Entregamos recomendaciones, reescrituras, estándares, scorecards, ejemplos y próximos pasos que tu equipo puede implementar."
+      }
     ]
   },
   "deliverables": {
-    "eyebrow": "WHAT YOU GET",
-    "headline": "Evidencia sobre la que tu equipo puede actuar.",
-    "body": "Cada proyecto de Xpandia convierte el criterio experto en evidencia práctica: tableros de calidad, hallazgos, ejemplos, recomendaciones y orientación lista para decidir.",
+    "eyebrow": "QUÉ RECIBES",
+    "headline": "Evidencia lista para implementar.",
+    "body": "Cada engagement de Xpandia convierte el criterio de lingüístas expertos humanos en evidencia práctica: scorecards, hallazgos, ejemplos y recomendaciones precisas para tu equipo tome decisiones informadas.",
     "cards": [
-      { "title": "Tablero de calidad", "body": "Measurable scoring across the criteria that matter for your use case: accuracy, clarity, naturalness, tone, terminology, regional fit, cultural fit, UX friction, readiness, and risk." },
-      { "title": "Taxonomía de incidencias", "body": "A structured view of what is affecting quality, where it happens, how severe it is, and what your team should fix first." },
-      { "title": "Guía de remediación", "body": "Practical recommendations, rewrites, examples, terminology notes, and standards to help your team improve Spanish quality without slowing down delivery." },
-      { "title": "Informe ejecutivo", "body": "A concise summary for Product, AI, Localization, CX, Marketing, or leadership teams with risks, opportunities, and recommended next steps." }
+      {
+        "title": "Scorecard de calidad",
+        "body": "Medición estructurada de los criterios que importan para tu caso: precisión, claridad, naturalidad, tono, terminología, ajuste regional, ajuste cultural, fricción UX, readiness y riesgo."
+      },
+      {
+        "title": "Taxonomía de hallazgos",
+        "body": "Una visión estructurada y detallada de qué está afectando la calidad, dónde ocurre, qué tan severo es y qué debe corregir primero tu equipo."
+      },
+      {
+        "title": "Guía de remediación",
+        "body": "Recomendaciones prácticas, reescritura, ejemplos, notas terminológicas y estándares para mejorar la calidad lingüística de tus outputs y contenidos sin frenar tus entregas o publicaciones."
+      },
+      {
+        "title": "Resumen ejecutivo",
+        "body": "Un resumen puntual de hallazgos para equipos de Producto, AI, Localización, CX, Marketing o liderazgo, con riesgos, oportunidades y próximos pasos recomendados."
+      }
     ],
     "scorecard": {
       "title": "Tablero de calidad",
       "sampleLabel": "MUESTRA · N=240 OUTPUTS",
       "footer": "MUESTRA DE OUTPUTS · CASO DE USO: COPILOTO DE SOPORTE · VARIANTE: es-MX · REVISOR: XPANDIA SENIOR",
       "rows": [
-        { "label": "Tasa de aprobación", "width": "78%", "val": "78%", "accent": true },
-        { "label": "Precisión", "width": "86%", "val": "4.3 / 5" },
-        { "label": "Claridad", "width": "72%", "val": "3.6 / 5" },
-        { "label": "Naturalidad", "width": "64%", "val": "3.2 / 5" },
-        { "label": "Tono y registro", "width": "70%", "val": "3.5 / 5" },
-        { "label": "Terminología", "width": "58%", "val": "2.9 / 5" },
-        { "label": "Ajuste regional", "width": "81%", "val": "4.1 / 5" },
-        { "label": "Ajuste cultural", "width": "76%", "val": "3.8 / 5" },
-        { "label": "Fricción de UX", "width": "67%", "val": "3.3 / 5" },
-        { "label": "Severidad de riesgo", "width": "12%", "val": "3.1%", "dim": true }
+        {
+          "label": "Tasa de aprobación",
+          "width": "78%",
+          "val": "78%",
+          "accent": true
+        },
+        {
+          "label": "Precisión",
+          "width": "86%",
+          "val": "4.3 / 5"
+        },
+        {
+          "label": "Claridad",
+          "width": "72%",
+          "val": "3.6 / 5"
+        },
+        {
+          "label": "Naturalidad",
+          "width": "64%",
+          "val": "3.2 / 5"
+        },
+        {
+          "label": "Tono y registro",
+          "width": "70%",
+          "val": "3.5 / 5"
+        },
+        {
+          "label": "Terminología",
+          "width": "58%",
+          "val": "2.9 / 5"
+        },
+        {
+          "label": "Ajuste regional",
+          "width": "81%",
+          "val": "4.1 / 5"
+        },
+        {
+          "label": "Ajuste cultural",
+          "width": "76%",
+          "val": "3.8 / 5"
+        },
+        {
+          "label": "Fricción de UX",
+          "width": "67%",
+          "val": "3.3 / 5"
+        },
+        {
+          "label": "Severidad de riesgo",
+          "width": "12%",
+          "val": "3.1%",
+          "dim": true
+        }
       ],
       "criteria": [
-        "Precisión", "Claridad", "Naturalidad", "Tono y registro", "Terminología",
-        "Ajuste regional", "Ajuste cultural", "Fricción de UX", "Seguimiento de instrucciones", "Severidad de riesgo"
+        "Precisión",
+        "Claridad",
+        "Naturalidad",
+        "Tono y registro",
+        "Terminología",
+        "Ajuste regional",
+        "Ajuste cultural",
+        "Fricción de UX",
+        "Seguimiento de instrucciones",
+        "Severidad de riesgo"
       ]
     }
   },
   "builtFor": {
-    "eyebrow": "WHO WE WORK WITH",
-    "headline": "Para equipos que construyen productos y experiencias en español.",
+    "eyebrow": "CON QUIÉN TRABAJAMOS",
+    "headline": "Equipos que construyen productos y experiencias para mercados internacionales.",
     "cards": [
-      { "title": "Equipos de producto de AI y ML", "body": "Valida los outputs en español de chatbots, tutores, copilotos, agentes y experiencias de AI generativa antes de que los usuarios dependan de ellos." },
-      { "title": "Equipos de SaaS y producto", "body": "Mejora los flujos de producto en español, el onboarding, el copy de UI, los formularios, los errores y la preparación para lanzamiento." },
-      { "title": "Equipos de localización", "body": "Refuerza la calidad del español, la alineación de revisores, la terminología, la supervisión de proveedores y las decisiones de aprobación." },
-      { "title": "Equipos de CX y soporte", "body": "Mejora el contenido de ayuda en español, las macros de soporte, las respuestas de chatbot y la comunicación de cara al cliente." },
-      { "title": "Equipos de marketing y growth", "body": "Adapta los mensajes, las landing pages, las campañas, los CTA y el copy de conversión para audiencias hispanas e hispanohablantes." },
-      { "title": "Equipos de EdTech", "body": "Haz que las experiencias de aprendizaje en español sean claras, naturales, culturalmente relevantes y pedagógicamente efectivas." }
+      {
+        "title": "AI & ML",
+        "body": "Validan outputs de chatbots, agentes IA, tutores, copilotos, y experiencias de GenAI en otros idiomas, antes de que los usuarios finales se involucren y dependan de ellos."
+      },
+      {
+        "title": "SaaS y Producto",
+        "body": "Mejoran flujos de producto localizados, procesos de onboarding y activación de usuarios, UI copy, formularios, errores y readiness de lanzamiento."
+      },
+      {
+        "title": "Localización",
+        "body": "Fortalecen calidad lingüística, alineación de reviewers, terminología, supervisión de vendors y decisiones de sign-off."
+      },
+      {
+        "title": "CX y Soporte",
+        "body": "Mejoran contenido de ayuda, respuestas de chatbot, macros de soporte y comunicación frente al cliente en otros idiomas."
+      },
+      {
+        "title": "Equipos de Marketing y Growth",
+        "body": "Adaptan mensajes, landing pages, campañas, CTAs y copy de conversión para audiencias internacionales e hispanohablantes."
+      },
+      {
+        "title": "Equipos de EdTech",
+        "body": "Hacen que las experiencias de aprendizaje en otros idiomas sean claras, naturales, culturalmente relevantes y pedagógicamente efectivas."
+      }
+    ]
+  },
+  "buyer": {
+    "eyebrow": "A QUIÉN AYUDAMOS",
+    "headline": "Pensado para los líderes responsables de la calidad del español.",
+    "roles": [
+      "Head of Product",
+      "VP de Producto",
+      "Líder de Producto de AI / ML",
+      "Director de Localización",
+      "Head of Globalization",
+      "VP de Customer Experience",
+      "Líder de Soporte al Cliente",
+      "Líder de Contenido EdTech",
+      "Líder de Marketing / Growth",
+      "Líder de Trust & Safety"
     ]
   },
   "finalCta": {
-    "eyebrow": "SIGUIENTE PASO",
-    "headline": "Conoce dónde está tu español — y qué hacer",
-    "headlineAccent": "después",
-    "body": "In a focused diagnostic call, we review your Spanish surface, audience, product context, timeline, and business goal, and then, if applicable, we recommend the right path forward: an audit, AI QA sprint, Spanish repair engagement, ACI talk, messaging review, or quality advisory path.",
-    "ctaPrimary": "Agenda una llamada de diagnóstico",
-    "ctaSecondary": "Explore services"
+    "eyebrow": "PRÓXIMO PASO",
+    "headline": "Conoce el estado real de tus versiones traducidas — y cuál es el paso a",
+    "headlineAccent": "seguir",
+    "body": "En una llamada de diagnóstico, revisamos tu contenido o experiencia, audiencia, contexto de producto, timeline y objetivo de negocio. Luego, si aplica, recomendamos el camino correcto: auditoría, AI QA sprint, reparación de experiencia, ACI talk, messaging review o quality advisory.",
+    "pricingLine": "",
+    "pricingNote": "",
+    "ctaPrimary": "Hablar con un experto",
+    "ctaSecondary": ""
+  },
+  "aiEcosystem": {
+    "eyebrow": "ECOSISTEMA IA",
+    "headline": "Modelos y plataformas de IA que validamos y optimizamos.",
+    "intro": "No solo evaluamos el texto; dominamos los entornos de automatización, generación de contenido y desarrollo low-code en los que construyes tus productos. Garantizamos que los outputs de tus agentes, prompts y flujos integrados sean impecables, naturales y de alta conversión.",
+    "logos": [
+      {
+        "name": "ChatGPT",
+        "file": "01-chatgpt-chatgpt.svg"
+      },
+      {
+        "name": "Claude",
+        "file": "02-claude-claude.svg"
+      },
+      {
+        "name": "OpenClaw",
+        "file": "03-openclaw-openclaw.svg"
+      },
+      {
+        "name": "Gemini",
+        "file": "04-gemini-gemini.svg"
+      },
+      {
+        "name": "DeepSeek",
+        "file": "05-deepseek-deepseek.svg"
+      },
+      {
+        "name": "LangChain",
+        "file": "06-langchain-langchain.svg"
+      },
+      {
+        "name": "Perplexity",
+        "file": "07-perplexity-perplexity.svg"
+      },
+      {
+        "name": "n8n",
+        "file": "08-n8n-n8n.svg"
+      },
+      {
+        "name": "LlamaIndex",
+        "file": "09-llamaindex-llamaindex.svg"
+      },
+      {
+        "name": "Copilot",
+        "file": "10-copilot-copilot.svg"
+      },
+      {
+        "name": "Make",
+        "file": "11-make-make.svg"
+      },
+      {
+        "name": "NotebookLM",
+        "file": "12-notebooklm-notebooklm.svg"
+      },
+      {
+        "name": "Ollama",
+        "file": "13-ollama-ollama.svg"
+      },
+      {
+        "name": "Grok",
+        "file": "14-grok-grok.svg"
+      },
+      {
+        "name": "Lovable",
+        "file": "15-lovable-lovable.svg"
+      },
+      {
+        "name": "vLLM",
+        "file": "16-vllm-vllm.svg"
+      },
+      {
+        "name": "Replit",
+        "file": "17-replit-replit.svg"
+      },
+      {
+        "name": "ElevenLabs",
+        "file": "18-elevenlabs-elevenlabs.svg"
+      },
+      {
+        "name": "HeyGen",
+        "file": "19-heygen-placeholder.svg"
+      },
+      {
+        "name": "Midjourney",
+        "file": "20-midjourney-midjourney.svg"
+      }
+    ]
   }
 }

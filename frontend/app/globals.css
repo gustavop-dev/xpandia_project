@@ -466,3 +466,53 @@ h4, .h4 {
   .container, .container-narrow { padding: 0 16px; }
   .radio-row { grid-template-columns: 1fr !important; }
 }
+
+/* ---- AI Ecosystem Carousel ---- */
+.ai-carousel-wrapper {
+  overflow: hidden;
+  width: 100%;
+  padding: 32px 0;
+}
+
+.ai-carousel-track {
+  display: flex;
+  gap: 48px;
+  will-change: transform;
+}
+
+.ai-carousel-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-shrink: 0;
+  min-width: 80px;
+}
+
+.ai-carousel-logo {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  filter: grayscale(100%);
+  opacity: 0.7;
+  transition: filter 0.3s ease, opacity 0.3s ease;
+}
+
+.ai-carousel-item:hover .ai-carousel-logo {
+  filter: grayscale(0%);
+  opacity: 1;
+}
+
+.ai-carousel-label {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--color-ink-500);
+  text-align: center;
+  white-space: nowrap;
+  transition: color 0.3s ease;
+}
+
+.ai-carousel-item:hover .ai-carousel-label {
+  color: var(--color-ink-900);
+}

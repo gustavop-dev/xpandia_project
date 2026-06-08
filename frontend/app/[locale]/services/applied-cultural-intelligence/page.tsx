@@ -247,8 +247,8 @@ export default async function AppliedCulturalIntelligencePage({ params }: { para
             {t('finalCta.body')}
           </p>
           <div className="hero-ctas mt-10">
-            <Link className="btn btn-primary" href="/contact">{t('finalCta.ctaPrimary')} <span className="btn-arrow"></span></Link>
-            <Link className="btn btn-secondary" href="/contact">{t('finalCta.ctaSecondary')}</Link>
+            {t('finalCta.ctaPrimary') && <Link className="btn btn-primary" href="/contact">{t('finalCta.ctaPrimary')} <span className="btn-arrow"></span></Link>}
+            {t('finalCta.ctaSecondary') && <Link className="btn btn-secondary" href="/contact">{t('finalCta.ctaSecondary')}</Link>}
           </div>
         </div>
       </section>

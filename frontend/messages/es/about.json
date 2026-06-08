@@ -1,152 +1,153 @@
 {
   "metadata": {
-    "title": "Sobre Xpandia | Expertise en español, localización e inteligencia cultural aplicada",
-    "description": "Conoce Xpandia, una firma boutique de expertise en español que ayuda a equipos de IA, SaaS, EdTech, Producto, Localización, CX y Marketing a validar, localizar y adaptar culturalmente experiencias en español para usuarios reales.",
-    "ogTitle": "Sobre Xpandia | Expertise en español, localización e inteligencia cultural aplicada",
-    "ogDescription": "Conoce Xpandia, una firma boutique de expertise en español que ayuda a equipos de IA, SaaS, EdTech, Producto, Localización, CX y Marketing a validar, localizar y adaptar culturalmente experiencias en español para usuarios reales."
+    "title": "About Xpandia | Expertise lingüística, Language Assurance & Cultural Intelligence",
+    "description": "Conoce Xpandia, una firma boutique de expertise lingüística que ayuda a equipos de AI, SaaS, EdTech, Producto, Localization, CX y Marketing a validar, mejorar y adaptar culturalmente experiencias en inglés, español y otros idiomas para usuarios reales.",
+    "ogTitle": "About Xpandia | Expertise lingüística, Language Assurance & Cultural Intelligence",
+    "ogDescription": "Conoce Xpandia, una firma boutique de expertise lingüística que ayuda a equipos de AI, SaaS, EdTech, Producto, Localization, CX y Marketing a validar, mejorar y adaptar culturalmente experiencias en inglés, español y otros idiomas para usuarios reales."
   },
   "hero": {
     "eyebrow": "SOBRE XPANDIA",
-    "h1": "Expertise en español para empresas que construyen entre idiomas, culturas y mercados.",
-    "sub": "Xpandia ayuda a equipos de IA, SaaS, EdTech, Producto, Localización, CX y Marketing a validar, localizar y adaptar culturalmente experiencias en español para audiencias hispanas y hispanohablantes.",
-    "body": "Combinamos expertise senior en lengua española, criterio de localización, inteligencia cultural aplicada y QA con visión de producto para ayudar a los equipos a construir experiencias en español que los usuarios puedan entender, en las que confíen y sobre las que actúen.",
-    "ctaPrimary": "Agenda una llamada de diagnóstico"
+    "h1": "Expertise lingüística para compañías que construyen entre idiomas, culturas y mercados.",
+    "sub": "Xpandia ayuda a equipos de AI, SaaS, EdTech, Producto, Localization, CX y Marketing a validar, mejorar y adaptar culturalmente experiencias digitales para audiencias de habla inglesa e hispana.",
+    "body": "Combinamos expertise senior en inglés y español, criterio de localización, Applied Cultural Intelligence y QA consciente del producto para ayudar a equipos a construir experiencias que los usuarios puedan entender, confiar y usar.",
+    "ctaPrimary": "Hablar con un experto",
+    "ctaSecondary": ""
   },
   "positioning": {
-    "eyebrow": "QUIÉNES SOMOS",
-    "headline": "Una firma de lenguaje especializada en calidad en español, adaptación e inteligencia cultural.",
-    "body1": "Xpandia nació para empresas que necesitan más que traducción. Acompañamos a equipos que construyen productos, contenido, experiencias de IA, recorridos de soporte, campañas y estrategias de mercado para usuarios hispanohablantes.",
-    "body2": "Nuestro trabajo se ubica en la intersección entre lenguaje, cultura, producto y criterio de negocio. Ayudamos a los equipos a entender qué funciona en español, qué genera fricción, qué necesita adaptación y qué está listo para usuarios reales.",
-    "callout": "Xpandia da a los equipos el criterio experto y la guía estructurada que necesitan para pasar de las suposiciones a decisiones con confianza."
+    "eyebrow": "QUIENES SOMOS",
+    "headline": "Una firma especializada en language assurance e inteligencia cultural aplicada.",
+    "body1": "Xpandia fue creada para compañías que necesitan más que traducción. Apoyamos a equipos que construyen productos, contenidos, experiencias de IA, journeys de soporte, campañas y estrategias de mercado para usuarios en otros idiomas.",
+    "body2": "Nuestro trabajo vive en la intersección entre calidad lingüística, cultura, producto y criterio de negocio. Ayudamos a los equipos a entender qué funciona en una versión traducida, qué crea fricción, qué necesita adaptación y qué está listo para usuarios reales.",
+    "callout": "Xpandia le da a los equipos el criterio experto y la guía estructurada que necesitan para pasar de suposiciones a decisiones informadas y confiables."
   },
   "differentiators": {
     "eyebrow": "POR QUÉ XPANDIA",
-    "headline": "Spanish quality shapes trust, adoption, and growth.",
-    "intro": "Companies can generate, translate, or review Spanish in many ways. But when Spanish affects product experience, customer trust, conversion, support, or market readiness, teams need more than language fluency or a quick review. Xpandia brings the structure, cultural context, product awareness, and senior judgment needed to understand what is working, what creates friction, and what needs to improve before a Spanish product reaches real users.",
+    "headline": "La calidad lingüística moldea confianza, adopción y crecimiento.",
+    "intro": "Las compañías pueden generar, traducir o revisar contenido en otros idiomas de muchas formas. Pero cuando el lenguaje afecta la experiencia de producto, la confianza del cliente, la conversión, el soporte o la preparación de mercado, los equipos necesitan más que fluidez o una revisión rápida. Xpandia aporta la estructura, el contexto cultural, la conciencia de producto y el criterio senior necesarios para entender qué funciona, qué crea fricción y qué debe mejorar antes de que una experiencia llegue a usuarios reales.",
     "cards": [
       {
-        "title": "Criterio senior en español",
-        "body": "Revisión experta basada en calidad del lenguaje, significado, claridad, tono, terminología, naturalidad y ajuste con la audiencia."
+        "title": "Criterio lingüístico senior",
+        "body": "Auditoría experta basada en la calidad semántica, claridad, consistencia de tono, terminología técnica, naturalidad y alineación con la audiencia objetivo."
       },
       {
-        "title": "Localización y contexto de producto",
-        "body": "Español evaluado o adaptado dentro de entornos reales de producto, UX, contenido, soporte, marketing y aprendizaje."
+        "title": "Contexto de localización y producto",
+        "body": "Contenido evaluado y adaptado directamente dentro de entornos reales de software, flujos UX, plataformas de soporte, campañas de marketing y sistemas EdTech."
       },
       {
-        "title": "Applied Cultural Intelligence",
-        "body": "Visión cultural que ayuda a los equipos a entender señales de confianza, expectativas de la audiencia, estilo de comunicación y ajuste con el mercado."
+        "title": "Inteligencia Cultural Aplicada",
+        "body": "Insights estratégicos para descifrar señales de confianza, expectativas de la audiencia, estilos de comunicación y adecuación al mercado."
       },
       {
-        "title": "Evaluación de IA y de sus resultados",
-        "body": "Revisión estructurada de resultados en español generados por IA, respuestas de chatbots, tutores, copilotos, agentes y flujos de soporte."
+        "title": "Evaluación de IA y outputs",
+        "body": "Revisión estructurada de respuestas generadas por modelos de IA, chatbots, tutores virtuales, copilotos, agentes autónomos y flujos de soporte automatizados."
       },
       {
-        "title": "Evidencia lista para decidir",
-        "body": "Scorecards, taxonomías de problemas, niveles de severidad, ejemplos anotados, recomendaciones y resúmenes ejecutivos."
+        "title": "Evidencia lista para la toma de decisiones",
+        "body": "Entrega de scorecards, taxonomías de errores técnicos, clasificaciones de severidad, ejemplos anotados y resúmenes ejecutivos (readouts) listos para implementar."
       },
       {
-        "title": "Enfoque práctico de negocio",
-        "body": "Recomendaciones diseñadas para equipos de Producto, IA, Localización, CX, Soporte, Marketing, EdTech y liderazgo."
+        "title": "Enfoque de negocio práctico",
+        "body": "Recomendaciones accionables diseñadas específicamente para optimizar los sprints de los equipos de Producto, IA, Localización, CX, Soporte, Marketing, EdTech y C-Level."
       }
     ]
   },
   "founder": {
-    "eyebrow": "EXPERTISE LIDERADA POR SU FUNDADOR",
-    "headline": "Liderada por expertise senior en lenguaje, localización, aseguramiento de calidad e inteligencia cultural.",
-    "body1": "Xpandia se construye en torno a una convicción práctica: la calidad en español no es solo un asunto de lenguaje. Es un asunto de producto, de confianza, de experiencia de cliente y de preparación para el mercado.",
-    "body2": "Our work is led by a team of experts in Spanish, Language Assurance, QA, localization, and Applied Cultural Intelligence experts who help global companies turn Spanish quality questions into clear business decisions.",
+    "eyebrow": "EXPERIENCIA LIDERADA POR EL FUNDADOR",
+    "headline": "Liderada por experiencia senior en lenguaje, localización, aseguramiento de calidad e inteligencia cultural.",
+    "body1": "Xpandia nació de una convicción práctica: la calidad del lenguaje impacta directamente el negocio. Influye en la experiencia de producto, la confianza, la comprensión del cliente, la preparación para entrar a nuevos mercados y el crecimiento.",
+    "body2": "Liderada por su fundador y respaldada por una red de expertos senior, Xpandia ayuda a equipos globales a convertir preguntas sobre calidad lingüística, localización y adecuación cultural en decisiones claras para el negocio. Combinamos precisión lingüística, experiencia en localización, criterio cultural, comunicación empresarial multilingüe, pensamiento global y juicio orientado al producto para ayudar a los equipos a convertir desafíos lingüísticos y culturales complejos en experiencias digitales claras, confiables y listas para escalar.",
     "name": "Nestor Solano",
     "title": "FUNDADOR, XPANDIA APPLIED CULTURAL INTELLIGENCE SAS",
     "imageAlt": "Retrato de Nestor Solano",
-    "bio1": "Nestor leads Xpandia's work at the intersection of Spanish quality, localization, and Applied Cultural Intelligence. His background includes 20+ years supporting global teams, including work with Fortune 500 companies, across translation, language QA, localization management, GTM strategy, and cross-cultural communication in multilingual business contexts.",
-    "bio2": "Working with a network of senior experts, he brings the linguistic, cultural, and business judgment teams need to deliver Spanish experiences that are clear, trusted, culturally aligned with the Spanish-speaking audiences they serve."
+    "bio1": "Nestor lidera el trabajo de Xpandia en la intersección entre calidad lingüística, localización e inteligencia cultural aplicada. Durante más de 20 años, él ha asesorado equipos globales, incluyendo compañías Fortune 500, en proyectos de traducción, control de calidad, gestión de localización, estrategia Go-To-Market y comunicación intercultural en contextos empresariales multilingües.",
+    "bio2": "A través de Xpandia y su red de expertos senior, Nestor aporta el criterio lingüístico, cultural y empresarial que los equipos necesitan para evaluar, mejorar y entregar experiencias digitales claras, confiables, culturalmente alineadas y listas para conectar con las audiencias a las que quieren llegar."
   },
   "howWeWork": {
     "eyebrow": "CÓMO TRABAJAMOS",
-    "headline": "Enfocados, prácticos y diseñados para equipos que necesitan decisiones.",
+    "headline": "Procesos enfocados, prácticos y estructurados para equipos que necesitan tomar decisiones con base en evidencia.",
     "steps": [
       {
-        "title": "Entender el contexto",
-        "body": "Aclaramos tu producto, audiencia, variante de español, objetivo de negocio, plazos, tipo de contenido y desafío actual."
+        "title": "Análisis y comprensión del contexto",
+        "body": "Alineamos los objetivos de tu producto, la audiencia objetivo, las variantes idiomáticas, las metas de negocio, los cronogramas (timelines), el tipo de contenido y tus desafíos de software actuales."
       },
       {
-        "title": "Evaluar o adaptar",
-        "body": "Aplicamos la mezcla adecuada de expertise en español, criterio de localización, inteligencia cultural, criterios de QA y conocimiento de producto."
+        "title": "Auditoría y adaptación ágil",
+        "body": "Aplicamos la combinación exacta de criterio lingüístico experto, localización avanzada, inteligencia cultural, marcos de QA de software y conciencia profunda de producto."
       },
       {
-        "title": "Entregar evidencia clara",
-        "body": "Recibes hallazgos, recomendaciones, activos adaptados, scorecards, registros de problemas, marcos de trabajo o materiales de capacitación sobre los que tu equipo puede actuar."
+        "title": "Entrega de evidencia técnica clara",
+        "body": "Recibes hallazgos estructurados, recomendaciones priorizadas, componentes adaptados, scorecards, registros de incidencias y marcos de trabajo listos para ejecutar por tu equipo de ingeniería."
       },
       {
-        "title": "Recomendar el siguiente paso",
-        "body": "Ayudamos a tu equipo a decidir si lanzar, corregir, retestear, adaptar, capacitar, gobernar o escalar."
+        "title": "Plan de despliegue y siguientes pasos",
+        "body": "Guiamos a tu equipo en la toma de decisiones críticas: lanzar a producción, corregir, realizar pruebas adicionales (retestear), adaptar, entrenar, gobernar o escalar el producto."
       }
     ]
   },
   "startingPoints": {
-    "eyebrow": "PUNTOS DE PARTIDA",
-    "headline": "Empieza con el servicio que tu equipo necesita ahora.",
-    "intro": "Los servicios de Xpandia se dimensionan según tu producto, audiencia, volumen, complejidad, plazos y nivel de personalización.",
-    "pricingNote": "El precio final se confirma tras una breve llamada de diagnóstico y una revisión del alcance.",
+    "eyebrow": "PUNTOS DE INICIO",
+    "headline": "Empieza con el engagement que tu equipo necesita ahora.",
+    "intro": "",
+    "pricingNote": "",
     "cards": [
       {
-        "title": "Diagnostics",
-        "price": "From $500",
-        "body": "A fast expert read before choosing the right engagement."
+        "title": "Diagnósticos",
+        "price": "Desde $500 USD",
+        "body": "Para equipos que necesitan una auditoría experta ultrarrápida antes de definir el engagement definitivo."
       },
       {
-        "title": "AI Spanish Quality Audit Sprint",
-        "price": "From $4,500",
-        "body": "To validate AI-generated Spanish outputs before users rely on them."
+        "title": "AI Language Quality Audit Sprint",
+        "price": "Desde $4,500 USD",
+        "body": "Para equipos que quieren validar los outputs de sus modelos de IA en inglés o español antes de desplegarlos a producción."
       },
       {
-        "title": "Spanish Launch Readiness Audit",
-        "price": "From $3,500",
-        "body": "Structured findings, severity ratings, and readiness recommendations before launch or relaunch."
+        "title": "Launch Readiness Audit",
+        "price": "Desde $3,500 USD",
+        "body": "Para equipos que requieren hallazgos técnicos estructurados, clasificaciones de severidad y métricas de preparación antes de un lanzamiento crítico."
       },
       {
-        "title": "Spanish Experience Repair",
-        "price": "From $2,500",
-        "body": "To improve Spanish content, product copy, help content, messaging, or customer-facing experiences."
+        "title": "Optimización y Corrección de Experiencias",
+        "price": "Desde $2,500 USD",
+        "body": "Para equipos que necesitan refinar interfaces localizadas, copy de producto, centros de ayuda o mensajes comerciales frente al cliente."
       },
       {
-        "title": "ACI Talk / Executive Briefing",
-        "price": "From $1,500",
-        "body": "Practical Cultural Intelligence, cross-cultural communication, and audience-readiness guidance."
+        "title": "ACI Talk / Briefing Ejecutivo",
+        "price": "Desde $1,500 USD",
+        "body": "Para equipos globales que requieren marcos prácticos de Inteligencia Cultural, comunicación intercultural y guías de audience readiness."
       },
       {
-        "title": "Spanish Quality Advisory",
-        "price": "From $3,000/month",
-        "body": "Ongoing senior Spanish quality leadership, standards, workflows, and decision support."
+        "title": "Quality Advisory",
+        "price": "Desde $3,000 USD / mes",
+        "body": "Para organizaciones que requieren un liderazgo senior continuo para gobernar su calidad lingüística, estandarizar flujos de trabajo (workflows) y respaldar la toma de decisiones."
       }
     ]
   },
   "proofSignals": {
-    "eyebrow": "POR QUÉ LOS EQUIPOS CONFÍAN EN XPANDIA",
+    "eyebrow": "POR QUÉ CONFIAR EN XPANDIA",
     "items": [
       {
-        "label": "20+ AÑOS",
-        "text": "Experiencia global en localización y calidad de lenguaje."
+        "label": "20+ años",
+        "text": "Experiencia global en localización, calidad lingüística y multiculturalismo."
       },
       {
-        "label": "ENFOQUE EN ESPAÑOL",
-        "text": "LatAm, hispanos de EE. UU., España y variantes regionales."
+        "label": "Enfoque bilingüe",
+        "text": "Inglés-español, LatAm, US Hispanic, EE. UU., Canada y variantes regionales."
       },
       {
-        "label": "DISEÑADO PARA",
-        "text": "Equipos de IA, Producto, SaaS, EdTech, Localización, CX y Marketing."
+        "label": "Ideal para equipos",
+        "text": "AI, Producto, SaaS, EdTech, Localization, CX y Marketing."
       },
       {
-        "label": "EXPERTISE",
-        "text": "En language assurance, localización, QA, inteligencia cultural y comunicación de negocio."
+        "label": "Expertise",
+        "text": "Language Assurance, localization, QA, cultural intelligence y comunicación de negocios."
       }
     ]
   },
   "finalCta": {
-    "eyebrow": "¿LISTO PARA EMPEZAR?",
-    "headline": "Encontremos juntos el camino de calidad en español adecuado para tu equipo.",
-    "body": "Ya sea que necesites validar resultados de IA, mejorar contenido en español, capacitar a un equipo global o entender a una audiencia hispana, Xpandia puede ayudarte a elegir el siguiente paso adecuado.",
-    "ctaPrimary": "Agenda una llamada de diagnóstico",
-    "ctaSecondary": "Solicita una auditoría"
+    "eyebrow": "¿LISTO PARA COMENZAR?",
+    "headline": "Encontremos el camino correcto de calidad para tu equipo.",
+    "body": "Ya sea que necesites validar outputs de IA, mejorar contenido traducido, entrenar un equipo global o entender una audiencia de habla inglesa o hispana, Xpandia puede ayudarte a elegir el siguiente paso correcto.",
+    "ctaPrimary": "Hablar con un experto",
+    "ctaSecondary": ""
   }
 }

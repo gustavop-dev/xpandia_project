@@ -9,13 +9,13 @@ describe('LocalizationAdaptationPage', () => {
   it('renders the hero heading', async () => {
     renderWithIntl(await LocalizationAdaptationPage({ params: makeParams() }))
     expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(
-      'More than translated. Built for Spanish-speaking audiences.'
+      /More than translated\. Built for English and Spanish-speaking audiences/
     )
   })
 
   it('renders the SPANISH EXPERIENCE REPAIR & ADAPTATION eyebrow label', async () => {
     renderWithIntl(await LocalizationAdaptationPage({ params: makeParams() }))
-    const eyebrows = screen.getAllByText('SPANISH EXPERIENCE REPAIR & ADAPTATION')
+    const eyebrows = screen.getAllByText('LANGUAGE EXPERIENCE REPAIR & ADAPTATION')
     expect(eyebrows.length).toBeGreaterThan(0)
   })
 
@@ -26,7 +26,7 @@ describe('LocalizationAdaptationPage', () => {
 
   it('renders the request Spanish Experience Repair CTA link', async () => {
     renderWithIntl(await LocalizationAdaptationPage({ params: makeParams() }))
-    const links = screen.getAllByRole('link', { name: /request spanish experience repair/i })
+    const links = screen.getAllByRole('link', { name: /request experience repair/i })
     expect(links[0]).toHaveAttribute('href', '/contact')
   })
 
@@ -44,27 +44,27 @@ describe('LocalizationAdaptationPage', () => {
 
   it('renders the CORE SERVICES eyebrow', async () => {
     renderWithIntl(await LocalizationAdaptationPage({ params: makeParams() }))
-    expect(screen.getByText('CORE SERVICES')).toBeInTheDocument()
+    expect(screen.getByText('CORE ENGAGEMENTS')).toBeInTheDocument()
   })
 
   it('renders the methodology headline', async () => {
     renderWithIntl(await LocalizationAdaptationPage({ params: makeParams() }))
     expect(
-      screen.getByText('A practical path from existing Spanish to audience-ready Spanish.')
+      screen.getByText('A practical path from existing Spanish/English to audience-ready Spanish/English.')
     ).toBeInTheDocument()
   })
 
   it('renders the book diagnostic call CTA link', async () => {
     renderWithIntl(await LocalizationAdaptationPage({ params: makeParams() }))
-    const links = screen.getAllByRole('link', { name: /book a diagnostic call/i })
+    const links = screen.getAllByRole('link', { name: /talk to an expert/i })
     expect(links[0]).toHaveAttribute('href', '/contact')
   })
 })
 
 describe('generateMetadata — localization page', () => {
-  it('returns a title matching Spanish Experience Repair & Adaptation', async () => {
+  it('returns a title matching Language Experience Repair & Adaptation', async () => {
     const meta = await generateMetadata({ params: makeParams() })
-    expect(meta.title).toMatch(/Spanish Experience Repair & Adaptation/i)
+    expect(meta.title).toMatch(/Language Experience Repair & Adaptation/i)
   })
 
   it('returns the canonical alternates for the localization page', async () => {
