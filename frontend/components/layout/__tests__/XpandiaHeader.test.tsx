@@ -37,7 +37,7 @@ describe('XpandiaHeader', () => {
   it('renders the Blog navigation link', () => {
     renderWithIntl(<XpandiaHeader />)
     const blogLinks = screen.getAllByRole('link', { name: 'Blog' })
-    expect(blogLinks[0]).toHaveAttribute('href', '/blogs')
+    expect(blogLinks[0]).toHaveAttribute('href', '/blog')
   })
 
   it('renders the About navigation link', () => {
