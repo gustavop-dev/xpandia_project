@@ -162,6 +162,14 @@
       "description": "Guest toggles the header EN|ES switcher; URL gains/loses the /es prefix, content language changes, <html lang> updates",
       "expectedSpecs": 1
     },
+    "i18n-locale-persistence-nav": {
+      "name": "Locale persists across nav links",
+      "module": "navigation",
+      "roles": ["shared"],
+      "priority": "P2",
+      "description": "After switching to ES, guest navigates via header/footer/FAB links and every destination keeps the /es prefix and Spanish content",
+      "expectedSpecs": 1
+    },
     "footer-links-navigation": {
       "name": "Footer links navigation",
       "module": "navigation",

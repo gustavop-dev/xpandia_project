@@ -1,6 +1,6 @@
 'use client'
 
-import Link from 'next/link'
+import { Link } from '@/i18n/navigation'
 import { useTranslations } from '@/lib/i18n/useTranslations'
 
 export default function FABContact() {

@@ -1,8 +1,7 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
-import { usePathname, useRouter } from '@/i18n/navigation'
-import Link from 'next/link'
+import { Link, usePathname, useRouter } from '@/i18n/navigation'
 import Image from 'next/image'
 import { cn } from '@/lib/utils'
 import { useLocale } from '@/lib/i18n/context'
@@ -24,7 +23,7 @@ export default function XpandiaHeader() {
   const activePage = pathname === '/' ? 'home'
     : pathname.startsWith('/services') ? 'services'
     : pathname === '/about' ? 'about'
-    : pathname.startsWith('/blogs') ? 'blog'
+    : pathname.startsWith('/blog') ? 'blog'
     : pathname === '/contact' ? 'contact'
     : ''
   const [scrolled, setScrolled] = useState(false)
@@ -97,7 +96,7 @@ export default function XpandiaHeader() {
             </div>
 
             <Link className={cn(linkBase, activePage === 'about' && linkActive)} href="/about">{nav.about}</Link>
-            <Link className={cn(linkBase, activePage === 'blog' && linkActive)} href="/blogs">{nav.blog}</Link>
+            <Link className={cn(linkBase, activePage === 'blog' && linkActive)} href="/blog">{nav.blog}</Link>
           </nav>
 
           <div className="flex items-center gap-4">
@@ -157,7 +156,7 @@ export default function XpandiaHeader() {
           </Link>
         ))}
         <Link href="/about" className="block mt-5 py-[18px] border-b border-ink-150 font-display text-[22px] text-ink-900" onClick={closeDrawer}>{nav.about}</Link>
-        <Link href="/blogs" className="block py-[18px] border-b border-ink-150 font-display text-[22px] text-ink-900" onClick={closeDrawer}>{nav.blog}</Link>
+        <Link href="/blog" className="block py-[18px] border-b border-ink-150 font-display text-[22px] text-ink-900" onClick={closeDrawer}>{nav.blog}</Link>
         <Link href="/contact" className="btn btn-primary mt-8 w-full justify-center" onClick={closeDrawer}>
           {cta} <span className="btn-arrow"></span>
         </Link>
