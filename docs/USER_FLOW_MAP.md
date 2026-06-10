@@ -49,6 +49,8 @@ Use this document to understand each flow's steps, branching conditions, role re
 | `header-services-dropdown` | Header services dropdown | navigation | P3 | guest | all pages |
 | `fab-contact-button` | FAB contact button | navigation | P3 | guest | all pages |
 | `language-toggle-preference` | Language toggle | navigation | P3 | guest | all pages |
+| `i18n-locale-switch` | Locale switch (EN ⇄ ES) | navigation | P2 | shared | all pages |
+| `i18n-locale-persistence-nav` | Locale persists across nav links | navigation | P2 | shared | all pages |
 | `navigation-between-pages` | Cross-page navigation | navigation | P2 | guest | all pages |
 | `navigation-header` | Header nav renders | navigation | P3 | guest | all pages |
 | `navigation-footer` | Footer renders | navigation | P4 | guest | all pages |
@@ -400,6 +402,28 @@ Header and footer render on every route and expose the expected link set and CTA
 | **Frontend route** | all pages |
 
 **Steps:** User clicks the "ES" language toggle button in the header → `localStorage['xpandia-lang']` is set to `'es'`; the ES button becomes active (dark background).
+
+### i18n-locale-switch
+
+| Field | Value |
+|-------|-------|
+| **Priority** | P2 |
+| **Roles** | shared |
+| **Frontend route** | all pages |
+
+**Steps:** User clicks the "ES" (or "EN") toggle in the header → URL gains/loses the `/es` prefix, page content switches language, and `<html lang>` updates.
+
+### i18n-locale-persistence-nav
+
+| Field | Value |
+|-------|-------|
+| **Priority** | P2 |
+| **Roles** | shared |
+| **Frontend route** | all pages |
+
+**Steps:** User switches to ES (or lands on any `/es/…` URL) → user clicks links in the header nav, services dropdown, footer columns, or the contact FAB → every destination URL keeps the `/es` prefix and renders Spanish content.
+
+**Expected outcome:** The locale never silently resets to English while navigating; all internal chrome links are locale-aware (`@/i18n/navigation` `Link`).
 
 ### footer-links-navigation
 

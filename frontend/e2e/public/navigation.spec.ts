@@ -1,6 +1,6 @@
 import { test, expect } from '../test-with-coverage';
 import { waitForPageLoad } from '../fixtures';
-import { HOME_LOADS, NAVIGATION_BETWEEN_PAGES, NAVIGATION_HEADER, NAVIGATION_FOOTER } from '../helpers/flow-tags';
+import { HOME_LOADS, NAVIGATION_BETWEEN_PAGES, NAVIGATION_HEADER, NAVIGATION_FOOTER, HEADER_BLOG_LINK } from '../helpers/flow-tags';
 
 test.describe('Navigation', () => {
   test('should navigate to home page', { tag: [...HOME_LOADS] }, async ({ page }) => {
@@ -40,6 +40,16 @@ test.describe('Navigation', () => {
     await expect(footer).toBeVisible();
     await expect(footer.getByRole('link', { name: 'About' })).toBeVisible();
     await expect(footer.getByText('hello@xpandia.global')).toBeVisible();
+  });
+
+  test('clicking Blog in the header navigates to /blog', { tag: [...HEADER_BLOG_LINK] }, async ({ page }) => {
+    await page.goto('/');
+    await waitForPageLoad(page);
+
+    await page.getByRole('banner').getByRole('link', { name: 'Blog' }).click();
+
+    await expect(page).toHaveURL(/\/blog$/);
+    await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
   });
 
   test('should maintain navigation across pages', { tag: [...NAVIGATION_BETWEEN_PAGES] }, async ({ page }) => {

@@ -43,6 +43,7 @@ export const HEADER_SERVICES_DROPDOWN = ['@flow:header-services-dropdown', '@mod
 export const FAB_CONTACT_BUTTON = ['@flow:fab-contact-button', '@module:navigation', '@priority:P3'];
 export const LANGUAGE_TOGGLE_PREFERENCE = ['@flow:language-toggle-preference', '@module:navigation', '@priority:P3'];
 export const I18N_LOCALE_SWITCH = ['@flow:i18n-locale-switch', '@module:navigation', '@priority:P2'];
+export const I18N_LOCALE_PERSISTENCE_NAV = ['@flow:i18n-locale-persistence-nav', '@module:navigation', '@priority:P2'];
 export const FOOTER_LINKS_NAVIGATION = ['@flow:footer-links-navigation', '@module:navigation', '@priority:P4'];
 
 // ── Blog ──
