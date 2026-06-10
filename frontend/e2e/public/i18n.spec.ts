@@ -1,6 +1,6 @@
 import { test, expect } from '../test-with-coverage'
 import { waitForPageLoad } from '../fixtures'
-import { I18N_LOCALE_SWITCH } from '../helpers/flow-tags'
+import { I18N_LOCALE_SWITCH, I18N_LOCALE_PERSISTENCE_NAV } from '../helpers/flow-tags'
 
 test.describe('i18n locale switch', () => {
   test('switching EN→ES adds the /es prefix, swaps content, and sets html lang', { tag: [...I18N_LOCALE_SWITCH] }, async ({ page }) => {
@@ -33,5 +33,27 @@ test.describe('i18n locale switch', () => {
     await waitForPageLoad(page)
     await expect(page.locator('html')).toHaveAttribute('lang', 'es')
     await expect(page.getByText(/señales invisibles/i).first()).toBeVisible()
+  })
+})
+
+test.describe('i18n locale persistence across navigation', () => {
+  test('navigating via a header nav link keeps the /es prefix', { tag: [...I18N_LOCALE_PERSISTENCE_NAV] }, async ({ page }) => {
+    await page.goto('/es')
+    await waitForPageLoad(page)
+
+    await page.getByRole('banner').getByRole('link', { name: 'Nosotros' }).click()
+
+    await expect(page).toHaveURL(/\/es\/about$/)
+    await expect(page.locator('html')).toHaveAttribute('lang', 'es')
+  })
+
+  test('navigating via a footer link keeps the /es prefix', { tag: [...I18N_LOCALE_PERSISTENCE_NAV] }, async ({ page }) => {
+    await page.goto('/es')
+    await waitForPageLoad(page)
+
+    await page.locator('footer').getByRole('link', { name: 'Nosotros' }).click()
+
+    await expect(page).toHaveURL(/\/es\/about$/)
+    await expect(page.locator('html')).toHaveAttribute('lang', 'es')
   })
 })
