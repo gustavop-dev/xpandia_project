@@ -20,6 +20,9 @@ try {
 
 const nextConfig: NextConfig = {
   skipTrailingSlashRedirect: true,
+  // Next 16 blocks cross-origin requests to dev resources, which prevents
+  // hydration when browsing the dev server through the VM's host-only IP.
+  allowedDevOrigins: ['192.168.56.10'],
   images: {
     unoptimized: true,
     remotePatterns: [
