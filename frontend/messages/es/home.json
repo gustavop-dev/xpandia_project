@@ -8,7 +8,7 @@
   "hero": {
     "eyebrow": "EXPERTISE LINGÜÍSTICA · LANGUAGE ASSURANCE · CULTURAL INTELLIGENCE",
     "h1": "Traducciones que funcionan para",
-    "h1Accent": "usuarios reales.",
+    "h1Accent": "usuarios reales",
     "subheadline": "Xpandia ayuda a equipos de AI, SaaS, EdTech y producto a validar, mejorar y adaptar sus experiencias digitales en otros idiomas para que sean claras, confiables, naturales y listas para mercados internacionales.",
     "ctaPrimary": "Hablar con un experto",
     "ctaSecondary": "Explorar servicios",
@@ -35,8 +35,8 @@
     "eyebrow": "POR QUÉ XPANDIA",
     "headline": "La calidad de tus traducciones es la calidad de tu producto.",
     "body1": "La IA y la traducción automática pueden llevar tus contenidos muy lejos. Pero una traducción \"entendible\" no es suficiente cuando el lenguaje afecta directamente la confianza, la conversión, la experiencia del usuario (UX) o la adopción del producto.",
-    "body2": "Xpandia opera en esa última milla crítica, en donde un texto entendible no es suficiente para brindar la experiencia que se desea al usuario final. Ayudamos a equipos a validar, mejorar y entregar experiencias en otros idiomas que sean precisas, claras, naturales, culturalmente conscientes y alineadas con la forma en que los usuarios globales reales piensan, deciden y actúan.",
-    "body3": "Para empresas donde la calidad lingüística impacta directamente el revenue y la confianza del cliente, Xpandia transforma el criterio experto humano en evidencia clara y mejoras accionables, llevando el idioma de sus productos de entendible a listo para usar con usuarios reales.",
+    "body2": "Xpandia opera en esa última milla crítica, en donde un texto entendible no es suficiente para brindar la experiencia que se desea al usuario final. Ayudamos a equipos a validar, mejorar y entregar experiencias en otros idiomas que sean <b>precisas, claras, naturales, culturalmente conscientes y alineadas</b> con la forma en que los usuarios globales reales piensan, deciden y actúan.",
+    "body3": "Para empresas donde la calidad lingüística impacta directamente el revenue y la confianza del cliente, Xpandia transforma el <b>criterio experto humano</b> en evidencia clara y mejoras accionables, llevando el idioma de sus productos de entendible a listo para usar con usuarios reales.",
     "calloutTitle": "Validar. Adaptar. Entender.",
     "calloutLine": "Las tres formas en que Xpandia hace que tus experiencias traducidas funcionen en el mundo real."
   },

@@ -95,10 +95,10 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 {t('positioning.body1')}
               </p>
               <p className="text-ink-600 text-[19px] max-w-[56ch] mb-6">
-                {t('positioning.body2')}
+                {t.rich('positioning.body2', { b: chunks => <strong className="font-semibold text-ink-900">{chunks}</strong> })}
               </p>
               <p className="text-ink-600 text-[19px] max-w-[56ch]">
-                {t('positioning.body3')}
+                {t.rich('positioning.body3', { b: chunks => <strong className="font-semibold text-ink-900">{chunks}</strong> })}
               </p>
               <div className="mt-10 p-7 bg-ink-50 border border-ink-150 rounded-lg">
                 <div className="font-display text-[22px] font-medium text-ink-900 tracking-[-0.01em] leading-[1.2]">{t('positioning.calloutTitle')}</div>
