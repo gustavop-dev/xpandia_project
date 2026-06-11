@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useState, useEffect, useCallback } from 'react'
 import type { SupportedLocale } from './config'
-import { DEFAULT_LOCALE, isValidLocale } from './config'
+import { DEFAULT_LOCALE } from './config'
 
 interface I18nContextValue {
   locale: SupportedLocale
@@ -19,12 +19,11 @@ const STORAGE_KEY = 'xpandia-lang'
 export function I18nProvider({ children, initialLocale = DEFAULT_LOCALE }: { children: React.ReactNode; initialLocale?: SupportedLocale }) {
   const [locale, setLocaleState] = useState<SupportedLocale>(initialLocale)
 
+  // The URL locale segment is the source of truth: restoring a stored locale
+  // here would desync header/footer copy from the server-rendered page.
   useEffect(() => {
-    const stored = localStorage.getItem(STORAGE_KEY)
-    if (stored && isValidLocale(stored)) {
-      setLocaleState(stored)
-    }
-  }, [])
+    setLocaleState(initialLocale)
+  }, [initialLocale])
 
   const setLocale = useCallback((l: SupportedLocale) => {
     setLocaleState(l)
