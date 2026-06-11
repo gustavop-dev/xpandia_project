@@ -154,6 +154,14 @@
       "description": "Guest clicks the ES language toggle and the preference is stored in localStorage",
       "expectedSpecs": 1
     },
+    "mobile-language-toggle": {
+      "name": "Mobile language toggle in main bar",
+      "module": "navigation",
+      "roles": ["guest"],
+      "priority": "P3",
+      "description": "Guest on a mobile viewport switches locale from the EN|ES toggle in the main header bar without opening the drawer",
+      "expectedSpecs": 1
+    },
     "i18n-locale-switch": {
       "name": "Locale switch (EN ⇄ ES)",
       "module": "navigation",

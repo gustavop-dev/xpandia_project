@@ -10,6 +10,7 @@ import {
   HEADER_SERVICES_DROPDOWN,
   FAB_CONTACT_BUTTON,
   LANGUAGE_TOGGLE_PREFERENCE,
+  MOBILE_LANGUAGE_TOGGLE,
   FOOTER_LINKS_NAVIGATION,
 } from '../helpers/flow-tags'
 
@@ -134,6 +135,29 @@ test.describe('Navigation interactions', () => {
       await page.getByRole('link', { name: 'About' }).first().click()
 
       await expect(page).toHaveURL(/\/about/)
+      await context.close()
+    }
+  )
+
+  test(
+    'mobile main bar exposes the language toggle and switches to Spanish without opening the drawer',
+    { tag: [...MOBILE_LANGUAGE_TOGGLE] },
+    async ({ browser }) => {
+      const context = await browser.newContext({
+        viewport: { width: 390, height: 844 },
+        isMobile: true,
+      })
+      const page = await context.newPage()
+      await page.goto('/')
+      await waitForPageLoad(page)
+
+      const langGroup = page.getByRole('group', { name: /language|idioma/i })
+      await expect(langGroup).toBeVisible()
+
+      await langGroup.getByRole('button', { name: 'ES' }).click()
+
+      await expect(page).toHaveURL(/\/es$/)
+      await expect(page.locator('html')).toHaveAttribute('lang', 'es')
       await context.close()
     }
   )

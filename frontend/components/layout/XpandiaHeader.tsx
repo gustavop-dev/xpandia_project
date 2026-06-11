@@ -53,7 +53,7 @@ export default function XpandiaHeader() {
     <>
       <header
         className={cn(
-          "sticky top-0 z-50 border-b transition-[border-color] duration-[200ms]",
+          "sticky top-0 z-[1001] border-b transition-[border-color] duration-[200ms]",
           "bg-paper/82 backdrop-blur-[16px] backdrop-saturate-[180%]",
           scrolled ? "border-ink-150" : "border-transparent"
         )}
@@ -99,9 +99,9 @@ export default function XpandiaHeader() {
             <Link className={cn(linkBase, activePage === 'blog' && linkActive)} href="/blog">{nav.blog}</Link>
           </nav>
 
-          <div className="flex items-center gap-4">
-            {/* Language toggle — desktop only */}
-            <div className="hidden tablet:inline-flex font-mono text-[11px] tracking-[0.08em] border border-ink-200 rounded-full overflow-hidden text-ink-500" role="group" aria-label="Language">
+          <div className="flex items-center gap-3 tablet:gap-4">
+            {/* Language toggle — main bar on all breakpoints */}
+            <div className="inline-flex font-mono text-[11px] tracking-[0.08em] border border-ink-200 rounded-full overflow-hidden text-ink-500" role="group" aria-label="Language">
               <button
                 className={cn("border-0 px-[10px] py-[6px] cursor-pointer transition-colors", locale === 'en' ? "bg-ink-900 text-paper" : "bg-transparent")}
                 onClick={() => switchLocale('en')}
@@ -160,16 +160,6 @@ export default function XpandiaHeader() {
         <Link href="/contact" className="btn btn-primary mt-8 w-full justify-center" onClick={closeDrawer}>
           {cta} <span className="btn-arrow"></span>
         </Link>
-        <div className="mt-8 flex gap-1 pt-5 border-t border-ink-150">
-          <button
-            className={cn("px-[14px] py-2 rounded-full font-mono text-[11px] border transition-colors", locale === 'en' ? "bg-ink-900 text-paper border-transparent" : "bg-transparent text-ink-900 border-ink-200")}
-            onClick={() => switchLocale('en')}
-          >EN</button>
-          <button
-            className={cn("px-[14px] py-2 rounded-full font-mono text-[11px] border transition-colors", locale === 'es' ? "bg-ink-900 text-paper border-transparent" : "bg-transparent text-ink-900 border-ink-200")}
-            onClick={() => switchLocale('es')}
-          >ES</button>
-        </div>
       </aside>
     </>
   )
