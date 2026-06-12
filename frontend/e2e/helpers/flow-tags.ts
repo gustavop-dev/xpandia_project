@@ -32,6 +32,7 @@ export const CONTACT_FORM_SUBMIT = ['@flow:contact-form-submit', '@module:contac
 // ── CTA flows ──
 export const CTA_HOME_TO_CONTACT = ['@flow:cta-home-to-contact', '@module:cta', '@priority:P2'];
 export const CTA_SERVICE_DETAIL_TO_CONTACT = ['@flow:cta-service-detail-to-contact', '@module:cta', '@priority:P2'];
+export const CTA_SERVICES_CORE_SOLUTION_TO_CONTACT = ['@flow:cta-services-core-solution-to-contact', '@module:cta', '@priority:P3'];
 
 // ── Services interactions ──
 export const SERVICES_CARD_TO_DETAIL = ['@flow:services-card-to-detail', '@module:services', '@priority:P2'];

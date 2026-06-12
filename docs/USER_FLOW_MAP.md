@@ -32,6 +32,7 @@ Use this document to understand each flow's steps, branching conditions, role re
 | `services-fractional` | Fractional Lead | services | P2 | guest | `/services/fractional` |
 | `cta-home-to-contact` | CTA: Home → Contact | cta | P2 | guest | `/` |
 | `cta-service-detail-to-contact` | CTA: Service detail → Contact | cta | P2 | guest | `/services/qa` |
+| `cta-services-core-solution-to-contact` | CTA: Core solution card → Contact | cta | P3 | guest | `/services` |
 | `services-card-to-detail` | Service card → Detail page | services | P2 | guest | `/services` |
 | `breadcrumb-back-to-services` | Breadcrumb: Detail → Services | services | P2 | guest | `/services/qa` |
 | `about-page` | About | static | P3 | guest | `/about` |
@@ -152,6 +153,17 @@ Use this document to understand each flow's steps, branching conditions, role re
 
 **Steps:** User clicks the primary CTA "Request an AI Spanish QA Sprint" on `/services/qa` → browser navigates to `/contact`.
 
+### cta-services-core-solution-to-contact
+
+| Field | Value |
+|-------|-------|
+| **Priority** | P3 |
+| **Roles** | guest |
+| **Frontend route** | `/services` |
+| **API endpoints** | none |
+
+**Steps:** User clicks a core-solution card text-link CTA (e.g. "Request an AI QA Sprint →") in the CORE SERVICES / SOLUCIONES PRINCIPALES section of `/services` → browser navigates to `/contact`. Six cards expose this CTA; the spec exercises the first one as representative.
+
 ---
 
 ## Services Module
@@ -165,7 +177,7 @@ Use this document to understand each flow's steps, branching conditions, role re
 | **Frontend route** | `/services` |
 | **API endpoints** | none |
 
-Presents the three concrete Xpandia engagements with cross-links to the detail pages.
+Presents the three decision cards (choose-your-path) plus the six core-solution cards, with cross-links to the detail pages and contact.
 
 ### services-qa / services-audit / services-fractional
 

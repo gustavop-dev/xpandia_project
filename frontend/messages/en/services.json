@@ -234,106 +234,128 @@
       }
     ]
   },
-  "startingPoints": {
+  "coreSolutions": {
     "eyebrow": "CORE SERVICES",
     "headline": "Focused engagements designed to create momentum.",
     "intro": "Start with a clear scope, expert human review, practical deliverables, and recommendations your team can act on quickly.",
     "bestForLabel": "BEST FOR",
     "outcomeLabel": "OUTCOME",
-    "engagementStartsAtLabel": "ENGAGEMENT STARTS AT",
+    "deliverablesLabel": "DELIVERABLES",
+    "investmentLabel": "STARTS AT",
     "timelineLabel": "TIMELINE",
     "cards": [
       {
-        "name": "AI Spanish Quality Audit Sprint",
-        "bestFor": "Teams with AI outputs, chatbot responses, tutors, copilots, or agents operating in Spanish.",
+        "name": "AI Quality Audit Sprint",
+        "bestFor": "Teams with AI outputs, chatbot responses, tutors, copilots, agents, or automated support flows operating in Spanish and English.",
         "outcome": "Understand quality risks, scoring, issue patterns, and readiness before users rely on the experience.",
-        "deliverablesLabel": "Sprint deliverables",
         "deliverables": [
-          "Representative output review.",
-          "QA rubric.",
-          "Scorecard.",
-          "Issue taxonomy.",
-          "Severity ratings.",
-          "Remediation guidance.",
-          "Executive readout."
+          "Representative output review",
+          "QA rubric",
+          "Quality scorecard",
+          "Issue taxonomy",
+          "Severity ratings",
+          "Remediation guidance",
+          "Executive readout"
         ],
-        "price": [
-          "From $4,500"
-        ],
+        "investment": "From $4,500",
         "timeline": "10 business days",
         "cta": "Request an AI QA Sprint"
       },
       {
-        "name": "Spanish / LatAm Launch Readiness Audit",
-        "bestFor": "Teams launching or improving a Spanish website, app, onboarding flow, support journey, or customer experience.",
-        "outcome": "Identify what affects clarity, trust, UX, cultural fit, and readiness before launch or relaunch.",
-        "deliverablesLabel": "Audit deliverables",
+        "name": "Spanish Launch Readiness Audit",
+        "bestFor": "Teams launching or preparing a Spanish or English website, app, onboarding flow, support journey, AI experience, or customer-facing product surface.",
+        "outcome": "Identify what affects clarity, trust, UX, cultural fit, conversion, and readiness before launch or relaunch.",
         "deliverables": [
-          "Journey review.",
-          "Screenshots and annotations.",
-          "Issue log.",
-          "Quick wins.",
-          "Prioritized remediation backlog.",
-          "Readiness recommendation."
+          "Journey review",
+          "Screenshots and annotations",
+          "Issue log",
+          "Quick wins",
+          "Prioritized remediation backlog",
+          "Readiness recommendation"
         ],
-        "price": [
-          "From $3,500"
-        ],
+        "investment": "From $3,500",
         "timeline": "10–12 business days",
         "cta": "Request a Launch Readiness Audit"
       },
       {
-        "name": "Localization Review & Repair",
-        "bestFor": "Teams with existing Spanish translations that need improvement, consistency, adaptation, or publication readiness.",
-        "outcome": "Turn translated Spanish into content that feels natural, clear, trustworthy, and aligned with your audience.",
-        "deliverablesLabel": "Review deliverables",
+        "name": "Language Experience Repair",
+        "bestFor": "Teams with existing Spanish or English content that sounds translated, inconsistent, unclear, generic, too literal, or not ready for real users.",
+        "outcome": "Turn underperforming language into content that feels clear, natural, trustworthy, and aligned with your product, audience, and business goal.",
+        "canIncludeLabel": "CAN INCLUDE",
+        "canInclude": [
+          "Product copy",
+          "Website or landing page copy",
+          "Support content",
+          "Help center content",
+          "AI response patterns",
+          "Marketing copy",
+          "Terminology and tone fixes",
+          "Regional adaptation"
+        ],
         "deliverables": [
-          "Content review.",
-          "Rewrite recommendations.",
-          "Terminology notes.",
-          "Regional fit guidance.",
-          "QA checklist.",
-          "Final-ready copy where scope allows."
+          "Revised Spanish/English copy",
+          "Rewrite recommendations",
+          "Terminology and tone notes",
+          "Before/after examples",
+          "Priority fixes",
+          "Implementation guidance"
         ],
-        "price": [
-          "From $2,500"
-        ],
-        "timeline": "5–10 business days",
-        "cta": "Request Localization Review"
+        "investment": "From $2,500",
+        "timeline": "5–10 business days depending on scope",
+        "cta": "Request Spanish Experience Repair"
       },
       {
-        "name": "Cultural Intelligence Talks",
-        "tagline": "Read the invisible rules of global business.",
-        "overview": "Culture is the hidden operating system behind every global interaction. It shapes how people build trust, read timing, respond to hierarchy, give feedback, handle risk, make decisions, and interpret what is said — and what is left unsaid. Xpandia Talks help leaders and teams decode those invisible rules with clarity, so they can communicate more effectively, reduce costly friction, and build stronger relationships across markets, languages, and audiences.",
+        "name": "ACI Talk / Executive Briefing",
         "bestFor": "Leadership, Product, Marketing, CX, Localization, People, and Global Operations teams working across cultures, markets, languages, or international teams.",
-        "outcome": "Your team leaves with a practical understanding of how Cultural Intelligence can improve collaboration, reduce friction, strengthen trust, and support better business decisions across cultures.",
-        "themesLabel": "Talk themes",
-        "themes": [
-          "Cultural Intelligence (CQ) for global business.",
-          "The invisible protocols behind trust and communication.",
-          "Cultural red lines and how to avoid crossing them.",
-          "How culture shapes feedback, hierarchy, time, and decision-making.",
-          "Culturalization for products, content, and customer experience.",
-          "Hispanic and Spanish-speaking audience expectations.",
-          "Mindset shifts for more productive global teams."
-        ],
-        "deliverablesLabel": "Talk deliverables",
+        "outcome": "Help your team understand how the Cultural Intelligence (CQ) engine helps build more productive teams that drive trust, positive feedback, market readiness, audience expectations, and increased ROI.",
         "deliverables": [
-          "45–60 minute live talk or executive briefing.",
-          "Pre-call to understand audience and business context.",
-          "Practical CQ framework.",
-          "Real business examples tailored to the audience.",
-          "Optional Q&A.",
-          "One-page summary or team checklist.",
-          "Recommended next steps for workshop, audit, or advisory engagement."
+          "45–60 minute live talk or executive briefing",
+          "Pre-call context review",
+          "Practical CQ / ACI framework",
+          "Real business examples",
+          "Optional Q&A",
+          "One-page team checklist",
+          "Recommended next steps"
         ],
-        "price": [
-          "Virtual talks from $1,500",
-          "Executive briefings from $2,500",
-          "Custom workshops from $4,500"
+        "investment": "Talks from $1,500 / Executive briefings from $2,500",
+        "timeline": "Single session",
+        "cta": "Book an ACI Talk"
+      },
+      {
+        "name": "Hispanic Audience & Messaging Review",
+        "bestFor": "Marketing, Growth, Product Marketing, CX, Localization, and leadership teams adapting messages for Hispanic, LatAm, US Hispanic, or Spanish-speaking audiences.",
+        "outcome": "Identify whether your message is clear, credible, culturally aligned, persuasive, and built around the trust signals your audience needs.",
+        "deliverables": [
+          "Messaging review",
+          "Audience fit findings",
+          "Trust signal analysis",
+          "Tone and context recommendations",
+          "Cultural friction notes",
+          "Suggested rewrites",
+          "Executive summary"
         ],
-        "timeline": "Single session. Custom workshops and advisory engagements are scoped based on audience, format, and level of customization.",
-        "cta": "Book a CQ Talk"
+        "investment": "From $3,500",
+        "timeline": "7–10 business days",
+        "cta": "Request Messaging Review"
+      },
+      {
+        "name": "Language Quality Advisory",
+        "bestFor": "Teams that need ongoing senior Spanish/English quality judgment, review workflows, QA standards, vendor/reviewer alignment, terminology guidance, or recurring quality decisions.",
+        "outcome": "Build a practical Spanish/English quality system your team can use to make better decisions, reduce review friction, and scale quality with confidence.",
+        "deliverables": [
+          "Monthly advisory sessions",
+          "Quality roadmap",
+          "Retesting",
+          "Sign-off guidance",
+          "Terminology and style standards",
+          "Vendor alignment",
+          "QA criteria",
+          "Lightweight governance",
+          "Decision support"
+        ],
+        "investment": "From $3,000/month",
+        "timeline": "Monthly engagement (recommended min: 3 months)",
+        "cta": "Explore Language Quality Advisory"
       }
     ]
   },

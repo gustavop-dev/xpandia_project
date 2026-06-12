@@ -106,6 +106,14 @@
       "description": "Guest clicks the primary CTA on a service detail page and lands on /contact",
       "expectedSpecs": 1
     },
+    "cta-services-core-solution-to-contact": {
+      "name": "CTA: Core solution card → Contact",
+      "module": "cta",
+      "roles": ["guest"],
+      "priority": "P3",
+      "description": "Guest clicks a core-solution card text-link CTA (e.g. 'Request an AI QA Sprint →') on /services and lands on /contact",
+      "expectedSpecs": 1
+    },
     "services-card-to-detail": {
       "name": "Services card → Detail page",
       "module": "services",

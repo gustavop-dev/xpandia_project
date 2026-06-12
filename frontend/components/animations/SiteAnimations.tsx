@@ -91,6 +91,23 @@ export default function SiteAnimations() {
       })
 
       // ── Numbered lists (methodology, how-it-works) ─────────────────────────
+      // Spotlight variant: after the list enters, step titles light up in
+      // sequence (01 → 04) to walk the reader through the transition.
+      gsap.utils.toArray<HTMLElement>('.num-list-spotlight').forEach(list => {
+        gsap.fromTo(list.querySelectorAll('h4'),
+          { opacity: 0.3 },
+          {
+            opacity: 1,
+            duration: 0.55,
+            stagger: 0.35,
+            ease: EASE,
+            overwrite: 'auto',
+            clearProps: 'opacity',
+            scrollTrigger: { trigger: list, start: 'top 75%', once: true },
+          },
+        )
+      })
+
       gsap.utils.toArray<HTMLElement>('.num-list').forEach(list => {
         gsap.fromTo(list.querySelectorAll('li'),
           { y: 20, opacity: 0 },
