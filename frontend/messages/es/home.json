@@ -233,22 +233,6 @@
       }
     ]
   },
-  "buyer": {
-    "eyebrow": "A QUIÉN AYUDAMOS",
-    "headline": "Pensado para los líderes responsables de la calidad del español.",
-    "roles": [
-      "Head of Product",
-      "VP de Producto",
-      "Líder de Producto de AI / ML",
-      "Director de Localización",
-      "Head of Globalization",
-      "VP de Customer Experience",
-      "Líder de Soporte al Cliente",
-      "Líder de Contenido EdTech",
-      "Líder de Marketing / Growth",
-      "Líder de Trust & Safety"
-    ]
-  },
   "finalCta": {
     "eyebrow": "PRÓXIMO PASO",
     "headline": "Conoce el estado real de tus versiones traducidas — y cuál es el paso a",

@@ -50,7 +50,6 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
     dim?: boolean
   }>
   const audienceCards = t.raw('builtFor.cards') as Array<{ title: string; body: string }>
-  const buyerRoles = t.raw('buyer.roles') as string[]
   const aiLogos = t.raw('aiEcosystem.logos') as Array<{ name: string; file: string }>
 
   return (
@@ -236,23 +235,6 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 <p className="text-ink-600 text-[14.5px] leading-[1.55]">{a.body}</p>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Buyer — Who we help */}
-      <section className="tight">
-        <div className="container">
-          <div className="grid grid-cols-1 tablet:grid-cols-[1fr_2fr] gap-8 py-14 border-t border-b border-ink-150 items-start">
-            <div>
-              <div className="eyebrow">{t('buyer.eyebrow')}</div>
-              <h2 style={{ marginTop: 24, fontSize: 'clamp(26px,2.6vw,40px)', lineHeight: 1.1, letterSpacing: '-0.02em' }}>{t('buyer.headline')}</h2>
-            </div>
-            <ul className="checklist">
-              {buyerRoles.map(role => (
-                <li key={role}><span className="chk"></span><span>{role}</span></li>
-              ))}
-            </ul>
           </div>
         </div>
       </section>
