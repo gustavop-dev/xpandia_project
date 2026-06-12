@@ -73,6 +73,21 @@ export default function SiteAnimations() {
           ease: EASE,
           scrollTrigger: { trigger: el, start: 'top 85%', once: true },
         })
+        // Bars fill from the left once the card is in view. scaleX (not width)
+        // keeps the per-row width from the copy JSON as the single source of
+        // the final value.
+        gsap.fromTo(el.querySelectorAll('.scorecard-bar > span'),
+          { scaleX: 0, transformOrigin: 'left center' },
+          {
+            scaleX: 1,
+            duration: 0.9,
+            stagger: 0.08,
+            ease: EASE,
+            overwrite: 'auto',
+            clearProps: 'transform',
+            scrollTrigger: { trigger: el, start: 'top 85%', once: true },
+          },
+        )
       })
 
       // ── Numbered lists (methodology, how-it-works) ─────────────────────────

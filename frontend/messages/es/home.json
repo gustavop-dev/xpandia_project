@@ -200,18 +200,6 @@
           "val": "3.1%",
           "dim": true
         }
-      ],
-      "criteria": [
-        "Precisión",
-        "Claridad",
-        "Naturalidad",
-        "Tono y registro",
-        "Terminología",
-        "Ajuste regional",
-        "Ajuste cultural",
-        "Fricción de UX",
-        "Seguimiento de instrucciones",
-        "Severidad de riesgo"
       ]
     }
   },

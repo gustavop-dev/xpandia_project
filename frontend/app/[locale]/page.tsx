@@ -49,7 +49,6 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
     accent?: boolean
     dim?: boolean
   }>
-  const scorecardCriteria = t.raw('deliverables.scorecard.criteria') as string[]
   const audienceCards = t.raw('builtFor.cards') as Array<{ title: string; body: string }>
   const buyerRoles = t.raw('buyer.roles') as string[]
   const aiLogos = t.raw('aiEcosystem.logos') as Array<{ name: string; file: string }>
@@ -155,29 +154,6 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         </div>
       </section>
 
-      {/* Methodology — dark */}
-      <section className="bg-ink-900 text-paper">
-        <div className="container">
-          <div className="grid grid-cols-1 tablet:grid-cols-[1fr_1.6fr] gap-20 items-start">
-            <div>
-              <div className="eyebrow !text-ink-400">{t('methodology.eyebrow')}</div>
-              <h2 style={{ marginTop: 24 }}>{t('methodology.headline')}</h2>
-              <p className="text-ink-300 max-w-[40ch]" style={{ marginTop: 24 }}>{t('methodology.intro')}</p>
-            </div>
-            <ol className="num-list">
-              {methodologySteps.map(s => (
-                <li key={s.title} style={{ borderTopColor: 'rgba(255,255,255,0.1)' }}>
-                  <div>
-                    <h4>{s.title}</h4>
-                    <div className="n-body !text-ink-300">{s.body}</div>
-                  </div>
-                </li>
-              ))}
-            </ol>
-          </div>
-        </div>
-      </section>
-
       {/* Deliverables */}
       <section>
         <div className="container">
@@ -216,12 +192,30 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                   {t('deliverables.scorecard.footer')}
                 </div>
               </div>
-              <div className="mt-8 flex flex-wrap gap-2">
-                {scorecardCriteria.map(criterion => (
-                  <span key={criterion} className="tag">{criterion}</span>
-                ))}
-              </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Methodology — dark */}
+      <section className="bg-ink-900 text-paper">
+        <div className="container">
+          <div className="grid grid-cols-1 tablet:grid-cols-[1fr_1.6fr] gap-20 items-start">
+            <div>
+              <div className="eyebrow !text-ink-400">{t('methodology.eyebrow')}</div>
+              <h2 style={{ marginTop: 24 }}>{t('methodology.headline')}</h2>
+              <p className="text-ink-300 max-w-[40ch]" style={{ marginTop: 24 }}>{t('methodology.intro')}</p>
+            </div>
+            <ol className="num-list">
+              {methodologySteps.map(s => (
+                <li key={s.title} style={{ borderTopColor: 'rgba(255,255,255,0.1)' }}>
+                  <div>
+                    <h4>{s.title}</h4>
+                    <div className="n-body !text-ink-300">{s.body}</div>
+                  </div>
+                </li>
+              ))}
+            </ol>
           </div>
         </div>
       </section>

@@ -200,18 +200,6 @@
           "val": "3.1%",
           "dim": true
         }
-      ],
-      "criteria": [
-        "Accuracy",
-        "Clarity",
-        "Naturalness",
-        "Tone & register",
-        "Terminology",
-        "Regional fit",
-        "Cultural fit",
-        "UX friction",
-        "Instruction-following",
-        "Risk severity"
       ]
     }
   },
