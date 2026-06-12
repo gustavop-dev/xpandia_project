@@ -6,6 +6,7 @@ jest.mock('gsap', () => ({
   default: {
     registerPlugin: jest.fn(),
     from: jest.fn(),
+    fromTo: jest.fn(),
     matchMedia: jest.fn(() => ({
       add: jest.fn((_query: string, cb: () => void) => cb()),
       revert: jest.fn(),

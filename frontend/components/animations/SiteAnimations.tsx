@@ -42,15 +42,23 @@ export default function SiteAnimations() {
       })
 
       // ── Service cards (home + services index) ──────────────────────────────
+      // fromTo (not from) with no stagger: batch can re-fire while a card is
+      // mid-flight, and from() would capture that offset as the end value,
+      // freezing the cards in a staircase. Explicit end values self-heal, and
+      // animating the row as one block keeps the cards visually aligned.
       ScrollTrigger.batch('.service-card', {
         onEnter: els =>
-          gsap.from(els, {
-            y: ENTER_Y,
-            opacity: 0,
-            duration: 0.65,
-            stagger: 0.1,
-            ease: EASE,
-          }),
+          gsap.fromTo(els,
+            { y: ENTER_Y, opacity: 0 },
+            {
+              y: 0,
+              opacity: 1,
+              duration: 0.65,
+              ease: EASE,
+              overwrite: 'auto',
+              clearProps: 'transform',
+            },
+          ),
         once: true,
         start: 'top 90%',
       })
@@ -69,38 +77,53 @@ export default function SiteAnimations() {
 
       // ── Numbered lists (methodology, how-it-works) ─────────────────────────
       gsap.utils.toArray<HTMLElement>('.num-list').forEach(list => {
-        gsap.from(list.querySelectorAll('li'), {
-          y: 20,
-          opacity: 0,
-          duration: 0.6,
-          stagger: 0.1,
-          ease: EASE,
-          scrollTrigger: { trigger: list, start: 'top 85%', once: true },
-        })
+        gsap.fromTo(list.querySelectorAll('li'),
+          { y: 20, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.6,
+            stagger: 0.1,
+            ease: EASE,
+            overwrite: 'auto',
+            clearProps: 'transform',
+            scrollTrigger: { trigger: list, start: 'top 85%', once: true },
+          },
+        )
       })
 
       // ── [data-stagger] — grid containers whose children stagger in ─────────
       gsap.utils.toArray<HTMLElement>('[data-stagger]').forEach(container => {
-        gsap.from(Array.from(container.children), {
-          y: ENTER_Y,
-          opacity: 0,
-          duration: 0.65,
-          stagger: 0.1,
-          ease: EASE,
-          scrollTrigger: { trigger: container, start: 'top 88%', once: true },
-        })
+        gsap.fromTo(Array.from(container.children),
+          { y: ENTER_Y, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.65,
+            stagger: 0.1,
+            ease: EASE,
+            overwrite: 'auto',
+            clearProps: 'transform',
+            scrollTrigger: { trigger: container, start: 'top 88%', once: true },
+          },
+        )
       })
 
       // ── [data-reveal] — individual blocks ─────────────────────────────────
       ScrollTrigger.batch('[data-reveal]', {
         onEnter: els =>
-          gsap.from(els, {
-            y: 20,
-            opacity: 0,
-            duration: ENTER_DURATION,
-            stagger: 0.08,
-            ease: EASE,
-          }),
+          gsap.fromTo(els,
+            { y: 20, opacity: 0 },
+            {
+              y: 0,
+              opacity: 1,
+              duration: ENTER_DURATION,
+              stagger: 0.08,
+              ease: EASE,
+              overwrite: 'auto',
+              clearProps: 'transform',
+            },
+          ),
         once: true,
         start: 'top 88%',
       })
