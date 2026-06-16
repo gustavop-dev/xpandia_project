@@ -11,8 +11,8 @@
   },
   "hero": {
     "eyebrow": "LANGUAGE EXPERIENCE REPAIR & ADAPTATION",
-    "h1": "More than translated. Built for English and",
-    "h1Accent": "Spanish-speaking audiences",
+    "h1": "More than translated. Built for",
+    "h1Accent": "English and Spanish",
     "h1End": "",
     "subheadline": "Xpandia helps teams repair, improve, and adapt high-impact Spanish and English content, product experiences, documentation, and campaigns so they feel clear, natural, trustworthy, and ready for real users.",
     "body": "We combine senior Spanish and English language expertise, localization judgment, UX awareness, and cultural adaptation to help your content work across the moments that matter: product use, onboarding, support, learning, marketing, and conversion.",
@@ -32,58 +32,57 @@
         "desc": "LatAm, US Hispanic, Spain, neutral Spanish, or specific regional markets."
       }
     ],
-    "h1Suffix": "."
+    "h1Suffix": "-speaking audiences."
   },
   "positioning": {
     "eyebrow": "WHY REPAIR & ADAPTATION",
     "headline": "Translation helps users read. Adaptation helps users trust, understand, and act.",
     "body1": "A Spanish or English version can be technically correct and still feel foreign, literal, inconsistent, or disconnected from the audience. That gap affects clarity, trust, UX, conversion, support, learning, and product adoption.",
     "body2": "Language Experience Repair & Adaptation closes that gap. We help teams improve Spanish and English experiences that respect the product context, the user journey, the audience, the market, and the business goal.",
-    "callout": "The goal is not just Spanish content. The goal is Spanish that feels intentional, usable, and aligned with how your audience thinks, decides, learns, and acts.",
+    "callout": "Our infrastructure is built exclusively for high-impact surfaces, where expert human judgment, deep context, and cultural adaptation are business-critical.",
     "supporting": "Our infrastructure is built exclusively for high-impact surfaces, where expert human judgment, deep context, and cultural adaptation are business-critical."
   },
   "whatWeAdapt": {
     "eyebrow": "WHAT WE ADAPT",
-    "headline": "Spanish content across the full user journey.",
-    "intro": "Localization & Adaptation can support any Spanish touchpoint your audience reads, follows, clicks, learns from, or uses to make a decision.",
+    "headline": "High-impact Spanish and English content across the user journey.",
+    "intro": "We focus on the language touchpoints your audience reads, follows, clicks, learns from, or uses to make a decision.",
     "cards": [
       {
-        "title": "Websites and landing pages",
-        "desc": "Homepage, service pages, pricing pages, product pages, landing pages, FAQs, lead-generation flows, and conversion copy."
+        "title": "Product and UX copy",
+        "desc": "Buttons, menus, onboarding, tooltips, notifications, forms, error messages."
       },
       {
-        "title": "Product UI and UX copy",
-        "desc": "Buttons, menus, settings, empty states, onboarding, tooltips, notifications, error messages, forms, and product flows."
+        "title": "Websites and landing pages",
+        "desc": "Homepages, product pages, service pages, pricing pages, FAQs, lead-generation."
+      },
+      {
+        "title": "Support and CX content",
+        "desc": "Help center articles, support macros, chatbot scripts, escalation language."
       },
       {
         "title": "Marketing and campaigns",
-        "desc": "Email campaigns, ads, launch messaging, sales decks, lead magnets, newsletters, social content, and campaign concepts."
+        "desc": "Email campaigns, ads, launch messaging, sales content, value propositions."
       },
       {
-        "title": "Help center and documentation",
-        "desc": "Knowledge base articles, FAQs, how-to guides, support content, release notes, product documentation, and user education."
+        "title": "Learning and EdTech content",
+        "desc": "Lessons, scripts, quizzes, instructions, assessments, educational explanations."
       },
       {
-        "title": "EdTech and learning content",
-        "desc": "Lessons, scripts, quizzes, instructions, assessments, learner feedback, tutoring content, and educational explanations."
-      },
-      {
-        "title": "Support and CX communication",
-        "desc": "Macros, support replies, chatbot scripts, escalation language, customer emails, and service recovery messages."
+        "title": "Terminology and tone",
+        "desc": "Preferred terms, consistency rules, tone guidance, style fixes, regional recommendations."
       }
     ]
   },
   "whenToUse": {
     "eyebrow": "WHEN TO USE IT",
-    "headline": "Use it when Spanish needs to feel native, clear, and useful.",
+    "headline": "Use it when Spanish/English exists, but does not yet feel made for the user.",
     "items": [
-      "Your English-first product, website, content, or campaign needs a professional Spanish version.",
-      "Your existing Spanish translation sounds literal, generic, inconsistent, or disconnected from the audience.",
-      "Your product UI, help content, or marketing copy needs to feel natural and trustworthy in Spanish.",
-      "Your Spanish experience needs regional adaptation for LatAm, US Hispanic, Spain, or a specific market.",
+      "Your Spanish/English content sounds literal, generic, inconsistent, or disconnected from the audience.",
+      "Your product UI, help content, or marketing copy needs to feel natural and trustworthy.",
+      "Your English-first product, website, content, or campaign needs an expert Spanish version or vice versa.",
+      "Your Spanish/English experience needs regional adaptation for LatAm, US Hispanic, Spain, or a specific market.",
       "Your content needs to support conversion, clarity, trust, learning, or user action.",
-      "Your team needs Spanish copy that works in context, not isolated strings or word-by-word translation.",
-      "Your audience understands the words, but the experience still does not feel made for them."
+      "Your audience understands the words, but the experience still does not feel built for them."
     ]
   },
   "coreSolutions": {
@@ -151,7 +150,7 @@
   },
   "methodology": {
     "eyebrow": "METHODOLOGY",
-    "headline": "A practical path from <u>existing Spanish/English</u> to <u>audience-ready Spanish/English</u>.",
+    "headline": "A practical path from <u>translated content</u> to <u>audience-ready product</u>.",
     "intro": "",
     "steps": [
       {
