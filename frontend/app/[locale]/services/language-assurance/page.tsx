@@ -24,17 +24,15 @@ export default async function LanguageAssurancePage({ params }: { params: Promis
   const heroProofPoints = t.raw('hero.proofPoints') as Array<{ title: string; desc: string }>
   const coverageCards = t.raw('whatWeEvaluate.cards') as Array<{ title: string; desc: string }>
   const whenToUseItems = t.raw('whenToUse.items') as string[]
-  const engagementItems = t.raw('engagements.items') as Array<{
+  const coreSolutionCards = t.raw('coreSolutions.cards') as Array<{
     name: string
-    tagline: string | null
     bestFor: string
     outcome: string
-    deliverablesLabel: string
+    canIncludeLabel?: string
+    canInclude?: string[]
     deliverables: string[]
-    extras: Array<{ label: string; body: string | null; items: string[] | null }>
-    price: string
+    investment: string
     timeline: string
-    note?: string
     cta: string
   }>
   const additionalModules = t.raw('additionalModules.modules') as string[]
@@ -155,66 +153,71 @@ export default async function LanguageAssurancePage({ params }: { params: Promis
         </div>
       </section>
 
-      {/* 5. Core services */}
+      {/* 5. Core solutions */}
       <section>
         <div className="container">
-          <div className="eyebrow mb-3">{t('engagements.eyebrow')}</div>
-          <div className="section-head">
-            <h2 className="head-title">{t('engagements.headline')}</h2>
-            <p className="head-lede">{t('engagements.intro')}</p>
+          <div className="eyebrow mb-3">{t('coreSolutions.eyebrow')}</div>
+          <div className="section-head" style={{ gridTemplateColumns: '1fr' }}>
+            <h2 className="head-title max-w-[24ch]">{t('coreSolutions.headline')}</h2>
           </div>
-          <div className="flex flex-col gap-5 mt-12">
-            {engagementItems.map((e, i) => (
-              <div key={e.name} className="p-8 tablet:p-10 bg-white border border-ink-150 rounded-lg">
-                <div className="grid grid-cols-1 tablet:grid-cols-[1.4fr_2fr] gap-8 tablet:gap-12">
-                  <div>
-                    <div className="font-mono text-[11px] text-ink-500 tracking-[0.1em] mb-3">{`0${i + 1}`} / {t('engagements.engagementLabel')}</div>
-                    <h3 className="font-display text-[clamp(24px,2.4vw,32px)] font-medium tracking-[-0.02em] leading-[1.1] mb-2">{e.name}</h3>
-                    {e.tagline && <p className="text-ink-600 text-[16px] italic mb-4">{e.tagline}</p>}
-                    <div className="mt-4 flex flex-wrap gap-2">
-                      <span className="tag accent">{e.price}</span>
-                      <span className="tag">{e.timeline}</span>
-                    </div>
-                    <div className="mt-6">
-                      <Link className="btn btn-secondary btn-small" href="/contact">{e.cta}</Link>
-                    </div>
+          <div className="grid grid-cols-1 tablet:grid-cols-2 gap-6 mt-12">
+            {coreSolutionCards.map(card => (
+              <div key={card.name} className="flex flex-col p-8 bg-white border border-ink-150 rounded-lg">
+                <h3 className="font-display text-[22px] font-medium tracking-[-0.015em] leading-[1.15] text-ink-900">
+                  {card.name}
+                </h3>
+
+                <div className="mt-5">
+                  <div className="font-mono text-[11px] tracking-[0.1em] text-ink-500 mb-1.5">{t('coreSolutions.bestForLabel')}</div>
+                  <p className="text-ink-600 text-[15px] leading-[1.5]">{card.bestFor}</p>
+                </div>
+
+                <div className="mt-5">
+                  <div className="font-mono text-[11px] tracking-[0.1em] text-ink-500 mb-1.5">{t('coreSolutions.outcomeLabel')}</div>
+                  <p className="text-ink-600 text-[15px] leading-[1.5]">{card.outcome}</p>
+                </div>
+
+                {card.canInclude && (
+                  <div className="mt-5">
+                    <div className="font-mono text-[11px] tracking-[0.1em] text-ink-500 mb-1.5">{card.canIncludeLabel}</div>
+                    <ul className="space-y-1 text-ink-600 text-[14.5px] leading-[1.5]">
+                      {card.canInclude.map(item => (
+                        <li key={item} className="flex gap-2.5">
+                          <span className="text-accent mt-px">·</span>
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-                  <div>
-                    <div className="mb-5">
-                      <div className="eyebrow no-bar text-[10px] mb-2">{t('engagements.bestForLabel')}</div>
-                      <p className="text-ink-600 text-[15px] leading-[1.5]">{e.bestFor}</p>
-                    </div>
-                    <div className="mb-5">
-                      <div className="eyebrow no-bar text-[10px] mb-2">{t('engagements.outcomeLabel')}</div>
-                      <p className="text-ink-600 text-[15px] leading-[1.5]">{e.outcome}</p>
-                    </div>
-                    {e.extras.map(ex => (
-                      <div key={ex.label} className="mb-5">
-                        <div className="eyebrow no-bar text-[10px] mb-2">{ex.label.toUpperCase()}</div>
-                        {ex.body && <p className="text-ink-600 text-[15px] leading-[1.5]">{ex.body}</p>}
-                        {ex.items && (
-                          <ul className="mt-1 space-y-1.5">
-                            {ex.items.map(it => (
-                              <li key={it} className="text-ink-600 text-[15px] leading-[1.5] flex gap-2">
-                                <span className="text-primary mt-[2px]">•</span><span>{it}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        )}
-                      </div>
+                )}
+
+                <div className="mt-5">
+                  <div className="font-mono text-[11px] tracking-[0.1em] text-ink-500 mb-1.5">{t('coreSolutions.deliverablesLabel')}</div>
+                  <ul className="space-y-1 text-ink-600 text-[14.5px] leading-[1.5]">
+                    {card.deliverables.map(d => (
+                      <li key={d} className="flex gap-2.5">
+                        <span className="text-accent mt-px">·</span>
+                        <span>{d}</span>
+                      </li>
                     ))}
-                    <div>
-                      <div className="eyebrow no-bar text-[10px] mb-3">{e.deliverablesLabel.toUpperCase()}</div>
-                      <ul className="checklist">
-                        {e.deliverables.map(d => (
-                          <li key={d} className="!py-[10px] !text-[15px]"><span className="chk"></span><span className="text-ink-700">{d}</span></li>
-                        ))}
-                      </ul>
-                    </div>
-                    {e.note && (
-                      <p className="text-ink-500 text-[13px] leading-[1.5] mt-5">{e.note}</p>
-                    )}
+                  </ul>
+                </div>
+
+                <div className="mt-6 pt-5 border-t border-ink-150 flex flex-wrap gap-x-10 gap-y-3">
+                  <div>
+                    <div className="font-mono text-[11px] tracking-[0.1em] text-ink-500 mb-1">{t('coreSolutions.investmentLabel')}</div>
+                    <p className="text-ink-900 text-[15px] font-medium">{card.investment}</p>
                   </div>
+                  <div>
+                    <div className="font-mono text-[11px] tracking-[0.1em] text-ink-500 mb-1">{t('coreSolutions.timelineLabel')}</div>
+                    <p className="text-ink-600 text-[15px]">{card.timeline}</p>
+                  </div>
+                </div>
+
+                <div className="mt-auto pt-6">
+                  <Link href="/contact" className="text-primary font-medium text-[15px] hover:underline">
+                    {card.cta} →
+                  </Link>
                 </div>
               </div>
             ))}
@@ -226,11 +229,11 @@ export default async function LanguageAssurancePage({ params }: { params: Promis
       <section>
         <div className="container">
           <div className="eyebrow mb-3">{t('additionalModules.eyebrow')}</div>
-          <div className="section-head">
+          <div className="section-head section-head--no-rule">
             <h2 className="head-title">{t('additionalModules.headline')}</h2>
             <p className="head-lede">{t('additionalModules.body')}</p>
           </div>
-          <div className="mt-12 flex flex-wrap gap-3">
+          <div className="mt-8 flex flex-wrap gap-3">
             {additionalModules.map(m => (
               <span key={m} className="tag">{m}</span>
             ))}
@@ -244,10 +247,12 @@ export default async function LanguageAssurancePage({ params }: { params: Promis
           <div className="grid grid-cols-1 tablet:grid-cols-[1fr_1.6fr] gap-20 items-start">
             <div>
               <div className="eyebrow mb-3">{t('methodology.eyebrow')}</div>
-              <h2 className="head-title">{t('methodology.headline')}</h2>
+              <h2 className="head-title">
+                {t.rich('methodology.headline', { u: chunks => <span className="accent-underline">{chunks}</span> })}
+              </h2>
               <p className="text-ink-600 max-w-[38ch] mt-6">{t('methodology.intro')}</p>
             </div>
-            <ol className="num-list">
+            <ol className="num-list num-list-spotlight">
               {methodologySteps.map(s => (
                 <li key={s.title}>
                   <div>

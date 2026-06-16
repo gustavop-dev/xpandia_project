@@ -151,139 +151,72 @@
       }
     ]
   },
-  "engagements": {
-    "eyebrow": "PROYECTOS PRINCIPALES",
-    "headline": "Auditorías enfocadas, sprints de QA y liderazgo de calidad.",
-    "intro": "Empieza con un proyecto enfocado y, cuando haga falta, escala hacia QA más profundo, remediación, gobernanza o asesoría continua.",
-    "engagementLabel": "PROYECTO",
+  "coreSolutions": {
+    "eyebrow": "SOLUCIONES PRINCIPALES",
+    "headline": "Auditorías especializadas y consultoría estratégica para equipos que buscan blindar su calidad antes de salir a producción con audiencias de habla inglesa o hispana.",
     "bestForLabel": "IDEAL PARA",
-    "outcomeLabel": "RESULTADO",
-    "items": [
+    "outcomeLabel": "IMPACTO",
+    "deliverablesLabel": "ENTREGABLES",
+    "investmentLabel": "INVERSIÓN",
+    "timelineLabel": "TIMELINE",
+    "cards": [
       {
-        "name": "AI Spanish Quality Audit Sprint",
-        "tagline": null,
-        "bestFor": "Equipos con salidas de IA, respuestas de chatbot, tutores, copilots, agentes de soporte o experiencias de IA generativa operando en español.",
-        "outcome": "Entiende los riesgos de calidad, la puntuación, los patrones de problemas y la preparación antes de que los usuarios dependan de la experiencia.",
-        "deliverablesLabel": "Entregables del sprint",
+        "name": "AI Language Quality Audit Sprint",
+        "bestFor": "Equipos con outputs de IA, chatbot, agentes, tutores, copilots o flujos de soporte automatizados operando en inglés, español u otros idiomas.",
+        "outcome": "Comprensión de riesgos, evaluación detallada de la calidad, patrones de error y readiness antes de que los usuarios interactúen y evalúen la experiencia.",
         "deliverables": [
-          "Revisión de salidas representativas.",
-          "Rúbrica de QA.",
-          "Tablero de calidad.",
-          "Taxonomía de problemas.",
-          "Niveles de severidad.",
-          "Guía de remediación.",
-          "Informe ejecutivo."
+          "Revisión de outputs representativos",
+          "Scorecard y rúbrica de evaluación",
+          "Taxonomía de hallazgos",
+          "Ratings de severidad",
+          "Guía de remediación",
+          "Resumen ejecutivo",
+          "Presentación de resultados"
         ],
-        "extras": [],
-        "price": "Desde $4,500",
+        "investment": "Desde $4,500 USD",
         "timeline": "10 días hábiles",
-        "cta": "Solicita un AI QA Sprint"
+        "cta": "Solicitar un AI QA Sprint"
       },
       {
-        "name": "Spanish / LatAm Launch Readiness Audit",
-        "tagline": null,
-        "bestFor": "Equipos que lanzan o mejoran un sitio web, app, flujo de onboarding, recorrido de soporte, experiencia de IA o superficie de producto de cara al cliente en español.",
-        "outcome": "Identifica qué afecta la claridad, la confianza, la UX, el ajuste cultural y la preparación antes del lanzamiento o relanzamiento.",
-        "deliverablesLabel": "Entregables de la auditoría",
+        "name": "Launch Readiness Audit",
+        "bestFor": "Equipos que lanzan o preparan un chatbot, avatar, agente IA, website, app, onboarding flow, journey de soporte, experiencia digital o producto de interacción con clientes en otro idioma.",
+        "outcome": "Identificar qué afecta claridad, confianza, UX, ajuste cultural, conversión y readiness antes de lanzar o relanzar.",
         "deliverables": [
-          "Revisión del recorrido.",
-          "Capturas de pantalla y anotaciones.",
-          "Registro de problemas.",
-          "Quick wins.",
-          "Backlog de remediación priorizado.",
-          "Recomendación de preparación."
+          "Revisión de journey",
+          "Screenshots y anotaciones",
+          "Issue log",
+          "Quick wins",
+          "Backlog priorizado de remediación",
+          "Recomendación de readiness"
         ],
-        "extras": [],
-        "price": "Desde $3,500",
+        "investment": "Desde $3,500",
         "timeline": "10–12 días hábiles",
-        "cta": "Solicita una Launch Readiness Audit"
+        "cta": "Solicitar Launch Readiness Audit"
       },
       {
-        "name": "Chatbot & AI Output Audit",
-        "tagline": null,
-        "bestFor": "Equipos que usan chatbots de IA, bots de soporte al cliente, tutores, copilots, asistentes o sistemas de respuesta automatizada en español.",
-        "outcome": "Evalúa si las respuestas de la IA son precisas, naturales, útiles, consistentes, culturalmente apropiadas y seguras para usuarios hispanohablantes reales.",
-        "deliverablesLabel": "Entregables de la auditoría",
+        "name": "Quality Advisory",
+        "bestFor": "Equipos que necesitan criterio senior continuo sobre calidad lingüística, workflows de revisión, estándares QA, alineación de vendors/reviewers, guía terminológica o decisiones recurrentes de calidad, sin una contratación de tiempo completo.",
+        "outcome": "Construir un sistema práctico de calidad lingüística para tomar mejores decisiones, reducir fricción de revisión y escalar calidad con confianza.",
         "deliverables": [
-          "Revisión de muestra de salidas.",
-          "Análisis de patrones de falla.",
-          "Niveles de severidad.",
-          "Recomendaciones a nivel de prompt o de respuesta.",
-          "Tablero de calidad.",
-          "Resumen de riesgo y preparación.",
-          "Informe ejecutivo."
+          "Sesiones periódicas de advisory",
+          "Quality roadmap",
+          "Retesting",
+          "Guía de sign-off",
+          "Estándares de terminología y estilo",
+          "Alineación de vendors",
+          "Criterios QA",
+          "Governance liviano",
+          "Soporte para decisiones"
         ],
-        "extras": [],
-        "price": "Desde $4,500",
-        "timeline": "10–15 días hábiles",
-        "cta": "Solicita una Chatbot Audit"
-      },
-      {
-        "name": "Language Sign-Off / LSO Review",
-        "tagline": null,
-        "bestFor": "Equipos que necesitan una revisión experta final antes de publicar, lanzar, desplegar o aprobar un release en español.",
-        "outcome": "Recibe una recomendación de release clara basada en la calidad del español, el riesgo y la preparación.",
-        "deliverablesLabel": "Entregables de la revisión",
-        "deliverables": [
-          "Pasada final de calidad.",
-          "Lista de problemas bloqueantes y no bloqueantes.",
-          "Notas de severidad.",
-          "Recomendación de release.",
-          "Memo de aprobación.",
-          "Guía rápida de remediación cuando corresponda."
-        ],
-        "extras": [],
-        "price": "Desde $1,500",
-        "timeline": "3–5 días hábiles",
-        "cta": "Solicita una LSO Review"
-      },
-      {
-        "name": "Fractional Language Quality Lead",
-        "tagline": "Liderazgo senior de calidad del español sin una contratación a tiempo completo.",
-        "bestFor": "Equipos que necesitan criterio senior sobre la calidad del español, liderazgo de QA de localización, supervisión de proveedores, flujos de revisión, estándares o gobernanza recurrente en IA, producto, localización, soporte y operaciones de contenido.",
-        "outcome": "Construye un sistema práctico de calidad del español que tu equipo puede usar para tomar mejores decisiones, reducir la fricción de revisión, alinear a proveedores y revisores internos, y escalar la calidad del español con confianza.",
-        "deliverablesLabel": "Entregables de la asesoría",
-        "deliverables": [
-          "Criterio senior sobre calidad del español para decisiones de IA, producto, localización, soporte y contenido.",
-          "2–4 sesiones de trabajo o puntos de contacto de reporte al mes, según el alcance.",
-          "Tablero mensual de calidad con riesgos, avances, bloqueos y prioridades.",
-          "Marco de QA adaptado a tu producto, audiencia, variante de español y nivel de riesgo.",
-          "Carta de gobernanza que define la responsabilidad, las etapas de revisión, las rutas de escalamiento y las reglas de aprobación.",
-          "Flujo de revisión para equipos internos, proveedores, revisores o contenido generado por IA.",
-          "Recomendaciones de terminología y estilo para mejorar la consistencia entre puntos de contacto.",
-          "Tableros de evaluación de proveedores o revisores para alinear expectativas y mejorar la rendición de cuentas en calidad.",
-          "Taxonomía de problemas y modelo de severidad para decisiones recurrentes sobre la calidad del español.",
-          "Hoja de ruta de mejora continua en calidad del español, localización, salidas de IA y preparación del producto."
-        ],
-        "extras": [
-          {
-            "label": "Resumen",
-            "body": "Xpandia le da a tu equipo acceso a liderazgo senior de calidad del lenguaje en modalidad fraccional, para que obtengas criterio experto, estándares, gobernanza y apoyo a la decisión sin contratar a un líder de calidad del lenguaje a tiempo completo. Este proyecto está diseñado para equipos que ya tienen contenido en español, salidas de IA, flujos de localización, proveedores, revisores o releases recurrentes, pero necesitan un sistema operativo más claro para la calidad: qué revisar, quién lo posee, cómo puntuarlo, cuándo escalar y cómo saber si el español está listo para publicar.",
-            "items": null
-          },
-          {
-            "label": "Ritmo de la asesoría",
-            "body": null,
-            "items": [
-              "Sesiones de trabajo quincenales.",
-              "Informe ejecutivo mensual.",
-              "Revisión asíncrona y apoyo a la decisión.",
-              "Actualizaciones del tablero de calidad.",
-              "Sesiones de alineación con proveedores/revisores.",
-              "Revisión trimestral de la hoja de ruta para proyectos en curso."
-            ]
-          }
-        ],
-        "price": "Desde $3,000/mes",
-        "timeline": "Proyecto mensual · Mínimo recomendado: 3 meses",
-        "note": "Un mes puede usarse para diagnóstico, pero tres meses nos permiten demostrar valor real: marco, flujo de trabajo, tablero, alineación de proveedores y hoja de ruta.",
-        "cta": "Explora la asesoría fraccional"
+        "investment": "Desde $3,000/mes",
+        "timeline": "Engagement mensual (mínimo recomendado: 3 meses)",
+        "cta": "Explorar Quality Advisory"
       }
     ]
   },
   "methodology": {
     "eyebrow": "METODOLOGÍA",
-    "headline": "Un camino estructurado desde la revisión lingüística hasta la confianza de lanzamiento.",
+    "headline": "Un camino estructurado desde la <u>revisión lingüística</u> hasta la confianza de <u>lanzamiento</u>.",
     "intro": "",
     "steps": [
       {
@@ -589,9 +522,9 @@
     "ctaSecondary": ""
   },
   "additionalModules": {
-    "eyebrow": "CUSTOM MODULES",
-    "headline": "Add the level of assurance your project needs.",
-    "body": "Depending on scope, Language Assurance engagements can include conversational chatbot audits, AI output benchmarks, language sign-off, retesting, terminology checks, or lightweight governance support.",
+    "eyebrow": "MÓDULOS A MEDIDA",
+    "headline": "Agrega el nivel de assurance que tu proyecto necesita.",
+    "body": "Según el alcance, los engagements de Language Assurance pueden incluir auditorías de chatbot conversacional, benchmarks de outputs de IA, language sign-off, retesting, checks terminológicos o soporte liviano de governance.",
     "modules": [
       "Chatbot & AI Output Audit",
       "AI Output Benchmark",

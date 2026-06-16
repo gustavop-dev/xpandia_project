@@ -362,6 +362,7 @@ h4, .h4 {
 /* ---------- Section head ---------- */
 
 .section-head { display: grid; grid-template-columns: 1fr 2fr; gap: var(--space-gutter); align-items: end; padding-bottom: 48px; border-bottom: 1px solid var(--rule); }
+.section-head--no-rule { border-bottom: 0; padding-bottom: 0; }
 .section-head .head-title { font-family: var(--font-display); font-size: var(--fs-h2); font-weight: 500; line-height: 1.02; letter-spacing: -0.02em; margin: 0; }
 .section-head .head-lede { color: var(--fg-muted); font-size: var(--fs-body-lg); max-width: 50ch; }
 

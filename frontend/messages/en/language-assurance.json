@@ -151,139 +151,72 @@
       }
     ]
   },
-  "engagements": {
-    "eyebrow": "CORE ENGAGEMENTS",
-    "headline": "Focused audits, QA sprints, and quality leadership.",
-    "intro": "Start with a focused engagement, then scale into deeper QA, remediation, governance, or ongoing advisory when needed.",
-    "engagementLabel": "ENGAGEMENT",
+  "coreSolutions": {
+    "eyebrow": "CORE SERVICES",
+    "headline": "Focused audits and advisory for teams that need confidence before shipping Spanish experiences.",
     "bestForLabel": "BEST FOR",
     "outcomeLabel": "OUTCOME",
-    "items": [
+    "deliverablesLabel": "DELIVERABLES",
+    "investmentLabel": "STARTS AT",
+    "timelineLabel": "TIMELINE",
+    "cards": [
       {
-        "name": "AI Spanish Quality Audit Sprint",
-        "tagline": null,
-        "bestFor": "Teams with AI outputs, chatbot responses, tutors, copilots, support agents, or generative AI experiences operating in Spanish.",
+        "name": "AI Quality Audit Sprint",
+        "bestFor": "Teams with AI outputs, chatbot responses, tutors, copilots, agents, or automated support flows operating in Spanish and English.",
         "outcome": "Understand quality risks, scoring, issue patterns, and readiness before users rely on the experience.",
-        "deliverablesLabel": "Sprint deliverables",
         "deliverables": [
-          "Representative output review.",
-          "QA rubric.",
-          "Quality scorecard.",
-          "Issue taxonomy.",
-          "Severity ratings.",
-          "Remediation guidance.",
-          "Executive readout."
+          "Representative output review",
+          "QA rubric",
+          "Quality scorecard",
+          "Issue taxonomy",
+          "Severity ratings",
+          "Remediation guidance",
+          "Executive readout"
         ],
-        "extras": [],
-        "price": "From $4,500",
+        "investment": "From $4,500",
         "timeline": "10 business days",
         "cta": "Request an AI QA Sprint"
       },
       {
-        "name": "Spanish / LatAm Launch Readiness Audit",
-        "tagline": null,
-        "bestFor": "Teams launching or improving a Spanish website, app, onboarding flow, support journey, AI experience, or customer-facing product surface.",
-        "outcome": "Identify what affects clarity, trust, UX, cultural fit, and readiness before launch or relaunch.",
-        "deliverablesLabel": "Audit deliverables",
+        "name": "Spanish Launch Readiness Audit",
+        "bestFor": "Teams launching or preparing a Spanish or English website, app, onboarding flow, support journey, AI experience, or customer-facing product surface.",
+        "outcome": "Identify what affects clarity, trust, UX, cultural fit, conversion, and readiness before launch or relaunch.",
         "deliverables": [
-          "Journey review.",
-          "Screenshots and annotations.",
-          "Issue log.",
-          "Quick wins.",
-          "Prioritized remediation backlog.",
-          "Readiness recommendation."
+          "Journey review",
+          "Screenshots and annotations",
+          "Issue log",
+          "Quick wins",
+          "Prioritized remediation backlog",
+          "Readiness recommendation"
         ],
-        "extras": [],
-        "price": "From $3,500",
+        "investment": "From $3,500",
         "timeline": "10–12 business days",
         "cta": "Request a Launch Readiness Audit"
       },
       {
-        "name": "Chatbot & AI Output Audit",
-        "tagline": null,
-        "bestFor": "Teams using AI chatbots, customer support bots, tutors, copilots, assistants, or automated response systems in Spanish.",
-        "outcome": "Evaluate whether AI responses are accurate, natural, useful, consistent, culturally appropriate, and safe for real Spanish-speaking users.",
-        "deliverablesLabel": "Audit deliverables",
+        "name": "Language Quality Advisory",
+        "bestFor": "Teams that need ongoing senior Spanish/English quality judgment, review workflows, QA standards, vendor/reviewer alignment, terminology guidance, or recurring quality decisions.",
+        "outcome": "Build a practical Spanish/English quality system your team can use to make better decisions, reduce review friction, and scale quality with confidence.",
         "deliverables": [
-          "Output sample review.",
-          "Failure pattern analysis.",
-          "Severity ratings.",
-          "Prompt or response-level recommendations.",
-          "Quality scorecard.",
-          "Risk and readiness summary.",
-          "Executive readout."
+          "Monthly advisory sessions",
+          "Quality roadmap",
+          "Retesting",
+          "Sign-off guidance",
+          "Terminology and style standards",
+          "Vendor alignment",
+          "QA criteria",
+          "Lightweight governance",
+          "Decision support"
         ],
-        "extras": [],
-        "price": "From $4,500",
-        "timeline": "10–15 business days",
-        "cta": "Request a Chatbot Audit"
-      },
-      {
-        "name": "Language Sign-Off / LSO Review",
-        "tagline": null,
-        "bestFor": "Teams that need final expert review before publishing, launching, deploying, or approving a Spanish release.",
-        "outcome": "Receive a clear release recommendation based on Spanish quality, risk, and readiness.",
-        "deliverablesLabel": "Review deliverables",
-        "deliverables": [
-          "Final quality pass.",
-          "Blocker and non-blocker issue list.",
-          "Severity notes.",
-          "Release recommendation.",
-          "Sign-off memo.",
-          "Quick remediation guidance where applicable."
-        ],
-        "extras": [],
-        "price": "From $1,500",
-        "timeline": "3–5 business days",
-        "cta": "Request LSO Review"
-      },
-      {
-        "name": "Fractional Language Quality Lead",
-        "tagline": "Senior Spanish quality leadership without a full-time hire.",
-        "bestFor": "Teams that need senior Spanish quality judgment, localization QA leadership, vendor oversight, review workflows, standards, or recurring governance across AI, product, localization, support, and content operations.",
-        "outcome": "Build a practical Spanish quality system your team can use to make better decisions, reduce review friction, align vendors and internal reviewers, and scale Spanish quality with confidence.",
-        "deliverablesLabel": "Advisory deliverables",
-        "deliverables": [
-          "Senior Spanish quality judgment for AI, product, localization, support, and content decisions.",
-          "2–4 working sessions or reporting touchpoints per month, depending on scope.",
-          "Monthly quality dashboard with risks, progress, blockers, and priorities.",
-          "QA framework tailored to your product, audience, Spanish variant, and risk level.",
-          "Governance charter defining ownership, review stages, escalation paths, and sign-off rules.",
-          "Review workflow for internal teams, vendors, reviewers, or AI-generated content.",
-          "Terminology and style recommendations to improve consistency across touchpoints.",
-          "Vendor or reviewer scorecards to align expectations and improve quality accountability.",
-          "Issue taxonomy and severity model for recurring Spanish quality decisions.",
-          "Roadmap for continuous improvement across Spanish quality, localization, AI outputs, and product readiness."
-        ],
-        "extras": [
-          {
-            "label": "Overview",
-            "body": "Xpandia gives your team access to senior language quality leadership on a fractional basis — so you can get expert judgment, standards, governance, and decision support without hiring a full-time language quality leader. This engagement is designed for teams that already have Spanish content, AI outputs, localization workflows, vendors, reviewers, or recurring releases, but need a clearer operating system for quality: what to review, who owns it, how to score it, when to escalate, and how to know if Spanish is ready to ship.",
-            "items": null
-          },
-          {
-            "label": "Advisory rhythm",
-            "body": null,
-            "items": [
-              "Biweekly working sessions.",
-              "Monthly executive readout.",
-              "Async review and decision support.",
-              "Quality dashboard updates.",
-              "Vendor/reviewer alignment sessions.",
-              "Quarterly roadmap review for ongoing engagements."
-            ]
-          }
-        ],
-        "price": "From $3,000/month",
-        "timeline": "Monthly engagement · Recommended minimum: 3 months",
-        "note": "One month can be used for diagnosis, but three months allow us to demonstrate real value: framework, workflow, dashboard, vendor alignment and roadmap.",
-        "cta": "Explore Fractional Advisory"
+        "investment": "From $3,000/month",
+        "timeline": "Monthly engagement (Recommended min: 3 months)",
+        "cta": "Explore Language Quality Advisory"
       }
     ]
   },
   "methodology": {
     "eyebrow": "METHODOLOGY",
-    "headline": "A structured path from Spanish review to release confidence.",
+    "headline": "A structured path from <u>Spanish review</u> to <u>release confidence</u>.",
     "intro": "",
     "steps": [
       {
