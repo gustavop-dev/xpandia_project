@@ -380,6 +380,11 @@ h4, .h4 {
 .checklist .chk-x::before { transform: translate(-50%, -50%) rotate(45deg); }
 .checklist .chk-x::after { transform: translate(-50%, -50%) rotate(-45deg); border: 0; }
 
+/* Flush variant: no divider rules, tighter rows, and vivid filled bullets. */
+.checklist-flush li { border-bottom: 0; padding: 7px 0; }
+.checklist-flush .chk { background: var(--accent); border-color: var(--accent); }
+.checklist-flush .chk::after { border-right-color: #fff; border-bottom-color: #fff; }
+
 .num-list { list-style: none; padding: 0; margin: 0; counter-reset: n; }
 .num-list li { counter-increment: n; padding: 20px 0; border-top: 1px solid var(--rule); display: grid; grid-template-columns: 56px 1fr; gap: 24px; }
 .num-list li::before { content: counter(n, decimal-leading-zero); font-family: var(--font-mono); font-size: 12px; color: var(--fg-subtle); letter-spacing: 0.08em; padding-top: 4px; }

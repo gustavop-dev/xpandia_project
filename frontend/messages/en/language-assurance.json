@@ -31,7 +31,8 @@
         "title": "Decision-ready evidence",
         "desc": "Scorecards, issues taxonomy findings readout, risk analysis"
       }
-    ]
+    ],
+    "h1Suffix": ""
   },
   "photoBand": {
     "line1": "LANGUAGE ASSURANCE",
@@ -304,6 +305,93 @@
       {
         "title": "Decide the next move",
         "body": "We recommend the right path forward: ship, fix, retest, adapt, train, govern, or scale."
+      }
+    ]
+  },
+  "aiEcosystem": {
+    "eyebrow": "AI ECOSYSTEM",
+    "headline": "AI models and platforms we validate and optimize.",
+    "intro": "We do more than just review text; we deeply understand the automation, content generation, and low-code development environments where you build your products. We ensure the outputs of your agents, prompts, and integrated workflows are seamless, natural, and conversion-ready.",
+    "logos": [
+      {
+        "name": "ChatGPT",
+        "file": "01-chatgpt-chatgpt.svg"
+      },
+      {
+        "name": "Claude",
+        "file": "02-claude-claude.svg"
+      },
+      {
+        "name": "OpenClaw",
+        "file": "03-openclaw-openclaw.svg"
+      },
+      {
+        "name": "Gemini",
+        "file": "04-gemini-gemini.svg"
+      },
+      {
+        "name": "DeepSeek",
+        "file": "05-deepseek-deepseek.svg"
+      },
+      {
+        "name": "LangChain",
+        "file": "06-langchain-langchain.svg"
+      },
+      {
+        "name": "Perplexity",
+        "file": "07-perplexity-perplexity.svg"
+      },
+      {
+        "name": "n8n",
+        "file": "08-n8n-n8n.svg"
+      },
+      {
+        "name": "LlamaIndex",
+        "file": "09-llamaindex-llamaindex.svg"
+      },
+      {
+        "name": "Copilot",
+        "file": "10-copilot-copilot.svg"
+      },
+      {
+        "name": "Make",
+        "file": "11-make-make.svg"
+      },
+      {
+        "name": "NotebookLM",
+        "file": "12-notebooklm-notebooklm.svg"
+      },
+      {
+        "name": "Ollama",
+        "file": "13-ollama-ollama.svg"
+      },
+      {
+        "name": "Grok",
+        "file": "14-grok-grok.svg"
+      },
+      {
+        "name": "Lovable",
+        "file": "15-lovable-lovable.svg"
+      },
+      {
+        "name": "vLLM",
+        "file": "16-vllm-vllm.svg"
+      },
+      {
+        "name": "Replit",
+        "file": "17-replit-replit.svg"
+      },
+      {
+        "name": "ElevenLabs",
+        "file": "18-elevenlabs-elevenlabs.svg"
+      },
+      {
+        "name": "HeyGen",
+        "file": "19-heygen-placeholder.svg"
+      },
+      {
+        "name": "Midjourney",
+        "file": "20-midjourney-midjourney.svg"
       }
     ]
   },

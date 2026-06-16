@@ -3,6 +3,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { Link } from '@/i18n/navigation'
 import Image from 'next/image'
 import { localizedAlternates } from '@/lib/seo/alternates'
+import AiEcosystemCarousel from '@/components/home/AiEcosystemCarousel'
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params
@@ -38,6 +39,7 @@ export default async function LanguageAssurancePage({ params }: { params: Promis
   }>
   const additionalModules = t.raw('additionalModules.modules') as string[]
   const methodologySteps = t.raw('methodology.steps') as Array<{ title: string; body: string }>
+  const aiLogos = t.raw('aiEcosystem.logos') as Array<{ name: string; file: string }>
 
   return (
     <main>
@@ -50,7 +52,7 @@ export default async function LanguageAssurancePage({ params }: { params: Promis
           </div>
           <div className="eyebrow mb-8">{t('hero.eyebrow')}</div>
           <h1 className="hero-display text-[clamp(48px,6vw,92px)] max-w-[16ch]">
-            {t('hero.h1')} <span className="accent-underline">{t('hero.h1Accent')}</span> {t('hero.h1End')}
+            {t('hero.h1')} <span className="accent-underline">{t('hero.h1Accent')}</span>{t('hero.h1Suffix')}{t('hero.h1End') && <> {t('hero.h1End')}</>}
           </h1>
           <p className="hero-sub mt-8">
             {t('hero.subheadline')}
@@ -78,7 +80,7 @@ export default async function LanguageAssurancePage({ params }: { params: Promis
       <section className="tight pt-0 pb-0">
         <div className="container">
           <div className="relative aspect-[16/9] tablet:aspect-[24/7] rounded-lg overflow-hidden bg-ink-900">
-            <Image src="/assets/photo-qa.jpg" alt="" fill loading="lazy" className="object-cover grayscale contrast-[1.05]" sizes="100vw" />
+            <Image src="/assets/photo-library.jpg" alt="" fill loading="lazy" className="object-cover grayscale contrast-[1.05]" sizes="100vw" />
             <div className="absolute inset-0" style={{ background: 'linear-gradient(90deg, rgba(15,20,25,0.3) 0%, transparent 40%, transparent 60%, rgba(15,20,25,0.85) 100%)' }}></div>
             <div className="absolute bottom-8 right-8 font-mono text-[11px] tracking-[0.14em] text-white/85 text-right">
               <div className="mb-[6px]">{t('photoBand.line1')}</div>
@@ -144,7 +146,7 @@ export default async function LanguageAssurancePage({ params }: { params: Promis
               <div className="eyebrow mb-3">{t('whenToUse.eyebrow')}</div>
               <h2 className="head-title">{t('whenToUse.headline')}</h2>
             </div>
-            <ul className="checklist">
+            <ul className="checklist checklist-flush">
               {whenToUseItems.map(item => (
                 <li key={item}><span className="chk"></span><span className="text-ink-700">{item}</span></li>
               ))}
@@ -256,6 +258,16 @@ export default async function LanguageAssurancePage({ params }: { params: Promis
               ))}
             </ol>
           </div>
+        </div>
+      </section>
+
+      {/* 7b. AI Ecosystem */}
+      <section>
+        <div className="container">
+          <div className="eyebrow">{t('aiEcosystem.eyebrow')}</div>
+          <h2 style={{ marginTop: 24 }}>{t('aiEcosystem.headline')}</h2>
+          <p className="lede" style={{ marginTop: 16, maxWidth: '72ch' }}>{t('aiEcosystem.intro')}</p>
+          <AiEcosystemCarousel logos={aiLogos} />
         </div>
       </section>
 

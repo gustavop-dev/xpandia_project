@@ -12,7 +12,7 @@
   "hero": {
     "eyebrow": "LANGUAGE ASSURANCE",
     "h1": "Valida la calidad de tus traducciones antes de que",
-    "h1Accent": "lo hagan tus usuarios.",
+    "h1Accent": "lo hagan tus usuarios",
     "h1End": "",
     "subheadline": "Xpandia ayuda a equipos de AI, SaaS, EdTech, Producto, Localization y CX a evaluar la calidad de outputs de IA, experiencias de producto, soporte y journeys de lanzamiento en inglés, español y otros idiomas.",
     "body": "Convertimos el criterio experto lingüístico y cultural en hallazgos medibles que tu equipo puede accionar: scorecards, taxonomías de issues, ratings de severidad, recomendaciones de readiness y guía de remediación.",
@@ -31,7 +31,8 @@
         "title": "Evidencia para toma de decisiones",
         "desc": "Scorecards, taxonomía de errores, presentación de hallazgos, análisis de riesgos"
       }
-    ]
+    ],
+    "h1Suffix": "."
   },
   "photoBand": {
     "line1": "LANGUAGE ASSURANCE",
@@ -304,6 +305,93 @@
       {
         "title": "Plan de despliegue y siguientes pasos",
         "body": "Recomendamos el camino correcto: lanzar, corregir, retestear, adaptar, entrenar, gobernar o escalar."
+      }
+    ]
+  },
+  "aiEcosystem": {
+    "eyebrow": "ECOSISTEMA IA",
+    "headline": "Modelos y plataformas de IA que validamos y optimizamos.",
+    "intro": "No solo evaluamos el texto; dominamos los entornos de automatización, generación de contenido y desarrollo low-code en los que construyes tus productos. Garantizamos que los outputs de tus agentes, prompts y flujos integrados sean impecables, naturales y de alta conversión.",
+    "logos": [
+      {
+        "name": "ChatGPT",
+        "file": "01-chatgpt-chatgpt.svg"
+      },
+      {
+        "name": "Claude",
+        "file": "02-claude-claude.svg"
+      },
+      {
+        "name": "OpenClaw",
+        "file": "03-openclaw-openclaw.svg"
+      },
+      {
+        "name": "Gemini",
+        "file": "04-gemini-gemini.svg"
+      },
+      {
+        "name": "DeepSeek",
+        "file": "05-deepseek-deepseek.svg"
+      },
+      {
+        "name": "LangChain",
+        "file": "06-langchain-langchain.svg"
+      },
+      {
+        "name": "Perplexity",
+        "file": "07-perplexity-perplexity.svg"
+      },
+      {
+        "name": "n8n",
+        "file": "08-n8n-n8n.svg"
+      },
+      {
+        "name": "LlamaIndex",
+        "file": "09-llamaindex-llamaindex.svg"
+      },
+      {
+        "name": "Copilot",
+        "file": "10-copilot-copilot.svg"
+      },
+      {
+        "name": "Make",
+        "file": "11-make-make.svg"
+      },
+      {
+        "name": "NotebookLM",
+        "file": "12-notebooklm-notebooklm.svg"
+      },
+      {
+        "name": "Ollama",
+        "file": "13-ollama-ollama.svg"
+      },
+      {
+        "name": "Grok",
+        "file": "14-grok-grok.svg"
+      },
+      {
+        "name": "Lovable",
+        "file": "15-lovable-lovable.svg"
+      },
+      {
+        "name": "vLLM",
+        "file": "16-vllm-vllm.svg"
+      },
+      {
+        "name": "Replit",
+        "file": "17-replit-replit.svg"
+      },
+      {
+        "name": "ElevenLabs",
+        "file": "18-elevenlabs-elevenlabs.svg"
+      },
+      {
+        "name": "HeyGen",
+        "file": "19-heygen-placeholder.svg"
+      },
+      {
+        "name": "Midjourney",
+        "file": "20-midjourney-midjourney.svg"
       }
     ]
   },
