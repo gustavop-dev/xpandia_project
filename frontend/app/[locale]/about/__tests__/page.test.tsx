@@ -9,7 +9,7 @@ describe('AboutPage', () => {
     expect(
       screen.getByRole('heading', {
         level: 1,
-        name: /spanish and english expertise for companies building across languages, cultures, and markets\./i,
+        name: /spanish and english expertise\./i,
       }),
     ).toBeInTheDocument()
   })

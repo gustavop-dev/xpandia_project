@@ -44,13 +44,13 @@ describe('LocalizationAdaptationPage', () => {
 
   it('renders the CORE SERVICES eyebrow', async () => {
     renderWithIntl(await LocalizationAdaptationPage({ params: makeParams() }))
-    expect(screen.getByText('CORE ENGAGEMENTS')).toBeInTheDocument()
+    expect(screen.getByText('CORE SERVICES')).toBeInTheDocument()
   })
 
   it('renders the methodology headline', async () => {
     renderWithIntl(await LocalizationAdaptationPage({ params: makeParams() }))
     expect(
-      screen.getByText('A practical path from existing Spanish/English to audience-ready Spanish/English.')
+      screen.getByRole('heading', { name: /practical path from.*audience-ready product/i })
     ).toBeInTheDocument()
   })
 

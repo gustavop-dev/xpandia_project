@@ -38,13 +38,13 @@ describe('AppliedCulturalIntelligencePage', () => {
 
   it('renders the CORE SERVICES eyebrow', async () => {
     renderWithIntl(await AppliedCulturalIntelligencePage({ params: makeParams() }))
-    expect(screen.getByText('CORE ENGAGEMENTS')).toBeInTheDocument()
+    expect(screen.getByText('CORE SERVICES')).toBeInTheDocument()
   })
 
   it('renders the methodology section headline', async () => {
     renderWithIntl(await AppliedCulturalIntelligencePage({ params: makeParams() }))
     expect(
-      screen.getByText('A practical path from cultural uncertainty to better decisions.')
+      screen.getByRole('heading', { name: /practical path from.*better decisions/i })
     ).toBeInTheDocument()
   })
 
