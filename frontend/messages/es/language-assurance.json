@@ -11,9 +11,9 @@
   },
   "hero": {
     "eyebrow": "LANGUAGE ASSURANCE",
-    "h1": "Valida la calidad de tus traducciones antes de que",
-    "h1Accent": "lo hagan tus usuarios",
-    "h1End": "",
+    "h1": "Valida la calidad de tus traducciones",
+    "h1Accent": "antes que tus usuarios",
+    "h1End": "lo hagan.",
     "subheadline": "Xpandia ayuda a equipos de AI, SaaS, EdTech, Producto, Localization y CX a evaluar la calidad de outputs de IA, experiencias de producto, soporte y journeys de lanzamiento en inglés, español y otros idiomas.",
     "body": "Convertimos el criterio experto lingüístico y cultural en hallazgos medibles que tu equipo puede accionar: scorecards, taxonomías de issues, ratings de severidad, recomendaciones de readiness y guía de remediación.",
     "ctaPrimary": "Solicitar un AI QA Sprint",
@@ -32,7 +32,7 @@
         "desc": "Scorecards, taxonomía de errores, presentación de hallazgos, análisis de riesgos"
       }
     ],
-    "h1Suffix": "."
+    "h1Suffix": ""
   },
   "photoBand": {
     "line1": "LANGUAGE ASSURANCE",
