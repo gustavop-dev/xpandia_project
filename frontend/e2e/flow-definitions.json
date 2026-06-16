@@ -265,6 +265,14 @@
       "priority": "P4",
       "description": "Guest clicks 'Blog' in the desktop header nav and navigates to /blog from any page",
       "expectedSpecs": 1
+    },
+    "header-contact-link": {
+      "name": "Header Contact nav link",
+      "module": "navigation",
+      "roles": ["shared"],
+      "priority": "P3",
+      "description": "Guest clicks the 'Contact / Contacto' tab in the desktop header nav and navigates to /contact",
+      "expectedSpecs": 1
     }
   }
 }

@@ -46,6 +46,7 @@ Use this document to understand each flow's steps, branching conditions, role re
 | `blog-back-from-detail-to-list` | Back link from detail → list | blog | P3 | guest | `/blog/[slug]` |
 | `contact-form-error-state` | Contact form server error | contact | P3 | guest | `/contact` |
 | `header-blog-link` | Header Blog nav link | navigation | P4 | guest | all pages |
+| `header-contact-link` | Header Contact nav link | navigation | P3 | guest | all pages |
 | `mobile-navigation-drawer` | Mobile nav drawer | navigation | P3 | guest | all pages |
 | `header-services-dropdown` | Header services dropdown | navigation | P3 | guest | all pages |
 | `fab-contact-button` | FAB contact button | navigation | P3 | guest | all pages |
@@ -473,6 +474,21 @@ Header and footer render on every route and expose the expected link set and CTA
 3. Browser navigates to `/blog`.
 
 **Expected outcome:** The header's `nav-active` underline appears on the Blog item once on `/blog`.
+
+### header-contact-link
+
+| Field | Value |
+|-------|-------|
+| **Priority** | P3 |
+| **Roles** | guest |
+| **Frontend route** | all pages (desktop + mobile drawer) |
+
+**Steps:**
+1. User is on any page (e.g. `/`).
+2. User clicks the "Contact / Contacto" tab in the desktop header nav (or in the mobile drawer after opening the hamburger menu).
+3. Browser navigates to `/contact`.
+
+**Expected outcome:** The header's `nav-active` underline appears on the Contact item once on `/contact`.
 
 ---
 

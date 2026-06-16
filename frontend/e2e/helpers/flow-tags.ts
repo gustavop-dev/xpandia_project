@@ -62,3 +62,4 @@ export const CONTACT_FORM_ERROR_STATE = ['@flow:contact-form-error-state', '@mod
 
 // ── Navigation (extended) ──
 export const HEADER_BLOG_LINK = ['@flow:header-blog-link', '@module:navigation', '@priority:P4'];
+export const HEADER_CONTACT_LINK = ['@flow:header-contact-link', '@module:navigation', '@priority:P3'];
