@@ -33,10 +33,6 @@
       }
     ]
   },
-  "photoBand": {
-    "line1": "03 / UNDERSTAND",
-    "line2": "DECODE → ALIGN → ACT"
-  },
   "positioning": {
     "eyebrow": "WHY APPLIED CULTURAL INTELLIGENCE",
     "headline": "Culture is the hidden operating system behind global business.",
@@ -90,210 +86,69 @@
       "When you want to safeguard your brand and prevent cultural friction with costly financial and reputational fallout."
     ]
   },
-  "aciCriteria": {
-    "eyebrow": "ACI CRITERIA",
-    "headline": "The signals behind communication your audience can trust.",
-    "intro": "Each ACI engagement is scoped around your audience, market, business goal, team context, and level of cultural complexity. Depending on the project, we evaluate or train around the criteria that matter most.",
-    "cards": [
-      {
-        "n": "01",
-        "title": "Audience expectations",
-        "desc": "Does your product, message, or experience reflect what the audience values, expects, and needs to trust?"
-      },
-      {
-        "n": "02",
-        "title": "Trust and credibility",
-        "desc": "Does the communication build confidence, authority, warmth, clarity, and legitimacy with the intended audience?"
-      },
-      {
-        "n": "03",
-        "title": "Tone and relationship",
-        "desc": "Does the tone respect the audience’s expectations around formality, closeness, authority, empathy, and professionalism?"
-      },
-      {
-        "n": "04",
-        "title": "Cultural context",
-        "desc": "Does the content account for social, regional, historical, behavioral, and market-specific context?"
-      },
-      {
-        "n": "05",
-        "title": "Communication style",
-        "desc": "Does the message align with how the audience gives, receives, interprets, and responds to information?"
-      },
-      {
-        "n": "06",
-        "title": "Decision behavior",
-        "desc": "Does the experience support how the audience evaluates risk, urgency, value, certainty, and next steps?"
-      },
-      {
-        "n": "07",
-        "title": "Cultural friction",
-        "desc": "Where could the experience create misunderstanding, hesitation, mistrust, discomfort, or unnecessary resistance?"
-      },
-      {
-        "n": "08",
-        "title": "Market readiness",
-        "desc": "Is the team culturally prepared to launch, communicate, support, sell, or operate in the target market?"
-      },
-      {
-        "n": "09",
-        "title": "Team mindset",
-        "desc": "Does the team have the awareness, language, and practical tools to work better across cultural contexts?"
-      },
-      {
-        "n": "10",
-        "title": "Growth alignment",
-        "desc": "Does the cultural strategy support product adoption, customer trust, team productivity, and market expansion?"
-      }
-    ]
-  },
-  "engagements": {
-    "eyebrow": "CORE ENGAGEMENTS",
-    "headline": "Talks, audits, workshops, and advisory for teams working across cultures.",
-    "intro": "Start with a focused ACI talk, audit, or briefing, then scale into workshops, go-to-market advisory, audience strategy, or ongoing cultural guidance.",
-    "engagementLabel": "ENGAGEMENT",
+  "coreSolutions": {
+    "eyebrow": "CORE SERVICES",
+    "headline": "Talks, cultural audits, and strategic advisory for teams with global operations.",
     "bestForLabel": "BEST FOR",
     "outcomeLabel": "OUTCOME",
-    "overviewLabel": "OVERVIEW",
-    "talkThemesLabel": "TALK THEMES",
-    "startsAtLabel": "STARTS AT",
+    "deliverablesLabel": "DELIVERABLES",
+    "investmentLabel": "STARTS AT",
     "timelineLabel": "TIMELINE",
-    "items": [
+    "cards": [
       {
-        "n": "01",
-        "title": "Cultural Intelligence Talks",
-        "tagline": "Read the invisible rules of global business.",
+        "name": "ACI Talk / Executive Briefing",
         "bestFor": "Leadership, Product, Marketing, CX, Localization, People, and Global Operations teams working across cultures, markets, languages, or international teams.",
-        "outcome": "Help your team understand how Cultural Intelligence can improve collaboration, reduce friction, strengthen trust, and support better business decisions across cultures.",
-        "overview": "Culture is the hidden operating system behind global business. It shapes how people build trust, read timing, respond to hierarchy, give feedback, handle risk, make decisions, and interpret what is said — and what is left unsaid. Xpandia Talks help leaders and teams decode those invisible rules, so they can communicate more effectively, reduce costly friction, and build stronger relationships across markets, languages, and audiences.",
-        "themes": [
-          "Cultural Intelligence (CQ) for global business.",
-          "The invisible protocols behind trust and communication.",
-          "Cultural red lines and how to avoid crossing them.",
-          "How culture shapes feedback, hierarchy, time, and decision-making.",
-          "Culturalization for products, content, and customer experience.",
-          "Hispanic and Spanish-speaking audience expectations.",
-          "Mindset shifts for more productive global teams."
-        ],
+        "outcome": "Help your team understand how the Cultural Intelligence (CQ) engine helps build more productive teams that drive trust, positive feedback, market readiness, audience expectations, and increased ROI.",
         "deliverables": [
-          "45–60 minute live talk or executive briefing.",
-          "Pre-call to understand audience and business context.",
-          "Practical CQ framework.",
-          "Real business examples tailored to the audience.",
-          "Optional Q&A.",
-          "One-page summary or team checklist.",
-          "Recommended next steps for workshop, audit, or advisory engagement."
+          "45–60 minute live talk or executive briefing",
+          "Pre-call context review",
+          "Practical CQ / ACI framework",
+          "Real business examples",
+          "Optional Q&A",
+          "One-page team checklist",
+          "Recommended next steps"
         ],
-        "deliverablesLabel": "Talk deliverables",
-        "price": "Talks from $1,500 · Executive briefings from $2,500",
+        "investment": "Talks from $1,500 / Executive briefings from $2,500",
         "timeline": "Single session",
-        "cta": "Book a CQ Talk"
+        "cta": "Book an ACI Talk"
       },
       {
-        "n": "02",
-        "title": "Hispanic Audience Messaging Review",
-        "tagline": "Make your message land with the audience you need to reach.",
+        "name": "Hispanic Audience & Messaging Review",
         "bestFor": "Marketing, Growth, Product Marketing, CX, Localization, and leadership teams adapting messages for Hispanic, LatAm, US Hispanic, or Spanish-speaking audiences.",
-        "outcome": "Identify where messaging can become clearer, more credible, more culturally aligned, and more persuasive for the intended audience.",
+        "outcome": "Identify whether your message is clear, credible, culturally aligned, persuasive, and built around the trust signals your audience needs.",
         "deliverables": [
-          "Messaging review.",
-          "Audience fit findings.",
-          "Trust signal analysis.",
-          "Tone and context recommendations.",
-          "Cultural friction notes.",
-          "Suggested rewrites or message directions.",
-          "Executive summary."
+          "Messaging review",
+          "Audience fit findings",
+          "Trust signal analysis",
+          "Tone and context recommendations",
+          "Cultural friction notes",
+          "Suggested rewrites",
+          "Executive summary"
         ],
-        "deliverablesLabel": "Review deliverables",
-        "price": "From $3,500",
+        "investment": "From $3,500",
         "timeline": "7–10 business days",
         "cta": "Request Messaging Review"
       },
       {
-        "n": "03",
-        "title": "Spanish Market Fit Audit",
-        "tagline": "Understand how ready your product or message is for Spanish-speaking markets.",
-        "bestFor": "Teams entering, expanding, or improving their presence in Hispanic, LatAm, US Hispanic, Spain, or Spanish-speaking markets.",
-        "outcome": "Evaluate audience fit, cultural friction, communication risks, trust signals, and market readiness before launch, relaunch, or expansion.",
+        "name": "Cultural Fit Advisory",
+        "bestFor": "Leadership, Product, Marketing, CX, Localization, and Global Operations teams entering new markets or audiences that need cultural judgment to decide messaging, product, and go-to-market.",
+        "outcome": "Reduce cultural friction and align product, message, and strategy with the real expectations of your audience and target market.",
         "deliverables": [
-          "Market and audience fit findings.",
-          "Cultural friction map.",
-          "Trust and messaging analysis.",
-          "Regional fit recommendations.",
-          "Product/content/CX observations.",
-          "Prioritized recommendations.",
-          "Readiness summary."
+          "Spanish market fit review",
+          "Culturalization audit",
+          "Regional fit strategy",
+          "Workshop",
+          "GTM guidance"
         ],
-        "deliverablesLabel": "Audit deliverables",
-        "price": "From $4,500",
-        "timeline": "10–15 business days",
-        "cta": "Request Market Fit Audit"
-      },
-      {
-        "n": "04",
-        "title": "Culturalization Audit",
-        "tagline": "Adapt the experience, not just the language.",
-        "bestFor": "Product, Content, Marketing, EdTech, CX, and Localization teams that need to evaluate whether their Spanish or Hispanic-facing experience is culturally aligned.",
-        "outcome": "Identify where content, product flows, examples, visuals, tone, assumptions, messages, or support experiences need cultural adaptation.",
-        "deliverables": [
-          "Culturalization review.",
-          "Audience expectation analysis.",
-          "Cultural fit findings.",
-          "Red line and friction notes.",
-          "Adaptation recommendations.",
-          "Examples of what to adjust and why.",
-          "Executive readout."
-        ],
-        "deliverablesLabel": "Audit deliverables",
-        "price": "From $3,500",
-        "timeline": "7–15 business days",
-        "cta": "Request Culturalization Audit"
-      },
-      {
-        "n": "05",
-        "title": "CQ / ACI Workshops",
-        "tagline": "Build the cultural intelligence your team needs to work and grow across markets.",
-        "bestFor": "Leadership, Product, Marketing, CX, Localization, People, and Operations teams that need practical training in cross-cultural communication, Hispanic audience readiness, or culturalization.",
-        "outcome": "Give your team a shared framework, vocabulary, and practical tools to understand cultural signals, reduce friction, and make better decisions across markets.",
-        "deliverables": [
-          "Custom 90-minute, half-day, or multi-session workshop.",
-          "Pre-call to understand team context and business goal.",
-          "Practical CQ / ACI framework.",
-          "Real examples tailored to your audience or market.",
-          "Team exercises or discussion prompts.",
-          "One-page checklist or working guide.",
-          "Recommended next steps."
-        ],
-        "deliverablesLabel": "Workshop deliverables",
-        "price": "From $4,500",
-        "timeline": "Single session or half-day · Multi-session workshops scoped separately",
-        "cta": "Book an ACI Workshop"
-      },
-      {
-        "n": "06",
-        "title": "Go-to-Market Cultural Advisory",
-        "tagline": "Make cultural context part of your growth strategy.",
-        "bestFor": "Leadership, Product, Marketing, Growth, CX, and Localization teams planning Spanish-speaking market entry, Hispanic audience strategy, or multicultural expansion.",
-        "outcome": "Support better market decisions by integrating cultural insight into messaging, product positioning, customer experience, communication, and rollout strategy.",
-        "deliverables": [
-          "Strategic advisory sessions.",
-          "Audience and market context.",
-          "Cultural risk and opportunity analysis.",
-          "Messaging and positioning guidance.",
-          "Product/CX recommendations.",
-          "Prioritized action plan.",
-          "Follow-up guidance."
-        ],
-        "deliverablesLabel": "Advisory deliverables",
-        "price": "From $3,000/month",
-        "timeline": "Monthly engagement · Recommended minimum: 3 months",
-        "cta": "Explore ACI Advisory"
+        "investment": "From $3,000/month",
+        "timeline": "Monthly or per project, depending on scope",
+        "cta": "Explore Cultural Fit Advisory"
       }
     ]
   },
   "methodology": {
     "eyebrow": "METHODOLOGY",
-    "headline": "A practical path from cultural uncertainty to better decisions.",
+    "headline": "A practical path from <u>cultural uncertainty</u> to <u>better decisions</u>.",
     "intro": "",
     "steps": [
       {
@@ -315,151 +170,6 @@
       {
         "title": "Recommend the next move",
         "body": "We identify the right path forward: adapt messaging, run a cultural review, train the team, refine go-to-market strategy, or move into ongoing advisory."
-      }
-    ]
-  },
-  "deliverables": {
-    "eyebrow": "THE DELIVERABLES",
-    "headline": "Cultural insight that your team can turn into better decisions.",
-    "intro": "Applied Cultural Intelligence turns cultural complexity into clear findings, practical guidance, and business-ready recommendations.",
-    "cards": [
-      {
-        "title": "Cultural Insight Report",
-        "desc": "A focused summary of the cultural patterns, expectations, and signals that matter for your audience or team."
-      },
-      {
-        "title": "Audience-Specific Recommendations",
-        "desc": "Practical guidance tailored to Hispanic, LatAm, US Hispanic, Spanish-speaking, or multicultural audiences."
-      },
-      {
-        "title": "Cultural Friction Map",
-        "desc": "A structured view of where misunderstandings, hesitation, mistrust, or resistance may appear."
-      },
-      {
-        "title": "Messaging Guidance",
-        "desc": "Recommendations to improve tone, trust signals, clarity, context, and audience connection."
-      },
-      {
-        "title": "Market Fit Findings",
-        "desc": "Insights on whether your product, content, message, or experience is aligned with the expectations of the target market."
-      },
-      {
-        "title": "CQ Framework",
-        "desc": "A practical model your team can use to understand cultural difference, communication styles, and audience behavior."
-      },
-      {
-        "title": "Workshop Materials",
-        "desc": "Slides, exercises, checklists, examples, or working guides tailored to the team or audience."
-      },
-      {
-        "title": "Action Roadmap",
-        "desc": "A prioritized plan for product, marketing, CX, localization, leadership, or go-to-market next steps."
-      }
-    ]
-  },
-  "builtFor": {
-    "eyebrow": "BUILT FOR",
-    "headline": "For teams making decisions across cultures.",
-    "cards": [
-      {
-        "title": "Leadership Teams",
-        "desc": "Build cultural intelligence for better communication, decision-making, and global team alignment."
-      },
-      {
-        "title": "Product Teams",
-        "desc": "Understand how cultural context affects product experience, usability, trust, adoption, and user behavior."
-      },
-      {
-        "title": "Marketing & Growth Teams",
-        "desc": "Adapt messaging, campaigns, positioning, and conversion paths for Hispanic and Spanish-speaking audiences."
-      },
-      {
-        "title": "CX & Support Teams",
-        "desc": "Improve customer communication, escalation language, empathy, trust, and support experiences across cultures."
-      },
-      {
-        "title": "Localization Teams",
-        "desc": "Move beyond language accuracy into cultural fit, regional relevance, and audience readiness."
-      },
-      {
-        "title": "People & Global Operations Teams",
-        "desc": "Train distributed teams to communicate, collaborate, give feedback, and work across cultural contexts."
-      },
-      {
-        "title": "EdTech Teams",
-        "desc": "Adapt learning experiences, examples, feedback, and educational content for culturally diverse learners."
-      },
-      {
-        "title": "AI Teams",
-        "desc": "Understand cultural context behind AI outputs, user expectations, trust, tone, and risk in Spanish-speaking experiences."
-      }
-    ]
-  },
-  "pricing": {
-    "eyebrow": "STARTING POINTS",
-    "headline": "Start with the cultural insight your team needs now.",
-    "intro": "Applied Cultural Intelligence engagements are scoped based on audience, market, team size, format, level of customization, cultural complexity, and business goal.",
-    "note": "Final pricing is confirmed after a short diagnostic call and scope review. Pricing depends on format, audience size, customization, business context, preparation, and deliverables.",
-    "cards": [
-      {
-        "title": "Cultural Intelligence Talks",
-        "price": "From $1,500",
-        "desc": "Introduce leaders and teams to the invisible rules behind trust, communication, decision-making, and global business growth."
-      },
-      {
-        "title": "Executive Briefings",
-        "price": "From $2,500",
-        "desc": "A strategic session for leadership or cross-functional teams that need cultural insight tied to a specific audience, market, or business challenge."
-      },
-      {
-        "title": "ACI Audits",
-        "price": "From $3,500",
-        "desc": "Evaluate messaging, audience fit, culturalization, friction points, and readiness for Hispanic or Spanish-speaking audiences."
-      },
-      {
-        "title": "Spanish Market Fit Audit",
-        "price": "From $4,500",
-        "desc": "Assess market readiness, trust signals, cultural fit, communication risks, and audience alignment before launch or expansion."
-      },
-      {
-        "title": "Custom Workshops",
-        "price": "From $4,500",
-        "desc": "Train teams with practical Cultural Intelligence frameworks, examples, exercises, and recommendations tailored to their work."
-      },
-      {
-        "title": "Strategic Advisory",
-        "price": "From $3,000/month",
-        "desc": "Ongoing cultural guidance for teams entering, growing, or operating across Hispanic, Spanish-speaking, or multicultural markets."
-      }
-    ]
-  },
-  "faq": {
-    "eyebrow": "FAQ",
-    "headline": "Common questions about Applied Cultural Intelligence.",
-    "items": [
-      {
-        "q": "Is ACI the same as cultural training?",
-        "a": "It can include training, but Applied Cultural Intelligence is broader. It helps teams apply cultural insight to product, messaging, CX, localization, leadership, communication, and go-to-market decisions."
-      },
-      {
-        "q": "Is this only for Spanish-speaking audiences?",
-        "a": "No. Xpandia’s strongest focus is Hispanic and Spanish-speaking audiences, but the ACI framework also supports global teams working across cultures, markets, and languages."
-      },
-      {
-        "q": "Do we need this if our Spanish is already correct?",
-        "a": "Yes. Correct Spanish can still miss cultural expectations, trust signals, tone, context, or audience fit. ACI helps determine whether the experience connects, not only whether it is linguistically accurate."
-      },
-      {
-        "q": "Can this help leadership teams?",
-        "a": "Yes. ACI talks and executive briefings are designed to help leaders understand how culture shapes trust, communication, decision-making, feedback, hierarchy, risk, and global collaboration."
-      },
-      {
-        "q": "Can this support product or marketing decisions?",
-        "a": "Yes. ACI can inform messaging, product flows, CX, onboarding, campaigns, go-to-market strategy, audience fit, and market readiness."
-      },
-      {
-        "q": "Can this be combined with Localization or Language Assurance?",
-        "a": "Yes. ACI can guide localization before content is created, support cultural adaptation during localization, or complement Language Assurance when a Spanish experience needs cultural readiness evaluation."
       }
     ]
   },
