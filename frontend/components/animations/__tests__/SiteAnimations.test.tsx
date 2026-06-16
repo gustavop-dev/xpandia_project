@@ -16,11 +16,15 @@ jest.mock('gsap', () => ({
 }))
 
 jest.mock('gsap/ScrollTrigger', () => ({
-  ScrollTrigger: { batch: jest.fn() },
+  ScrollTrigger: { batch: jest.fn(), refresh: jest.fn() },
 }))
 
 jest.mock('@gsap/react', () => ({
   useGSAP: jest.fn((cb: () => void) => cb()),
+}))
+
+jest.mock('@/i18n/navigation', () => ({
+  usePathname: jest.fn(() => '/'),
 }))
 
 import SiteAnimations from '../SiteAnimations'

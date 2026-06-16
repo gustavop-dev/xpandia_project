@@ -72,7 +72,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           <div className="mt-24 pt-7 border-t border-ink-150 grid grid-cols-2 tablet:grid-cols-4 gap-8">
             {proofItems.map(({ label, text }) => (
               <div key={label}>
-                <div className="font-mono text-[11px] tracking-[0.1em] text-ink-500 mb-[10px]">{label}</div>
+                <div data-counter className="font-mono text-[11px] tracking-[0.1em] text-ink-500 mb-[10px]">{label}</div>
                 <div className="text-[14px] leading-[1.45] text-ink-700">{text}</div>
               </div>
             ))}
@@ -164,7 +164,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             <p className="head-lede">{t('deliverables.body')}</p>
           </div>
           <div className="grid grid-cols-1 tablet:grid-cols-[1.1fr_1fr] gap-16 items-start mt-12">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <div data-stagger className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               {deliverableCards.map(d => (
                 <div key={d.title} className="p-6 bg-white border border-ink-150 rounded-lg">
                   <h3 className="text-[19px] font-display font-medium text-ink-900 tracking-[-0.01em] mb-3">{d.title}</h3>
@@ -242,9 +242,11 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       {/* AI Ecosystem */}
       <section className="bg-ink-50">
         <div className="container">
-          <div className="eyebrow">{t('aiEcosystem.eyebrow')}</div>
-          <h2 style={{ marginTop: 24 }}>{t('aiEcosystem.headline')}</h2>
-          <p className="lede" style={{ marginTop: 16, maxWidth: '72ch' }}>{t('aiEcosystem.intro')}</p>
+          <div data-parallax="0.06">
+            <div className="eyebrow">{t('aiEcosystem.eyebrow')}</div>
+            <h2 style={{ marginTop: 24 }}>{t('aiEcosystem.headline')}</h2>
+            <p className="lede" style={{ marginTop: 16, maxWidth: '72ch' }}>{t('aiEcosystem.intro')}</p>
+          </div>
           <AiEcosystemCarousel logos={aiLogos} />
         </div>
       </section>

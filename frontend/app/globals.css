@@ -119,7 +119,12 @@
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+/* Smooth only for in-page anchor jumps. NOT a global `html { scroll-behavior }`
+   rule, which would also animate the router's scroll-to-top on every route
+   change — making each new view appear at the old scroll position and slide up
+   (so section reveals fire before you see them). :target keeps anchors smooth
+   while navigation stays instant. */
+html:has(:target) { scroll-behavior: smooth; }
 
 body {
   font-family: var(--font-body);
