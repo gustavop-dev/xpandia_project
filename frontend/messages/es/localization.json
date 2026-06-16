@@ -122,27 +122,6 @@
       },
       {
         "name": "Product & Content Adaptation",
-        "bestFor": "Equipos de producto, marketing, soporte, CX y EdTech que adaptan UI, websites, documentación, campañas o contenido de aprendizaje en otro idioma para una audiencia o mercado específico.",
-        "outcome": "Adaptar el contenido y las experiencias de producto para que se sientan naturales, claras y construidas para tu audiencia, respetando el contexto de producto, el tono y el ajuste regional.",
-        "canIncludeLabel": "PUEDE INCLUIR",
-        "canInclude": [
-          "UI de producto y copy de UX",
-          "Websites y landing pages",
-          "Centros de ayuda y documentación",
-          "Marketing y campañas",
-          "Contenido EdTech y de aprendizaje",
-          "Terminología y tono de marca"
-        ],
-        "deliverables": [
-          "Copy adaptado por superficie",
-          "Guía de terminología y tono",
-          "Recomendaciones de ajuste regional",
-          "Justificación de adaptación cultural",
-          "Revisión en contexto cuando hay acceso",
-          "Contenido listo para QA o publicación"
-        ],
-        "investment": "Desde $3,000",
-        "timeline": "5–15 días hábiles según alcance",
         "cta": "Solicitar Product & Content Adaptation"
       }
     ]

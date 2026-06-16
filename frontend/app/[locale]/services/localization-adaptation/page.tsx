@@ -24,13 +24,13 @@ export default async function LocalizationAdaptationPage({ params }: { params: P
   const whenToUseItems = t.raw('whenToUse.items') as string[]
   const coreSolutionCards = t.raw('coreSolutions.cards') as Array<{
     name: string
-    bestFor: string
-    outcome: string
+    bestFor?: string
+    outcome?: string
     canIncludeLabel?: string
     canInclude?: string[]
-    deliverables: string[]
-    investment: string
-    timeline: string
+    deliverables?: string[]
+    investment?: string
+    timeline?: string
     cta: string
   }>
   const methodologySteps = t.raw('methodology.steps') as Array<{ title: string; body: string }>
@@ -154,22 +154,26 @@ export default async function LocalizationAdaptationPage({ params }: { params: P
           <div className="section-head" style={{ gridTemplateColumns: '1fr' }}>
             <h2 className="head-title max-w-[24ch]">{t('coreSolutions.headline')}</h2>
           </div>
-          <div className="grid grid-cols-1 tablet:grid-cols-2 gap-6 mt-12">
+          <div className="grid grid-cols-1 tablet:grid-cols-2 gap-6 mt-12 items-start">
             {coreSolutionCards.map(card => (
               <div key={card.name} className="flex flex-col p-8 bg-white border border-ink-150 rounded-lg">
                 <h3 className="font-display text-[22px] font-medium tracking-[-0.015em] leading-[1.15] text-ink-900">
                   {card.name}
                 </h3>
 
-                <div className="mt-5">
-                  <div className="font-mono text-[11px] tracking-[0.1em] text-ink-500 mb-1.5">{t('coreSolutions.bestForLabel')}</div>
-                  <p className="text-ink-600 text-[15px] leading-[1.5]">{card.bestFor}</p>
-                </div>
+                {card.bestFor && (
+                  <div className="mt-5">
+                    <div className="font-mono text-[11px] tracking-[0.1em] text-ink-500 mb-1.5">{t('coreSolutions.bestForLabel')}</div>
+                    <p className="text-ink-600 text-[15px] leading-[1.5]">{card.bestFor}</p>
+                  </div>
+                )}
 
-                <div className="mt-5">
-                  <div className="font-mono text-[11px] tracking-[0.1em] text-ink-500 mb-1.5">{t('coreSolutions.outcomeLabel')}</div>
-                  <p className="text-ink-600 text-[15px] leading-[1.5]">{card.outcome}</p>
-                </div>
+                {card.outcome && (
+                  <div className="mt-5">
+                    <div className="font-mono text-[11px] tracking-[0.1em] text-ink-500 mb-1.5">{t('coreSolutions.outcomeLabel')}</div>
+                    <p className="text-ink-600 text-[15px] leading-[1.5]">{card.outcome}</p>
+                  </div>
+                )}
 
                 {card.canInclude && (
                   <div className="mt-5">
@@ -185,28 +189,36 @@ export default async function LocalizationAdaptationPage({ params }: { params: P
                   </div>
                 )}
 
-                <div className="mt-5">
-                  <div className="font-mono text-[11px] tracking-[0.1em] text-ink-500 mb-1.5">{t('coreSolutions.deliverablesLabel')}</div>
-                  <ul className="space-y-1 text-ink-600 text-[14.5px] leading-[1.5]">
-                    {card.deliverables.map(d => (
-                      <li key={d} className="flex gap-2.5">
-                        <span className="text-accent mt-px">·</span>
-                        <span>{d}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                {card.deliverables && (
+                  <div className="mt-5">
+                    <div className="font-mono text-[11px] tracking-[0.1em] text-ink-500 mb-1.5">{t('coreSolutions.deliverablesLabel')}</div>
+                    <ul className="space-y-1 text-ink-600 text-[14.5px] leading-[1.5]">
+                      {card.deliverables.map(d => (
+                        <li key={d} className="flex gap-2.5">
+                          <span className="text-accent mt-px">·</span>
+                          <span>{d}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
 
-                <div className="mt-6 pt-5 border-t border-ink-150 flex flex-wrap gap-x-10 gap-y-3">
-                  <div>
-                    <div className="font-mono text-[11px] tracking-[0.1em] text-ink-500 mb-1">{t('coreSolutions.investmentLabel')}</div>
-                    <p className="text-ink-900 text-[15px] font-medium">{card.investment}</p>
+                {(card.investment || card.timeline) && (
+                  <div className="mt-6 pt-5 border-t border-ink-150 flex flex-wrap gap-x-10 gap-y-3">
+                    {card.investment && (
+                      <div>
+                        <div className="font-mono text-[11px] tracking-[0.1em] text-ink-500 mb-1">{t('coreSolutions.investmentLabel')}</div>
+                        <p className="text-ink-900 text-[15px] font-medium">{card.investment}</p>
+                      </div>
+                    )}
+                    {card.timeline && (
+                      <div>
+                        <div className="font-mono text-[11px] tracking-[0.1em] text-ink-500 mb-1">{t('coreSolutions.timelineLabel')}</div>
+                        <p className="text-ink-600 text-[15px]">{card.timeline}</p>
+                      </div>
+                    )}
                   </div>
-                  <div>
-                    <div className="font-mono text-[11px] tracking-[0.1em] text-ink-500 mb-1">{t('coreSolutions.timelineLabel')}</div>
-                    <p className="text-ink-600 text-[15px]">{card.timeline}</p>
-                  </div>
-                </div>
+                )}
 
                 <div className="mt-auto pt-6">
                   <Link href="/contact" className="btn btn-primary btn-small">

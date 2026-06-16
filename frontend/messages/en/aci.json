@@ -131,17 +131,14 @@
       },
       {
         "name": "Cultural Fit Advisory",
-        "bestFor": "Leadership, Product, Marketing, CX, Localization, and Global Operations teams entering new markets or audiences that need cultural judgment to decide messaging, product, and go-to-market.",
-        "outcome": "Reduce cultural friction and align product, message, and strategy with the real expectations of your audience and target market.",
-        "deliverables": [
+        "canIncludeLabel": "INCLUDES",
+        "canInclude": [
           "Spanish market fit review",
           "Culturalization audit",
           "Regional fit strategy",
           "Workshop",
           "GTM guidance"
         ],
-        "investment": "From $3,000/month",
-        "timeline": "Monthly or per project, depending on scope",
         "cta": "Explore Cultural Fit Advisory"
       }
     ]
