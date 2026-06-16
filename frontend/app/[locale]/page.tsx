@@ -49,9 +49,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
     accent?: boolean
     dim?: boolean
   }>
-  const scorecardCriteria = t.raw('deliverables.scorecard.criteria') as string[]
   const audienceCards = t.raw('builtFor.cards') as Array<{ title: string; body: string }>
-  const buyerRoles = t.raw('buyer.roles') as string[]
   const aiLogos = t.raw('aiEcosystem.logos') as Array<{ name: string; file: string }>
 
   return (
@@ -95,10 +93,10 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 {t('positioning.body1')}
               </p>
               <p className="text-ink-600 text-[19px] max-w-[56ch] mb-6">
-                {t('positioning.body2')}
+                {t.rich('positioning.body2', { b: chunks => <strong className="font-semibold text-ink-900">{chunks}</strong> })}
               </p>
               <p className="text-ink-600 text-[19px] max-w-[56ch]">
-                {t('positioning.body3')}
+                {t.rich('positioning.body3', { b: chunks => <strong className="font-semibold text-ink-900">{chunks}</strong> })}
               </p>
               <div className="mt-10 p-7 bg-ink-50 border border-ink-150 rounded-lg">
                 <div className="font-display text-[22px] font-medium text-ink-900 tracking-[-0.01em] leading-[1.2]">{t('positioning.calloutTitle')}</div>
@@ -155,29 +153,6 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         </div>
       </section>
 
-      {/* Methodology — dark */}
-      <section className="bg-ink-900 text-paper">
-        <div className="container">
-          <div className="grid grid-cols-1 tablet:grid-cols-[1fr_1.6fr] gap-20 items-start">
-            <div>
-              <div className="eyebrow !text-ink-400">{t('methodology.eyebrow')}</div>
-              <h2 style={{ marginTop: 24 }}>{t('methodology.headline')}</h2>
-              <p className="text-ink-300 max-w-[40ch]" style={{ marginTop: 24 }}>{t('methodology.intro')}</p>
-            </div>
-            <ol className="num-list">
-              {methodologySteps.map(s => (
-                <li key={s.title} style={{ borderTopColor: 'rgba(255,255,255,0.1)' }}>
-                  <div>
-                    <h4>{s.title}</h4>
-                    <div className="n-body !text-ink-300">{s.body}</div>
-                  </div>
-                </li>
-              ))}
-            </ol>
-          </div>
-        </div>
-      </section>
-
       {/* Deliverables */}
       <section>
         <div className="container">
@@ -216,12 +191,30 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                   {t('deliverables.scorecard.footer')}
                 </div>
               </div>
-              <div className="mt-8 flex flex-wrap gap-2">
-                {scorecardCriteria.map(criterion => (
-                  <span key={criterion} className="tag">{criterion}</span>
-                ))}
-              </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Methodology — dark */}
+      <section className="bg-ink-900 text-paper">
+        <div className="container">
+          <div className="grid grid-cols-1 tablet:grid-cols-[1fr_1.6fr] gap-20 items-start">
+            <div>
+              <div className="eyebrow !text-ink-400">{t('methodology.eyebrow')}</div>
+              <h2 style={{ marginTop: 24 }}>{t('methodology.headline')}</h2>
+              <p className="text-ink-300 max-w-[40ch]" style={{ marginTop: 24 }}>{t('methodology.intro')}</p>
+            </div>
+            <ol className="num-list">
+              {methodologySteps.map(s => (
+                <li key={s.title} style={{ borderTopColor: 'rgba(255,255,255,0.1)' }}>
+                  <div>
+                    <h4>{s.title}</h4>
+                    <div className="n-body !text-ink-300">{s.body}</div>
+                  </div>
+                </li>
+              ))}
+            </ol>
           </div>
         </div>
       </section>
@@ -242,23 +235,6 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 <p className="text-ink-600 text-[14.5px] leading-[1.55]">{a.body}</p>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Buyer — Who we help */}
-      <section className="tight">
-        <div className="container">
-          <div className="grid grid-cols-1 tablet:grid-cols-[1fr_2fr] gap-8 py-14 border-t border-b border-ink-150 items-start">
-            <div>
-              <div className="eyebrow">{t('buyer.eyebrow')}</div>
-              <h2 style={{ marginTop: 24, fontSize: 'clamp(26px,2.6vw,40px)', lineHeight: 1.1, letterSpacing: '-0.02em' }}>{t('buyer.headline')}</h2>
-            </div>
-            <ul className="checklist">
-              {buyerRoles.map(role => (
-                <li key={role}><span className="chk"></span><span>{role}</span></li>
-              ))}
-            </ul>
           </div>
         </div>
       </section>

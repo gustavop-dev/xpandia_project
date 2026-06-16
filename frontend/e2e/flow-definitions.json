@@ -106,6 +106,14 @@
       "description": "Guest clicks the primary CTA on a service detail page and lands on /contact",
       "expectedSpecs": 1
     },
+    "cta-services-core-solution-to-contact": {
+      "name": "CTA: Core solution card → Contact",
+      "module": "cta",
+      "roles": ["guest"],
+      "priority": "P3",
+      "description": "Guest clicks a core-solution card text-link CTA (e.g. 'Request an AI QA Sprint →') on /services and lands on /contact",
+      "expectedSpecs": 1
+    },
     "services-card-to-detail": {
       "name": "Services card → Detail page",
       "module": "services",
@@ -152,6 +160,14 @@
       "roles": ["guest"],
       "priority": "P3",
       "description": "Guest clicks the ES language toggle and the preference is stored in localStorage",
+      "expectedSpecs": 1
+    },
+    "mobile-language-toggle": {
+      "name": "Mobile language toggle in main bar",
+      "module": "navigation",
+      "roles": ["guest"],
+      "priority": "P3",
+      "description": "Guest on a mobile viewport switches locale from the EN|ES toggle in the main header bar without opening the drawer",
       "expectedSpecs": 1
     },
     "i18n-locale-switch": {
@@ -248,6 +264,14 @@
       "roles": ["shared"],
       "priority": "P4",
       "description": "Guest clicks 'Blog' in the desktop header nav and navigates to /blog from any page",
+      "expectedSpecs": 1
+    },
+    "header-contact-link": {
+      "name": "Header Contact nav link",
+      "module": "navigation",
+      "roles": ["shared"],
+      "priority": "P3",
+      "description": "Guest clicks the 'Contact / Contacto' tab in the desktop header nav and navigates to /contact",
       "expectedSpecs": 1
     }
   }

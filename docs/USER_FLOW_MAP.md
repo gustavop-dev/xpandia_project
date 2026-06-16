@@ -32,6 +32,7 @@ Use this document to understand each flow's steps, branching conditions, role re
 | `services-fractional` | Fractional Lead | services | P2 | guest | `/services/fractional` |
 | `cta-home-to-contact` | CTA: Home → Contact | cta | P2 | guest | `/` |
 | `cta-service-detail-to-contact` | CTA: Service detail → Contact | cta | P2 | guest | `/services/qa` |
+| `cta-services-core-solution-to-contact` | CTA: Core solution card → Contact | cta | P3 | guest | `/services` |
 | `services-card-to-detail` | Service card → Detail page | services | P2 | guest | `/services` |
 | `breadcrumb-back-to-services` | Breadcrumb: Detail → Services | services | P2 | guest | `/services/qa` |
 | `about-page` | About | static | P3 | guest | `/about` |
@@ -45,10 +46,12 @@ Use this document to understand each flow's steps, branching conditions, role re
 | `blog-back-from-detail-to-list` | Back link from detail → list | blog | P3 | guest | `/blog/[slug]` |
 | `contact-form-error-state` | Contact form server error | contact | P3 | guest | `/contact` |
 | `header-blog-link` | Header Blog nav link | navigation | P4 | guest | all pages |
+| `header-contact-link` | Header Contact nav link | navigation | P3 | guest | all pages |
 | `mobile-navigation-drawer` | Mobile nav drawer | navigation | P3 | guest | all pages |
 | `header-services-dropdown` | Header services dropdown | navigation | P3 | guest | all pages |
 | `fab-contact-button` | FAB contact button | navigation | P3 | guest | all pages |
 | `language-toggle-preference` | Language toggle | navigation | P3 | guest | all pages |
+| `mobile-language-toggle` | Mobile language toggle in main bar | navigation | P3 | guest | all pages |
 | `i18n-locale-switch` | Locale switch (EN ⇄ ES) | navigation | P2 | shared | all pages |
 | `i18n-locale-persistence-nav` | Locale persists across nav links | navigation | P2 | shared | all pages |
 | `navigation-between-pages` | Cross-page navigation | navigation | P2 | guest | all pages |
@@ -151,6 +154,17 @@ Use this document to understand each flow's steps, branching conditions, role re
 
 **Steps:** User clicks the primary CTA "Request an AI Spanish QA Sprint" on `/services/qa` → browser navigates to `/contact`.
 
+### cta-services-core-solution-to-contact
+
+| Field | Value |
+|-------|-------|
+| **Priority** | P3 |
+| **Roles** | guest |
+| **Frontend route** | `/services` |
+| **API endpoints** | none |
+
+**Steps:** User clicks a core-solution card text-link CTA (e.g. "Request an AI QA Sprint →") in the CORE SERVICES / SOLUCIONES PRINCIPALES section of `/services` → browser navigates to `/contact`. Six cards expose this CTA; the spec exercises the first one as representative.
+
 ---
 
 ## Services Module
@@ -164,7 +178,7 @@ Use this document to understand each flow's steps, branching conditions, role re
 | **Frontend route** | `/services` |
 | **API endpoints** | none |
 
-Presents the three concrete Xpandia engagements with cross-links to the detail pages.
+Presents the three decision cards (choose-your-path) plus the six core-solution cards, with cross-links to the detail pages and contact.
 
 ### services-qa / services-audit / services-fractional
 
@@ -403,6 +417,17 @@ Header and footer render on every route and expose the expected link set and CTA
 
 **Steps:** User clicks the "ES" language toggle button in the header → `localStorage['xpandia-lang']` is set to `'es'`; the ES button becomes active (dark background).
 
+### mobile-language-toggle
+
+| Field | Value |
+|-------|-------|
+| **Priority** | P3 |
+| **Roles** | guest |
+| **Frontend route** | all pages |
+| **Viewport** | mobile (390×844) |
+
+**Steps:** User on a mobile viewport sees the EN|ES toggle in the main header bar (next to the hamburger, not inside the drawer) → taps "ES" → URL gains the `/es` prefix and content switches to Spanish, without opening the drawer.
+
 ### i18n-locale-switch
 
 | Field | Value |
@@ -449,6 +474,21 @@ Header and footer render on every route and expose the expected link set and CTA
 3. Browser navigates to `/blog`.
 
 **Expected outcome:** The header's `nav-active` underline appears on the Blog item once on `/blog`.
+
+### header-contact-link
+
+| Field | Value |
+|-------|-------|
+| **Priority** | P3 |
+| **Roles** | guest |
+| **Frontend route** | all pages (desktop + mobile drawer) |
+
+**Steps:**
+1. User is on any page (e.g. `/`).
+2. User clicks the "Contact / Contacto" tab in the desktop header nav (or in the mobile drawer after opening the hamburger menu).
+3. Browser navigates to `/contact`.
+
+**Expected outcome:** The header's `nav-active` underline appears on the Contact item once on `/contact`.
 
 ---
 

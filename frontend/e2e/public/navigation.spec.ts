@@ -1,6 +1,6 @@
 import { test, expect } from '../test-with-coverage';
 import { waitForPageLoad } from '../fixtures';
-import { HOME_LOADS, NAVIGATION_BETWEEN_PAGES, NAVIGATION_HEADER, NAVIGATION_FOOTER, HEADER_BLOG_LINK } from '../helpers/flow-tags';
+import { HOME_LOADS, NAVIGATION_BETWEEN_PAGES, NAVIGATION_HEADER, NAVIGATION_FOOTER, HEADER_BLOG_LINK, HEADER_CONTACT_LINK } from '../helpers/flow-tags';
 
 test.describe('Navigation', () => {
   test('should navigate to home page', { tag: [...HOME_LOADS] }, async ({ page }) => {
@@ -17,7 +17,7 @@ test.describe('Navigation', () => {
 
     await page.goto('/about', { waitUntil: 'domcontentloaded' });
     await expect(page).toHaveURL(/.*about/);
-    await expect(page.getByRole('heading', { level: 1, name: /Spanish and English expertise for companies building/i })).toBeVisible();
+    await expect(page.getByRole('heading', { level: 1, name: /Spanish and English expertise/i })).toBeVisible();
   });
 
   test('should have working header navigation', { tag: [...NAVIGATION_HEADER] }, async ({ page }) => {
@@ -49,6 +49,16 @@ test.describe('Navigation', () => {
     await page.getByRole('banner').getByRole('link', { name: 'Blog' }).click();
 
     await expect(page).toHaveURL(/\/blog$/);
+    await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
+  });
+
+  test('clicking Contact in the header navigates to /contact', { tag: [...HEADER_CONTACT_LINK] }, async ({ page }) => {
+    await page.goto('/');
+    await waitForPageLoad(page);
+
+    await page.getByRole('navigation', { name: 'Primary' }).getByRole('link', { name: 'Contact' }).click();
+
+    await expect(page).toHaveURL(/\/contact$/);
     await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
   });
 

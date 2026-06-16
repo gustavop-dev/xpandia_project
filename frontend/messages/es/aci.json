@@ -12,8 +12,8 @@
   "hero": {
     "eyebrow": "APPLIED CULTURAL INTELLIGENCE",
     "h1": "Toma mejores decisiones con",
-    "h1Accent": "contexto cultural.",
-    "h1End": "",
+    "h1Accent": "contexto cultural",
+    "h1End": ".",
     "subheadline": "Xpandia ayuda a equipos globales a entender audiencias de habla inglesa e hispana, decodificar señales culturales, mejorar la comunicación intercultural y tomar mejores decisiones de producto, contenido, marketing, CX y Go-To-Market (G2M).",
     "body": "La cultura determina cómo las personas construyen confianza, leen el timing, responden a la jerarquía, dan feedback, manejan el riesgo, toman decisiones e interpretan lo que se dice — y lo que no se dice. Por medio de inteligencia cultural aplicada convertimos esas señales invisibles en conocimiento práctico y estratégico para tu negocio.",
     "ctaPrimary": "Hablar con un experto",
@@ -33,16 +33,12 @@
       }
     ]
   },
-  "photoBand": {
-    "line1": "03 / ENTENDER",
-    "line2": "DESCIFRAR → ALINEAR → ACTUAR"
-  },
   "positioning": {
     "eyebrow": "POR QUÉ APPLIED CULTURAL INTELLIGENCE",
     "headline": "La cultura es el sistema operativo invisible detrás de los negocios globales.",
-    "body1": "Cada mercado, equipo y audiencia tiene expectativas invisibles: qué construye confianza, qué se siente respetuoso, qué crea fricción, qué suena creíble, qué se percibe imprudente, qué se siente demasiado vago y qué hace que las personas actúen. Applied Cultural Intelligence ayuda a los equipos a reconocer esas señales antes de que afecten adopción, colaboración, conversión, experiencia del cliente o crecimiento de mercado.",
-    "body2": "Para Xpandia, ACI no es teoría abstracta, es un lente práctico que muestra cómo las empresas comunican, localizan, construyen, soportan, venden, entrenan y se expanden entre mercados de habla inglesa e hispana.",
-    "body3": "Applied Cultural Intelligence le da a tu equipo una manera estructurada de entender esas expectativas invisibles, comunicarse con mayor impacto, reducir la fricción cultural y tomar mejores decisiones en producto, mensajes, CX, localization y go-to-market.",
+    "body1": "Cada mercado, equipo y audiencia tiene expectativas invisibles: qué construye confianza, qué se siente respetuoso, qué crea fricción, qué suena creíble, qué se percibe imprudente, qué se siente demasiado vago y qué hace que las personas actúen.",
+    "body2": "Applied Cultural Intelligence ayuda a los equipos a reconocer esas señales antes de que afecten adopción, colaboración, conversión, experiencia del cliente o crecimiento de mercado.",
+    "body3": "Para Xpandia, ACI no es teoría abstracta, es un lente práctico que muestra cómo las empresas comunican, localizan, construyen, soportan, venden, entrenan y se expanden entre mercados de habla inglesa e hispana.",
     "supporting": "El objetivo de ACI es simple: ayudar a tu equipo a decidir con contexto cultural, no con suposiciones."
   },
   "whatWeUnderstand": {
@@ -90,210 +86,66 @@
       "Quieras blindar tu marca y evitar cualquier fricción cultural que pueda acarrear daños colaterales financieros y/o reputacionales."
     ]
   },
-  "aciCriteria": {
-    "eyebrow": "CRITERIOS DE ACI",
-    "headline": "Las señales detrás de una comunicación en la que tu audiencia puede confiar.",
-    "intro": "Cada proyecto de ACI se define en torno a tu audiencia, mercado, objetivo de negocio, contexto del equipo y nivel de complejidad cultural. Según el proyecto, evaluamos o capacitamos en torno a los criterios que más importan.",
+  "coreSolutions": {
+    "eyebrow": "SOLUCIONES PRINCIPALES",
+    "headline": "Conferencias, auditorías culturales y consultoría estratégica para equipos con operaciones globales.",
+    "bestForLabel": "IDEAL PARA",
+    "outcomeLabel": "IMPACTO",
+    "deliverablesLabel": "ENTREGABLES",
+    "investmentLabel": "INVERSIÓN",
+    "timelineLabel": "TIMELINE",
     "cards": [
       {
-        "n": "01",
-        "title": "Expectativas de la audiencia",
-        "desc": "¿Tu producto, mensaje o experiencia refleja lo que la audiencia valora, espera y necesita para confiar?"
-      },
-      {
-        "n": "02",
-        "title": "Confianza y credibilidad",
-        "desc": "¿La comunicación genera confianza, autoridad, calidez, claridad y legitimidad con la audiencia prevista?"
-      },
-      {
-        "n": "03",
-        "title": "Tono y relación",
-        "desc": "¿El tono respeta las expectativas de la audiencia en torno a la formalidad, la cercanía, la autoridad, la empatía y el profesionalismo?"
-      },
-      {
-        "n": "04",
-        "title": "Contexto cultural",
-        "desc": "¿El contenido tiene en cuenta el contexto social, regional, histórico, conductual y específico del mercado?"
-      },
-      {
-        "n": "05",
-        "title": "Estilo de comunicación",
-        "desc": "¿El mensaje se alinea con la forma en que la audiencia da, recibe, interpreta y responde a la información?"
-      },
-      {
-        "n": "06",
-        "title": "Comportamiento de decisión",
-        "desc": "¿La experiencia acompaña la forma en que la audiencia evalúa el riesgo, la urgencia, el valor, la certeza y los siguientes pasos?"
-      },
-      {
-        "n": "07",
-        "title": "Fricción cultural",
-        "desc": "¿Dónde podría la experiencia generar malentendidos, dudas, desconfianza, incomodidad o resistencia innecesaria?"
-      },
-      {
-        "n": "08",
-        "title": "Preparación para el mercado",
-        "desc": "¿El equipo está culturalmente preparado para lanzar, comunicar, dar soporte, vender u operar en el mercado objetivo?"
-      },
-      {
-        "n": "09",
-        "title": "Mentalidad del equipo",
-        "desc": "¿El equipo tiene la conciencia, el lenguaje y las herramientas prácticas para trabajar mejor entre contextos culturales?"
-      },
-      {
-        "n": "10",
-        "title": "Alineación con el crecimiento",
-        "desc": "¿La estrategia cultural apoya la adopción del producto, la confianza del cliente, la productividad del equipo y la expansión en el mercado?"
-      }
-    ]
-  },
-  "engagements": {
-    "eyebrow": "PROYECTOS PRINCIPALES",
-    "headline": "Charlas, auditorías, workshops y asesoría para equipos que trabajan entre culturas.",
-    "intro": "Comienza con una charla, auditoría o briefing de ACI enfocado, y luego escala hacia workshops, asesoría de go-to-market, estrategia de audiencia o acompañamiento cultural continuo.",
-    "engagementLabel": "PROYECTO",
-    "bestForLabel": "IDEAL PARA",
-    "outcomeLabel": "RESULTADO",
-    "overviewLabel": "RESUMEN",
-    "talkThemesLabel": "TEMAS DE LA CHARLA",
-    "startsAtLabel": "DESDE",
-    "timelineLabel": "PLAZO",
-    "items": [
-      {
-        "n": "01",
-        "title": "Charlas de Inteligencia Cultural",
-        "tagline": "Lee las reglas invisibles del negocio global.",
-        "bestFor": "Equipos de Liderazgo, Producto, Marketing, CX, Localización, Personas y Operaciones Globales que trabajan entre culturas, mercados, idiomas o con equipos internacionales.",
-        "outcome": "Ayuda a tu equipo a entender cómo la Inteligencia Cultural puede mejorar la colaboración, reducir la fricción, fortalecer la confianza y apoyar mejores decisiones de negocio entre culturas.",
-        "overview": "La cultura es el sistema operativo oculto detrás del negocio global. Moldea cómo las personas construyen confianza, leen los tiempos, responden a la jerarquía, dan feedback, manejan el riesgo, toman decisiones e interpretan lo que se dice — y lo que se calla. Las Charlas de Xpandia ayudan a líderes y equipos a descifrar esas reglas invisibles, para que puedan comunicarse de forma más efectiva, reducir fricciones costosas y construir relaciones más sólidas entre mercados, idiomas y audiencias.",
-        "themes": [
-          "Inteligencia Cultural (CQ) para el negocio global.",
-          "Los protocolos invisibles detrás de la confianza y la comunicación.",
-          "Las líneas rojas culturales y cómo evitar cruzarlas.",
-          "Cómo la cultura moldea el feedback, la jerarquía, el tiempo y la toma de decisiones.",
-          "Culturalización de productos, contenido y experiencia del cliente.",
-          "Expectativas de las audiencias hispanas e hispanohablantes.",
-          "Cambios de mentalidad para equipos globales más productivos."
-        ],
+        "name": "ACI Talk / Executive Briefing",
+        "bestFor": "Equipos de liderazgo, Producto, Marketing, CX, Localization, People (RRHH) y Global Operations que interactúan con diferentes culturas, mercados, idiomas o equipos internacionales.",
+        "outcome": "Descubrir cómo la Inteligencia Cultural (CQ) se convierte en el motor para desarrollar equipos más productivos, optimizar el market readiness, descifrar las expectativas de la audiencia y maximizar el ROI basado en la confianza mutua.",
         "deliverables": [
-          "Charla en vivo o briefing ejecutivo de 45 a 60 minutos.",
-          "Llamada previa para entender la audiencia y el contexto de negocio.",
-          "Marco práctico de CQ.",
-          "Ejemplos reales de negocio adaptados a la audiencia.",
-          "Sesión de preguntas y respuestas opcional.",
-          "Resumen de una página o checklist para el equipo.",
-          "Siguientes pasos recomendados para un workshop, una auditoría o un proyecto de asesoría."
+          "Charla o executive briefing en vivo de 45–60 minutos",
+          "Revisión de contexto previa",
+          "Framework práctico CQ / ACI",
+          "Ejemplos de negocio reales",
+          "Q&A opcional",
+          "Checklist de equipo de una página",
+          "Próximos pasos recomendados"
         ],
-        "deliverablesLabel": "Entregables de la charla",
-        "price": "Charlas desde $1,500 · Briefings ejecutivos desde $2,500",
+        "investment": "Talks desde $1,500 / Executive briefings desde $2,500",
         "timeline": "Sesión única",
-        "cta": "Reserva una charla de CQ"
+        "cta": "Reservar ACI Talk"
       },
       {
-        "n": "02",
-        "title": "Revisión de mensajes para audiencias hispanas",
-        "tagline": "Haz que tu mensaje conecte con la audiencia que necesitas alcanzar.",
-        "bestFor": "Equipos de Marketing, Growth, Product Marketing, CX, Localización y liderazgo que adaptan mensajes para audiencias hispanas, latinoamericanas, hispanas en EE. UU. o hispanohablantes.",
-        "outcome": "Identifica dónde el mensaje puede volverse más claro, más creíble, más alineado culturalmente y más persuasivo para la audiencia prevista.",
+        "name": "Hispanic Audience & Messaging Review",
+        "bestFor": "Equipos de Marketing, Growth, Product Marketing, CX, Localización y liderazgo en Latinoamérica que adaptan sus mensajes, propuestas de valor y campañas comerciales para audiencias globales de habla inglesa.",
+        "outcome": "Identificar si tu mensaje e inglés de negocios son claros, creíbles, persuasivos y están construidos sobre los disparadores de confianza (trust signals) y el contexto cultural exacto que el comprador anglosajón exige para tomar una decisión de compra.",
         "deliverables": [
-          "Revisión de mensajes.",
-          "Hallazgos sobre el ajuste con la audiencia.",
-          "Análisis de señales de confianza.",
-          "Recomendaciones de tono y contexto.",
-          "Notas sobre fricción cultural.",
-          "Reescrituras sugeridas o direcciones de mensaje.",
-          "Resumen ejecutivo."
+          "Messaging review",
+          "Hallazgos de audience fit en mercados objetivos",
+          "Análisis de señales de confianza corporativa",
+          "Optimización de tono comercial",
+          "Detección de fricciones de lenguaje",
+          "Propuestas de reescritura de copys",
+          "Executive summary"
         ],
-        "deliverablesLabel": "Entregables de la revisión",
-        "price": "Desde $3,500",
-        "timeline": "7 a 10 días hábiles",
-        "cta": "Solicita una revisión de mensajes"
+        "investment": "Desde $3,500 USD",
+        "timeline": "7–10 días hábiles",
+        "cta": "Solicitar Messaging Review"
       },
       {
-        "n": "03",
-        "title": "Auditoría de ajuste al mercado en español",
-        "tagline": "Entiende qué tan preparado está tu producto o mensaje para los mercados hispanohablantes.",
-        "bestFor": "Equipos que entran, crecen o mejoran su presencia en mercados hispanos, latinoamericanos, hispanos en EE. UU., España o hispanohablantes.",
-        "outcome": "Evalúa el ajuste con la audiencia, la fricción cultural, los riesgos de comunicación, las señales de confianza y la preparación para el mercado antes de un lanzamiento, relanzamiento o expansión.",
-        "deliverables": [
-          "Hallazgos sobre el ajuste con el mercado y la audiencia.",
-          "Mapa de fricción cultural.",
-          "Análisis de confianza y mensajes.",
-          "Recomendaciones de ajuste regional.",
-          "Observaciones sobre producto, contenido y CX.",
-          "Recomendaciones priorizadas.",
-          "Resumen de preparación."
+        "name": "Cultural Fit Advisory",
+        "canIncludeLabel": "INCLUYE",
+        "canInclude": [
+          "Revisión de ajuste al mercado en español",
+          "Auditoría de culturalización",
+          "Estrategia de ajuste regional",
+          "Workshop",
+          "Guía de go-to-market (GTM)"
         ],
-        "deliverablesLabel": "Entregables de la auditoría",
-        "price": "Desde $4,500",
-        "timeline": "10 a 15 días hábiles",
-        "cta": "Solicita una auditoría de ajuste al mercado"
-      },
-      {
-        "n": "04",
-        "title": "Auditoría de culturalización",
-        "tagline": "Adapta la experiencia, no solo el idioma.",
-        "bestFor": "Equipos de Producto, Contenido, Marketing, EdTech, CX y Localización que necesitan evaluar si su experiencia dirigida al público hispano o en español está alineada culturalmente.",
-        "outcome": "Identifica dónde el contenido, los flujos de producto, los ejemplos, las imágenes, el tono, las suposiciones, los mensajes o las experiencias de soporte necesitan adaptación cultural.",
-        "deliverables": [
-          "Revisión de culturalización.",
-          "Análisis de expectativas de la audiencia.",
-          "Hallazgos sobre el ajuste cultural.",
-          "Notas sobre líneas rojas y fricción.",
-          "Recomendaciones de adaptación.",
-          "Ejemplos de qué ajustar y por qué.",
-          "Informe ejecutivo."
-        ],
-        "deliverablesLabel": "Entregables de la auditoría",
-        "price": "Desde $3,500",
-        "timeline": "7 a 15 días hábiles",
-        "cta": "Solicita una auditoría de culturalización"
-      },
-      {
-        "n": "05",
-        "title": "Workshops de CQ / ACI",
-        "tagline": "Desarrolla la inteligencia cultural que tu equipo necesita para trabajar y crecer entre mercados.",
-        "bestFor": "Equipos de Liderazgo, Producto, Marketing, CX, Localización, Personas y Operaciones que necesitan capacitación práctica en comunicación intercultural, preparación para audiencias hispanas o culturalización.",
-        "outcome": "Dale a tu equipo un marco compartido, un vocabulario y herramientas prácticas para entender las señales culturales, reducir la fricción y tomar mejores decisiones entre mercados.",
-        "deliverables": [
-          "Workshop personalizado de 90 minutos, media jornada o varias sesiones.",
-          "Llamada previa para entender el contexto del equipo y el objetivo de negocio.",
-          "Marco práctico de CQ / ACI.",
-          "Ejemplos reales adaptados a tu audiencia o mercado.",
-          "Ejercicios de equipo o preguntas para la discusión.",
-          "Checklist de una página o guía de trabajo.",
-          "Siguientes pasos recomendados."
-        ],
-        "deliverablesLabel": "Entregables del workshop",
-        "price": "Desde $4,500",
-        "timeline": "Sesión única o media jornada · Los workshops de varias sesiones se cotizan por separado",
-        "cta": "Reserva un workshop de ACI"
-      },
-      {
-        "n": "06",
-        "title": "Asesoría cultural de go-to-market",
-        "tagline": "Haz del contexto cultural parte de tu estrategia de crecimiento.",
-        "bestFor": "Equipos de Liderazgo, Producto, Marketing, Growth, CX y Localización que planean entrar a mercados hispanohablantes, una estrategia de audiencia hispana o una expansión multicultural.",
-        "outcome": "Apoya mejores decisiones de mercado integrando el conocimiento cultural en los mensajes, el posicionamiento del producto, la experiencia del cliente, la comunicación y la estrategia de lanzamiento.",
-        "deliverables": [
-          "Sesiones de asesoría estratégica.",
-          "Contexto de audiencia y mercado.",
-          "Análisis de riesgos y oportunidades culturales.",
-          "Orientación sobre mensajes y posicionamiento.",
-          "Recomendaciones de producto y CX.",
-          "Plan de acción priorizado.",
-          "Acompañamiento de seguimiento."
-        ],
-        "deliverablesLabel": "Entregables de la asesoría",
-        "price": "Desde $3,000/mes",
-        "timeline": "Proyecto mensual · Mínimo recomendado: 3 meses",
-        "cta": "Explora la asesoría de ACI"
+        "cta": "Explorar Cultural Fit Advisory"
       }
     ]
   },
   "methodology": {
     "eyebrow": "METODOLOGÍA",
-    "headline": "Un camino práctico desde la incertidumbre cultural hacia decisiones de alto impacto.",
+    "headline": "Un camino práctico desde la <u>incertidumbre cultural</u> hacia <u>decisiones de alto impacto</u>.",
     "intro": "",
     "steps": [
       {
@@ -315,151 +167,6 @@
       {
         "title": "Plan estratégico y siguientes pasos",
         "body": "Identificamos el camino correcto: adaptar messaging, realizar una revisión cultural, entrenar al equipo, refinar la estrategia go-to-market o avanzar hacia advisory continuo."
-      }
-    ]
-  },
-  "deliverables": {
-    "eyebrow": "LOS ENTREGABLES",
-    "headline": "Conocimiento cultural que tu equipo puede convertir en mejores decisiones.",
-    "intro": "La Inteligencia Cultural Aplicada convierte la complejidad cultural en hallazgos claros, orientación práctica y recomendaciones listas para el negocio.",
-    "cards": [
-      {
-        "title": "Informe de conocimiento cultural",
-        "desc": "Un resumen enfocado de los patrones, expectativas y señales culturales que importan para tu audiencia o equipo."
-      },
-      {
-        "title": "Recomendaciones específicas por audiencia",
-        "desc": "Orientación práctica adaptada a audiencias hispanas, latinoamericanas, hispanas en EE. UU., hispanohablantes o multiculturales."
-      },
-      {
-        "title": "Mapa de fricción cultural",
-        "desc": "Una vista estructurada de dónde pueden aparecer malentendidos, dudas, desconfianza o resistencia."
-      },
-      {
-        "title": "Orientación de mensajes",
-        "desc": "Recomendaciones para mejorar el tono, las señales de confianza, la claridad, el contexto y la conexión con la audiencia."
-      },
-      {
-        "title": "Hallazgos de ajuste al mercado",
-        "desc": "Conocimientos sobre si tu producto, contenido, mensaje o experiencia está alineado con las expectativas del mercado objetivo."
-      },
-      {
-        "title": "Marco de CQ",
-        "desc": "Un modelo práctico que tu equipo puede usar para entender la diferencia cultural, los estilos de comunicación y el comportamiento de la audiencia."
-      },
-      {
-        "title": "Materiales del workshop",
-        "desc": "Diapositivas, ejercicios, checklists, ejemplos o guías de trabajo adaptados al equipo o a la audiencia."
-      },
-      {
-        "title": "Hoja de ruta de acción",
-        "desc": "Un plan priorizado para los siguientes pasos de producto, marketing, CX, localización, liderazgo o go-to-market."
-      }
-    ]
-  },
-  "builtFor": {
-    "eyebrow": "PENSADO PARA",
-    "headline": "Para equipos que toman decisiones entre culturas.",
-    "cards": [
-      {
-        "title": "Equipos de Liderazgo",
-        "desc": "Desarrolla inteligencia cultural para una mejor comunicación, toma de decisiones y alineación de equipos globales."
-      },
-      {
-        "title": "Equipos de Producto",
-        "desc": "Entiende cómo el contexto cultural afecta la experiencia de producto, la usabilidad, la confianza, la adopción y el comportamiento del usuario."
-      },
-      {
-        "title": "Equipos de Marketing y Growth",
-        "desc": "Adapta mensajes, campañas, posicionamiento y rutas de conversión para audiencias hispanas e hispanohablantes."
-      },
-      {
-        "title": "Equipos de CX y Soporte",
-        "desc": "Mejora la comunicación con el cliente, el lenguaje de escalamiento, la empatía, la confianza y las experiencias de soporte entre culturas."
-      },
-      {
-        "title": "Equipos de Localización",
-        "desc": "Avanza más allá de la precisión lingüística hacia el ajuste cultural, la relevancia regional y la preparación para la audiencia."
-      },
-      {
-        "title": "Equipos de Personas y Operaciones Globales",
-        "desc": "Capacita a equipos distribuidos para comunicarse, colaborar, dar feedback y trabajar entre contextos culturales."
-      },
-      {
-        "title": "Equipos de EdTech",
-        "desc": "Adapta experiencias de aprendizaje, ejemplos, feedback y contenido educativo para estudiantes culturalmente diversos."
-      },
-      {
-        "title": "Equipos de IA",
-        "desc": "Entiende el contexto cultural detrás de las salidas de la IA, las expectativas del usuario, la confianza, el tono y el riesgo en experiencias en español."
-      }
-    ]
-  },
-  "pricing": {
-    "eyebrow": "PUNTOS DE PARTIDA",
-    "headline": "Comienza con el conocimiento cultural que tu equipo necesita ahora.",
-    "intro": "Los proyectos de Inteligencia Cultural Aplicada se cotizan según la audiencia, el mercado, el tamaño del equipo, el formato, el nivel de personalización, la complejidad cultural y el objetivo de negocio.",
-    "note": "El precio final se confirma tras una breve llamada de diagnóstico y una revisión del alcance. El precio depende del formato, el tamaño de la audiencia, la personalización, el contexto de negocio, la preparación y los entregables.",
-    "cards": [
-      {
-        "title": "Charlas de Inteligencia Cultural",
-        "price": "Desde $1,500",
-        "desc": "Introduce a líderes y equipos a las reglas invisibles detrás de la confianza, la comunicación, la toma de decisiones y el crecimiento del negocio global."
-      },
-      {
-        "title": "Briefings ejecutivos",
-        "price": "Desde $2,500",
-        "desc": "Una sesión estratégica para equipos de liderazgo o multidisciplinarios que necesitan conocimiento cultural ligado a una audiencia, mercado o reto de negocio específico."
-      },
-      {
-        "title": "Auditorías de ACI",
-        "price": "Desde $3,500",
-        "desc": "Evalúa los mensajes, el ajuste con la audiencia, la culturalización, los puntos de fricción y la preparación para audiencias hispanas o hispanohablantes."
-      },
-      {
-        "title": "Auditoría de ajuste al mercado en español",
-        "price": "Desde $4,500",
-        "desc": "Evalúa la preparación para el mercado, las señales de confianza, el ajuste cultural, los riesgos de comunicación y la alineación con la audiencia antes de un lanzamiento o expansión."
-      },
-      {
-        "title": "Workshops personalizados",
-        "price": "Desde $4,500",
-        "desc": "Capacita a los equipos con marcos prácticos de Inteligencia Cultural, ejemplos, ejercicios y recomendaciones adaptados a su trabajo."
-      },
-      {
-        "title": "Asesoría estratégica",
-        "price": "Desde $3,000/mes",
-        "desc": "Acompañamiento cultural continuo para equipos que entran, crecen u operan en mercados hispanos, hispanohablantes o multiculturales."
-      }
-    ]
-  },
-  "faq": {
-    "eyebrow": "PREGUNTAS FRECUENTES",
-    "headline": "Preguntas comunes sobre la Inteligencia Cultural Aplicada.",
-    "items": [
-      {
-        "q": "¿La ACI es lo mismo que la capacitación cultural?",
-        "a": "Puede incluir capacitación, pero la Inteligencia Cultural Aplicada es más amplia. Ayuda a los equipos a aplicar el conocimiento cultural a decisiones de producto, mensajes, CX, localización, liderazgo, comunicación y go-to-market."
-      },
-      {
-        "q": "¿Esto es solo para audiencias hispanohablantes?",
-        "a": "No. El foco más fuerte de Xpandia son las audiencias hispanas e hispanohablantes, pero el marco de ACI también apoya a equipos globales que trabajan entre culturas, mercados e idiomas."
-      },
-      {
-        "q": "¿Necesitamos esto si nuestro español ya es correcto?",
-        "a": "Sí. Un español correcto puede igualmente pasar por alto las expectativas culturales, las señales de confianza, el tono, el contexto o el ajuste con la audiencia. La ACI ayuda a determinar si la experiencia conecta, no solo si es lingüísticamente precisa."
-      },
-      {
-        "q": "¿Esto puede ayudar a los equipos de liderazgo?",
-        "a": "Sí. Las charlas de ACI y los briefings ejecutivos están diseñados para ayudar a los líderes a entender cómo la cultura moldea la confianza, la comunicación, la toma de decisiones, el feedback, la jerarquía, el riesgo y la colaboración global."
-      },
-      {
-        "q": "¿Esto puede apoyar decisiones de producto o marketing?",
-        "a": "Sí. La ACI puede informar los mensajes, los flujos de producto, el CX, el onboarding, las campañas, la estrategia de go-to-market, el ajuste con la audiencia y la preparación para el mercado."
-      },
-      {
-        "q": "¿Esto se puede combinar con Localization o Language Assurance?",
-        "a": "Sí. La ACI puede guiar la localización antes de crear el contenido, apoyar la adaptación cultural durante la localización o complementar Language Assurance cuando una experiencia en español necesita una evaluación de preparación cultural."
       }
     ]
   },

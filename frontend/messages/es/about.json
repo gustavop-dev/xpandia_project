@@ -49,11 +49,12 @@
         "title": "Enfoque de negocio práctico",
         "body": "Recomendaciones accionables diseñadas específicamente para optimizar los sprints de los equipos de Producto, IA, Localización, CX, Soporte, Marketing, EdTech y C-Level."
       }
-    ]
+    ],
+    "valueLabel": "VALOR"
   },
   "founder": {
     "eyebrow": "EXPERIENCIA LIDERADA POR EL FUNDADOR",
-    "headline": "Liderada por experiencia senior en lenguaje, localización, aseguramiento de calidad e inteligencia cultural.",
+    "headline": "Experiencia senior en lenguaje, localización, aseguramiento de calidad e inteligencia cultural.",
     "body1": "Xpandia nació de una convicción práctica: la calidad del lenguaje impacta directamente el negocio. Influye en la experiencia de producto, la confianza, la comprensión del cliente, la preparación para entrar a nuevos mercados y el crecimiento.",
     "body2": "Liderada por su fundador y respaldada por una red de expertos senior, Xpandia ayuda a equipos globales a convertir preguntas sobre calidad lingüística, localización y adecuación cultural en decisiones claras para el negocio. Combinamos precisión lingüística, experiencia en localización, criterio cultural, comunicación empresarial multilingüe, pensamiento global y juicio orientado al producto para ayudar a los equipos a convertir desafíos lingüísticos y culturales complejos en experiencias digitales claras, confiables y listas para escalar.",
     "name": "Nestor Solano",
@@ -120,7 +121,8 @@
         "price": "Desde $3,000 USD / mes",
         "body": "Para organizaciones que requieren un liderazgo senior continuo para gobernar su calidad lingüística, estandarizar flujos de trabajo (workflows) y respaldar la toma de decisiones."
       }
-    ]
+    ],
+    "cardCta": "Empezar"
   },
   "proofSignals": {
     "eyebrow": "POR QUÉ CONFIAR EN XPANDIA",
@@ -130,8 +132,8 @@
         "text": "Experiencia global en localización, calidad lingüística y multiculturalismo."
       },
       {
-        "label": "Enfoque bilingüe",
-        "text": "Inglés-español, LatAm, US Hispanic, EE. UU., Canada y variantes regionales."
+        "label": "Enfoque bilingüe Inglés-Español",
+        "text": "LatAm, US Hispanic, EE. UU., Canada y variantes regionales."
       },
       {
         "label": "Ideal para equipos",

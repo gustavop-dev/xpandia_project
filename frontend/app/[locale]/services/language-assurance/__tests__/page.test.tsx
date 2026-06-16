@@ -40,12 +40,12 @@ describe('LanguageAssurancePage', () => {
 
   it('renders the CORE SERVICES section eyebrow', async () => {
     renderWithIntl(await LanguageAssurancePage({ params: makeParams() }))
-    expect(screen.getByText('CORE ENGAGEMENTS')).toBeInTheDocument()
+    expect(screen.getByText('CORE SERVICES')).toBeInTheDocument()
   })
 
   it('renders the methodology headline', async () => {
     renderWithIntl(await LanguageAssurancePage({ params: makeParams() }))
-    expect(screen.getByText('A structured path from Spanish review to release confidence.')).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: /structured path from.*release confidence/i })).toBeInTheDocument()
   })
 
   it('renders a book diagnostic call CTA link', async () => {

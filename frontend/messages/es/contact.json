@@ -23,7 +23,7 @@
         "placeholder": "Juana Pérez"
       },
       "email": {
-        "label": "Email de trabajo",
+        "label": "Email corporativo",
         "placeholder": "juana@empresa.com"
       },
       "company": {
@@ -63,7 +63,7 @@
         ]
       },
       "timeline": {
-        "label": "Plazos",
+        "label": "Timeline",
         "options": [
           "Urgente / este mes",
           "1–2 meses",
@@ -116,7 +116,7 @@
   },
   "whatHappensNext": {
     "eyebrow": "PASOS A SEGUIR",
-    "headline": "Un camino claro desde el primer contacto hasta la acción.",
+    "headline": "Un camino claro desde el primer contacto hasta la <u>acción</u>.",
     "steps": [
       {
         "title": "Nos compartes el contexto",

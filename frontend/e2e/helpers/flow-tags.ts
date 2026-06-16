@@ -32,6 +32,7 @@ export const CONTACT_FORM_SUBMIT = ['@flow:contact-form-submit', '@module:contac
 // ── CTA flows ──
 export const CTA_HOME_TO_CONTACT = ['@flow:cta-home-to-contact', '@module:cta', '@priority:P2'];
 export const CTA_SERVICE_DETAIL_TO_CONTACT = ['@flow:cta-service-detail-to-contact', '@module:cta', '@priority:P2'];
+export const CTA_SERVICES_CORE_SOLUTION_TO_CONTACT = ['@flow:cta-services-core-solution-to-contact', '@module:cta', '@priority:P3'];
 
 // ── Services interactions ──
 export const SERVICES_CARD_TO_DETAIL = ['@flow:services-card-to-detail', '@module:services', '@priority:P2'];
@@ -42,6 +43,7 @@ export const MOBILE_NAVIGATION_DRAWER = ['@flow:mobile-navigation-drawer', '@mod
 export const HEADER_SERVICES_DROPDOWN = ['@flow:header-services-dropdown', '@module:navigation', '@priority:P3'];
 export const FAB_CONTACT_BUTTON = ['@flow:fab-contact-button', '@module:navigation', '@priority:P3'];
 export const LANGUAGE_TOGGLE_PREFERENCE = ['@flow:language-toggle-preference', '@module:navigation', '@priority:P3'];
+export const MOBILE_LANGUAGE_TOGGLE = ['@flow:mobile-language-toggle', '@module:navigation', '@priority:P3'];
 export const I18N_LOCALE_SWITCH = ['@flow:i18n-locale-switch', '@module:navigation', '@priority:P2'];
 export const I18N_LOCALE_PERSISTENCE_NAV = ['@flow:i18n-locale-persistence-nav', '@module:navigation', '@priority:P2'];
 export const FOOTER_LINKS_NAVIGATION = ['@flow:footer-links-navigation', '@module:navigation', '@priority:P4'];
@@ -60,3 +62,4 @@ export const CONTACT_FORM_ERROR_STATE = ['@flow:contact-form-error-state', '@mod
 
 // ── Navigation (extended) ──
 export const HEADER_BLOG_LINK = ['@flow:header-blog-link', '@module:navigation', '@priority:P4'];
+export const HEADER_CONTACT_LINK = ['@flow:header-contact-link', '@module:navigation', '@priority:P3'];

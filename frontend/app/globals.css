@@ -330,6 +330,17 @@ h4, .h4 {
   min-height: 380px;
 }
 .service-card:hover { border-color: var(--primary); transform: translateY(-2px); }
+/* Align the inner sections (num, title, tagline, …, CTA) horizontally across
+   the three cards in a row: each card shares the parent grid's rows via subgrid. */
+@media (min-width: 900px) {
+  .service-card {
+    display: grid;
+    grid-template-rows: subgrid;
+    grid-row: span 8;
+    row-gap: 0;
+  }
+  .service-card .service-meta { align-self: end; }
+}
 .service-card .service-num { font-family: var(--font-mono); font-size: 12px; color: var(--fg-subtle); letter-spacing: 0.08em; }
 .service-card .service-title { font-family: var(--font-display); font-size: 26px; font-weight: 500; letter-spacing: -0.015em; line-height: 1.1; margin: 16px 0 12px; }
 .service-card .service-desc { color: var(--fg-muted); margin-bottom: 24px; font-size: var(--fs-body); line-height: 1.5; }
@@ -351,6 +362,7 @@ h4, .h4 {
 /* ---------- Section head ---------- */
 
 .section-head { display: grid; grid-template-columns: 1fr 2fr; gap: var(--space-gutter); align-items: end; padding-bottom: 48px; border-bottom: 1px solid var(--rule); }
+.section-head--no-rule { border-bottom: 0; padding-bottom: 0; }
 .section-head .head-title { font-family: var(--font-display); font-size: var(--fs-h2); font-weight: 500; line-height: 1.02; letter-spacing: -0.02em; margin: 0; }
 .section-head .head-lede { color: var(--fg-muted); font-size: var(--fs-body-lg); max-width: 50ch; }
 
@@ -368,6 +380,11 @@ h4, .h4 {
 .checklist .chk-x::before, .checklist .chk-x::after { content: ""; position: absolute; left: 50%; top: 50%; width: 8px; height: 1.5px; background: var(--ink-400); transform-origin: center; }
 .checklist .chk-x::before { transform: translate(-50%, -50%) rotate(45deg); }
 .checklist .chk-x::after { transform: translate(-50%, -50%) rotate(-45deg); border: 0; }
+
+/* Flush variant: no divider rules, tighter rows, and vivid filled bullets. */
+.checklist-flush li { border-bottom: 0; padding: 7px 0; }
+.checklist-flush .chk { background: var(--accent); border-color: var(--accent); }
+.checklist-flush .chk::after { border-right-color: #fff; border-bottom-color: #fff; }
 
 .num-list { list-style: none; padding: 0; margin: 0; counter-reset: n; }
 .num-list li { counter-increment: n; padding: 20px 0; border-top: 1px solid var(--rule); display: grid; grid-template-columns: 56px 1fr; gap: 24px; }
@@ -410,6 +427,9 @@ h4, .h4 {
   font-family: var(--font-body);
 }
 .radio-tile.on { border-color: var(--primary); background: var(--primary); color: #fff; }
+/* Tighter type on the 4-up timeline row so labels like "Urgent / this month"
+   do not break into three lines. */
+.radio-row .radio-tile { font-size: 13px; padding: 12px 12px; line-height: 1.35; }
 
 .newsletter-form { display: flex; gap: 10px; max-width: 560px; }
 

@@ -35,8 +35,8 @@
     "eyebrow": "WHY XPANDIA",
     "headline": "Language quality is product quality.",
     "body1": "AI and automated translation can get Spanish most of the way there. But \"mostly accurate\" is not always enough when language affects trust, conversion, customer experience, or product adoption.",
-    "body2": "Xpandia operates in that last mile between understandable Spanish and Spanish that is ready for real users. We help teams validate, improve, and deliver Spanish experiences that are accurate, clear, natural, culturally aware, and aligned with the way users think, decide, and act.",
-    "body3": "For companies where Spanish quality directly affects UX, CX, trust, and revenue, Xpandia turns expert human judgment into the evidence, recommendations, and improvements needed to move from \"good enough\" to ready.",
+    "body2": "Xpandia operates in that last mile between understandable Spanish and Spanish that is ready for real users. We help teams validate, improve, and deliver Spanish experiences that are <b>accurate, clear, natural, culturally aware, and aligned</b> with the way users think, decide, and act.",
+    "body3": "For companies where Spanish quality directly affects UX, CX, trust, and revenue, Xpandia turns <b>expert human judgment</b> into the evidence, recommendations, and improvements needed to move from \"good enough\" to ready.",
     "calloutTitle": "Validate. Adapt. Understand.",
     "calloutLine": "The three ways Xpandia makes Spanish work in the real world."
   },
@@ -200,18 +200,6 @@
           "val": "3.1%",
           "dim": true
         }
-      ],
-      "criteria": [
-        "Accuracy",
-        "Clarity",
-        "Naturalness",
-        "Tone & register",
-        "Terminology",
-        "Regional fit",
-        "Cultural fit",
-        "UX friction",
-        "Instruction-following",
-        "Risk severity"
       ]
     }
   },
@@ -243,22 +231,6 @@
         "title": "EdTech Teams",
         "body": "Make Spanish and English learning experiences clear, natural, culturally relevant, and pedagogically effective."
       }
-    ]
-  },
-  "buyer": {
-    "eyebrow": "WHO WE HELP",
-    "headline": "Built for the leaders responsible for Spanish quality.",
-    "roles": [
-      "Head of Product",
-      "VP Product",
-      "AI / ML Product Lead",
-      "Director of Localization",
-      "Head of Globalization",
-      "VP Customer Experience",
-      "Customer Support Leader",
-      "EdTech Content Leader",
-      "Marketing / Growth Lead",
-      "Trust & Safety Lead"
     ]
   },
   "finalCta": {

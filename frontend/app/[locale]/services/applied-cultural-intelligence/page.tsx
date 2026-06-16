@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { Link } from '@/i18n/navigation'
-import Image from 'next/image'
 import { localizedAlternates } from '@/lib/seo/alternates'
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
@@ -22,19 +21,15 @@ export default async function AppliedCulturalIntelligencePage({ params }: { para
 
   const coverageCards = t.raw('whatWeUnderstand.cards') as Array<{ title: string; desc: string }>
   const whenToUseItems = t.raw('whenToUse.items') as string[]
-  const engagements = t.raw('engagements.items') as Array<{
-    n: string
-    title: string
-    tagline: string
-    bestFor: string
-    outcome: string
-    overview?: string
-    themes?: string[]
-    themesLabel?: string
-    deliverables: string[]
-    deliverablesLabel: string
-    price: string
-    timeline: string
+  const coreSolutionCards = t.raw('coreSolutions.cards') as Array<{
+    name: string
+    bestFor?: string
+    outcome?: string
+    canIncludeLabel?: string
+    canInclude?: string[]
+    deliverables?: string[]
+    investment?: string
+    timeline?: string
     cta: string
   }>
   const methodologySteps = t.raw('methodology.steps') as Array<{ title: string; body: string }>
@@ -82,12 +77,14 @@ export default async function AppliedCulturalIntelligencePage({ params }: { para
               <p className="text-ink-600 text-[19px] max-w-[64ch] mb-5">
                 {t('positioning.body2')}
               </p>
-              <p className="text-ink-600 text-[19px] max-w-[64ch] mb-5">
+              <p className="text-ink-600 text-[19px] max-w-[64ch] mb-7">
                 {t('positioning.body3')}
               </p>
-              <p className="text-ink-900 text-[19px] max-w-[64ch] font-medium">
-                {t('positioning.supporting')}
-              </p>
+              <div className="p-7 bg-white border-l-2 border-primary rounded-r-md max-w-[64ch]">
+                <p className="text-ink-700 text-[17px] leading-[1.5]">
+                  {t('positioning.supporting')}
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -96,35 +93,17 @@ export default async function AppliedCulturalIntelligencePage({ params }: { para
       {/* 3. What ACI Covers */}
       <section>
         <div className="container">
-          <div className="section-head">
-            <div>
-              <div className="eyebrow mb-5">{t('whatWeUnderstand.eyebrow')}</div>
-              <h2 className="head-title">{t('whatWeUnderstand.headline')}</h2>
-            </div>
-            <p className="head-lede">{t('whatWeUnderstand.intro')}</p>
+          <div className="section-head section-head--no-rule" style={{ gridTemplateColumns: '1fr' }}>
+            <div className="eyebrow mb-5">{t('whatWeUnderstand.eyebrow')}</div>
+            <h2 className="head-title max-w-[30ch]">{t('whatWeUnderstand.headline')}</h2>
           </div>
           <div data-stagger className="grid grid-cols-1 sm:grid-cols-2 tablet:grid-cols-3 gap-4 mt-12">
             {coverageCards.map(c => (
-              <div key={c.title} className="p-7 bg-white border border-ink-150 rounded-md">
+              <div key={c.title} className="p-7 bg-white border border-ink-150 rounded-md transition-all hover:border-primary hover:shadow-[0_4px_20px_rgba(15,20,25,0.06)]">
                 <div className="font-display text-[20px] font-medium tracking-[-0.012em] mb-[10px]">{c.title}</div>
                 <div className="text-ink-600 text-[15px] leading-[1.5]">{c.desc}</div>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Visual band */}
-      <section className="tight pt-0 pb-0">
-        <div className="container">
-          <div className="relative aspect-[16/9] tablet:aspect-[24/7] rounded-lg overflow-hidden bg-ink-900">
-            <Image src="/assets/img-markets.jpg" alt="" fill loading="lazy" className="object-cover grayscale contrast-[1.05]" sizes="100vw" />
-            <div className="absolute inset-0" style={{ background: 'linear-gradient(90deg, rgba(15,20,25,0.3) 0%, transparent 40%, transparent 60%, rgba(15,20,25,0.8) 100%)' }}></div>
-            <div className="absolute bottom-8 right-8 font-mono text-[11px] tracking-[0.14em] text-white/85 text-right">
-              <div className="mb-[6px]">{t('photoBand.line1')}</div>
-              <div className="text-accent text-[14px] tracking-[0.08em]">{t('photoBand.line2')}</div>
-            </div>
-            <div className="absolute bottom-0 left-0 w-[34%] h-[3px] bg-accent"></div>
           </div>
         </div>
       </section>
@@ -139,7 +118,7 @@ export default async function AppliedCulturalIntelligencePage({ params }: { para
                 {t('whenToUse.headline')}
               </p>
             </div>
-            <ul className="checklist">
+            <ul className="checklist checklist-flush">
               {whenToUseItems.map(item => (
                 <li key={item}><span className="chk"></span><span>{item}</span></li>
               ))}
@@ -148,64 +127,83 @@ export default async function AppliedCulturalIntelligencePage({ params }: { para
         </div>
       </section>
 
-      {/* 5. Core Services */}
+      {/* 5. Core solutions */}
       <section>
         <div className="container">
-          <div className="section-head">
-            <div>
-              <div className="eyebrow mb-5">{t('engagements.eyebrow')}</div>
-              <h2 className="head-title">{t('engagements.headline')}</h2>
-            </div>
-            <p className="head-lede">{t('engagements.intro')}</p>
+          <div className="eyebrow mb-5">{t('coreSolutions.eyebrow')}</div>
+          <div className="section-head section-head--no-rule" style={{ gridTemplateColumns: '1fr' }}>
+            <h2 className="head-title max-w-[28ch]">{t('coreSolutions.headline')}</h2>
           </div>
-          <div className="mt-12 flex flex-col gap-4">
-            {engagements.map(e => (
-              <div key={e.n} className="p-8 tablet:p-10 bg-white border border-ink-150 rounded-lg">
-                <div className="grid grid-cols-1 tablet:grid-cols-[1.1fr_1.4fr] gap-8 tablet:gap-12">
-                  <div>
-                    <div className="font-mono text-[11px] text-ink-400 tracking-[0.1em] mb-3">{e.n} / {t('engagements.engagementLabel')}</div>
-                    <h3 className="h3 mb-2">{e.title}</h3>
-                    <p className="text-accent text-[15px] font-medium mb-6">{e.tagline}</p>
-                    <div className="eyebrow no-bar mb-2">{t('engagements.bestForLabel')}</div>
-                    <p className="text-ink-600 text-[15px] leading-[1.55] mb-5">{e.bestFor}</p>
-                    <div className="eyebrow no-bar mb-2">{t('engagements.outcomeLabel')}</div>
-                    <p className="text-ink-600 text-[15px] leading-[1.55]">{e.outcome}</p>
-                    {e.overview && (
-                      <>
-                        <div className="eyebrow no-bar mt-5 mb-2">{t('engagements.overviewLabel')}</div>
-                        <p className="text-ink-600 text-[15px] leading-[1.55]">{e.overview}</p>
-                      </>
-                    )}
-                    {e.themes && (
-                      <>
-                        <div className="eyebrow no-bar mt-5 mb-3">{(e.themesLabel ?? t('engagements.talkThemesLabel')).toUpperCase()}</div>
-                        <ul className="space-y-[6px]">
-                          {e.themes.map(theme => (
-                            <li key={theme} className="text-ink-600 text-[14px] leading-[1.5] pl-4 relative before:content-['—'] before:absolute before:left-0 before:text-ink-400">{theme}</li>
-                          ))}
-                        </ul>
-                      </>
-                    )}
+          <div className="grid grid-cols-1 tablet:grid-cols-3 gap-6 mt-12 items-start">
+            {coreSolutionCards.map(card => (
+              <div key={card.name} className="flex flex-col p-8 bg-white border border-ink-150 rounded-lg">
+                <h3 className="font-display text-[22px] font-medium tracking-[-0.015em] leading-[1.15] text-ink-900">
+                  {card.name}
+                </h3>
+
+                {card.bestFor && (
+                  <div className="mt-5">
+                    <div className="font-mono text-[11px] tracking-[0.1em] text-ink-500 mb-1.5">{t('coreSolutions.bestForLabel')}</div>
+                    <p className="text-ink-600 text-[15px] leading-[1.5]">{card.bestFor}</p>
                   </div>
-                  <div>
-                    <div className="eyebrow no-bar mb-3">{e.deliverablesLabel.toUpperCase()}</div>
-                    <ul className="checklist mb-7">
-                      {e.deliverables.map(d => (
-                        <li key={d} className="!py-[10px] !text-[14.5px]"><span className="chk"></span><span>{d}</span></li>
+                )}
+
+                {card.outcome && (
+                  <div className="mt-5">
+                    <div className="font-mono text-[11px] tracking-[0.1em] text-ink-500 mb-1.5">{t('coreSolutions.outcomeLabel')}</div>
+                    <p className="text-ink-600 text-[15px] leading-[1.5]">{card.outcome}</p>
+                  </div>
+                )}
+
+                {card.canInclude && (
+                  <div className="mt-5">
+                    <div className="font-mono text-[11px] tracking-[0.1em] text-ink-500 mb-1.5">{card.canIncludeLabel}</div>
+                    <ul className="space-y-1 text-ink-600 text-[14.5px] leading-[1.5]">
+                      {card.canInclude.map(item => (
+                        <li key={item} className="flex gap-2.5">
+                          <span className="text-accent mt-px">·</span>
+                          <span>{item}</span>
+                        </li>
                       ))}
                     </ul>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-5 border-t border-ink-150">
-                      <div>
-                        <div className="eyebrow no-bar mb-1">{t('engagements.startsAtLabel')}</div>
-                        <div className="font-display text-[18px] tracking-[-0.012em]">{e.price}</div>
-                      </div>
-                      <div>
-                        <div className="eyebrow no-bar mb-1">{t('engagements.timelineLabel')}</div>
-                        <div className="text-ink-600 text-[14.5px]">{e.timeline}</div>
-                      </div>
-                    </div>
-                    <Link className="btn btn-secondary btn-small mt-6" href="/contact">{e.cta} <span className="btn-arrow"></span></Link>
                   </div>
+                )}
+
+                {card.deliverables && (
+                  <div className="mt-5">
+                    <div className="font-mono text-[11px] tracking-[0.1em] text-ink-500 mb-1.5">{t('coreSolutions.deliverablesLabel')}</div>
+                    <ul className="space-y-1 text-ink-600 text-[14.5px] leading-[1.5]">
+                      {card.deliverables.map(d => (
+                        <li key={d} className="flex gap-2.5">
+                          <span className="text-accent mt-px">·</span>
+                          <span>{d}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {(card.investment || card.timeline) && (
+                  <div className="mt-6 pt-5 border-t border-ink-150 flex flex-wrap gap-x-10 gap-y-3">
+                    {card.investment && (
+                      <div>
+                        <div className="font-mono text-[11px] tracking-[0.1em] text-ink-500 mb-1">{t('coreSolutions.investmentLabel')}</div>
+                        <p className="text-ink-900 text-[15px] font-medium">{card.investment}</p>
+                      </div>
+                    )}
+                    {card.timeline && (
+                      <div>
+                        <div className="font-mono text-[11px] tracking-[0.1em] text-ink-500 mb-1">{t('coreSolutions.timelineLabel')}</div>
+                        <p className="text-ink-600 text-[15px]">{card.timeline}</p>
+                      </div>
+                    )}
+                  </div>
+                )}
+
+                <div className="mt-auto pt-6">
+                  <Link href="/contact" className="btn btn-primary btn-small">
+                    {card.cta} <span className="btn-arrow"></span>
+                  </Link>
                 </div>
               </div>
             ))}
@@ -216,14 +214,13 @@ export default async function AppliedCulturalIntelligencePage({ params }: { para
       {/* 6. Methodology */}
       <section className="bg-ink-50">
         <div className="container">
-          <div className="section-head">
-            <div>
-              <div className="eyebrow mb-5">{t('methodology.eyebrow')}</div>
-              <h2 className="head-title">{t('methodology.headline')}</h2>
-            </div>
-            <p className="head-lede">{t('methodology.intro')}</p>
+          <div className="section-head section-head--no-rule" style={{ gridTemplateColumns: '1fr' }}>
+            <div className="eyebrow mb-5">{t('methodology.eyebrow')}</div>
+            <h2 className="head-title max-w-[30ch]">
+              {t.rich('methodology.headline', { u: chunks => <span className="accent-underline">{chunks}</span> })}
+            </h2>
           </div>
-          <ol className="num-list mt-12">
+          <ol className="num-list num-list-spotlight mt-12">
             {methodologySteps.map(s => (
               <li key={s.title}>
                 <div>

@@ -42,15 +42,23 @@ export default function SiteAnimations() {
       })
 
       // ── Service cards (home + services index) ──────────────────────────────
+      // fromTo (not from) with no stagger: batch can re-fire while a card is
+      // mid-flight, and from() would capture that offset as the end value,
+      // freezing the cards in a staircase. Explicit end values self-heal, and
+      // animating the row as one block keeps the cards visually aligned.
       ScrollTrigger.batch('.service-card', {
         onEnter: els =>
-          gsap.from(els, {
-            y: ENTER_Y,
-            opacity: 0,
-            duration: 0.65,
-            stagger: 0.1,
-            ease: EASE,
-          }),
+          gsap.fromTo(els,
+            { y: ENTER_Y, opacity: 0 },
+            {
+              y: 0,
+              opacity: 1,
+              duration: 0.65,
+              ease: EASE,
+              overwrite: 'auto',
+              clearProps: 'transform',
+            },
+          ),
         once: true,
         start: 'top 90%',
       })
@@ -65,42 +73,89 @@ export default function SiteAnimations() {
           ease: EASE,
           scrollTrigger: { trigger: el, start: 'top 85%', once: true },
         })
+        // Bars fill from the left once the card is in view. scaleX (not width)
+        // keeps the per-row width from the copy JSON as the single source of
+        // the final value.
+        gsap.fromTo(el.querySelectorAll('.scorecard-bar > span'),
+          { scaleX: 0, transformOrigin: 'left center' },
+          {
+            scaleX: 1,
+            duration: 0.9,
+            stagger: 0.08,
+            ease: EASE,
+            overwrite: 'auto',
+            clearProps: 'transform',
+            scrollTrigger: { trigger: el, start: 'top 85%', once: true },
+          },
+        )
       })
 
       // ── Numbered lists (methodology, how-it-works) ─────────────────────────
+      // Spotlight variant: after the list enters, step titles light up in
+      // sequence (01 → 04) to walk the reader through the transition.
+      gsap.utils.toArray<HTMLElement>('.num-list-spotlight').forEach(list => {
+        gsap.fromTo(list.querySelectorAll('h4'),
+          { opacity: 0.3 },
+          {
+            opacity: 1,
+            duration: 0.55,
+            stagger: 0.35,
+            ease: EASE,
+            overwrite: 'auto',
+            clearProps: 'opacity',
+            scrollTrigger: { trigger: list, start: 'top 75%', once: true },
+          },
+        )
+      })
+
       gsap.utils.toArray<HTMLElement>('.num-list').forEach(list => {
-        gsap.from(list.querySelectorAll('li'), {
-          y: 20,
-          opacity: 0,
-          duration: 0.6,
-          stagger: 0.1,
-          ease: EASE,
-          scrollTrigger: { trigger: list, start: 'top 85%', once: true },
-        })
+        gsap.fromTo(list.querySelectorAll('li'),
+          { y: 20, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.6,
+            stagger: 0.1,
+            ease: EASE,
+            overwrite: 'auto',
+            clearProps: 'transform',
+            scrollTrigger: { trigger: list, start: 'top 85%', once: true },
+          },
+        )
       })
 
       // ── [data-stagger] — grid containers whose children stagger in ─────────
       gsap.utils.toArray<HTMLElement>('[data-stagger]').forEach(container => {
-        gsap.from(Array.from(container.children), {
-          y: ENTER_Y,
-          opacity: 0,
-          duration: 0.65,
-          stagger: 0.1,
-          ease: EASE,
-          scrollTrigger: { trigger: container, start: 'top 88%', once: true },
-        })
+        gsap.fromTo(Array.from(container.children),
+          { y: ENTER_Y, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.65,
+            stagger: 0.1,
+            ease: EASE,
+            overwrite: 'auto',
+            clearProps: 'transform',
+            scrollTrigger: { trigger: container, start: 'top 88%', once: true },
+          },
+        )
       })
 
       // ── [data-reveal] — individual blocks ─────────────────────────────────
       ScrollTrigger.batch('[data-reveal]', {
         onEnter: els =>
-          gsap.from(els, {
-            y: 20,
-            opacity: 0,
-            duration: ENTER_DURATION,
-            stagger: 0.08,
-            ease: EASE,
-          }),
+          gsap.fromTo(els,
+            { y: 20, opacity: 0 },
+            {
+              y: 0,
+              opacity: 1,
+              duration: ENTER_DURATION,
+              stagger: 0.08,
+              ease: EASE,
+              overwrite: 'auto',
+              clearProps: 'transform',
+            },
+          ),
         once: true,
         start: 'top 88%',
       })

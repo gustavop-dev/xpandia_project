@@ -84,8 +84,9 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 tablet:grid-cols-3 gap-5 mt-12">
-            {differentiatorCards.map(d => (
+            {differentiatorCards.map((d, i) => (
               <div key={d.title} className="p-7 bg-white border border-ink-150 rounded-lg">
+                <div className="font-mono text-[11px] tracking-[0.1em] text-accent mb-3">{t('differentiators.valueLabel')} {i + 1}</div>
                 <h3 className="text-[19px] font-display font-medium text-ink-900 tracking-[-0.01em] mb-3">{d.title}</h3>
                 <p className="text-ink-600 text-[14.5px] leading-[1.55]">{d.body}</p>
               </div>
@@ -106,13 +107,13 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
               {t('founder.body1')}
             </p>
             <p className="text-ink-600 text-[19px] leading-[1.55]">
-              {t('founder.body2')}
+              {t.rich('founder.body2', { b: chunks => <strong className="font-semibold text-ink-900">{chunks}</strong> })}
             </p>
           </div>
           <div className="grid grid-cols-1 tablet:grid-cols-[0.85fr_1.6fr] gap-10 items-start mt-12">
             <div>
               <div className="aspect-[4/5] rounded-lg relative overflow-hidden bg-ink-900">
-                <Image src="/assets/founder.webp" alt={t('founder.imageAlt')} fill loading="lazy" className="object-cover" sizes="(max-width: 900px) 100vw, 30vw" />
+                <Image src="/assets/founder.webp" alt={t('founder.imageAlt')} fill loading="lazy" className="object-cover object-[62%_center] scale-110" sizes="(max-width: 900px) 100vw, 30vw" />
                 <div className="absolute bottom-0 right-0 w-[40%] h-[3px] bg-accent"></div>
               </div>
               <div className="mt-5">
@@ -140,7 +141,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
               <div className="eyebrow">{t('howWeWork.eyebrow')}</div>
               <h2 style={{ marginTop: 24 }}>{t('howWeWork.headline')}</h2>
             </div>
-            <ol className="num-list">
+            <ol className="num-list num-list-spotlight">
               {howWeWorkSteps.map(s => (
                 <li key={s.title}>
                   <div>
@@ -157,22 +158,24 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
       {/* 6. Engagement Starting Points */}
       <section className="bg-ink-50">
         <div className="container">
-          <div className="section-head">
-            <div>
-              <div className="eyebrow">{t('startingPoints.eyebrow')}</div>
-              <h2 className="head-title" style={{ marginTop: 16 }}>{t('startingPoints.headline')}</h2>
-            </div>
-            <p className="head-lede">
-              {t('startingPoints.intro')}
-            </p>
+          <div className="section-head section-head--no-rule" style={{ gridTemplateColumns: '1fr' }}>
+            <div className="eyebrow">{t('startingPoints.eyebrow')}</div>
+            <h2 className="head-title max-w-[26ch]" style={{ marginTop: 16 }}>{t('startingPoints.headline')}</h2>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 tablet:grid-cols-3 gap-5 mt-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 tablet:grid-cols-3 gap-5 mt-12 items-start">
             {startingPointCards.map(p => (
-              <div key={p.title} className="p-7 bg-white border border-ink-150 rounded-lg flex flex-col">
+              <Link
+                key={p.title}
+                href="/contact"
+                className="group p-7 bg-white border border-ink-150 rounded-lg flex flex-col transition-all hover:border-primary hover:shadow-[0_4px_20px_rgba(15,20,25,0.06)]"
+              >
                 <h3 className="text-[19px] font-display font-medium text-ink-900 tracking-[-0.01em] mb-1">{p.title}</h3>
                 <div className="font-mono text-[12px] text-primary tracking-[0.06em] mb-3">{p.price}</div>
                 <p className="text-ink-600 text-[14.5px] leading-[1.55]">{p.body}</p>
-              </div>
+                <span className="mt-5 inline-flex items-center gap-1.5 text-primary font-medium text-[14px]">
+                  {t('startingPoints.cardCta')} <span className="transition-transform group-hover:translate-x-0.5">→</span>
+                </span>
+              </Link>
             ))}
           </div>
           <p className="text-ink-500 text-[14px] mt-8">{t('startingPoints.pricingNote')}</p>

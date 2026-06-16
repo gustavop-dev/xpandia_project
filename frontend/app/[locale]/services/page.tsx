@@ -41,17 +41,14 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
 
   const comparisonHeaders = t.raw('comparison.headers') as string[]
 
-  const startingPointCards = t.raw('startingPoints.cards') as Array<{
+  const coreSolutionCards = t.raw('coreSolutions.cards') as Array<{
     name: string
-    tagline?: string
-    overview?: string
     bestFor: string
     outcome: string
-    themesLabel?: string
-    themes?: string[]
-    deliverablesLabel: string
+    canIncludeLabel?: string
+    canInclude?: string[]
     deliverables: string[]
-    price: string[]
+    investment: string
     timeline: string
     cta: string
   }>
@@ -81,7 +78,7 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
               {t('hero.ctaSecondary')}
             </Link>
           </div>
-          <p className="font-mono text-[11px] tracking-[0.1em] text-ink-500 mt-12 max-w-[64ch]">
+          <p className="font-mono text-[11px] tracking-[0.1em] text-ink-500 mt-12">
             {t('hero.supportingLine')}
           </p>
         </div>
@@ -93,7 +90,7 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
           <div className="section-head">
             <div>
               <div className="eyebrow">{t('decision.eyebrow')}</div>
-              <h2 className="head-title mt-5">{t('decision.headline')}</h2>
+              <h2 className="head-title mt-8">{t('decision.headline')}</h2>
             </div>
             <p className="head-lede">
               {t('decision.intro')}
@@ -123,7 +120,7 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
                   ))}
                 </ul>
                 <div className="mt-auto pt-6">
-                  <Link href={serviceHrefs[i]} className="btn btn-secondary btn-small">
+                  <Link href={serviceHrefs[i]} className="btn btn-primary btn-small">
                     {card.cta} <span className="btn-arrow"></span>
                   </Link>
                 </div>
@@ -133,51 +130,47 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
         </div>
       </section>
 
-      {/* 3. Core services */}
+      {/* 3. Core solutions */}
       <section>
         <div className="container">
           <div className="section-head">
             <div>
-              <div className="eyebrow">{t('startingPoints.eyebrow')}</div>
-              <h2 className="head-title mt-5">{t('startingPoints.headline')}</h2>
+              <div className="eyebrow">{t('coreSolutions.eyebrow')}</div>
+              <h2 className="head-title mt-8">{t('coreSolutions.headline')}</h2>
             </div>
             <p className="head-lede">
-              {t('startingPoints.intro')}
+              {t('coreSolutions.intro')}
             </p>
           </div>
 
           <div className="grid grid-cols-1 tablet:grid-cols-2 gap-6 mt-12">
-            {startingPointCards.map(sp => (
+            {coreSolutionCards.map(card => (
               <div
-                key={sp.name}
+                key={card.name}
                 className="flex flex-col p-8 bg-white border border-ink-150 rounded-lg"
               >
                 <h3 className="font-display text-[22px] font-medium tracking-[-0.015em] leading-[1.15] text-ink-900">
-                  {sp.name}
+                  {card.name}
                 </h3>
-                {sp.tagline && <p className="text-accent font-medium text-[15px] mt-2">{sp.tagline}</p>}
-                {sp.overview && <p className="text-ink-600 text-[15px] leading-[1.55] mt-4">{sp.overview}</p>}
 
                 <div className="mt-5">
-                  <div className="font-mono text-[11px] tracking-[0.1em] text-ink-500 mb-1.5">{t('startingPoints.bestForLabel')}</div>
-                  <p className="text-ink-600 text-[15px] leading-[1.5]">{sp.bestFor}</p>
+                  <div className="font-mono text-[11px] tracking-[0.1em] text-ink-500 mb-1.5">{t('coreSolutions.bestForLabel')}</div>
+                  <p className="text-ink-600 text-[15px] leading-[1.5]">{card.bestFor}</p>
                 </div>
 
                 <div className="mt-5">
-                  <div className="font-mono text-[11px] tracking-[0.1em] text-ink-500 mb-1.5">{t('startingPoints.outcomeLabel')}</div>
-                  <p className="text-ink-600 text-[15px] leading-[1.5]">{sp.outcome}</p>
+                  <div className="font-mono text-[11px] tracking-[0.1em] text-ink-500 mb-1.5">{t('coreSolutions.outcomeLabel')}</div>
+                  <p className="text-ink-600 text-[15px] leading-[1.5]">{card.outcome}</p>
                 </div>
 
-                {sp.themes && (
+                {card.canInclude && (
                   <div className="mt-5">
-                    <div className="font-mono text-[11px] tracking-[0.1em] text-ink-500 mb-2">
-                      {sp.themesLabel?.toUpperCase()}
-                    </div>
-                    <ul className="space-y-2 text-ink-600 text-[14.5px] leading-[1.5]">
-                      {sp.themes.map(theme => (
-                        <li key={theme} className="flex gap-2.5">
+                    <div className="font-mono text-[11px] tracking-[0.1em] text-ink-500 mb-1.5">{card.canIncludeLabel}</div>
+                    <ul className="space-y-1 text-ink-600 text-[14.5px] leading-[1.5]">
+                      {card.canInclude.map(item => (
+                        <li key={item} className="flex gap-2.5">
                           <span className="text-accent mt-px">·</span>
-                          <span>{theme}</span>
+                          <span>{item}</span>
                         </li>
                       ))}
                     </ul>
@@ -185,35 +178,31 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
                 )}
 
                 <div className="mt-5">
-                  <div className="font-mono text-[11px] tracking-[0.1em] text-ink-500 mb-2">
-                    {(sp.deliverablesLabel ?? 'Deliverables').toUpperCase()}
-                  </div>
-                  <ul className="checklist">
-                    {sp.deliverables.map(d => (
-                      <li key={d}>
-                        <span className="chk"></span>
+                  <div className="font-mono text-[11px] tracking-[0.1em] text-ink-500 mb-1.5">{t('coreSolutions.deliverablesLabel')}</div>
+                  <ul className="space-y-1 text-ink-600 text-[14.5px] leading-[1.5]">
+                    {card.deliverables.map(d => (
+                      <li key={d} className="flex gap-2.5">
+                        <span className="text-accent mt-px">·</span>
                         <span>{d}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
 
-                <div className="mt-6 pt-5 border-t border-ink-150">
-                  <div className="font-mono text-[11px] tracking-[0.1em] text-ink-500 mb-2">
-                    {t('startingPoints.engagementStartsAtLabel')}
+                <div className="mt-6 pt-5 border-t border-ink-150 flex flex-wrap gap-x-10 gap-y-3">
+                  <div>
+                    <div className="font-mono text-[11px] tracking-[0.1em] text-ink-500 mb-1">{t('coreSolutions.investmentLabel')}</div>
+                    <p className="text-ink-900 text-[15px] font-medium">{card.investment}</p>
                   </div>
-                  <ul className="space-y-1">
-                    {sp.price.map(p => (
-                      <li key={p} className="text-ink-900 text-[15px] font-medium">{p}</li>
-                    ))}
-                  </ul>
-                  <div className="font-mono text-[11px] tracking-[0.1em] text-ink-500 mt-4 mb-1">{t('startingPoints.timelineLabel')}</div>
-                  <p className="text-ink-600 text-[15px] leading-[1.5]">{sp.timeline}</p>
+                  <div>
+                    <div className="font-mono text-[11px] tracking-[0.1em] text-ink-500 mb-1">{t('coreSolutions.timelineLabel')}</div>
+                    <p className="text-ink-600 text-[15px]">{card.timeline}</p>
+                  </div>
                 </div>
 
                 <div className="mt-auto pt-6">
-                  <Link href="/contact" className="btn btn-primary">
-                    {sp.cta} <span className="btn-arrow"></span>
+                  <Link href="/contact" className="text-primary font-medium text-[15px] hover:underline">
+                    {card.cta} →
                   </Link>
                 </div>
               </div>
@@ -225,14 +214,11 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
       {/* 4. How to choose */}
       <section className="bg-ink-50">
         <div className="container">
-          <div className="section-head">
+          <div className="section-head" style={{ gridTemplateColumns: '1fr' }}>
             <div>
               <div className="eyebrow">{t('comparison.eyebrow')}</div>
-              <h2 className="head-title mt-5">{t('comparison.headline')}</h2>
+              <h2 className="head-title mt-8">{t('comparison.headline')}</h2>
             </div>
-            <p className="head-lede">
-              {t('comparison.intro')}
-            </p>
           </div>
 
           <div className="comparison-wrap mt-12">
@@ -261,6 +247,10 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
               </tbody>
             </table>
           </div>
+
+          <p className="text-ink-600 text-[16px] leading-[1.6] max-w-[88ch] mt-10">
+            {t('comparison.intro')}
+          </p>
         </div>
       </section>
 
@@ -272,7 +262,7 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
               <div className="eyebrow">{t('engagementModel.eyebrow')}</div>
               <h2 style={{ marginTop: 24 }}>{t('engagementModel.headline')}</h2>
             </div>
-            <ol className="num-list">
+            <ol className="num-list num-list-spotlight">
               {engagementSteps.map(step => (
                 <li key={step.title}>
                   <div>

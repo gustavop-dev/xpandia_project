@@ -4,12 +4,14 @@ import {
   CONTACT_FORM_SUBMIT,
   CTA_HOME_TO_CONTACT,
   CTA_SERVICE_DETAIL_TO_CONTACT,
+  CTA_SERVICES_CORE_SOLUTION_TO_CONTACT,
   SERVICES_CARD_TO_DETAIL,
   BREADCRUMB_BACK_TO_SERVICES,
   MOBILE_NAVIGATION_DRAWER,
   HEADER_SERVICES_DROPDOWN,
   FAB_CONTACT_BUTTON,
   LANGUAGE_TOGGLE_PREFERENCE,
+  MOBILE_LANGUAGE_TOGGLE,
   FOOTER_LINKS_NAVIGATION,
 } from '../helpers/flow-tags'
 
@@ -56,6 +58,25 @@ test.describe('CTA navigation', () => {
 
       await expect(page).toHaveURL(/\/contact/)
       await expect(page.getByRole('heading', { level: 1, name: /Tell us what your team is building/i })).toBeVisible()
+    }
+  )
+
+  test(
+    'clicking a core-solution card CTA on /services navigates to /contact',
+    { tag: [...CTA_SERVICES_CORE_SOLUTION_TO_CONTACT] },
+    async ({ page }) => {
+      await page.goto('/services')
+      await waitForPageLoad(page)
+
+      const cta = page.getByRole('link', { name: /Request an AI QA Sprint/i })
+      await cta.scrollIntoViewIfNeeded()
+
+      await Promise.all([
+        page.waitForURL(/\/contact/),
+        cta.click(),
+      ])
+
+      await expect(page).toHaveURL(/\/contact/)
     }
   )
 
@@ -134,6 +155,29 @@ test.describe('Navigation interactions', () => {
       await page.getByRole('link', { name: 'About' }).first().click()
 
       await expect(page).toHaveURL(/\/about/)
+      await context.close()
+    }
+  )
+
+  test(
+    'mobile main bar exposes the language toggle and switches to Spanish without opening the drawer',
+    { tag: [...MOBILE_LANGUAGE_TOGGLE] },
+    async ({ browser }) => {
+      const context = await browser.newContext({
+        viewport: { width: 390, height: 844 },
+        isMobile: true,
+      })
+      const page = await context.newPage()
+      await page.goto('/')
+      await waitForPageLoad(page)
+
+      const langGroup = page.getByRole('group', { name: /language|idioma/i })
+      await expect(langGroup).toBeVisible()
+
+      await langGroup.getByRole('button', { name: 'ES' }).click()
+
+      await expect(page).toHaveURL(/\/es$/)
+      await expect(page.locator('html')).toHaveAttribute('lang', 'es')
       await context.close()
     }
   )
