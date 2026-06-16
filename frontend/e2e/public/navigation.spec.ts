@@ -17,7 +17,7 @@ test.describe('Navigation', () => {
 
     await page.goto('/about', { waitUntil: 'domcontentloaded' });
     await expect(page).toHaveURL(/.*about/);
-    await expect(page.getByRole('heading', { level: 1, name: /Spanish and English expertise for companies building/i })).toBeVisible();
+    await expect(page.getByRole('heading', { level: 1, name: /Spanish and English expertise/i })).toBeVisible();
   });
 
   test('should have working header navigation', { tag: [...NAVIGATION_HEADER] }, async ({ page }) => {

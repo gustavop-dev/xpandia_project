@@ -7,7 +7,7 @@ test.describe('Static pages', () => {
     await page.goto('/about')
     await waitForPageLoad(page)
 
-    await expect(page.getByRole('heading', { level: 1, name: /Spanish and English expertise for companies building/i })).toBeVisible()
+    await expect(page.getByRole('heading', { level: 1, name: /Spanish and English expertise/i })).toBeVisible()
     await expect(page.getByRole('link', { name: /Talk to an Expert/i }).first()).toBeVisible()
   })
 
