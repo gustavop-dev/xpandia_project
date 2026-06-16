@@ -11,10 +11,9 @@ gsap.registerPlugin(useGSAP, ScrollTrigger)
 const EASE = 'power2.out'
 const ENTER_Y = 28
 const ENTER_DURATION = 0.72
-// Reveal trigger: fire once the element's top reaches 40% from the top (upper
-// area) — high enough that entrances play prominently, without leaving the
-// content blank for as long as a near-the-very-top trigger would.
-const START = 'top 40%'
+// Reveal trigger: fire once the element's top reaches the middle of the
+// viewport (50%) — entrances play as the content reaches center screen.
+const START = 'top 50%'
 // Counters fire eagerly (as they enter from the bottom) so the number counts up
 // while visible instead of resetting to 0 once it reaches the top.
 const COUNTER_START = 'top 85%'
