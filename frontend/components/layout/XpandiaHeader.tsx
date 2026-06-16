@@ -97,6 +97,7 @@ export default function XpandiaHeader() {
 
             <Link className={cn(linkBase, activePage === 'about' && linkActive)} href="/about">{nav.about}</Link>
             <Link className={cn(linkBase, activePage === 'blog' && linkActive)} href="/blog">{nav.blog}</Link>
+            <Link className={cn(linkBase, activePage === 'contact' && linkActive)} href="/contact">{nav.contact}</Link>
           </nav>
 
           <div className="flex items-center gap-3 tablet:gap-4">
@@ -157,6 +158,7 @@ export default function XpandiaHeader() {
         ))}
         <Link href="/about" className="block mt-5 py-[18px] border-b border-ink-150 font-display text-[22px] text-ink-900" onClick={closeDrawer}>{nav.about}</Link>
         <Link href="/blog" className="block py-[18px] border-b border-ink-150 font-display text-[22px] text-ink-900" onClick={closeDrawer}>{nav.blog}</Link>
+        <Link href="/contact" className="block py-[18px] border-b border-ink-150 font-display text-[22px] text-ink-900" onClick={closeDrawer}>{nav.contact}</Link>
         <Link href="/contact" className="btn btn-primary mt-8 w-full justify-center" onClick={closeDrawer}>
           {cta} <span className="btn-arrow"></span>
         </Link>

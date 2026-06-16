@@ -23,7 +23,7 @@
         "placeholder": "Jane Doe"
       },
       "email": {
-        "label": "Work email",
+        "label": "Corporate email",
         "placeholder": "jane@company.com"
       },
       "company": {
@@ -116,7 +116,7 @@
   },
   "whatHappensNext": {
     "eyebrow": "NEXT STEPS",
-    "headline": "A clear path from first contact to action.",
+    "headline": "A clear path from first contact to <u>action</u>.",
     "steps": [
       {
         "title": "Share your context",

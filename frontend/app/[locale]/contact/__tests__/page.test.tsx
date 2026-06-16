@@ -30,7 +30,7 @@ describe('ContactPage', () => {
 
   it('renders the "A clear path from first contact to action." headline', async () => {
     renderWithIntl(await ContactPage({ params: Promise.resolve({ locale: 'en' }) }))
-    expect(screen.getByText('A clear path from first contact to action.')).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: /A clear path from first contact to action\s*\./ })).toBeInTheDocument()
   })
 
   it('renders the READY TO START? final CTA eyebrow', async () => {

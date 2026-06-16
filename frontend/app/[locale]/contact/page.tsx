@@ -52,9 +52,11 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
           <div className="grid grid-cols-1 tablet:grid-cols-[1fr_1.6fr] gap-20 items-start">
             <div>
               <div className="eyebrow">{t('whatHappensNext.eyebrow')}</div>
-              <h2 style={{ marginTop: 24 }}>{t('whatHappensNext.headline')}</h2>
+              <h2 style={{ marginTop: 24 }}>
+                {t.rich('whatHappensNext.headline', { u: chunks => <span className="accent-underline">{chunks}</span> })}
+              </h2>
             </div>
-            <ol className="num-list">
+            <ol className="num-list num-list-spotlight">
               {nextSteps.map(s => (
                 <li key={s.title}>
                   <div>

@@ -427,6 +427,9 @@ h4, .h4 {
   font-family: var(--font-body);
 }
 .radio-tile.on { border-color: var(--primary); background: var(--primary); color: #fff; }
+/* Tighter type on the 4-up timeline row so labels like "Urgent / this month"
+   do not break into three lines. */
+.radio-row .radio-tile { font-size: 13px; padding: 12px 12px; line-height: 1.35; }
 
 .newsletter-form { display: flex; gap: 10px; max-width: 560px; }
 
