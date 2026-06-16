@@ -11,10 +11,13 @@ gsap.registerPlugin(useGSAP, ScrollTrigger)
 const EASE = 'power2.out'
 const ENTER_Y = 28
 const ENTER_DURATION = 0.72
-// Reveal trigger: fire once the element is ~25% into the viewport (its top
-// reaches 75% from the top), so animations play while the content is clearly
-// in view rather than at the very bottom edge.
-const START = 'top 75%'
+// Reveal trigger: fire once the element has travelled ~3/4 up the screen — its
+// top reaches 25% from the top, i.e. near the top — so entrances play in the
+// prominent upper area rather than at the bottom edge as elements first peek in.
+const START = 'top 25%'
+// Counters fire eagerly (as they enter from the bottom) so the number counts up
+// while visible instead of resetting to 0 once it reaches the top.
+const COUNTER_START = 'top 85%'
 
 export default function SiteAnimations() {
   // SiteAnimations lives in the persistent layout, so it does not re-mount on
@@ -200,7 +203,7 @@ export default function SiteAnimations() {
           v: target,
           duration: 1.5,
           ease: 'power2.out',
-          scrollTrigger: { trigger: el, start: START, once: true },
+          scrollTrigger: { trigger: el, start: COUNTER_START, once: true },
           onUpdate: () => {
             const n = obj.v.toFixed(decimals)
             el.textContent = prefix + (grouped ? Number(n).toLocaleString('en-US') : n) + suffix
