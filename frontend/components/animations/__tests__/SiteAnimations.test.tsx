@@ -16,7 +16,7 @@ jest.mock('gsap', () => ({
 }))
 
 jest.mock('gsap/ScrollTrigger', () => ({
-  ScrollTrigger: { batch: jest.fn() },
+  ScrollTrigger: { batch: jest.fn(), refresh: jest.fn() },
 }))
 
 jest.mock('@gsap/react', () => ({

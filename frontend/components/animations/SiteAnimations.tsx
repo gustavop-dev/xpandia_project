@@ -1,5 +1,6 @@
 'use client'
 
+import { useEffect, useLayoutEffect, useRef } from 'react'
 import { useGSAP } from '@gsap/react'
 import { usePathname } from '@/i18n/navigation'
 import gsap from 'gsap'
@@ -21,6 +22,27 @@ export default function SiteAnimations() {
   // reverts the previous page's tweens/ScrollTriggers first) so each view gets
   // its animations wired up — not just the first page loaded.
   const pathname = usePathname()
+  const firstRun = useRef(true)
+
+  // Take over scroll handling: the browser's automatic restoration was retaining
+  // the previous view's scroll position across client-side navigation, so a new
+  // view appeared scrolled down and its reveals had already "passed".
+  useEffect(() => {
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual'
+    }
+  }, [])
+
+  // Reset to the top on each route change, before paint (useLayoutEffect), so
+  // the new view is shown from the top and its reveals fire on scroll. Skip the
+  // first run so a refresh keeps the restored position.
+  useLayoutEffect(() => {
+    if (firstRun.current) {
+      firstRun.current = false
+      return
+    }
+    window.scrollTo(0, 0)
+  }, [pathname])
 
   useGSAP(() => {
     const mm = gsap.matchMedia()
@@ -207,6 +229,9 @@ export default function SiteAnimations() {
 
       return () => magneticCleanups.forEach(fn => fn())
     })
+
+    // Recalculate trigger positions now that the new view is mounted at the top.
+    ScrollTrigger.refresh()
 
     return () => mm.revert()
   }, { dependencies: [pathname], revertOnUpdate: true })

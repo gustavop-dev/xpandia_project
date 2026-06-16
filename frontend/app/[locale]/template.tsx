@@ -18,12 +18,13 @@ export default function Template({ children }: { children: React.ReactNode }) {
   useGSAP(() => {
     const mm = gsap.matchMedia()
     mm.add('(prefers-reduced-motion: no-preference)', () => {
+      // Opacity-only (no transform): a transform on this wrapper would shift the
+      // page content's box and can break the router's scroll-to-top detection.
       gsap.from(ref.current, {
         autoAlpha: 0,
-        y: 14,
-        duration: 0.5,
+        duration: 0.45,
         ease: 'power2.out',
-        clearProps: 'opacity,visibility,transform',
+        clearProps: 'opacity,visibility',
       })
     })
     return () => mm.revert()
