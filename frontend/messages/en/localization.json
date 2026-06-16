@@ -13,7 +13,7 @@
     "eyebrow": "LANGUAGE EXPERIENCE REPAIR & ADAPTATION",
     "h1": "More than translated. Built for English and",
     "h1Accent": "Spanish-speaking audiences",
-    "h1End": ".",
+    "h1End": "",
     "subheadline": "Xpandia helps teams repair, improve, and adapt high-impact Spanish and English content, product experiences, documentation, and campaigns so they feel clear, natural, trustworthy, and ready for real users.",
     "body": "We combine senior Spanish and English language expertise, localization judgment, UX awareness, and cultural adaptation to help your content work across the moments that matter: product use, onboarding, support, learning, marketing, and conversion.",
     "ctaPrimary": "Request Experience Repair",
@@ -31,11 +31,8 @@
         "title": "Audience-aware adaptation",
         "desc": "LatAm, US Hispanic, Spain, neutral Spanish, or specific regional markets."
       }
-    ]
-  },
-  "photoBand": {
-    "line1": "02 / ADAPT",
-    "line2": "SOURCE → ADAPTED SPANISH"
+    ],
+    "h1Suffix": "."
   },
   "positioning": {
     "eyebrow": "WHY REPAIR & ADAPTATION",
@@ -146,133 +143,72 @@
       }
     ]
   },
-  "engagements": {
-    "eyebrow": "CORE ENGAGEMENTS",
-    "headline": "Create, improve, or repair your Spanish experience.",
-    "intro": "Start with a focused localization or adaptation engagement, then move into review, repair, QA, or ongoing Spanish quality leadership when needed.",
+  "coreSolutions": {
+    "eyebrow": "CORE SERVICES",
+    "headline": "Repair, adapt, and prepare Spanish/English experiences for real users.",
     "bestForLabel": "BEST FOR",
     "outcomeLabel": "OUTCOME",
-    "timelinePrefix": "Timeline: ",
-    "items": [
+    "deliverablesLabel": "DELIVERABLES",
+    "investmentLabel": "STARTS AT",
+    "timelineLabel": "TIMELINE",
+    "cards": [
       {
-        "n": "01",
-        "title": "Website & Landing Page Localization",
-        "tagline": "Turn your English-first website into Spanish that feels built for the audience.",
-        "bestFor": "Teams launching or improving Spanish websites, landing pages, service pages, pricing pages, lead-generation pages, or product marketing pages.",
-        "outcome": "Create a Spanish web experience that supports clarity, trust, conversion, brand consistency, and audience fit.",
-        "deliverablesLabel": "Localization deliverables",
-        "deliverables": [
-          "Localized website or landing page copy.",
-          "Adapted headlines, body copy, CTAs, FAQs, and conversion sections.",
-          "Terminology and style notes.",
-          "Regional fit recommendations.",
-          "Copy review in context where access is available.",
-          "QA-ready or publication-ready Spanish copy."
+        "name": "Language Experience Repair",
+        "bestFor": "Teams with existing Spanish or English content that sounds translated, inconsistent, unclear, generic, too literal, or not ready for real users.",
+        "outcome": "Turn underperforming language into content that feels clear, natural, trustworthy, and aligned with your product, audience, and business goal.",
+        "canIncludeLabel": "CAN INCLUDE",
+        "canInclude": [
+          "Product copy",
+          "Website or landing page copy",
+          "Support content",
+          "Help center content",
+          "AI response patterns",
+          "Marketing copy",
+          "Terminology and tone fixes",
+          "Regional adaptation"
         ],
-        "price": "From $2,500",
-        "timeline": "5–10 business days, depending on scope.",
-        "cta": "Request website localization"
+        "deliverables": [
+          "Revised Spanish/English copy",
+          "Rewrite recommendations",
+          "Terminology and tone notes",
+          "Before/after examples",
+          "Priority fixes",
+          "Implementation guidance"
+        ],
+        "investment": "From $2,500",
+        "timeline": "5–10 business days depending on scope",
+        "cta": "Request Language Experience Repair"
       },
       {
-        "n": "02",
-        "title": "Product UI & UX Copy Localization",
-        "tagline": "Make product copy feel clear, usable, and natural in Spanish.",
-        "bestFor": "Product, SaaS, AI, EdTech, and Localization teams localizing or improving Spanish interfaces, onboarding, forms, errors, tooltips, notifications, and user flows.",
-        "outcome": "Improve Spanish usability, clarity, consistency, and product readiness across user-facing product surfaces.",
-        "deliverablesLabel": "Localization deliverables",
-        "deliverables": [
-          "Localized UI strings or product copy.",
-          "UX copy adaptation for flows, states, and microcopy.",
-          "Terminology guidance.",
-          "Character-limit and context notes where applicable.",
-          "Annotated recommendations for UX friction.",
-          "QA-ready Spanish copy."
+        "name": "Product & Content Adaptation",
+        "bestFor": "Product, marketing, support, CX, and EdTech teams adapting UI, websites, documentation, campaigns, or learning content into another language for a specific audience or market.",
+        "outcome": "Adapt product content and experiences so they feel natural, clear, and built for your audience, respecting product context, tone, and regional fit.",
+        "canIncludeLabel": "CAN INCLUDE",
+        "canInclude": [
+          "Product UI and UX copy",
+          "Websites and landing pages",
+          "Help center and documentation",
+          "Marketing and campaigns",
+          "Learning and EdTech content",
+          "Brand terminology and tone"
         ],
-        "price": "From $3,000",
-        "timeline": "7–15 business days, depending on volume and product complexity.",
-        "cta": "Request product localization"
-      },
-      {
-        "n": "03",
-        "title": "Marketing Localization & Transcreation",
-        "tagline": "Adapt the message, not just the words.",
-        "bestFor": "Marketing, Growth, Product Marketing, and Localization teams adapting campaigns, landing pages, emails, ads, sales content, or launch messaging for Spanish-speaking audiences.",
-        "outcome": "Create Spanish marketing content that preserves strategic intent while adapting tone, emotion, persuasion, cultural context, and audience expectations.",
-        "deliverablesLabel": "Adaptation deliverables",
         "deliverables": [
-          "Localized or transcreated campaign copy.",
-          "Alternative headlines, claims, CTAs, or message directions.",
-          "Audience-specific messaging notes.",
-          "Cultural adaptation rationale.",
-          "Terminology and tone guidance.",
-          "Publication-ready Spanish copy."
+          "Adapted copy per surface",
+          "Terminology and tone guide",
+          "Regional-fit recommendations",
+          "Cultural adaptation rationale",
+          "In-context review when access is available",
+          "Content ready for QA or publication"
         ],
-        "price": "From $2,500",
-        "timeline": "5–10 business days, depending on scope.",
-        "cta": "Request marketing adaptation"
-      },
-      {
-        "n": "04",
-        "title": "Help Center & Documentation Localization",
-        "tagline": "Turn support content into Spanish users can actually use.",
-        "bestFor": "Support, CX, Product, EdTech, SaaS, and Localization teams localizing help centers, FAQs, product documentation, how-to guides, support articles, or user education content.",
-        "outcome": "Create Spanish support and documentation content that is clear, consistent, useful, and aligned with how users ask for help.",
-        "deliverablesLabel": "Localization deliverables",
-        "deliverables": [
-          "Localized help center articles or documentation.",
-          "Terminology and style recommendations.",
-          "Clarity and usefulness improvements.",
-          "Structure or readability notes where applicable.",
-          "Support tone guidance.",
-          "QA-ready or publication-ready content."
-        ],
-        "price": "From $3,000",
-        "timeline": "1–3 weeks, depending on volume and complexity.",
-        "cta": "Request documentation localization"
-      },
-      {
-        "n": "05",
-        "title": "EdTech & Learning Content Localization",
-        "tagline": "Make learning content clear, natural, and pedagogically effective in Spanish.",
-        "bestFor": "EdTech, learning, training, assessment, and content teams adapting lessons, quizzes, scripts, instructions, tutoring content, learner feedback, or educational materials.",
-        "outcome": "Create Spanish learning content that supports comprehension, engagement, cultural relevance, and pedagogical clarity.",
-        "deliverablesLabel": "Localization deliverables",
-        "deliverables": [
-          "Localized learning content.",
-          "Adapted examples, instructions, feedback, and assessments.",
-          "Tone and learner-level recommendations.",
-          "Cultural and regional fit notes.",
-          "Pedagogical clarity review.",
-          "QA-ready or learner-ready Spanish content."
-        ],
-        "price": "From $4,000",
-        "timeline": "2–4 weeks, depending on content type and volume.",
-        "cta": "Request learning content localization"
-      },
-      {
-        "n": "06",
-        "title": "Localization Review & Repair",
-        "tagline": "Turn translated Spanish into Spanish that works.",
-        "bestFor": "Teams with existing Spanish translations that need improvement, consistency, adaptation, regional fit, or publication readiness.",
-        "outcome": "Improve translated Spanish so it feels natural, clear, trustworthy, and aligned with your audience.",
-        "deliverablesLabel": "Review deliverables",
-        "deliverables": [
-          "Content review.",
-          "Rewrite recommendations.",
-          "Terminology notes.",
-          "Regional fit guidance.",
-          "QA checklist.",
-          "Final-ready copy where scope allows."
-        ],
-        "price": "From $2,500",
-        "timeline": "5–10 business days.",
-        "cta": "Request localization review"
+        "investment": "From $3,000",
+        "timeline": "5–15 business days depending on scope",
+        "cta": "Request Product & Content Adaptation"
       }
     ]
   },
   "methodology": {
     "eyebrow": "METHODOLOGY",
-    "headline": "A practical path from existing Spanish/English to audience-ready Spanish/English.",
+    "headline": "A practical path from <u>existing Spanish/English</u> to <u>audience-ready Spanish/English</u>.",
     "intro": "",
     "steps": [
       {
