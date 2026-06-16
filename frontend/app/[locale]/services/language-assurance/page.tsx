@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { Link } from '@/i18n/navigation'
-import Image from 'next/image'
 import { localizedAlternates } from '@/lib/seo/alternates'
 import AiEcosystemCarousel from '@/components/home/AiEcosystemCarousel'
 
@@ -74,21 +73,6 @@ export default async function LanguageAssurancePage({ params }: { params: Promis
         </div>
       </section>
 
-      {/* Visual band */}
-      <section className="tight pt-0 pb-0">
-        <div className="container">
-          <div className="relative aspect-[16/9] tablet:aspect-[24/7] rounded-lg overflow-hidden bg-ink-900">
-            <Image src="/assets/photo-library.jpg" alt="" fill loading="lazy" className="object-cover grayscale contrast-[1.05]" sizes="100vw" />
-            <div className="absolute inset-0" style={{ background: 'linear-gradient(90deg, rgba(15,20,25,0.3) 0%, transparent 40%, transparent 60%, rgba(15,20,25,0.85) 100%)' }}></div>
-            <div className="absolute bottom-8 right-8 font-mono text-[11px] tracking-[0.14em] text-white/85 text-right">
-              <div className="mb-[6px]">{t('photoBand.line1')}</div>
-              <div className="text-accent text-[14px] tracking-[0.08em]">{t('photoBand.line2')}</div>
-            </div>
-            <div className="absolute bottom-0 left-0 w-[34%] h-[3px] bg-accent"></div>
-          </div>
-        </div>
-      </section>
-
       {/* 2. Problem / Positioning */}
       <section className="tight">
         <div className="container">
@@ -136,7 +120,17 @@ export default async function LanguageAssurancePage({ params }: { params: Promis
         </div>
       </section>
 
-      {/* 4. When to use */}
+      {/* 4. AI Ecosystem */}
+      <section>
+        <div className="container">
+          <div className="eyebrow">{t('aiEcosystem.eyebrow')}</div>
+          <h2 style={{ marginTop: 24 }}>{t('aiEcosystem.headline')}</h2>
+          <p className="lede" style={{ marginTop: 16, maxWidth: '72ch' }}>{t('aiEcosystem.intro')}</p>
+          <AiEcosystemCarousel logos={aiLogos} />
+        </div>
+      </section>
+
+      {/* 5. When to use */}
       <section className="tight bg-ink-50">
         <div className="container">
           <div className="grid grid-cols-1 tablet:grid-cols-[1fr_1.6fr] gap-12 items-start">
@@ -263,16 +257,6 @@ export default async function LanguageAssurancePage({ params }: { params: Promis
               ))}
             </ol>
           </div>
-        </div>
-      </section>
-
-      {/* 7b. AI Ecosystem */}
-      <section>
-        <div className="container">
-          <div className="eyebrow">{t('aiEcosystem.eyebrow')}</div>
-          <h2 style={{ marginTop: 24 }}>{t('aiEcosystem.headline')}</h2>
-          <p className="lede" style={{ marginTop: 16, maxWidth: '72ch' }}>{t('aiEcosystem.intro')}</p>
-          <AiEcosystemCarousel logos={aiLogos} />
         </div>
       </section>
 
