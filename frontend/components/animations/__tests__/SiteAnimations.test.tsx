@@ -23,6 +23,10 @@ jest.mock('@gsap/react', () => ({
   useGSAP: jest.fn((cb: () => void) => cb()),
 }))
 
+jest.mock('@/i18n/navigation', () => ({
+  usePathname: jest.fn(() => '/'),
+}))
+
 import SiteAnimations from '../SiteAnimations'
 
 describe('SiteAnimations', () => {

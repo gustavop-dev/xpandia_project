@@ -1,6 +1,7 @@
 'use client'
 
 import { useGSAP } from '@gsap/react'
+import { usePathname } from '@/i18n/navigation'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
@@ -9,15 +10,24 @@ gsap.registerPlugin(useGSAP, ScrollTrigger)
 const EASE = 'power2.out'
 const ENTER_Y = 28
 const ENTER_DURATION = 0.72
+// Reveal trigger: fire once the element is ~25% into the viewport (its top
+// reaches 75% from the top), so animations play while the content is clearly
+// in view rather than at the very bottom edge.
+const START = 'top 75%'
 
 export default function SiteAnimations() {
+  // SiteAnimations lives in the persistent layout, so it does not re-mount on
+  // client-side navigation. Re-run on every route change (revertOnUpdate
+  // reverts the previous page's tweens/ScrollTriggers first) so each view gets
+  // its animations wired up — not just the first page loaded.
+  const pathname = usePathname()
+
   useGSAP(() => {
     const mm = gsap.matchMedia()
 
     mm.add('(prefers-reduced-motion: no-preference)', () => {
       // ── Hero entrance ─────────────────────────────────────────────────────
-      const heroSel = '.hero'
-      const hero = document.querySelector<HTMLElement>(heroSel)
+      const hero = document.querySelector<HTMLElement>('.hero')
       if (hero) {
         const items = hero.querySelectorAll(':scope > .container > *')
         gsap.from(items, {
@@ -37,30 +47,22 @@ export default function SiteAnimations() {
           opacity: 0,
           duration: ENTER_DURATION,
           ease: EASE,
-          scrollTrigger: { trigger: el, start: 'top 88%', once: true },
+          scrollTrigger: { trigger: el, start: START, once: true },
         })
       })
 
       // ── Service cards (home + services index) ──────────────────────────────
       // fromTo (not from) with no stagger: batch can re-fire while a card is
       // mid-flight, and from() would capture that offset as the end value,
-      // freezing the cards in a staircase. Explicit end values self-heal, and
-      // animating the row as one block keeps the cards visually aligned.
+      // freezing the cards in a staircase. Explicit end values self-heal.
       ScrollTrigger.batch('.service-card', {
         onEnter: els =>
           gsap.fromTo(els,
             { y: ENTER_Y, opacity: 0 },
-            {
-              y: 0,
-              opacity: 1,
-              duration: 0.65,
-              ease: EASE,
-              overwrite: 'auto',
-              clearProps: 'transform',
-            },
+            { y: 0, opacity: 1, duration: 0.65, ease: EASE, overwrite: 'auto', clearProps: 'transform' },
           ),
         once: true,
-        start: 'top 90%',
+        start: START,
       })
 
       // ── Scorecard widget ───────────────────────────────────────────────────
@@ -71,11 +73,9 @@ export default function SiteAnimations() {
           scale: 0.98,
           duration: ENTER_DURATION,
           ease: EASE,
-          scrollTrigger: { trigger: el, start: 'top 85%', once: true },
+          scrollTrigger: { trigger: el, start: START, once: true },
         })
-        // Bars fill from the left once the card is in view. scaleX (not width)
-        // keeps the per-row width from the copy JSON as the single source of
-        // the final value.
+        // Bars fill from the left (scaleX keeps the per-row width from the JSON).
         gsap.fromTo(el.querySelectorAll('.scorecard-bar > span'),
           { scaleX: 0, transformOrigin: 'left center' },
           {
@@ -85,14 +85,12 @@ export default function SiteAnimations() {
             ease: EASE,
             overwrite: 'auto',
             clearProps: 'transform',
-            scrollTrigger: { trigger: el, start: 'top 85%', once: true },
+            scrollTrigger: { trigger: el, start: START, once: true },
           },
         )
       })
 
-      // ── Numbered lists (methodology, how-it-works) ─────────────────────────
-      // Spotlight variant: after the list enters, step titles light up in
-      // sequence (01 → 04) to walk the reader through the transition.
+      // ── Numbered lists — sequential title spotlight (01 → 0N) ──────────────
       gsap.utils.toArray<HTMLElement>('.num-list-spotlight').forEach(list => {
         gsap.fromTo(list.querySelectorAll('h4'),
           { opacity: 0.3 },
@@ -103,7 +101,7 @@ export default function SiteAnimations() {
             ease: EASE,
             overwrite: 'auto',
             clearProps: 'opacity',
-            scrollTrigger: { trigger: list, start: 'top 75%', once: true },
+            scrollTrigger: { trigger: list, start: START, once: true },
           },
         )
       })
@@ -119,7 +117,7 @@ export default function SiteAnimations() {
             ease: EASE,
             overwrite: 'auto',
             clearProps: 'transform',
-            scrollTrigger: { trigger: list, start: 'top 85%', once: true },
+            scrollTrigger: { trigger: list, start: START, once: true },
           },
         )
       })
@@ -136,7 +134,7 @@ export default function SiteAnimations() {
             ease: EASE,
             overwrite: 'auto',
             clearProps: 'transform',
-            scrollTrigger: { trigger: container, start: 'top 88%', once: true },
+            scrollTrigger: { trigger: container, start: START, once: true },
           },
         )
       })
@@ -146,23 +144,13 @@ export default function SiteAnimations() {
         onEnter: els =>
           gsap.fromTo(els,
             { y: 20, opacity: 0 },
-            {
-              y: 0,
-              opacity: 1,
-              duration: ENTER_DURATION,
-              stagger: 0.08,
-              ease: EASE,
-              overwrite: 'auto',
-              clearProps: 'transform',
-            },
+            { y: 0, opacity: 1, duration: ENTER_DURATION, stagger: 0.08, ease: EASE, overwrite: 'auto', clearProps: 'transform' },
           ),
         once: true,
-        start: 'top 88%',
+        start: START,
       })
 
       // ── [data-parallax] — subtle scroll-linked drift ──────────────────────
-      // The element rises/sinks as it transits the viewport. Intensity is set
-      // via the attribute value (fraction of its travel, default 0.18).
       gsap.utils.toArray<HTMLElement>('[data-parallax]').forEach(el => {
         const amount = (parseFloat(el.dataset.parallax || '') || 0.18) * 100
         gsap.fromTo(el,
@@ -190,7 +178,7 @@ export default function SiteAnimations() {
           v: target,
           duration: 1.5,
           ease: 'power2.out',
-          scrollTrigger: { trigger: el, start: 'top 90%', once: true },
+          scrollTrigger: { trigger: el, start: START, once: true },
           onUpdate: () => {
             const n = obj.v.toFixed(decimals)
             el.textContent = prefix + (grouped ? Number(n).toLocaleString('en-US') : n) + suffix
@@ -221,7 +209,7 @@ export default function SiteAnimations() {
     })
 
     return () => mm.revert()
-  })
+  }, { dependencies: [pathname], revertOnUpdate: true })
 
   return null
 }
