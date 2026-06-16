@@ -107,7 +107,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
               {t('founder.body1')}
             </p>
             <p className="text-ink-600 text-[19px] leading-[1.55]">
-              {t('founder.body2')}
+              {t.rich('founder.body2', { b: chunks => <strong className="font-semibold text-ink-900">{chunks}</strong> })}
             </p>
           </div>
           <div className="grid grid-cols-1 tablet:grid-cols-[0.85fr_1.6fr] gap-10 items-start mt-12">
