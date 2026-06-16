@@ -83,7 +83,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
               {t('differentiators.intro')}
             </p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 tablet:grid-cols-3 gap-5 mt-12">
+          <div data-stagger className="grid grid-cols-1 sm:grid-cols-2 tablet:grid-cols-3 gap-5 mt-12">
             {differentiatorCards.map((d, i) => (
               <div key={d.title} className="p-7 bg-white border border-ink-150 rounded-lg">
                 <div className="font-mono text-[11px] tracking-[0.1em] text-accent mb-3">{t('differentiators.valueLabel')} {i + 1}</div>
@@ -162,7 +162,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
             <div className="eyebrow">{t('startingPoints.eyebrow')}</div>
             <h2 className="head-title max-w-[26ch]" style={{ marginTop: 16 }}>{t('startingPoints.headline')}</h2>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 tablet:grid-cols-3 gap-5 mt-12 items-start">
+          <div data-stagger className="grid grid-cols-1 sm:grid-cols-2 tablet:grid-cols-3 gap-5 mt-12 items-start">
             {startingPointCards.map(p => (
               <Link
                 key={p.title}
@@ -189,7 +189,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
           <div className="grid grid-cols-1 sm:grid-cols-2 tablet:grid-cols-4 gap-5 border-t border-ink-150 pt-10">
             {proofSignalItems.map(s => (
               <div key={s.label}>
-                <div className="font-mono text-[11px] tracking-[0.1em] text-ink-500 mb-[10px]">{s.label}</div>
+                <div data-counter className="font-mono text-[11px] tracking-[0.1em] text-ink-500 mb-[10px]">{s.label}</div>
                 <div className="text-[14.5px] leading-[1.5] text-ink-700">{s.text}</div>
               </div>
             ))}

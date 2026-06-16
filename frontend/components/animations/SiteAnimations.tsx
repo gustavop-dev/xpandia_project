@@ -159,6 +159,65 @@ export default function SiteAnimations() {
         once: true,
         start: 'top 88%',
       })
+
+      // ── [data-parallax] — subtle scroll-linked drift ──────────────────────
+      // The element rises/sinks as it transits the viewport. Intensity is set
+      // via the attribute value (fraction of its travel, default 0.18).
+      gsap.utils.toArray<HTMLElement>('[data-parallax]').forEach(el => {
+        const amount = (parseFloat(el.dataset.parallax || '') || 0.18) * 100
+        gsap.fromTo(el,
+          { yPercent: amount },
+          {
+            yPercent: -amount,
+            ease: 'none',
+            scrollTrigger: { trigger: el, start: 'top bottom', end: 'bottom top', scrub: true },
+          },
+        )
+      })
+
+      // ── [data-counter] — count up to the number already in the DOM ────────
+      gsap.utils.toArray<HTMLElement>('[data-counter]').forEach(el => {
+        const raw = (el.textContent || '').trim()
+        const m = raw.match(/^(\D*)([\d.,]+)(.*)$/s)
+        if (!m) return
+        const [, prefix, numStr, suffix] = m
+        const target = parseFloat(numStr.replace(/,/g, ''))
+        if (!isFinite(target)) return
+        const decimals = (numStr.split('.')[1] || '').length
+        const grouped = numStr.includes(',')
+        const obj = { v: 0 }
+        gsap.to(obj, {
+          v: target,
+          duration: 1.5,
+          ease: 'power2.out',
+          scrollTrigger: { trigger: el, start: 'top 90%', once: true },
+          onUpdate: () => {
+            const n = obj.v.toFixed(decimals)
+            el.textContent = prefix + (grouped ? Number(n).toLocaleString('en-US') : n) + suffix
+          },
+        })
+      })
+
+      // ── Magnetic hero CTAs — pointer-follow micro-interaction ─────────────
+      const magneticCleanups: Array<() => void> = []
+      gsap.utils.toArray<HTMLElement>('.hero-ctas .btn').forEach(btn => {
+        const xTo = gsap.quickTo(btn, 'x', { duration: 0.4, ease: 'power3' })
+        const yTo = gsap.quickTo(btn, 'y', { duration: 0.4, ease: 'power3' })
+        const onMove = (e: MouseEvent) => {
+          const r = btn.getBoundingClientRect()
+          xTo((e.clientX - (r.left + r.width / 2)) * 0.3)
+          yTo((e.clientY - (r.top + r.height / 2)) * 0.45)
+        }
+        const onLeave = () => { xTo(0); yTo(0) }
+        btn.addEventListener('mousemove', onMove)
+        btn.addEventListener('mouseleave', onLeave)
+        magneticCleanups.push(() => {
+          btn.removeEventListener('mousemove', onMove)
+          btn.removeEventListener('mouseleave', onLeave)
+        })
+      })
+
+      return () => magneticCleanups.forEach(fn => fn())
     })
 
     return () => mm.revert()

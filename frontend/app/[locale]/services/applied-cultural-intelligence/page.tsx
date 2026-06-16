@@ -134,7 +134,7 @@ export default async function AppliedCulturalIntelligencePage({ params }: { para
           <div className="section-head section-head--no-rule" style={{ gridTemplateColumns: '1fr' }}>
             <h2 className="head-title max-w-[28ch]">{t('coreSolutions.headline')}</h2>
           </div>
-          <div className="grid grid-cols-1 tablet:grid-cols-3 gap-6 mt-12 items-start">
+          <div data-stagger className="grid grid-cols-1 tablet:grid-cols-3 gap-6 mt-12 items-start">
             {coreSolutionCards.map(card => (
               <div key={card.name} className="flex flex-col p-8 bg-white border border-ink-150 rounded-lg">
                 <h3 className="font-display text-[22px] font-medium tracking-[-0.015em] leading-[1.15] text-ink-900">

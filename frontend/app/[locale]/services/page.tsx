@@ -143,7 +143,7 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
             </p>
           </div>
 
-          <div className="grid grid-cols-1 tablet:grid-cols-2 gap-6 mt-12">
+          <div data-stagger className="grid grid-cols-1 tablet:grid-cols-2 gap-6 mt-12">
             {coreSolutionCards.map(card => (
               <div
                 key={card.name}
