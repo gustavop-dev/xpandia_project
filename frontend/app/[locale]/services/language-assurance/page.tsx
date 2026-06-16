@@ -209,8 +209,8 @@ export default async function LanguageAssurancePage({ params }: { params: Promis
                 </div>
 
                 <div className="mt-auto pt-6">
-                  <Link href="/contact" className="text-primary font-medium text-[15px] hover:underline">
-                    {card.cta} →
+                  <Link href="/contact" className="btn btn-primary btn-small">
+                    {card.cta} <span className="btn-arrow"></span>
                   </Link>
                 </div>
               </div>

@@ -12,8 +12,8 @@
   "hero": {
     "eyebrow": "LANGUAGE ASSURANCE",
     "h1": "Validate Spanish before your",
-    "h1Accent": "users",
-    "h1End": "do.",
+    "h1Accent": "users do",
+    "h1End": "",
     "subheadline": "Xpandia helps AI, SaaS, EdTech, Product, Localization, and CX teams evaluate Spanish quality across AI outputs, product experiences, support content, and launch-ready journeys.",
     "body": "We turn expert Spanish judgment into measurable findings your team can act on: scorecards, issue taxonomies, severity ratings, readiness recommendations, and remediation guidance.",
     "ctaPrimary": "Request an AI QA Sprint",
@@ -32,7 +32,7 @@
         "desc": "Scorecards, issues taxonomy findings readout, risk analysis"
       }
     ],
-    "h1Suffix": ""
+    "h1Suffix": "."
   },
   "positioning": {
     "eyebrow": "WHY LANGUAGE ASSURANCE",
@@ -49,27 +49,27 @@
     "cards": [
       {
         "title": "AI-generated outputs",
-        "desc": "Chatbot responses, AI tutors, copilots, agents, support replies, generated explanations, summaries, recommendations, and other model outputs in Spanish."
+        "desc": "Chatbot responses, AI tutors, copilots, agents, support replies, generated explanations."
       },
       {
         "title": "Product experiences",
-        "desc": "Onboarding flows, UI copy, forms, empty states, error messages, notifications, tooltips, checkout flows, and release-critical product surfaces."
+        "desc": "Onboarding flows, UI copy, forms, empty states, error messages, notifications, tooltips."
       },
       {
         "title": "Support and CX content",
-        "desc": "Help center articles, support macros, chatbot flows, escalation language, knowledge base content, and customer-facing communication."
-      },
-      {
-        "title": "Marketing and conversion content",
-        "desc": "Landing pages, campaign copy, email flows, pricing pages, value propositions, trust messaging, and Spanish conversion paths."
+        "desc": "Help center articles, support macros, chatbot flows, escalation language."
       },
       {
         "title": "Localization quality",
-        "desc": "Translated or localized experiences that need expert review, consistency checks, regional fit, terminology alignment, or final sign-off."
+        "desc": "Translated or localized experiences needing expert review, regional fit, or final sign-off."
       },
       {
         "title": "Launch readiness",
-        "desc": "Spanish product surfaces, AI experiences, or customer journeys that need validation before launch, relaunch, deployment, or scale."
+        "desc": "Spanish and English product surfaces, AI experiences, or customer journeys validating before deployment."
+      },
+      {
+        "title": "Marketing and conversion content",
+        "desc": "Landing pages, campaign copy, email flows, value propositions, conversion paths."
       }
     ]
   },
