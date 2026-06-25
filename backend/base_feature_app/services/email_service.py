@@ -12,7 +12,7 @@ from base_feature_app.utils.auth_utils import (
     send_verification_code,
 )
 
-CONTACT_EMAIL = 'hello@xpandia.global'
+CONTACT_EMAIL = 'nestor@xpandia.global'
 
 _SERVICE_LABELS = {
     'language-assurance': 'Language Assurance',

@@ -21,4 +21,11 @@ DATABASES = {
     }
 }
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# Use real SMTP when credentials are configured (e.g. to verify the contact
+# form locally); otherwise fall back to the console backend so a dev without
+# email credentials still works and never sends real mail by accident.
+EMAIL_BACKEND = (
+    'django.core.mail.backends.smtp.EmailBackend'
+    if EMAIL_HOST_USER and EMAIL_HOST_PASSWORD
+    else 'django.core.mail.backends.console.EmailBackend'
+)
