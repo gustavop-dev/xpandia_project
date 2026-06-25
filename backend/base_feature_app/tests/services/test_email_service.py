@@ -1,6 +1,6 @@
 from unittest.mock import patch
 
-from base_feature_app.services.email_service import EmailService
+from base_feature_app.services.email_service import CONTACT_EMAIL, EmailService
 
 
 def test_send_password_reset_code_delegates_to_util():
@@ -83,7 +83,7 @@ def test_send_contact_notification_sends_to_xpandia_inbox():
         EmailService.send_contact_notification(CONTACT_DATA)
 
     _, kwargs = MockEmail.call_args
-    assert 'hello@xpandia.global' in kwargs['to']
+    assert CONTACT_EMAIL in kwargs['to']
 
 
 def test_send_contact_notification_sets_reply_to_submitter():
@@ -152,7 +152,7 @@ def test_send_contact_confirmation_sets_reply_to_xpandia():
         EmailService.send_contact_confirmation(CONTACT_DATA)
 
     _, kwargs = MockEmail.call_args
-    assert 'hello@xpandia.global' in kwargs['reply_to']
+    assert CONTACT_EMAIL in kwargs['reply_to']
 
 
 def test_send_contact_confirmation_returns_false_on_smtp_error():
