@@ -11,12 +11,32 @@ gsap.registerPlugin(useGSAP, ScrollTrigger)
 const EASE = 'power2.out'
 const ENTER_Y = 28
 const ENTER_DURATION = 0.72
-// Reveal trigger: fire once the element's top reaches the middle of the
-// viewport (50%) — entrances play as the content reaches center screen.
-const START = 'top 50%'
+
+// Reveal triggers — fire when the element's top crosses a line well below the
+// middle of the viewport (70%). A larger % sits lower on the screen, so the
+// entrance plays earlier (while the content is still near the bottom, rising
+// up) — this keeps the incoming section from sitting blank/empty until it
+// reaches center. One constant per animation so each reveal can be tuned
+// independently.
+const START_SECTION_HEAD = 'top 70%' // .section-head — every section heading
+const START_SERVICE_CARD = 'top 70%' // .service-card — home + /services cards
+const START_SCORECARD = 'top 70%'    // .scorecard widget + bar fills (home deliverables)
+const START_NUM_SPOTLIGHT = 'top 70%' // .num-list-spotlight — 01→0N title highlight
+const START_NUM_LIST = 'top 70%'     // .num-list — numbered list items
+const START_STAGGER = 'top 70%'      // [data-stagger] — staggered grids
+const START_REVEAL = 'top 70%'       // [data-reveal] — individual blocks
+
 // Counters fire eagerly (as they enter from the bottom) so the number counts up
 // while visible instead of resetting to 0 once it reaches the top.
 const COUNTER_START = 'top 85%'
+
+// Scroll-linked "illumination" for numbered cards/rows: border + soft background
+// tint that intensifies with scroll position, peaking near viewport centre.
+// GSAP can't interpolate var() tokens, so these are the resolved hex values of
+// the design tokens: --accent, --accent-soft, --rule.
+const LIT_BORDER = '#1FB5E7' // --accent
+const LIT_BG = '#E7F6FC'     // --accent-soft
+const DIM_BORDER = '#E6EDF2' // --rule (ink-150)
 
 export default function SiteAnimations() {
   // SiteAnimations lives in the persistent layout, so it does not re-mount on
@@ -71,7 +91,7 @@ export default function SiteAnimations() {
           opacity: 0,
           duration: ENTER_DURATION,
           ease: EASE,
-          scrollTrigger: { trigger: el, start: START, once: true },
+          scrollTrigger: { trigger: el, start: START_SECTION_HEAD, once: true },
         })
       })
 
@@ -86,7 +106,7 @@ export default function SiteAnimations() {
             { y: 0, opacity: 1, duration: 0.65, ease: EASE, overwrite: 'auto', clearProps: 'transform' },
           ),
         once: true,
-        start: START,
+        start: START_SERVICE_CARD,
       })
 
       // ── Scorecard widget ───────────────────────────────────────────────────
@@ -97,7 +117,7 @@ export default function SiteAnimations() {
           scale: 0.98,
           duration: ENTER_DURATION,
           ease: EASE,
-          scrollTrigger: { trigger: el, start: START, once: true },
+          scrollTrigger: { trigger: el, start: START_SCORECARD, once: true },
         })
         // Bars fill from the left (scaleX keeps the per-row width from the JSON).
         gsap.fromTo(el.querySelectorAll('.scorecard-bar > span'),
@@ -109,7 +129,7 @@ export default function SiteAnimations() {
             ease: EASE,
             overwrite: 'auto',
             clearProps: 'transform',
-            scrollTrigger: { trigger: el, start: START, once: true },
+            scrollTrigger: { trigger: el, start: START_SCORECARD, once: true },
           },
         )
       })
@@ -125,7 +145,7 @@ export default function SiteAnimations() {
             ease: EASE,
             overwrite: 'auto',
             clearProps: 'opacity',
-            scrollTrigger: { trigger: list, start: START, once: true },
+            scrollTrigger: { trigger: list, start: START_NUM_SPOTLIGHT, once: true },
           },
         )
       })
@@ -141,7 +161,7 @@ export default function SiteAnimations() {
             ease: EASE,
             overwrite: 'auto',
             clearProps: 'transform',
-            scrollTrigger: { trigger: list, start: START, once: true },
+            scrollTrigger: { trigger: list, start: START_NUM_LIST, once: true },
           },
         )
       })
@@ -158,7 +178,7 @@ export default function SiteAnimations() {
             ease: EASE,
             overwrite: 'auto',
             clearProps: 'transform',
-            scrollTrigger: { trigger: container, start: START, once: true },
+            scrollTrigger: { trigger: container, start: START_STAGGER, once: true },
           },
         )
       })
@@ -171,7 +191,7 @@ export default function SiteAnimations() {
             { y: 0, opacity: 1, duration: ENTER_DURATION, stagger: 0.08, ease: EASE, overwrite: 'auto', clearProps: 'transform' },
           ),
         once: true,
-        start: START,
+        start: START_REVEAL,
       })
 
       // ── [data-parallax] — subtle scroll-linked drift ──────────────────────
@@ -209,6 +229,39 @@ export default function SiteAnimations() {
           },
         })
       })
+
+      // ── Scroll-linked illumination — numbered cards + list rows ───────────
+      // Border + faint background tint scrubs from neutral → accent as the
+      // element rises to the viewport centre (and reverses on scroll-up).
+      // Paint-only properties (no layout/shadow) to keep it cheap; gated by the
+      // reduced-motion matchMedia block above so it no-ops for those users.
+      const illuminate = (
+        el: HTMLElement,
+        opts: { borderProp: 'borderColor' | 'borderTopColor'; dimBg: string; litBg: string },
+      ) => {
+        gsap.fromTo(el,
+          { [opts.borderProp]: DIM_BORDER, backgroundColor: opts.dimBg },
+          {
+            [opts.borderProp]: LIT_BORDER,
+            backgroundColor: opts.litBg,
+            ease: 'none',
+            scrollTrigger: { trigger: el, start: 'top bottom', end: 'center center', scrub: 0.6 },
+          },
+        )
+      }
+      // Grid cards: full border + white → soft-cyan background.
+      gsap.utils.toArray<HTMLElement>('[data-illuminate], .service-card').forEach(card =>
+        illuminate(card, { borderProp: 'borderColor', dimBg: '#FFFFFF', litBg: LIT_BG }),
+      )
+      // Numbered list rows have only a top rule, so animate borderTopColor and a
+      // faint tint. Use a LOW-ALPHA accent (cyan) rather than the opaque light
+      // accent-soft: rows appear on both light AND dark sections (e.g. the home
+      // "methodology" block), and an opaque light fill would wash the dark
+      // background out. Animating alpha only (same rgb 0 → 0.07) stays subtle on
+      // either background and avoids a grey haze.
+      gsap.utils.toArray<HTMLElement>('.num-list li').forEach(row =>
+        illuminate(row, { borderProp: 'borderTopColor', dimBg: 'rgba(31,181,231,0)', litBg: 'rgba(31,181,231,0.07)' }),
+      )
 
       // ── Magnetic hero CTAs — pointer-follow micro-interaction ─────────────
       const magneticCleanups: Array<() => void> = []

@@ -85,7 +85,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
           </div>
           <div data-stagger className="grid grid-cols-1 sm:grid-cols-2 tablet:grid-cols-3 gap-5 mt-12">
             {differentiatorCards.map((d, i) => (
-              <div key={d.title} className="p-7 bg-white border border-ink-150 rounded-lg">
+              <div key={d.title} data-illuminate className="p-7 bg-white border border-ink-150 rounded-lg">
                 <div className="font-mono text-[11px] tracking-[0.1em] text-accent mb-3">{t('differentiators.valueLabel')} {i + 1}</div>
                 <h3 className="text-[19px] font-display font-medium text-ink-900 tracking-[-0.01em] mb-3">{d.title}</h3>
                 <p className="text-ink-600 text-[14.5px] leading-[1.55]">{d.body}</p>
@@ -163,12 +163,16 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
             <h2 className="head-title max-w-[26ch]" style={{ marginTop: 16 }}>{t('startingPoints.headline')}</h2>
           </div>
           <div data-stagger className="grid grid-cols-1 sm:grid-cols-2 tablet:grid-cols-3 gap-5 mt-12 items-start">
-            {startingPointCards.map(p => (
+            {startingPointCards.map((p, i) => (
               <Link
                 key={p.title}
                 href="/contact"
+                data-illuminate
                 className="group p-7 bg-white border border-ink-150 rounded-lg flex flex-col transition-all hover:border-primary hover:shadow-[0_4px_20px_rgba(15,20,25,0.06)]"
               >
+                <div data-card-num className="font-mono text-[11px] tracking-[0.1em] text-ink-500 mb-3">
+                  {String(i + 1).padStart(2, '0')}
+                </div>
                 <h3 className="text-[19px] font-display font-medium text-ink-900 tracking-[-0.01em] mb-1">{p.title}</h3>
                 <div className="font-mono text-[12px] text-primary tracking-[0.06em] mb-3">{p.price}</div>
                 <p className="text-ink-600 text-[14.5px] leading-[1.55]">{p.body}</p>

@@ -155,8 +155,11 @@ export default async function LocalizationAdaptationPage({ params }: { params: P
             <h2 className="head-title max-w-[24ch]">{t('coreSolutions.headline')}</h2>
           </div>
           <div data-stagger className="grid grid-cols-1 tablet:grid-cols-2 gap-6 mt-12 items-start">
-            {coreSolutionCards.map(card => (
-              <div key={card.name} className="flex flex-col p-8 bg-white border border-ink-150 rounded-lg">
+            {coreSolutionCards.map((card, i) => (
+              <div key={card.name} data-illuminate className="flex flex-col p-8 bg-white border border-ink-150 rounded-lg">
+                <div data-card-num className="font-mono text-[11px] tracking-[0.1em] text-ink-500 mb-3">
+                  {String(i + 1).padStart(2, '0')}
+                </div>
                 <h3 className="font-display text-[22px] font-medium tracking-[-0.015em] leading-[1.15] text-ink-900">
                   {card.name}
                 </h3>
