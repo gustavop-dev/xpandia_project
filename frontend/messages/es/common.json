@@ -72,5 +72,11 @@
     "languageAssurance": "Language Assurance",
     "localizationAdaptation": "Experience Repair & Adaptation",
     "appliedCulturalIntelligence": "Applied Cultural Intelligence"
+  },
+  "error": {
+    "title": "Algo salió mal",
+    "description": "Esta página no se cargó correctamente. Vuelve a intentarlo o regresa al inicio.",
+    "retry": "Reintentar",
+    "back": "Volver al inicio"
   }
 }

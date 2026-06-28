@@ -26,5 +26,18 @@ export default getRequestConfig(async ({ requestLocale }) => {
     }),
   )
 
-  return { locale, messages: Object.fromEntries(entries) }
+  return {
+    locale,
+    messages: Object.fromEntries(entries),
+    // Defensive: a missing/malformed key must never crash a page render. Log it
+    // (so gaps surface in dev/monitoring) and fall back to the key path instead
+    // of throwing. Spanish copy is a living draft, so this guards against an
+    // incomplete namespace taking down a whole route.
+    onError(error) {
+      console.error('[next-intl]', error)
+    },
+    getMessageFallback({ namespace, key }) {
+      return namespace ? `${namespace}.${key}` : key
+    },
+  }
 })
