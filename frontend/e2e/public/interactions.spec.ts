@@ -1,5 +1,5 @@
 import { test, expect } from '../test-with-coverage'
-import { waitForPageLoad } from '../fixtures'
+import { waitForPageLoad, fillContactForm } from '../fixtures'
 import {
   CONTACT_FORM_SUBMIT,
   CONTACT_FORM_ERROR_STATE,
@@ -24,16 +24,7 @@ test.describe('Contact form', () => {
       await page.goto('/contact')
       await waitForPageLoad(page)
 
-      // Radio tiles use role="button" (no native <input type="radio">)
-      await page.getByRole('button', { name: 'Language Assurance' }).click()
-      await page.getByRole('button', { name: 'LatAm' }).click()
-
-      // Labels are not linked to inputs via for/id — use placeholder instead
-      await page.getByPlaceholder('Jane Doe').fill('Jane Doe')
-      await page.getByPlaceholder(/VP Product/).fill('VP Product')
-      await page.getByPlaceholder('jane@company.com').fill('jane@company.com')
-      await page.getByPlaceholder('Company Inc.').fill('Acme Inc.')
-      await page.getByPlaceholder(/Example: We launched/).fill('We need a quality review of our Spanish AI outputs.')
+      await fillContactForm(page)
 
       await Promise.all([
         page.waitForResponse(resp =>
@@ -62,13 +53,7 @@ test.describe('Contact form', () => {
         }),
       )
 
-      await page.getByRole('button', { name: 'Language Assurance' }).click()
-      await page.getByRole('button', { name: 'LatAm' }).click()
-      await page.getByPlaceholder('Jane Doe').fill('Jane Doe')
-      await page.getByPlaceholder(/VP Product/).fill('VP Product')
-      await page.getByPlaceholder('jane@company.com').fill('jane@company.com')
-      await page.getByPlaceholder('Company Inc.').fill('Acme Inc.')
-      await page.getByPlaceholder(/Example: We launched/).fill('We need a quality review of our Spanish AI outputs.')
+      await fillContactForm(page)
 
       await Promise.all([
         page.waitForResponse(resp =>
