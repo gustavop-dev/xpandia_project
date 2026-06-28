@@ -72,5 +72,11 @@
     "languageAssurance": "Language Assurance",
     "localizationAdaptation": "Experience Repair & Adaptation",
     "appliedCulturalIntelligence": "Applied Cultural Intelligence"
+  },
+  "error": {
+    "title": "Something went wrong",
+    "description": "This page didn't load correctly. Try again, or go back to the homepage.",
+    "retry": "Try again",
+    "back": "Back to home"
   }
 }

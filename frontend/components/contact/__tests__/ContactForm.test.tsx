@@ -3,10 +3,13 @@ import { screen, waitFor, fireEvent } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { renderWithIntl } from '@/test-utils/renderWithIntl'
 import ContactForm from '../ContactForm'
+import { submitContactForm } from '@/lib/services/contact'
 
 jest.mock('@/lib/services/contact', () => ({
-  submitContactForm: () => Promise.resolve(),
+  submitContactForm: jest.fn(() => Promise.resolve()),
 }))
+
+const mockSubmit = jest.mocked(submitContactForm)
 
 describe('ContactForm', () => {
   it('renders the form title', () => {
@@ -96,5 +99,31 @@ describe('ContactForm', () => {
     await waitFor(() => {
       expect(screen.queryByRole('button', { name: /send request/i })).not.toBeInTheDocument()
     })
+  })
+
+  it('shows the error banner when submission fails', async () => {
+    mockSubmit.mockRejectedValueOnce(new Error('network'))
+    renderWithIntl(<ContactForm />)
+    const form = screen.getByRole('button', { name: /send request/i }).closest('form')!
+    fireEvent.submit(form)
+    expect(await screen.findByText(/something went wrong/i)).toBeInTheDocument()
+  })
+
+  it('keeps the submit button visible when submission fails', async () => {
+    mockSubmit.mockRejectedValueOnce(new Error('network'))
+    renderWithIntl(<ContactForm />)
+    const form = screen.getByRole('button', { name: /send request/i }).closest('form')!
+    fireEvent.submit(form)
+    await screen.findByText(/something went wrong/i)
+    expect(screen.getByRole('button', { name: /send request/i })).toBeInTheDocument()
+  })
+
+  it('does not show the success banner when submission fails', async () => {
+    mockSubmit.mockRejectedValueOnce(new Error('network'))
+    renderWithIntl(<ContactForm />)
+    const form = screen.getByRole('button', { name: /send request/i }).closest('form')!
+    fireEvent.submit(form)
+    await screen.findByText(/something went wrong/i)
+    expect(screen.queryByText(/Request received/i)).not.toBeInTheDocument()
   })
 })
