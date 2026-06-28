@@ -2,6 +2,7 @@ import { test, expect } from '../test-with-coverage'
 import { waitForPageLoad } from '../fixtures'
 import {
   CONTACT_FORM_SUBMIT,
+  CONTACT_FORM_ERROR_STATE,
   CTA_HOME_TO_CONTACT,
   CTA_SERVICE_DETAIL_TO_CONTACT,
   CTA_SERVICES_CORE_SOLUTION_TO_CONTACT,
@@ -42,6 +43,43 @@ test.describe('Contact form', () => {
       ])
 
       await expect(page.getByText(/Request received/i)).toBeVisible()
+    }
+  )
+
+  test(
+    'shows the error banner when the contact API returns 5xx',
+    { tag: [...CONTACT_FORM_ERROR_STATE] },
+    async ({ page }) => {
+      await page.goto('/contact')
+      await waitForPageLoad(page)
+
+      // Force the backend to fail so we exercise the failure path, not the happy one.
+      await page.route('**/api/contact/', route =>
+        route.fulfill({
+          status: 503,
+          contentType: 'application/json',
+          body: JSON.stringify({ detail: 'Could not send message.' }),
+        }),
+      )
+
+      await page.getByRole('button', { name: 'Language Assurance' }).click()
+      await page.getByRole('button', { name: 'LatAm' }).click()
+      await page.getByPlaceholder('Jane Doe').fill('Jane Doe')
+      await page.getByPlaceholder(/VP Product/).fill('VP Product')
+      await page.getByPlaceholder('jane@company.com').fill('jane@company.com')
+      await page.getByPlaceholder('Company Inc.').fill('Acme Inc.')
+      await page.getByPlaceholder(/Example: We launched/).fill('We need a quality review of our Spanish AI outputs.')
+
+      await Promise.all([
+        page.waitForResponse(resp =>
+          resp.url().endsWith('/api/contact/') && resp.status() === 503,
+        ),
+        page.getByRole('button', { name: /Send request/i }).click(),
+      ])
+
+      await expect(page.getByText(/something went wrong/i)).toBeVisible()
+      await expect(page.getByText(/Request received/i)).not.toBeVisible()
+      await expect(page.getByRole('button', { name: /Send request/i })).toBeVisible()
     }
   )
 })
