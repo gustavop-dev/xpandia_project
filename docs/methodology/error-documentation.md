@@ -24,7 +24,12 @@ This file tracks known errors, their context, and resolutions. When a reusable f
 
 ## Known Issues
 
-_No open issues._
+### [ERROR-006] Contact form returns 503 when SMTP is not configured
+- **Date**: 2026-06-28
+- **Context**: `POST /api/contact/` returns `503 Service Unavailable` for otherwise-valid submissions. The frontend then shows the red error banner (`contact.form.error`). In a webview/in-app browser a downstream crash can surface as the generic "No se puede cargar esta página" message instead.
+- **Root Cause**: `contact_form` (`backend/base_feature_app/views/contact.py`) returns 503 when `EmailService.send_contact_notification` returns `False`. That happens when the environment has no SMTP credentials (`DJANGO_EMAIL_HOST_USER` / `DJANGO_EMAIL_HOST_PASSWORD` empty → Django falls back to the console backend) or `DJANGO_DEFAULT_FROM_EMAIL` is empty / SMTP is unreachable. The failure is logged via `logger.error('contact_form notification email failed for %s', ...)`.
+- **Resolution**: Configure the email env vars **on each deployed environment** (see `backend/.env.example` "Email SMTP" block — use a Gmail App Password or corporate SMTP). Verify with a test submission returning 201 and the notification arriving at `CONTACT_EMAIL` (`nestor@xpandia.global`). Operationally, watch for the `contact_form notification email failed` log to catch SMTP outages before a client reports them. Frontend resilience (localized error boundary so a render crash never shows the raw browser error) was added in `frontend/app/[locale]/error.tsx` and `frontend/app/global-error.tsx`.
+- **Files Affected**: `backend/base_feature_app/views/contact.py`, `backend/base_feature_app/services/email_service.py`, `backend/.env` (per environment), `frontend/app/[locale]/error.tsx`, `frontend/app/global-error.tsx`
 
 ---
 
