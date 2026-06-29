@@ -24,16 +24,18 @@ This file tracks known errors, their context, and resolutions. When a reusable f
 
 ## Known Issues
 
-### [ERROR-006] Contact form returns 503 when SMTP is not configured
-- **Date**: 2026-06-28
-- **Context**: `POST /api/contact/` returns `503 Service Unavailable` for otherwise-valid submissions. The frontend then shows the red error banner (`contact.form.error`). In a webview/in-app browser a downstream crash can surface as the generic "No se puede cargar esta página" message instead.
-- **Root Cause**: `contact_form` (`backend/base_feature_app/views/contact.py`) returns 503 when `EmailService.send_contact_notification` returns `False`. That happens when the environment has no SMTP credentials (`DJANGO_EMAIL_HOST_USER` / `DJANGO_EMAIL_HOST_PASSWORD` empty → Django falls back to the console backend) or `DJANGO_DEFAULT_FROM_EMAIL` is empty / SMTP is unreachable. The failure is logged via `logger.error('contact_form notification email failed for %s', ...)`.
-- **Resolution**: Configure the email env vars **on each deployed environment** (see `backend/.env.example` "Email SMTP" block — use a Gmail App Password or corporate SMTP). Verify with a test submission returning 201 and the notification arriving at `CONTACT_EMAIL` (`nestor@xpandia.global`). Operationally, watch for the `contact_form notification email failed` log to catch SMTP outages before a client reports them. Frontend resilience (localized error boundary so a render crash never shows the raw browser error) was added in `frontend/app/[locale]/error.tsx` and `frontend/app/global-error.tsx`.
-- **Files Affected**: `backend/base_feature_app/views/contact.py`, `backend/base_feature_app/services/email_service.py`, `backend/.env` (per environment), `frontend/app/[locale]/error.tsx`, `frontend/app/global-error.tsx`
+No open issues.
 
 ---
 
 ## Resolved Issues
+
+### [ERROR-006] Contact form returns 503 when SMTP is not configured
+- **Date**: 2026-06-28 (resolved 2026-06-29)
+- **Context**: `POST /api/contact/` returned `503 Service Unavailable` for otherwise-valid submissions in production (`xpandia.global`). The frontend then showed the red error banner (`contact.form.error`). In a webview/in-app browser a downstream crash can surface as the generic "No se puede cargar esta página" message instead.
+- **Root Cause**: `contact_form` (`backend/base_feature_app/views/contact.py`) returns 503 when `EmailService.send_contact_notification` returns `False`. The deployed environments load `settings_prod`, which **forces** the SMTP backend (`settings_prod.py:64`), so with `DJANGO_EMAIL_HOST_USER` / `DJANGO_EMAIL_HOST_PASSWORD` empty the SMTP auth to `smtp.gmail.com:587` fails on every submit. Investigation on 2026-06-29 confirmed the SMTP credentials were absent from the `.env` (and systemd `Environment=`) of **both** prod and staging — there was no staging→prod env drift to migrate; the credentials had never been set. The failure is logged via `logger.error('contact_form notification email failed for %s', ...)`.
+- **Resolution**: Configured the email env vars on the production server's `backend/.env` — a Gmail/Workspace **App Password** for the sender `nestor@xpandia.global` (which is also the hardcoded `CONTACT_EMAIL` recipient in `services/email_service.py:15`). Verified end-to-end: direct Django `send_mail` returned `1` (SMTP auth OK) and `POST https://xpandia.global/api/contact/` now returns `201` with no `contact_form notification email failed` log. The `.env` is gitignored (server-only config; no commit). **Per environment**: set `DJANGO_EMAIL_HOST_USER` / `DJANGO_EMAIL_HOST_PASSWORD` / `DJANGO_DEFAULT_FROM_EMAIL` (see `backend/.env.example` "Email SMTP" block) and restart `xpandia_project` + `xpandia-huey`. If the 503 returns, the App Password was likely revoked/rotated — re-issue at myaccount.google.com/apppasswords. Operationally, watch for the `contact_form notification email failed` log to catch SMTP outages before a client reports them. Frontend resilience (localized error boundary so a render crash never shows the raw browser error) was added in `frontend/app/[locale]/error.tsx` and `frontend/app/global-error.tsx`.
+- **Files Affected**: `backend/base_feature_app/views/contact.py`, `backend/base_feature_app/services/email_service.py`, `backend/base_feature_project/settings_prod.py`, `backend/.env` (per environment, gitignored), `frontend/app/[locale]/error.tsx`, `frontend/app/global-error.tsx`
 
 ### [ERROR-001] Multiple elements found for `getByRole` in page tests
 - **Date**: 2026-04-24
