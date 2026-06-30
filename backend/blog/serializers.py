@@ -35,6 +35,8 @@ class BlogPostListSerializer(serializers.ModelSerializer):
         return getattr(obj, f'excerpt_{lang}') or obj.excerpt_en
 
     def get_cover_image_url(self, obj):
+        if obj.cover_image_url:
+            return obj.cover_image_url
         if not obj.cover_image:
             return ''
         request = self.context.get('request')

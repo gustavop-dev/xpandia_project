@@ -41,3 +41,11 @@ def test_cover_image_url_empty_string_when_no_image(blog_post):
 def test_detail_serializer_includes_content_json_for_requested_lang(blog_post):
     data = BlogPostDetailSerializer(blog_post, context=_ctx('es')).data
     assert data['content_json'] == {'sections': [{'type': 'paragraph', 'text': 'Hola.'}]}
+
+
+@pytest.mark.django_db
+def test_cover_image_url_field_takes_precedence_over_uploaded_file(blog_post):
+    blog_post.cover_image_url = 'https://cdn.example.com/external.jpg'
+    blog_post.save()
+    data = BlogPostListSerializer(blog_post, context=_ctx('en')).data
+    assert data['cover_image_url'] == 'https://cdn.example.com/external.jpg'
