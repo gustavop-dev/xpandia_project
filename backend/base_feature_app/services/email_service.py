@@ -18,21 +18,35 @@ CONTACT_EMAIL = 'nestor@xpandia.global'
 # receive the submitter's details.
 CONTACT_NOTIFICATION_EMAILS = [CONTACT_EMAIL, 'milena@xpandia.global']
 
+# Request type chosen via the QUICK START "Request…" buttons on the contact
+# page. Keys must match the frontend `scrollIntent` values in ContactForm.tsx.
+_INTENT_LABELS = {
+    'diagnostic-call': 'Diagnostic call request',
+    'audit': 'Audit request',
+    'experience-repair': 'Language Experience Repair request',
+    'aci-talk': 'ACI Talk request',
+}
+# Keys must match the frontend `serviceValues` in ContactForm.tsx.
 _SERVICE_LABELS = {
     'language-assurance': 'Language Assurance',
-    'ai-spanish-qa': 'AI Spanish QA',
-    'launch-readiness': 'Spanish Launch Readiness',
-    'experience-repair': 'Spanish Experience Repair',
-    'applied-cultural-intelligence': 'Applied Cultural Intelligence',
-    'messaging-review': 'Hispanic Audience & Messaging Review',
-    'quality-advisory': 'Spanish Quality Advisory',
+    'ai-language-qa': 'AI Language QA',
+    'launch-readiness': 'Launch Readiness',
+    'experience-repair': 'Experience Repair',
+    'cultural-intelligence': 'Applied Cultural Intelligence',
+    'hispanic-messaging-review': 'Hispanic Audience & Messaging Review',
+    'quality-advisory': 'Quality Advisory',
     'unsure': 'Not sure yet',
 }
+# Keys must match the frontend `audienceValues` in ContactForm.tsx.
 _AUDIENCE_LABELS = {
     'latam': 'LatAm',
     'us-hispanic': 'US Hispanic',
+    'usa': 'USA',
+    'canada': 'Canada',
+    'europe': 'Europe',
     'spain': 'Spain',
-    'neutral': 'Neutral Spanish',
+    'global-english': 'Global English',
+    'neutral-spanish': 'Neutral Spanish',
     'specific-region': 'Specific country or region',
     'unsure': 'Not sure yet',
 }
@@ -52,7 +66,17 @@ _SCOPE_LABELS = {
 }
 
 
+def _build_notification_subject(data: dict) -> str:
+    request_type = (
+        _INTENT_LABELS.get(data.get('intent', ''))
+        or _SERVICE_LABELS.get(data.get('service', ''))
+        or 'New contact request'
+    )
+    return f"[Xpandia] {request_type} — {data['company']}"
+
+
 def _build_notification_body(data: dict) -> str:
+    request_type = _INTENT_LABELS.get(data.get('intent', ''), '—')
     service = _SERVICE_LABELS.get(data.get('service', ''), data.get('service', '') or '—')
     audience = _AUDIENCE_LABELS.get(data.get('size', ''), data.get('size', '') or '—')
     timeline = _TIMELINE_LABELS.get(data.get('variant', ''), data.get('variant', '') or '—')
@@ -60,7 +84,9 @@ def _build_notification_body(data: dict) -> str:
     website = data.get('website') or '—'
 
     return (
-        f"New diagnostic call request from the Xpandia website.\n\n"
+        f"New contact request from the Xpandia website.\n\n"
+        f"--- REQUEST ---\n"
+        f"Type:    {request_type}\n\n"
         f"--- CONTACT ---\n"
         f"Name:    {data['name']}\n"
         f"Role:    {data['role']}\n"
@@ -142,7 +168,7 @@ class EmailService:
         """
         try:
             EmailMessage(
-                subject=f"[Xpandia] Diagnostic call request — {data['company']}",
+                subject=_build_notification_subject(data),
                 body=_build_notification_body(data),
                 from_email=settings.DEFAULT_FROM_EMAIL,
                 to=CONTACT_NOTIFICATION_EMAILS,

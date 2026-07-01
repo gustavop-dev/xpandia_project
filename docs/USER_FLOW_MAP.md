@@ -47,6 +47,7 @@ Use this document to understand each flow's steps, branching conditions, role re
 | `contact-form-error-state` | Contact form server error | contact | P3 | guest | `/contact` |
 | `contact-book-call-cal-popup` | Book a call opens Cal.com scheduler | contact | P2 | guest | `/contact` |
 | `contact-cta-scroll-to-form-hint` | Form CTA scrolls to form + shows hint | contact | P3 | guest | `/contact` |
+| `contact-form-request-type` | Contact form request type | contact | P1 | guest | `/contact` |
 | `header-blog-link` | Header Blog nav link | navigation | P4 | guest | all pages |
 | `header-contact-link` | Header Contact nav link | navigation | P3 | guest | all pages |
 | `mobile-navigation-drawer` | Mobile nav drawer | navigation | P3 | guest | all pages |
@@ -167,6 +168,24 @@ Use this document to understand each flow's steps, branching conditions, role re
 3. A hint banner ("👇 Fill out this form…") expands at the top of the form and the form briefly pulses an attention ring; the hint auto-dismisses after ~5s.
 
 **Happy path:** Form is in view below the header and the hint banner is visible (`.form-hint.show`).
+
+### contact-form-request-type
+
+| Field | Value |
+|-------|-------|
+| **Priority** | P1 |
+| **Roles** | guest |
+| **Frontend route** | `/contact` |
+| **API endpoints** | `POST /api/contact/` (AllowAny) |
+
+**Preconditions:** User is on `/contact`.
+
+**Steps:**
+1. User clicks one of the two "Request…" QUICK START buttons ("Request an audit" or "Request Language Experience Repair") in the aside.
+2. The clicked button highlights (`aria-pressed="true"`) and the page scrolls to the form with the hint banner (shared with `contact-cta-scroll-to-form-hint`).
+3. User completes the form and submits.
+
+**Expected outcome:** The chosen request type is sent as the `intent` field in `POST /api/contact/`, and the notification email subject reflects it (e.g. "Audit request — Company"). With no request button clicked, the subject falls back to the selected service label, then to "New contact request". (The "Book a…" buttons open Cal.com instead of submitting, so they carry no `intent`.)
 
 ---
 

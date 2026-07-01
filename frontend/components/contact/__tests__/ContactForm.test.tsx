@@ -11,6 +11,11 @@ jest.mock('@/lib/services/contact', () => ({
 
 const mockSubmit = jest.mocked(submitContactForm)
 
+// jsdom does not implement window.scrollTo; the "Request…" buttons call it (via goToContactForm) on click.
+beforeAll(() => {
+  window.scrollTo = jest.fn()
+})
+
 describe('ContactForm', () => {
   it('renders the form title', () => {
     renderWithIntl(<ContactForm />)
@@ -83,6 +88,31 @@ describe('ContactForm', () => {
     tile.focus()
     await user.keyboard(' ')
     expect(screen.getByText('AI Language QA').closest('[role="button"]')).toHaveClass('on')
+  })
+
+  it('marks the Request an audit button as pressed when clicked', async () => {
+    const user = userEvent.setup()
+    renderWithIntl(<ContactForm />)
+    await user.click(screen.getByRole('button', { name: /request an audit/i }))
+    expect(screen.getByRole('button', { name: /request an audit/i })).toHaveAttribute('aria-pressed', 'true')
+  })
+
+  it('leaves the other request button unpressed when one is clicked', async () => {
+    const user = userEvent.setup()
+    renderWithIntl(<ContactForm />)
+    await user.click(screen.getByRole('button', { name: /request an audit/i }))
+    expect(screen.getByRole('button', { name: /request language experience repair/i })).toHaveAttribute('aria-pressed', 'false')
+  })
+
+  it('tags the audit intent when Request an audit is submitted', async () => {
+    const user = userEvent.setup()
+    renderWithIntl(<ContactForm />)
+    await user.click(screen.getByRole('button', { name: /request an audit/i }))
+    const form = screen.getByRole('button', { name: /send request/i }).closest('form')!
+    fireEvent.submit(form)
+    await waitFor(() => {
+      expect(mockSubmit).toHaveBeenCalledWith(expect.objectContaining({ intent: 'audit' }))
+    })
   })
 
   it('shows a confirmation message after form submission', async () => {

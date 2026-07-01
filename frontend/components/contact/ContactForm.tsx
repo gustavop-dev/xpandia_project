@@ -18,6 +18,7 @@ export default function ContactForm() {
     variant: '',
     urgency: '',
   })
+  const [intent, setIntent] = useState('')
   const [name, setName] = useState('')
   const [role, setRole] = useState('')
   const [email, setEmail] = useState('')
@@ -59,6 +60,7 @@ export default function ContactForm() {
         company,
         website,
         message,
+        intent,
         service: selections.service,
         size: selections.size,
         variant: selections.variant,
@@ -127,6 +129,9 @@ export default function ContactForm() {
   ]
 
   const asideLinks = t.raw('aside.links') as string[]
+  // The two "Request…" QUICK START buttons (indices 1 and 2) tag the submission
+  // with a request type; indices 0 and 3 open the Cal.com scheduler instead.
+  const scrollIntent: Record<number, string> = { 1: 'audit', 2: 'experience-repair' }
 
   return (
     <section className="tight pt-6 pb-[120px]">
@@ -261,18 +266,21 @@ export default function ContactForm() {
               <div className="flex flex-col gap-3">
                 {asideLinks.map((label, i) => {
                   // Indices 0 ("Book a diagnostic call") and 3 ("Book an ACI Talk")
-                  // open the Cal.com scheduler; the rest lead to the form.
+                  // open the Cal.com scheduler. Indices 1 and 2 scroll to the form
+                  // and tag the request type so the notification email reflects it.
                   const opensCal = i === 0 || i === 3
+                  const active = !opensCal && intent === scrollIntent[i]
                   return (
                     <button
                       key={label}
                       type="button"
-                      className={cn('btn justify-center', i === 0 ? 'btn-primary' : 'btn-secondary')}
+                      aria-pressed={opensCal ? undefined : active}
+                      className={cn('btn justify-center', (i === 0 || active) ? 'btn-primary' : 'btn-secondary')}
                       {...(opensCal ? calTriggerProps : {})}
-                      onClick={opensCal ? undefined : goToContactForm}
+                      onClick={opensCal ? undefined : () => { setIntent(scrollIntent[i]); goToContactForm() }}
                     >
                       {label}
-                      {i === 0 && <span className="btn-arrow"></span>}
+                      {(i === 0 || active) && <span className="btn-arrow"></span>}
                     </button>
                   )
                 })}

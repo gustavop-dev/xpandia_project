@@ -7,6 +7,7 @@ export interface ContactFormData {
   company: string
   website?: string
   message: string
+  intent?: string
   service?: string
   size?: string
   variant?: string

@@ -8,6 +8,7 @@ class ContactFormSerializer(serializers.Serializer):
     company = serializers.CharField(max_length=255)
     website = serializers.CharField(max_length=255, required=False, allow_blank=True, default='')
     message = serializers.CharField()
+    intent = serializers.CharField(max_length=50, required=False, allow_blank=True, default='')
     service = serializers.CharField(max_length=50, required=False, allow_blank=True, default='')
     size = serializers.CharField(max_length=30, required=False, allow_blank=True, default='')
     variant = serializers.CharField(max_length=30, required=False, allow_blank=True, default='')

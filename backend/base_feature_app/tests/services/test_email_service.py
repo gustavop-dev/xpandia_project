@@ -4,6 +4,8 @@ from base_feature_app.services.email_service import (
     CONTACT_EMAIL,
     CONTACT_NOTIFICATION_EMAILS,
     EmailService,
+    _build_notification_body,
+    _build_notification_subject,
 )
 
 
@@ -142,6 +144,46 @@ def test_send_contact_notification_returns_false_on_smtp_error():
         result = EmailService.send_contact_notification(CONTACT_DATA)
 
     assert result is False
+
+
+# ---------------------------------------------------------------------------
+# Notification subject — request type (QUICK START intent)
+# ---------------------------------------------------------------------------
+
+
+def test_notification_subject_reflects_audit_intent():
+    subject = _build_notification_subject({**CONTACT_DATA, 'intent': 'audit'})
+
+    assert 'Audit request' in subject
+
+
+def test_notification_subject_falls_back_to_service_label():
+    subject = _build_notification_subject({**CONTACT_DATA, 'intent': '', 'service': 'language-assurance'})
+
+    assert 'Language Assurance' in subject
+
+
+def test_notification_subject_falls_back_when_empty():
+    subject = _build_notification_subject({**CONTACT_DATA, 'intent': '', 'service': ''})
+
+    assert 'New contact request' in subject
+
+
+# ---------------------------------------------------------------------------
+# Notification body — request type line and service label mapping
+# ---------------------------------------------------------------------------
+
+
+def test_notification_body_shows_request_type_line():
+    body = _build_notification_body({**CONTACT_DATA, 'intent': 'audit'})
+
+    assert 'Type:    Audit request' in body
+
+
+def test_notification_body_maps_hispanic_messaging_review_label():
+    body = _build_notification_body({**CONTACT_DATA, 'service': 'hispanic-messaging-review'})
+
+    assert 'Hispanic Audience & Messaging Review' in body
 
 
 # ---------------------------------------------------------------------------

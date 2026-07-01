@@ -3,6 +3,7 @@ import { waitForPageLoad, fillContactForm } from '../fixtures'
 import {
   CONTACT_FORM_SUBMIT,
   CONTACT_FORM_ERROR_STATE,
+  CONTACT_FORM_REQUEST_TYPE,
   CTA_HOME_TO_CONTACT,
   CTA_SERVICE_DETAIL_TO_CONTACT,
   CTA_SERVICES_CORE_SOLUTION_TO_CONTACT,
@@ -65,6 +66,42 @@ test.describe('Contact form', () => {
       await expect(page.getByText(/something went wrong/i)).toBeVisible()
       await expect(page.getByText(/Request received/i)).not.toBeVisible()
       await expect(page.getByRole('button', { name: /Send request/i })).toBeVisible()
+    }
+  )
+
+  test(
+    'selecting a quick start request type sends it with the contact form',
+    { tag: [...CONTACT_FORM_REQUEST_TYPE] },
+    async ({ page }) => {
+      await page.goto('/contact')
+      await waitForPageLoad(page)
+
+      // Capture the outgoing payload so we can assert the chosen intent is sent.
+      let capturedBody: Record<string, unknown> | null = null
+      await page.route('**/api/contact/', route => {
+        capturedBody = route.request().postDataJSON()
+        return route.fulfill({
+          status: 201,
+          contentType: 'application/json',
+          body: JSON.stringify({ detail: 'Request received.' }),
+        })
+      })
+
+      const auditButton = page.getByRole('button', { name: 'Request an audit' })
+      await auditButton.click()
+      await expect(auditButton).toHaveAttribute('aria-pressed', 'true')
+
+      await fillContactForm(page)
+
+      await Promise.all([
+        page.waitForResponse(resp =>
+          resp.url().endsWith('/api/contact/') && resp.status() === 201,
+        ),
+        page.getByRole('button', { name: /Send request/i }).click(),
+      ])
+
+      await expect(page.getByText(/Request received/i)).toBeVisible()
+      expect(capturedBody?.intent).toBe('audit')
     }
   )
 })
