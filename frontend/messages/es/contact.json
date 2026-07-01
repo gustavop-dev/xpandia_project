@@ -93,6 +93,7 @@
     },
     "submit": "Enviar solicitud",
     "submitting": "Enviando…",
+    "hint": "👇 Completa este formulario y te responderemos con tu siguiente paso en menos de 24 horas.",
     "microcopy": "Revisaremos tu solicitud y responderemos a la mayor brevedad con los siguientes pasos.",
     "success": "✓ Solicitud recibida — responderemos dentro de 24 horas",
     "error": "Algo salió mal. Escríbenos directamente a hello@xpandia.global"

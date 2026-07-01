@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { localizedAlternates } from '@/lib/seo/alternates'
 import ContactForm from '@/components/contact/ContactForm'
+import ScrollToFormButton from '@/components/contact/ScrollToFormButton'
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params
@@ -37,8 +38,8 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
             <a href={`mailto:${t('hero.email')}`} className="text-primary font-medium text-[16px] hover:underline">{t('hero.email')}</a>
           </div>
           {(t('hero.ctaPrimary') || t('hero.ctaSecondary')) && <div className="hero-ctas mt-8">
-            {t('hero.ctaPrimary') && <a className="btn btn-primary" href="#contact-form">{t('hero.ctaPrimary')} <span className="btn-arrow"></span></a>}
-            {t('hero.ctaSecondary') && <a className="btn btn-secondary" href="#contact-form">{t('hero.ctaSecondary')}</a>}
+            {t('hero.ctaPrimary') && <ScrollToFormButton label={t('hero.ctaPrimary')} withArrow />}
+            {t('hero.ctaSecondary') && <ScrollToFormButton label={t('hero.ctaSecondary')} variant="secondary" />}
           </div>}
         </div>
       </section>
@@ -81,7 +82,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
             {t('finalCta.body')}
           </p>
           <div className="hero-ctas mt-10">
-            {t('finalCta.ctaPrimary') && <a className="btn btn-primary" href="#contact-form">{t('finalCta.ctaPrimary')} <span className="btn-arrow"></span></a>}
+            {t('finalCta.ctaPrimary') && <ScrollToFormButton label={t('finalCta.ctaPrimary')} withArrow />}
             {t('finalCta.ctaSecondary') && <a className="btn btn-secondary" href={`mailto:${t('hero.email')}`}>{t('finalCta.ctaSecondary')}</a>}
           </div>
         </div>

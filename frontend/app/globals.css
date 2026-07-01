@@ -418,6 +418,44 @@ h4, .h4 {
 .form-field input:focus,
 .form-field textarea:focus { border-color: var(--primary); }
 
+/* Attention hint shown when a "go to form" CTA is clicked. The banner expands
+   from zero height (grid-rows trick) and the form briefly pulses a ring.
+   Scroll offset is handled in goToContactForm() so the hint clears the header. */
+.form-hint {
+  display: grid;
+  grid-template-rows: 0fr;
+  overflow: hidden;
+  opacity: 0;
+  margin-bottom: 0;
+  transition: grid-template-rows .35s var(--ease), opacity .35s var(--ease), margin-bottom .35s var(--ease);
+}
+.form-hint > span {
+  min-height: 0;
+  display: block;
+  padding: 12px 16px;
+  border-radius: 10px;
+  background: var(--accent-soft);
+  border: 1px solid var(--accent);
+  color: var(--primary);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.45;
+}
+.form-hint.show {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  margin-bottom: 20px;
+}
+.form-attention { animation: form-attention-pulse 1.4s var(--ease) 2; }
+@keyframes form-attention-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(28, 117, 188, 0); }
+  50% { box-shadow: 0 0 0 4px rgba(28, 117, 188, 0.28); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .form-hint { transition: opacity .2s linear; }
+  .form-attention { animation: none; box-shadow: 0 0 0 3px rgba(28, 117, 188, 0.28); }
+}
+
 .radio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 .radio-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
 .radio-tile {

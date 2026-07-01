@@ -45,6 +45,8 @@ Use this document to understand each flow's steps, branching conditions, role re
 | `blog-card-to-detail` | Blog card click → detail | blog | P3 | guest | `/blog` |
 | `blog-back-from-detail-to-list` | Back link from detail → list | blog | P3 | guest | `/blog/[slug]` |
 | `contact-form-error-state` | Contact form server error | contact | P3 | guest | `/contact` |
+| `contact-book-call-cal-popup` | Book a call opens Cal.com scheduler | contact | P2 | guest | `/contact` |
+| `contact-cta-scroll-to-form-hint` | Form CTA scrolls to form + shows hint | contact | P3 | guest | `/contact` |
 | `header-blog-link` | Header Blog nav link | navigation | P4 | guest | all pages |
 | `header-contact-link` | Header Contact nav link | navigation | P3 | guest | all pages |
 | `mobile-navigation-drawer` | Mobile nav drawer | navigation | P3 | guest | all pages |
@@ -127,6 +129,44 @@ Use this document to understand each flow's steps, branching conditions, role re
 **Edge cases:**
 - Network offline → same fallback banner.
 - Backend `/api/contact/` returns 400 (serializer validation error) → currently shown via the same generic banner; consider improving messaging in a future iteration.
+
+### contact-book-call-cal-popup
+
+| Field | Value |
+|-------|-------|
+| **Priority** | P2 |
+| **Roles** | guest |
+| **Frontend route** | `/contact` |
+| **API endpoints** | none (Cal.com embed loads `app.cal.com` in a modal iframe) |
+
+**Preconditions:** User is on `/contact`; Cal.com embed script has initialised.
+
+**Steps:**
+1. User clicks "Book a diagnostic call" or "Book an ACI Talk" in the QUICK START aside.
+2. The Cal.com scheduler opens as a modal popup ("Tema ChatGPT" event type).
+
+**Happy path:** The modal renders the Milena Gonzalez scheduling calendar with a Close button; no page navigation occurs.
+
+**Edge cases:**
+- Third-party script/network blocked → popup fails to open; buttons should degrade gracefully (no console crash).
+
+### contact-cta-scroll-to-form-hint
+
+| Field | Value |
+|-------|-------|
+| **Priority** | P3 |
+| **Roles** | guest |
+| **Frontend route** | `/contact` |
+| **API endpoints** | none |
+
+**Preconditions:** User is on `/contact`.
+
+**Steps:**
+1. User clicks a form-directed CTA — "Request an audit", "Request Language Experience Repair" (aside), or "Talk to an Expert" (final CTA).
+2. The page smooth-scrolls to the qualifier form (offset below the fixed header).
+3. A hint banner ("👇 Fill out this form…") expands at the top of the form and the form briefly pulses an attention ring; the hint auto-dismisses after ~5s.
+
+**Happy path:** Form is in view below the header and the hint banner is visible (`.form-hint.show`).
 
 ---
 
