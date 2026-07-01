@@ -1,9 +1,11 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useTranslations } from 'next-intl'
 import { cn } from '@/lib/utils'
 import { submitContactForm } from '@/lib/services/contact'
+import { FORM_HINT_EVENT, goToContactForm } from '@/lib/contact/goToForm'
+import CalScript, { calTriggerProps } from '@/components/contact/CalScript'
 
 type RadioGroup = 'service' | 'size' | 'variant' | 'urgency'
 
@@ -25,6 +27,21 @@ export default function ContactForm() {
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
+  const [hint, setHint] = useState(false)
+  const hintTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
+
+  useEffect(() => {
+    function onHint() {
+      setHint(true)
+      if (hintTimer.current) clearTimeout(hintTimer.current)
+      hintTimer.current = setTimeout(() => setHint(false), 5000)
+    }
+    window.addEventListener(FORM_HINT_EVENT, onHint)
+    return () => {
+      window.removeEventListener(FORM_HINT_EVENT, onHint)
+      if (hintTimer.current) clearTimeout(hintTimer.current)
+    }
+  }, [])
 
   function select(group: RadioGroup, value: string) {
     setSelections(prev => ({ ...prev, [group]: value }))
@@ -113,6 +130,7 @@ export default function ContactForm() {
 
   return (
     <section className="tight pt-6 pb-[120px]">
+      <CalScript />
       <div className="container">
         <div className="grid grid-cols-1 tablet:grid-cols-[1.3fr_1fr] gap-20 items-start">
 
@@ -120,9 +138,12 @@ export default function ContactForm() {
           <form
             id="contact-form"
             data-reveal
-            className="bg-white border border-ink-150 rounded-lg p-10"
+            className={cn('bg-white border border-ink-150 rounded-lg p-10', hint && 'form-attention')}
             onSubmit={handleSubmit}
           >
+            <div className={cn('form-hint', hint && 'show')} role="status" aria-live="polite">
+              <span>{t('form.hint')}</span>
+            </div>
             <div className="font-mono text-[11px] text-ink-500 tracking-[0.1em] mb-[6px]">{t('form.eyebrow')}</div>
             <h3 className="mb-3">{t('form.title')}</h3>
             <p className="text-ink-600 text-[15px] leading-[1.55] mb-8">
@@ -238,16 +259,23 @@ export default function ContactForm() {
             <div className="mt-6 p-6 bg-ink-50 border border-ink-150 rounded-xl">
               <div className="font-mono text-[11px] text-ink-500 tracking-[0.1em] mb-[14px]">{t('aside.startWithLabel')}</div>
               <div className="flex flex-col gap-3">
-                {asideLinks.map((label, i) => (
-                  <a
-                    key={label}
-                    className={cn('justify-center', i === 0 ? 'btn btn-primary' : 'btn btn-secondary')}
-                    href="#contact-form"
-                  >
-                    {label}
-                    {i === 0 && <span className="btn-arrow"></span>}
-                  </a>
-                ))}
+                {asideLinks.map((label, i) => {
+                  // Indices 0 ("Book a diagnostic call") and 3 ("Book an ACI Talk")
+                  // open the Cal.com scheduler; the rest lead to the form.
+                  const opensCal = i === 0 || i === 3
+                  return (
+                    <button
+                      key={label}
+                      type="button"
+                      className={cn('btn justify-center', i === 0 ? 'btn-primary' : 'btn-secondary')}
+                      {...(opensCal ? calTriggerProps : {})}
+                      onClick={opensCal ? undefined : goToContactForm}
+                    >
+                      {label}
+                      {i === 0 && <span className="btn-arrow"></span>}
+                    </button>
+                  )
+                })}
               </div>
             </div>
           </aside>

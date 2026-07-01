@@ -77,7 +77,7 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
 
       <section className="tight">
         <div className="container container-narrow max-w-[720px]">
-          <BlogContentRenderer content={post.content_json} />
+          <BlogContentRenderer content={post.content_json} tocLabel={t('detail.contents')} />
         </div>
       </section>
     </main>

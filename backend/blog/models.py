@@ -29,6 +29,10 @@ class BlogPost(models.Model):
         help_text='Structured content (English): {intro, sections[], conclusion}.',
     )
     cover_image = models.ImageField(upload_to='blog/covers/', blank=True)
+    cover_image_url = models.URLField(
+        max_length=500, blank=True, default='',
+        help_text='External cover image URL. Takes precedence over an uploaded file.',
+    )
     category = models.CharField(
         max_length=50, blank=True, default='', choices=CATEGORY_CHOICES,
     )

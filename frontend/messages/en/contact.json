@@ -93,6 +93,7 @@
     },
     "submit": "Send request",
     "submitting": "Sending…",
+    "hint": "👇 Fill out this form and we'll reply with your next step within 24 hours.",
     "microcopy": "We'll review your request and respond with the most relevant next step.",
     "success": "✓ Request received — we'll reply within 24 hours",
     "error": "Something went wrong. Please email us directly at hello@xpandia.global"

@@ -7,6 +7,7 @@ const API_BASE = `${BACKEND_ORIGIN}/api`
 
 export interface BlogSection {
   type: 'paragraph' | 'heading' | 'list' | 'image' | 'quote' | 'callout'
+    | 'code' | 'divider' | 'video' | 'table' | 'cta'
   text?: string
   level?: 2 | 3
   items?: string[]
@@ -16,6 +17,11 @@ export interface BlogSection {
   author?: string
   variant?: 'tip' | 'warning' | 'info' | 'note'
   title?: string
+  language?: string
+  code?: string
+  headers?: string[]
+  rows?: string[][]
+  label?: string
 }
 
 export interface BlogContent {

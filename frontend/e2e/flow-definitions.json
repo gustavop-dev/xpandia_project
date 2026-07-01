@@ -98,6 +98,22 @@
       "description": "Guest clicks 'Book a diagnostic call' CTA on home page and lands on /contact",
       "expectedSpecs": 1
     },
+    "contact-book-call-cal-popup": {
+      "name": "Contact: Book a call opens Cal.com scheduler",
+      "module": "contact",
+      "roles": ["guest"],
+      "priority": "P2",
+      "description": "Guest clicks 'Book a diagnostic call' or 'Book an ACI Talk' in the QUICK START aside on /contact and the Cal.com scheduling popup opens",
+      "expectedSpecs": 1
+    },
+    "contact-cta-scroll-to-form-hint": {
+      "name": "Contact: form CTA scrolls to form and shows hint",
+      "module": "contact",
+      "roles": ["guest"],
+      "priority": "P3",
+      "description": "Guest clicks a form-directed CTA (e.g. 'Request an audit', 'Talk to an Expert') on /contact — the page scrolls to the qualifier form and a highlight hint banner appears",
+      "expectedSpecs": 1
+    },
     "cta-service-detail-to-contact": {
       "name": "CTA: Service detail → Contact",
       "module": "cta",

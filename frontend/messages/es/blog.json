@@ -19,6 +19,7 @@
     "ariaLabel": "Paginación"
   },
   "detail": {
-    "backToBlog": "← VOLVER AL BLOG"
+    "backToBlog": "← VOLVER AL BLOG",
+    "contents": "Contenido"
   }
 }

@@ -19,6 +19,7 @@
     "ariaLabel": "Pagination"
   },
   "detail": {
-    "backToBlog": "← BACK TO BLOG"
+    "backToBlog": "← BACK TO BLOG",
+    "contents": "Contents"
   }
 }
