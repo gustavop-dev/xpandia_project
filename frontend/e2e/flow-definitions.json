@@ -258,6 +258,14 @@
       "description": "When POST /api/contact/ returns 5xx, the UI shows a red error banner instead of the success state",
       "expectedSpecs": 1
     },
+    "contact-form-request-type": {
+      "name": "Contact form request type",
+      "module": "contact",
+      "roles": ["guest"],
+      "priority": "P1",
+      "description": "Guest picks a QUICK START request type, submits, and the selected intent is included in the POST /api/contact/ payload",
+      "expectedSpecs": 1
+    },
     "blog-card-to-detail": {
       "name": "Blog card click navigates to detail",
       "module": "blog",
