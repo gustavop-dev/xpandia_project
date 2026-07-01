@@ -14,6 +14,10 @@ from base_feature_app.utils.auth_utils import (
 
 CONTACT_EMAIL = 'nestor@xpandia.global'
 
+# Recipients notified when a contact form is submitted. Both team members
+# receive the submitter's details.
+CONTACT_NOTIFICATION_EMAILS = [CONTACT_EMAIL, 'milena@xpandia.global']
+
 _SERVICE_LABELS = {
     'language-assurance': 'Language Assurance',
     'ai-spanish-qa': 'AI Spanish QA',
@@ -141,7 +145,7 @@ class EmailService:
                 subject=f"[Xpandia] Diagnostic call request — {data['company']}",
                 body=_build_notification_body(data),
                 from_email=settings.DEFAULT_FROM_EMAIL,
-                to=[CONTACT_EMAIL],
+                to=CONTACT_NOTIFICATION_EMAILS,
                 reply_to=[data['email']],
             ).send(fail_silently=False)
             return True
