@@ -89,10 +89,6 @@
       "website": {
         "label": "Sitio web o URL del producto",
         "placeholder": "ejemplo.com"
-      },
-      "phone": {
-        "label": "Teléfono",
-        "placeholder": "+57 300 000 0000"
       }
     },
     "submit": "Enviar solicitud",
