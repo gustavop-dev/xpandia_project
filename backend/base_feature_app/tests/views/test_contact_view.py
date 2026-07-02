@@ -31,6 +31,16 @@ def test_contact_form_returns_201_on_valid_payload(mock_notify, mock_confirm, ap
 
 
 @pytest.mark.django_db
+@patch('base_feature_app.views.contact.EmailService.send_contact_confirmation', return_value=True)
+@patch('base_feature_app.views.contact.EmailService.send_contact_notification', return_value=True)
+def test_contact_form_accepts_phone_and_language(mock_notify, mock_confirm, api_client):
+    payload = {**VALID_PAYLOAD, 'phone': '+57 300 123 4567', 'language': 'es'}
+    response = api_client.post(reverse(URL), payload, format='json')
+
+    assert response.status_code == status.HTTP_201_CREATED
+
+
+@pytest.mark.django_db
 def test_contact_form_returns_400_when_required_fields_missing(api_client):
     response = api_client.post(reverse(URL), {}, format='json')
 

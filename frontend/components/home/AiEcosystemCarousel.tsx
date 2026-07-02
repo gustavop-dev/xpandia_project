@@ -21,7 +21,7 @@ export default function AiEcosystemCarousel({ logos }: AiEcosystemCarouselProps)
 
     let animationId: number
     let offset = 0
-    const speed = 0.5
+    const speed = 1.5
 
     const animate = () => {
       offset -= speed

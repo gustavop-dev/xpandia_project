@@ -89,6 +89,10 @@
       "website": {
         "label": "Website or product URL",
         "placeholder": "example.com"
+      },
+      "phone": {
+        "label": "Phone number",
+        "placeholder": "+1 555 000 0000"
       }
     },
     "submit": "Send request",
