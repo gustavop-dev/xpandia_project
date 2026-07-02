@@ -3,8 +3,8 @@
 import Script from 'next/script'
 
 /** Cal.com scheduling link + namespace shared by every "book a call" CTA. */
-export const CAL_NAMESPACE = 'tema-chatgpt'
-export const CAL_LINK = 'milena-gonzalez-oqdwif/tema-chatgpt'
+export const CAL_NAMESPACE = 'discovery-call'
+export const CAL_LINK = 'milena-gonzalez-oqdwif/discovery-call'
 
 /**
  * Data attributes that wire a button to open the Cal.com popup on click.
@@ -18,9 +18,10 @@ export const calTriggerProps = {
 } as const
 
 /**
- * Loads the Cal.com embed and initialises the popup namespace. Element-click
- * triggers (see {@link calTriggerProps}) open the scheduler as a modal — no
- * persistent floating button.
+ * Loads the Cal.com embed and initialises the popup namespace. A persistent
+ * floating button opens the scheduler, and element-click triggers (see
+ * {@link calTriggerProps}) open the same scheduler as a modal from specific CTAs.
+ * Both open the {@link CAL_LINK} event type.
  */
 export default function CalScript() {
   return (
@@ -29,6 +30,7 @@ export default function CalScript() {
 Cal("init", "${CAL_NAMESPACE}", {origin:"https://app.cal.com"});
 Cal.config = Cal.config || {};
 Cal.config.forwardQueryParams = true;
+Cal.ns["${CAL_NAMESPACE}"]("floatingButton", {"calLink":"${CAL_LINK}","config":{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}});
 Cal.ns["${CAL_NAMESPACE}"]("ui", {"hideEventTypeDetails":false,"layout":"month_view"});`}
     </Script>
   )
