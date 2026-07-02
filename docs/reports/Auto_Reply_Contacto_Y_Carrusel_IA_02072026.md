@@ -37,6 +37,8 @@
 - **Ahora:** el correo de confirmación llega **en el mismo idioma en que se diligenció el formulario**. Si se llena en español, llega en español firmado "Saludos, Team Xpandia, hello@xpandia.global"; si se llena en inglés, llega en inglés firmado "Best, Team Xpandia, hello@xpandia.global". Ya no aparece el nombre de una persona en particular, ni la palabra "Xpandia" en una línea aparte. El correo además **se envía y se responde realmente desde hello@xpandia.global** — el remitente ahora coincide con lo que dice la firma.
 - Se agregó también una **casilla de teléfono** (opcional) en el formulario de contacto, junto al campo de sitio web. Cuando alguien la completa, ese número queda incluido en la notificación interna que recibe el equipo de Xpandia.
 
+> **Nota (pendiente):** el correo de contacto usado internamente para recibir las notificaciones (actualmente `nestor@xpandia.global`) se cambiará a `milena@xpandia.global` tan pronto Milena haya terminado la configuración correspondiente de su lado. Este cambio todavía no se implementó — se documentará como un punto aparte cuando esté listo.
+
 **Dónde se ve / URL:** `https://xpandia.global/es/contact` (español) y `https://xpandia.global/contact` (inglés) — formulario público de contacto, y el correo de confirmación que llega a la casilla de quien lo envía.
 
 **Antes de probar necesitas:**
