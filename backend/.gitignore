@@ -74,8 +74,9 @@ celerybeat.pid
 # Backups (should not be in repo)
 backups/
 
-# Logs (keep directory structure)
+# Logs (keep directory structure) — also covers logrotate output (django.log.1, backups.log.2.gz, ...)
 logs/*.log
+logs/*.log.*
 !logs/.gitkeep
 
 # ============================================================================
