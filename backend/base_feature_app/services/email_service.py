@@ -14,6 +14,10 @@ from base_feature_app.utils.auth_utils import (
 
 CONTACT_EMAIL = 'nestor@xpandia.global'
 
+# Public-facing address the auto-reply is sent from and replied to. Requires the
+# SMTP account to be authorized to send as this address (Gmail "Send mail as").
+PUBLIC_FROM_EMAIL = 'hello@xpandia.global'
+
 # Recipients notified when a contact form is submitted. Both team members
 # receive the submitter's details.
 CONTACT_NOTIFICATION_EMAILS = [CONTACT_EMAIL, 'milena@xpandia.global']
@@ -82,6 +86,7 @@ def _build_notification_body(data: dict) -> str:
     timeline = _TIMELINE_LABELS.get(data.get('variant', ''), data.get('variant', '') or '—')
     scope = _SCOPE_LABELS.get(data.get('urgency', ''), data.get('urgency', '') or '—')
     website = data.get('website') or '—'
+    phone = data.get('phone') or '—'
 
     return (
         f"New contact request from the Xpandia website.\n\n"
@@ -91,6 +96,7 @@ def _build_notification_body(data: dict) -> str:
         f"Name:    {data['name']}\n"
         f"Role:    {data['role']}\n"
         f"Email:   {data['email']}\n"
+        f"Phone:   {phone}\n"
         f"Company: {data['company']}\n"
         f"Website: {website}\n\n"
         f"--- QUALIFIER ---\n"
@@ -120,7 +126,7 @@ def _build_confirmation_body(data: dict) -> str:
             f"detalles adicionales que compartir.\n\n"
             f"Saludos,\n"
             f"Team Xpandia\n"
-            f"{CONTACT_EMAIL}\n"
+            f"{PUBLIC_FROM_EMAIL}\n"
         )
     return (
         f"Hi {data['name']},\n\n"
@@ -130,7 +136,7 @@ def _build_confirmation_body(data: dict) -> str:
         f"additional details to share.\n\n"
         f"Best,\n"
         f"Team Xpandia\n"
-        f"{CONTACT_EMAIL}\n"
+        f"{PUBLIC_FROM_EMAIL}\n"
     )
 
 
@@ -211,9 +217,9 @@ class EmailService:
             EmailMessage(
                 subject=_confirmation_subject(data.get('language', '')),
                 body=_build_confirmation_body(data),
-                from_email=CONTACT_EMAIL,
+                from_email=PUBLIC_FROM_EMAIL,
                 to=[data['email']],
-                reply_to=[CONTACT_EMAIL],
+                reply_to=[PUBLIC_FROM_EMAIL],
             ).send(fail_silently=False)
             return True
         except Exception:

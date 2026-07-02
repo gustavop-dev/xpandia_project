@@ -3,6 +3,7 @@ from unittest.mock import patch
 from base_feature_app.services.email_service import (
     CONTACT_EMAIL,
     CONTACT_NOTIFICATION_EMAILS,
+    PUBLIC_FROM_EMAIL,
     EmailService,
     _build_confirmation_body,
     _build_notification_body,
@@ -188,6 +189,18 @@ def test_notification_body_maps_hispanic_messaging_review_label():
     assert 'Hispanic Audience & Messaging Review' in body
 
 
+def test_notification_body_includes_phone_line():
+    body = _build_notification_body({**CONTACT_DATA, 'phone': '+57 300 123 4567'})
+
+    assert 'Phone:   +57 300 123 4567' in body
+
+
+def test_notification_body_shows_dash_when_phone_missing():
+    body = _build_notification_body(CONTACT_DATA)
+
+    assert 'Phone:   —' in body
+
+
 # ---------------------------------------------------------------------------
 # Contact confirmation
 # ---------------------------------------------------------------------------
@@ -214,7 +227,7 @@ def test_send_contact_confirmation_sends_to_submitter():
     assert CONTACT_DATA['email'] in kwargs['to']
 
 
-def test_send_contact_confirmation_sets_reply_to_contact_address():
+def test_send_contact_confirmation_sets_reply_to_public_address():
     with patch(
         'base_feature_app.services.email_service.EmailMessage',
     ) as MockEmail:
@@ -222,10 +235,10 @@ def test_send_contact_confirmation_sets_reply_to_contact_address():
         EmailService.send_contact_confirmation(CONTACT_DATA)
 
     _, kwargs = MockEmail.call_args
-    assert kwargs['reply_to'] == [CONTACT_EMAIL]
+    assert kwargs['reply_to'] == [PUBLIC_FROM_EMAIL]
 
 
-def test_send_contact_confirmation_sends_from_contact_address():
+def test_send_contact_confirmation_sends_from_public_address():
     with patch(
         'base_feature_app.services.email_service.EmailMessage',
     ) as MockEmail:
@@ -233,7 +246,7 @@ def test_send_contact_confirmation_sends_from_contact_address():
         EmailService.send_contact_confirmation(CONTACT_DATA)
 
     _, kwargs = MockEmail.call_args
-    assert kwargs['from_email'] == CONTACT_EMAIL
+    assert kwargs['from_email'] == PUBLIC_FROM_EMAIL
 
 
 def test_send_contact_confirmation_returns_false_on_smtp_error():
@@ -265,7 +278,7 @@ def test_confirmation_body_spanish_greeting_and_signature():
     assert body.startswith('Hola Ana García:')
     assert 'Saludos,' in body
     assert 'Team Xpandia' in body
-    assert CONTACT_EMAIL in body
+    assert PUBLIC_FROM_EMAIL in body
 
 
 def test_confirmation_body_spanish_omits_personal_name():
@@ -280,7 +293,7 @@ def test_confirmation_body_english_greeting_and_signature():
     assert body.startswith('Hi Ana García,')
     assert 'Best,' in body
     assert 'Team Xpandia' in body
-    assert CONTACT_EMAIL in body
+    assert PUBLIC_FROM_EMAIL in body
 
 
 def test_confirmation_body_english_omits_personal_name():

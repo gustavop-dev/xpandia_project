@@ -25,6 +25,7 @@ export default function ContactForm() {
   const [email, setEmail] = useState('')
   const [company, setCompany] = useState('')
   const [website, setWebsite] = useState('')
+  const [phone, setPhone] = useState('')
   const [message, setMessage] = useState('')
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
@@ -60,6 +61,7 @@ export default function ContactForm() {
         role,
         company,
         website,
+        phone,
         message,
         intent,
         service: selections.service,
@@ -178,9 +180,15 @@ export default function ContactForm() {
               </div>
             </div>
 
-            <div className="form-field">
-              <label htmlFor="contact-website">{t('form.fields.website.label')}</label>
-              <input id="contact-website" type="text" placeholder={t('form.fields.website.placeholder')} value={website} onChange={e => setWebsite(e.target.value)} />
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="form-field">
+                <label htmlFor="contact-website">{t('form.fields.website.label')}</label>
+                <input id="contact-website" type="text" placeholder={t('form.fields.website.placeholder')} value={website} onChange={e => setWebsite(e.target.value)} />
+              </div>
+              <div className="form-field">
+                <label htmlFor="contact-phone">{t('form.fields.phone.label')}</label>
+                <input id="contact-phone" type="tel" placeholder={t('form.fields.phone.placeholder')} value={phone} onChange={e => setPhone(e.target.value)} />
+              </div>
             </div>
 
             <div className="form-field">

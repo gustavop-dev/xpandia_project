@@ -48,6 +48,22 @@ describe('ContactForm', () => {
     expect(screen.getByText('LatAm')).toBeInTheDocument()
   })
 
+  it('renders the phone number input', () => {
+    renderWithIntl(<ContactForm />)
+    expect(screen.getByLabelText('Phone number')).toBeInTheDocument()
+  })
+
+  it('sends the typed phone number in the submission payload', async () => {
+    const user = userEvent.setup()
+    renderWithIntl(<ContactForm />)
+    await user.type(screen.getByLabelText('Phone number'), '+57 300 123 4567')
+    const form = screen.getByRole('button', { name: /send request/i }).closest('form')!
+    fireEvent.submit(form)
+    await waitFor(() => {
+      expect(mockSubmit).toHaveBeenCalledWith(expect.objectContaining({ phone: '+57 300 123 4567' }))
+    })
+  })
+
   it('sends the active locale as the language in the submission payload', async () => {
     renderWithIntl(<ContactForm />)
     const form = screen.getByRole('button', { name: /send request/i }).closest('form')!

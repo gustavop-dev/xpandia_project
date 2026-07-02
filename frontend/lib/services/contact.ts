@@ -6,6 +6,7 @@ export interface ContactFormData {
   role: string
   company: string
   website?: string
+  phone?: string
   message: string
   intent?: string
   service?: string
