@@ -95,17 +95,6 @@ def test_send_contact_notification_sends_to_xpandia_inbox():
     assert CONTACT_EMAIL in kwargs['to']
 
 
-def test_send_contact_notification_also_sends_to_milena():
-    with patch(
-        'base_feature_app.services.email_service.EmailMessage',
-    ) as MockEmail:
-        MockEmail.return_value.send.return_value = None
-        EmailService.send_contact_notification(CONTACT_DATA)
-
-    _, kwargs = MockEmail.call_args
-    assert 'milena@xpandia.global' in kwargs['to']
-
-
 def test_send_contact_notification_sends_to_all_configured_recipients():
     with patch(
         'base_feature_app.services.email_service.EmailMessage',

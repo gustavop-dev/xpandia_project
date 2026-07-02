@@ -12,7 +12,7 @@ from base_feature_app.utils.auth_utils import (
     send_verification_code,
 )
 
-CONTACT_EMAIL = 'nestor@xpandia.global'
+CONTACT_EMAIL = 'milena@xpandia.global'
 
 # Public-facing address shown in the auto-reply signature as the contact
 # address. It is a distribution list, not a real mailbox, so it cannot be
@@ -20,9 +20,8 @@ CONTACT_EMAIL = 'nestor@xpandia.global'
 # from and replied to CONTACT_EMAIL (see send_contact_confirmation below).
 PUBLIC_FROM_EMAIL = 'hello@xpandia.global'
 
-# Recipients notified when a contact form is submitted. Both team members
-# receive the submitter's details.
-CONTACT_NOTIFICATION_EMAILS = [CONTACT_EMAIL, 'milena@xpandia.global']
+# Recipients notified when a contact form is submitted.
+CONTACT_NOTIFICATION_EMAILS = [CONTACT_EMAIL]
 
 # Request type chosen via the QUICK START "Request…" buttons on the contact
 # page. Keys must match the frontend `scrollIntent` values in ContactForm.tsx.
