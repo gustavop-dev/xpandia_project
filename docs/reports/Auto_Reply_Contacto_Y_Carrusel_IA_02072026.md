@@ -15,29 +15,29 @@
 
 | Clasificación | Cantidad |
 |---|---:|
-| ✅ Atendido | 1 |
-| ⚠️ Parcial | 1 |
+| ✅ Atendido | 2 |
 | **Total puntos** | **2** |
 
 | # | Punto | Estado |
 |---|---|---|
-| 1 | Idioma y firma de la respuesta automática del formulario de contacto | ⚠️ Parcial |
+| 1 | Idioma, firma y remitente de la respuesta automática del formulario de contacto + campo de teléfono | ✅ Atendido |
 | 2 | Velocidad del carrusel de íconos IA (sección AI ECOSYSTEM) | ✅ Atendido |
 
 ---
 
-## 1. ⚠️ Parcial — 🐞 Respuesta automática del formulario de contacto: idioma incorrecto y datos de firma
+## 1. ✅ Atendido — 🐞 Respuesta automática del formulario de contacto: idioma incorrecto y datos de firma
 
 > **Observación del cliente (Solicitud 2):** "Al revisar el correo donde llega la respuesta automática, esta llega en inglés a pesar de haber diligenciado el formulario en español. Adicionalmente, se encontró que el correo llega desde nestor@xpandia.global, y se solicita que en su lugar llegue desde hello@xpandia.global."
 
 > **Ajustes adicionales solicitados:** dejar "Team Xpandia" en la firma (no "Nestor Solano"); retirar la palabra "Xpandia" que aparecía debajo de ese nombre; agregar una casilla de teléfono en el formulario; que el correo se envíe desde hello@xpandia.global y no desde nestor@xpandia.global.
 
-**Qué se hizo — de los 4 ajustes pedidos, 2 quedaron implementados y 2 no:**
+**Qué se hizo — los 4 ajustes pedidos quedaron implementados:**
 
-- ✅ **Idioma del correo:** antes, el correo de confirmación llegaba siempre en inglés sin importar el idioma en que se llenó el formulario. Ahora llega **en el mismo idioma en que se diligenció el formulario**: si se llena en español, llega en español firmado "Saludos, Team Xpandia, nestor@xpandia.global"; si se llena en inglés, llega en inglés firmado "Best, Team Xpandia, nestor@xpandia.global".
-- ✅ **Firma:** ya no aparece el nombre de una persona en particular ("Nestor Solano"), ni la palabra "Xpandia" en una línea aparte — la firma dice simplemente "Team Xpandia".
-- ⏭️ **Remitente `hello@xpandia.global`:** no se implementó. El correo se sigue enviando técnicamente desde la casilla **nestor@xpandia.global**, igual que antes. Eso sí — a diferencia de como estaba originalmente, ahora la firma del correo también dice `nestor@xpandia.global`, así que ya no hay discrepancia entre el remitente real y lo que dice la firma (antes la firma decía `hello@xpandia.global` pero el correo llegaba de `nestor@xpandia.global`, que era justamente la inconsistencia reportada).
-- ⏭️ **Casilla de teléfono en el formulario:** no se implementó por ahora.
+- **Antes:** el correo de confirmación llegaba siempre en inglés, sin importar el idioma en que se llenó el formulario. La firma decía "Best, Nestor Solano, Xpandia, hello@xpandia.global", pero el correo en realidad se enviaba desde la casilla nestor@xpandia.global — una firma que no coincidía con el remitente real.
+- **Ahora:** el correo de confirmación llega **en el mismo idioma en que se diligenció el formulario**. Si se llena en español, llega en español firmado "Saludos, Team Xpandia, hello@xpandia.global"; si se llena en inglés, llega en inglés firmado "Best, Team Xpandia, hello@xpandia.global". Ya no aparece el nombre de una persona en particular, ni la palabra "Xpandia" en una línea aparte. El correo además **se envía y se responde realmente desde hello@xpandia.global** — el remitente ahora coincide con lo que dice la firma.
+- Se agregó también una **casilla de teléfono** (opcional) en el formulario de contacto, junto al campo de sitio web. Cuando alguien la completa, ese número queda incluido en la notificación interna que recibe el equipo de Xpandia.
+
+> **Nota (pendiente):** el correo de contacto usado internamente para recibir las notificaciones (actualmente `nestor@xpandia.global`) se cambiará a `milena@xpandia.global` tan pronto Milena haya terminado la configuración correspondiente de su lado. Este cambio todavía no se implementó — se documentará como un punto aparte cuando esté listo.
 
 **Dónde se ve / URL:** `https://xpandia.global/es/contact` (español) y `https://xpandia.global/contact` (inglés) — formulario público de contacto, y el correo de confirmación que llega a la casilla de quien lo envía.
 
@@ -48,10 +48,10 @@
 
 **Cómo validar que funciona:**
 1. Abre `https://xpandia.global/es/contact`.
-2. Completa el formulario con tu nombre, correo, empresa y mensaje, y haz clic en **"Enviar solicitud"**.
-3. Revisa la bandeja de entrada del correo que usaste: debe llegar un mensaje con asunto **"Recibimos tu solicitud — Xpandia"**, firmado "Saludos, Team Xpandia, nestor@xpandia.global".
-4. Verifica el remitente del correo (detalles/cabecera): debe mostrar **nestor@xpandia.global**, igual que la dirección de la firma.
-5. Repite la prueba en inglés desde `https://xpandia.global/contact`: el correo debe llegar con asunto **"We received your request — Xpandia"**, firmado "Best, Team Xpandia, nestor@xpandia.global".
+2. Completa el formulario con tu nombre, correo, empresa, mensaje y el nuevo campo **"Teléfono"**, y haz clic en **"Enviar solicitud"**.
+3. Revisa la bandeja de entrada del correo que usaste: debe llegar un mensaje con asunto **"Recibimos tu solicitud — Xpandia"**, firmado "Saludos, Team Xpandia, hello@xpandia.global".
+4. Verifica el remitente del correo (detalles/cabecera): debe mostrar **hello@xpandia.global**, no nestor@xpandia.global.
+5. Repite la prueba en inglés desde `https://xpandia.global/contact`: el correo debe llegar con asunto **"We received your request — Xpandia"**, firmado "Best, Team Xpandia, hello@xpandia.global".
 
 ---
 
@@ -79,8 +79,8 @@
 
 | Categoría | Total puntos | ✅ Atendidos | ⚠️ Parciales | ⏭️ Fuera de alcance |
 |---|---|---|---|---|
-| Formulario de contacto / Correo (Solicitud 2) | 1 | 0 | 1 | 0 |
+| Formulario de contacto / Correo (Solicitud 2) | 1 | 1 | 0 | 0 |
 | Home / AI ECOSYSTEM (Solicitud 3) | 1 | 1 | 0 | 0 |
-| **TOTAL** | **2** | **1** | **1** | **0** |
+| **TOTAL** | **2** | **2** | **0** | **0** |
 
-El punto de la velocidad del carrusel quedó atendido en su totalidad. El punto del correo de contacto quedó parcial: el idioma y la firma ya funcionan como se pidió, pero el remitente sigue siendo nestor@xpandia.global (no hello@xpandia.global) y la casilla de teléfono no se agregó. Quedamos atentos a cualquier ajuste o duda sobre alguno de ellos.
+Los 2 puntos de este reporte quedaron atendidos. Quedamos atentos a cualquier ajuste o duda sobre alguno de ellos.
