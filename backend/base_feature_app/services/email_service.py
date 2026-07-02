@@ -14,8 +14,10 @@ from base_feature_app.utils.auth_utils import (
 
 CONTACT_EMAIL = 'nestor@xpandia.global'
 
-# Public-facing address the auto-reply is sent from and replied to. Requires the
-# SMTP account to be authorized to send as this address (Gmail "Send mail as").
+# Public-facing address shown in the auto-reply signature as the contact
+# address. It is a distribution list, not a real mailbox, so it cannot be
+# used as the SMTP-authenticated sender — the confirmation is still sent
+# from and replied to CONTACT_EMAIL (see send_contact_confirmation below).
 PUBLIC_FROM_EMAIL = 'hello@xpandia.global'
 
 # Recipients notified when a contact form is submitted. Both team members
@@ -217,9 +219,9 @@ class EmailService:
             EmailMessage(
                 subject=_confirmation_subject(data.get('language', '')),
                 body=_build_confirmation_body(data),
-                from_email=PUBLIC_FROM_EMAIL,
+                from_email=CONTACT_EMAIL,
                 to=[data['email']],
-                reply_to=[PUBLIC_FROM_EMAIL],
+                reply_to=[CONTACT_EMAIL],
             ).send(fail_silently=False)
             return True
         except Exception:

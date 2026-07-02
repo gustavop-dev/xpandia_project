@@ -227,7 +227,7 @@ def test_send_contact_confirmation_sends_to_submitter():
     assert CONTACT_DATA['email'] in kwargs['to']
 
 
-def test_send_contact_confirmation_sets_reply_to_public_address():
+def test_send_contact_confirmation_sets_reply_to_contact_address():
     with patch(
         'base_feature_app.services.email_service.EmailMessage',
     ) as MockEmail:
@@ -235,10 +235,10 @@ def test_send_contact_confirmation_sets_reply_to_public_address():
         EmailService.send_contact_confirmation(CONTACT_DATA)
 
     _, kwargs = MockEmail.call_args
-    assert kwargs['reply_to'] == [PUBLIC_FROM_EMAIL]
+    assert kwargs['reply_to'] == [CONTACT_EMAIL]
 
 
-def test_send_contact_confirmation_sends_from_public_address():
+def test_send_contact_confirmation_sends_from_contact_address():
     with patch(
         'base_feature_app.services.email_service.EmailMessage',
     ) as MockEmail:
@@ -246,7 +246,7 @@ def test_send_contact_confirmation_sends_from_public_address():
         EmailService.send_contact_confirmation(CONTACT_DATA)
 
     _, kwargs = MockEmail.call_args
-    assert kwargs['from_email'] == PUBLIC_FROM_EMAIL
+    assert kwargs['from_email'] == CONTACT_EMAIL
 
 
 def test_send_contact_confirmation_returns_false_on_smtp_error():
