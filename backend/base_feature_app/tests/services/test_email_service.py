@@ -3,9 +3,12 @@ from unittest.mock import patch
 from base_feature_app.services.email_service import (
     CONTACT_EMAIL,
     CONTACT_NOTIFICATION_EMAILS,
+    PUBLIC_FROM_EMAIL,
     EmailService,
+    _build_confirmation_body,
     _build_notification_body,
     _build_notification_subject,
+    _confirmation_subject,
 )
 
 
@@ -186,6 +189,18 @@ def test_notification_body_maps_hispanic_messaging_review_label():
     assert 'Hispanic Audience & Messaging Review' in body
 
 
+def test_notification_body_includes_phone_line():
+    body = _build_notification_body({**CONTACT_DATA, 'phone': '+57 300 123 4567'})
+
+    assert 'Phone:   +57 300 123 4567' in body
+
+
+def test_notification_body_shows_dash_when_phone_missing():
+    body = _build_notification_body(CONTACT_DATA)
+
+    assert 'Phone:   —' in body
+
+
 # ---------------------------------------------------------------------------
 # Contact confirmation
 # ---------------------------------------------------------------------------
@@ -212,7 +227,7 @@ def test_send_contact_confirmation_sends_to_submitter():
     assert CONTACT_DATA['email'] in kwargs['to']
 
 
-def test_send_contact_confirmation_sets_reply_to_xpandia():
+def test_send_contact_confirmation_sets_reply_to_public_address():
     with patch(
         'base_feature_app.services.email_service.EmailMessage',
     ) as MockEmail:
@@ -220,7 +235,18 @@ def test_send_contact_confirmation_sets_reply_to_xpandia():
         EmailService.send_contact_confirmation(CONTACT_DATA)
 
     _, kwargs = MockEmail.call_args
-    assert CONTACT_EMAIL in kwargs['reply_to']
+    assert kwargs['reply_to'] == [PUBLIC_FROM_EMAIL]
+
+
+def test_send_contact_confirmation_sends_from_public_address():
+    with patch(
+        'base_feature_app.services.email_service.EmailMessage',
+    ) as MockEmail:
+        MockEmail.return_value.send.return_value = None
+        EmailService.send_contact_confirmation(CONTACT_DATA)
+
+    _, kwargs = MockEmail.call_args
+    assert kwargs['from_email'] == PUBLIC_FROM_EMAIL
 
 
 def test_send_contact_confirmation_returns_false_on_smtp_error():
@@ -231,3 +257,44 @@ def test_send_contact_confirmation_returns_false_on_smtp_error():
         result = EmailService.send_contact_confirmation(CONTACT_DATA)
 
     assert result is False
+
+
+# ---------------------------------------------------------------------------
+# Confirmation localization (language-aware auto-reply)
+# ---------------------------------------------------------------------------
+
+
+def test_confirmation_subject_is_spanish_for_es():
+    assert _confirmation_subject('es') == 'Recibimos tu solicitud — Xpandia'
+
+
+def test_confirmation_subject_is_english_by_default():
+    assert _confirmation_subject('') == 'We received your request — Xpandia'
+
+
+def test_confirmation_body_spanish_greeting_and_signature():
+    body = _build_confirmation_body({**CONTACT_DATA, 'language': 'es'})
+
+    assert body.startswith('Hola Ana García:')
+    assert 'Saludos,' in body
+    assert 'Team Xpandia' in body
+
+
+def test_confirmation_body_spanish_omits_personal_name():
+    body = _build_confirmation_body({**CONTACT_DATA, 'language': 'es'})
+
+    assert 'Nestor Solano' not in body
+
+
+def test_confirmation_body_english_greeting_and_signature():
+    body = _build_confirmation_body({**CONTACT_DATA, 'language': 'en'})
+
+    assert body.startswith('Hi Ana García,')
+    assert 'Best,' in body
+    assert 'Team Xpandia' in body
+
+
+def test_confirmation_body_english_omits_personal_name():
+    body = _build_confirmation_body({**CONTACT_DATA, 'language': 'en'})
+
+    assert 'Nestor Solano' not in body

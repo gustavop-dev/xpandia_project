@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import { useTranslations } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
 import { cn } from '@/lib/utils'
 import { submitContactForm } from '@/lib/services/contact'
 import { FORM_HINT_EVENT, goToContactForm } from '@/lib/contact/goToForm'
@@ -11,6 +11,7 @@ type RadioGroup = 'service' | 'size' | 'variant' | 'urgency'
 
 export default function ContactForm() {
   const t = useTranslations('contact')
+  const locale = useLocale()
 
   const [selections, setSelections] = useState<Record<RadioGroup, string>>({
     service: '',
@@ -24,6 +25,7 @@ export default function ContactForm() {
   const [email, setEmail] = useState('')
   const [company, setCompany] = useState('')
   const [website, setWebsite] = useState('')
+  const [phone, setPhone] = useState('')
   const [message, setMessage] = useState('')
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
@@ -59,12 +61,14 @@ export default function ContactForm() {
         role,
         company,
         website,
+        phone,
         message,
         intent,
         service: selections.service,
         size: selections.size,
         variant: selections.variant,
         urgency: selections.urgency,
+        language: locale,
       })
       setSubmitted(true)
     } catch {
@@ -176,9 +180,15 @@ export default function ContactForm() {
               </div>
             </div>
 
-            <div className="form-field">
-              <label htmlFor="contact-website">{t('form.fields.website.label')}</label>
-              <input id="contact-website" type="text" placeholder={t('form.fields.website.placeholder')} value={website} onChange={e => setWebsite(e.target.value)} />
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="form-field">
+                <label htmlFor="contact-website">{t('form.fields.website.label')}</label>
+                <input id="contact-website" type="text" placeholder={t('form.fields.website.placeholder')} value={website} onChange={e => setWebsite(e.target.value)} />
+              </div>
+              <div className="form-field">
+                <label htmlFor="contact-phone">{t('form.fields.phone.label')}</label>
+                <input id="contact-phone" type="tel" placeholder={t('form.fields.phone.placeholder')} value={phone} onChange={e => setPhone(e.target.value)} />
+              </div>
             </div>
 
             <div className="form-field">

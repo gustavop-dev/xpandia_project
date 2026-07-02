@@ -14,6 +14,10 @@ from base_feature_app.utils.auth_utils import (
 
 CONTACT_EMAIL = 'nestor@xpandia.global'
 
+# Public-facing address the auto-reply is sent from and replied to. Requires the
+# SMTP account to be authorized to send as this address (Gmail "Send mail as").
+PUBLIC_FROM_EMAIL = 'hello@xpandia.global'
+
 # Recipients notified when a contact form is submitted. Both team members
 # receive the submitter's details.
 CONTACT_NOTIFICATION_EMAILS = [CONTACT_EMAIL, 'milena@xpandia.global']
@@ -82,6 +86,7 @@ def _build_notification_body(data: dict) -> str:
     timeline = _TIMELINE_LABELS.get(data.get('variant', ''), data.get('variant', '') or '—')
     scope = _SCOPE_LABELS.get(data.get('urgency', ''), data.get('urgency', '') or '—')
     website = data.get('website') or '—'
+    phone = data.get('phone') or '—'
 
     return (
         f"New contact request from the Xpandia website.\n\n"
@@ -91,6 +96,7 @@ def _build_notification_body(data: dict) -> str:
         f"Name:    {data['name']}\n"
         f"Role:    {data['role']}\n"
         f"Email:   {data['email']}\n"
+        f"Phone:   {phone}\n"
         f"Company: {data['company']}\n"
         f"Website: {website}\n\n"
         f"--- QUALIFIER ---\n"
@@ -103,7 +109,25 @@ def _build_notification_body(data: dict) -> str:
     )
 
 
+def _confirmation_subject(language: str) -> str:
+    if language == 'es':
+        return "Recibimos tu solicitud — Xpandia"
+    return "We received your request — Xpandia"
+
+
 def _build_confirmation_body(data: dict) -> str:
+    """Auto-reply body, localized to the language the form was submitted in."""
+    if data.get('language') == 'es':
+        return (
+            f"Hola {data['name']}:\n\n"
+            f"Gracias por contactar a Xpandia. Hemos recibido tu solicitud y "
+            f"te responderemos dentro de las próximas 24 horas.\n\n"
+            f"Mientras tanto, no dudes en responder a este correo si tienes "
+            f"detalles adicionales que compartir.\n\n"
+            f"Saludos,\n"
+            f"Team Xpandia\n"
+            f"{PUBLIC_FROM_EMAIL}\n"
+        )
     return (
         f"Hi {data['name']},\n\n"
         f"Thank you for reaching out to Xpandia. We've received your request "
@@ -111,9 +135,8 @@ def _build_confirmation_body(data: dict) -> str:
         f"In the meantime, feel free to reply to this email if you have any "
         f"additional details to share.\n\n"
         f"Best,\n"
-        f"Nestor Solano\n"
-        f"Xpandia\n"
-        f"hello@xpandia.global\n"
+        f"Team Xpandia\n"
+        f"{PUBLIC_FROM_EMAIL}\n"
     )
 
 
@@ -192,11 +215,11 @@ class EmailService:
         """
         try:
             EmailMessage(
-                subject="We received your request — Xpandia",
+                subject=_confirmation_subject(data.get('language', '')),
                 body=_build_confirmation_body(data),
-                from_email=settings.DEFAULT_FROM_EMAIL,
+                from_email=PUBLIC_FROM_EMAIL,
                 to=[data['email']],
-                reply_to=[CONTACT_EMAIL],
+                reply_to=[PUBLIC_FROM_EMAIL],
             ).send(fail_silently=False)
             return True
         except Exception:
