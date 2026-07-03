@@ -18,7 +18,7 @@ export default function XpandiaFooter() {
               alt="Xpandia"
               width={113}
               height={32}
-              className="h-8 w-auto block mb-5"
+              className="h-9 w-auto block mb-5"
             />
             <div className="text-[14px] text-ink-300 max-w-[34ch] leading-[1.5]">
               {footer.tagline}
