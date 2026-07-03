@@ -29,8 +29,8 @@ def test_password_code_admin_disables_add_permission():
 
 
 @pytest.mark.django_db
-def test_admin_site_custom_sections():
-    """Verifies the custom admin site exposes all required model sections in the app list."""
+def test_admin_site_hides_user_management_section():
+    """The custom admin index must not expose User or PasswordCode to the operator."""
     User.objects.create_superuser(email='admin@example.com', password='pass1234')
     request = RequestFactory().get('/admin/')
     request.user = User.objects.get(email='admin@example.com')
@@ -39,7 +39,7 @@ def test_admin_site_custom_sections():
 
     object_names = {model['object_name'] for section in app_list for model in section['models']}
 
-    assert {'User', 'PasswordCode'}.issubset(object_names)
+    assert object_names.isdisjoint({'User', 'PasswordCode'})
 
 
 @pytest.mark.django_db
