@@ -115,13 +115,12 @@ class PasswordCodeAdmin(admin.ModelAdmin):
 # ============================================================================
 
 class BaseFeatureAdminSite(admin.AdminSite):
-    site_header = 'Base Feature Administration'
-    site_title = 'Base Feature Admin'
-    index_title = 'Welcome to Base Feature Control Panel'
+    site_header = 'Módulo Administrativo'
+    site_title = 'Módulo Administrativo'
+    index_title = 'Bienvenido al Módulo Administrativo'
 
     def get_app_list(self, request):
         app_dict = self._build_app_dict(request)
-        base_app_models = app_dict.get('base_feature_app', {}).get('models', [])
         blog_models = app_dict.get('blog', {}).get('models', [])
 
         custom_app_list = [
@@ -131,14 +130,6 @@ class BaseFeatureAdminSite(admin.AdminSite):
                 'models': [
                     model for model in blog_models
                     if model['object_name'] == 'BlogPost'
-                ]
-            },
-            {
-                'name': _('👥 User Management'),
-                'app_label': 'user_management',
-                'models': [
-                    model for model in base_app_models
-                    if model['object_name'] in ['User', 'PasswordCode']
                 ]
             },
         ]
