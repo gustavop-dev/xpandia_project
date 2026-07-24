@@ -4,6 +4,7 @@ import { HOME_LOADS, NAVIGATION_BETWEEN_PAGES, NAVIGATION_HEADER, NAVIGATION_FOO
 
 test.describe('Navigation', () => {
   test('should navigate to home page', { tag: [...HOME_LOADS] }, async ({ page }) => {
+    // quality: allow-no-interaction (home is the app entry point; the hero heading assertion is a real content check)
     await page.goto('/');
     await waitForPageLoad(page);
 
@@ -11,35 +12,24 @@ test.describe('Navigation', () => {
     await expect(page.getByRole('heading', { level: 1, name: /Spanish that works/i })).toBeVisible();
   });
 
-  test('should navigate to about page', { tag: [...NAVIGATION_BETWEEN_PAGES] }, async ({ page }) => {
+  test('the header logo returns to the home page', { tag: [...NAVIGATION_HEADER] }, async ({ page }) => {
+    await page.goto('/blog');
+    await waitForPageLoad(page);
+
+    await page.getByRole('banner').getByRole('link', { name: 'Xpandia' }).click();
+
+    await expect(page).toHaveURL('/');
+    await expect(page.getByRole('heading', { level: 1, name: /Spanish that works/i })).toBeVisible();
+  });
+
+  test('the footer About link navigates to /about', { tag: [...NAVIGATION_FOOTER] }, async ({ page }) => {
     await page.goto('/');
     await waitForPageLoad(page);
 
-    await page.goto('/about', { waitUntil: 'domcontentloaded' });
-    await expect(page).toHaveURL(/.*about/);
+    await page.locator('footer').getByRole('link', { name: 'About' }).click();
+
+    await expect(page).toHaveURL(/\/about$/);
     await expect(page.getByRole('heading', { level: 1, name: /Spanish and English expertise/i })).toBeVisible();
-  });
-
-  test('should have working header navigation', { tag: [...NAVIGATION_HEADER] }, async ({ page }) => {
-    await page.goto('/');
-    await waitForPageLoad(page);
-
-    const header = page.getByRole('banner');
-    await expect(header).toBeVisible();
-    // Logo links to home
-    await expect(header.getByRole('link', { name: 'Xpandia' })).toHaveAttribute('href', '/');
-    // Header CTA
-    await expect(header.getByRole('link', { name: /Talk to an Expert/i })).toBeVisible();
-  });
-
-  test('should have working footer', { tag: [...NAVIGATION_FOOTER] }, async ({ page }) => {
-    await page.goto('/');
-    await waitForPageLoad(page);
-
-    const footer = page.locator('footer');
-    await expect(footer).toBeVisible();
-    await expect(footer.getByRole('link', { name: 'About' })).toBeVisible();
-    await expect(footer.getByText('hello@xpandia.global')).toBeVisible();
   });
 
   test('clicking Blog in the header navigates to /blog', { tag: [...HEADER_BLOG_LINK] }, async ({ page }) => {
@@ -62,15 +52,14 @@ test.describe('Navigation', () => {
     await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
   });
 
-  test('should maintain navigation across pages', { tag: [...NAVIGATION_BETWEEN_PAGES] }, async ({ page }) => {
-    await page.goto('/', { waitUntil: 'domcontentloaded' });
-    await page.waitForURL('/');
+  test('navigates between pages via the header nav', { tag: [...NAVIGATION_BETWEEN_PAGES] }, async ({ page }) => {
+    await page.goto('/');
+    await waitForPageLoad(page);
 
-    await page.goto('/services', { waitUntil: 'domcontentloaded' });
-    await expect(page).toHaveURL(/.*services/);
+    await page.getByRole('banner').getByRole('link', { name: 'Blog' }).click();
+    await expect(page).toHaveURL(/\/blog$/);
 
-    await page.goto('/', { waitUntil: 'domcontentloaded' });
-    await page.waitForURL('/');
-    await expect(page).toHaveURL('/');
+    await page.getByRole('navigation', { name: 'Primary' }).getByRole('link', { name: 'Contact' }).click();
+    await expect(page).toHaveURL(/\/contact$/);
   });
 });

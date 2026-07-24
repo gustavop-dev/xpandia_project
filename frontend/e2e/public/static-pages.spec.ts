@@ -4,6 +4,7 @@ import { ABOUT_PAGE, CONTACT_PAGE } from '../helpers/flow-tags'
 
 test.describe('Static pages', () => {
   test('about page loads with content', { tag: [...ABOUT_PAGE] }, async ({ page }) => {
+    // quality: allow-no-interaction (content-render check via direct URL; navigation to it covered by the dedicated click tests)
     await page.goto('/about')
     await waitForPageLoad(page)
 
@@ -12,6 +13,7 @@ test.describe('Static pages', () => {
   })
 
   test('contact page loads with contact section', { tag: [...CONTACT_PAGE] }, async ({ page }) => {
+    // quality: allow-no-interaction (content-render check via direct URL; navigation to it covered by the dedicated click tests)
     await page.goto('/contact')
     await waitForPageLoad(page)
 
