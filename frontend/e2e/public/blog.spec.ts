@@ -12,6 +12,7 @@ import {
 
 test.describe('Blog', () => {
   test('blog list shows seeded posts in English', { tag: [...BLOG_LIST] }, async ({ page }) => {
+    // quality: allow-no-interaction (content-render check via direct URL; navigation to it covered by the dedicated click tests)
     await page.goto('/blog')
     await waitForPageLoad(page)
 
@@ -22,6 +23,7 @@ test.describe('Blog', () => {
   })
 
   test('blog detail renders title and back link', { tag: [...BLOG_DETAIL] }, async ({ page }) => {
+    // quality: allow-no-interaction (content-render check via direct URL; navigation to it covered by the dedicated click tests)
     await page.goto('/blog/e2e-post-01')
     await waitForPageLoad(page)
 
@@ -43,6 +45,7 @@ test.describe('Blog', () => {
   })
 
   test('blog list renders Spanish content at /es/blog', { tag: [...BLOG_LANGUAGE_SWITCH] }, async ({ page }) => {
+    // quality: allow-no-interaction (content-render check via direct URL; navigation to it covered by the dedicated click tests)
     await page.goto('/es/blog')
     await waitForPageLoad(page)
 
@@ -51,6 +54,8 @@ test.describe('Blog', () => {
   })
 
   test('unknown slug returns 404', { tag: [...BLOG_NOT_FOUND] }, async ({ page }) => {
+    // quality: allow-no-interaction (no UI path to a bad slug)
+    // quality: allow-render-only (asserts the 404 response status)
     const response = await page.goto('/blog/this-slug-does-not-exist')
     expect(response?.status()).toBe(404)
   })

@@ -53,12 +53,6 @@ describe('AppliedCulturalIntelligencePage', () => {
     const links = screen.getAllByRole('link', { name: /talk to an expert/i })
     expect(links[0]).toHaveAttribute('href', '/contact')
   })
-
-  it('renders the book a diagnostic call CTA link', async () => {
-    renderWithIntl(await AppliedCulturalIntelligencePage({ params: makeParams() }))
-    const links = screen.getAllByRole('link', { name: /talk to an expert/i })
-    expect(links[0]).toHaveAttribute('href', '/contact')
-  })
 })
 
 describe('generateMetadata — applied cultural intelligence page', () => {

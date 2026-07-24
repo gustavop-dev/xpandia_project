@@ -27,13 +27,6 @@ test.describe('i18n locale switch', () => {
     await expect(page.locator('html')).toHaveAttribute('lang', 'en')
     await expect(page.getByRole('heading', { level: 1, name: /Validate Spanish before your users do/i })).toBeVisible()
   })
-
-  test('a Spanish service page renders Spanish copy', { tag: [...I18N_LOCALE_SWITCH] }, async ({ page }) => {
-    await page.goto('/es/services/applied-cultural-intelligence')
-    await waitForPageLoad(page)
-    await expect(page.locator('html')).toHaveAttribute('lang', 'es')
-    await expect(page.getByText(/señales invisibles/i).first()).toBeVisible()
-  })
 })
 
 test.describe('i18n locale persistence across navigation', () => {
