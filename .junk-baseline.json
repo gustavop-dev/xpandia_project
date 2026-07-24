@@ -1,0 +1,29 @@
+{
+  "_comment": "Junk-test findings that predate the rules. These stay warnings under --junk-severity=error so existing debt does not block merges; anything not listed here is a new finding and fails. This file should only ever shrink.",
+  "findings": [
+    "frontend/app/[locale]/services/applied-cultural-intelligence/__tests__/page.test.tsx::duplicate_coverage::renders the book a diagnostic call CTA link",
+    "frontend/components/layout/__tests__/XpandiaHeader.test.tsx::weak_assertion::renders the Spanish Services navigation label when given Spanish messages",
+    "frontend/e2e/public/blog.spec.ts::no_data_assertion::unknown slug returns 404",
+    "frontend/e2e/public/blog.spec.ts::no_user_interaction::blog detail renders title and back link",
+    "frontend/e2e/public/blog.spec.ts::no_user_interaction::blog list renders Spanish content at /es/blog",
+    "frontend/e2e/public/blog.spec.ts::no_user_interaction::blog list shows seeded posts in English",
+    "frontend/e2e/public/blog.spec.ts::no_user_interaction::unknown slug returns 404",
+    "frontend/e2e/public/i18n.spec.ts::no_user_interaction::a Spanish service page renders Spanish copy",
+    "frontend/e2e/public/interactions.spec.ts::flow_tag_mismatch::selecting a quick start request type sends it with the contact form",
+    "frontend/e2e/public/interactions.spec.ts::flow_tag_mismatch::submitting the contact form shows the success banner",
+    "frontend/e2e/public/navigation.spec.ts::no_user_interaction::should have working footer",
+    "frontend/e2e/public/navigation.spec.ts::no_user_interaction::should have working header navigation",
+    "frontend/e2e/public/navigation.spec.ts::no_user_interaction::should maintain navigation across pages",
+    "frontend/e2e/public/navigation.spec.ts::no_user_interaction::should navigate to about page",
+    "frontend/e2e/public/navigation.spec.ts::no_user_interaction::should navigate to home page",
+    "frontend/e2e/public/services.spec.ts::no_user_interaction::Applied Cultural Intelligence service page loads",
+    "frontend/e2e/public/services.spec.ts::no_user_interaction::Language Assurance service page loads",
+    "frontend/e2e/public/services.spec.ts::no_user_interaction::Spanish Experience Repair & Adaptation service page loads",
+    "frontend/e2e/public/services.spec.ts::no_user_interaction::legacy /services/qa redirects to Language Assurance",
+    "frontend/e2e/public/services.spec.ts::no_user_interaction::services overview page loads",
+    "frontend/e2e/public/smoke.spec.ts::no_user_interaction::home page loads",
+    "frontend/e2e/public/static-pages.spec.ts::no_user_interaction::about page loads with content",
+    "frontend/e2e/public/static-pages.spec.ts::no_user_interaction::contact page loads with contact section",
+    "frontend/i18n/__tests__/request.test.ts::duplicate_coverage::"
+  ]
+}
