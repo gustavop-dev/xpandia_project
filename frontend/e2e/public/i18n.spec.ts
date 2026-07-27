@@ -3,7 +3,7 @@ import { waitForPageLoad } from '../fixtures'
 import { I18N_LOCALE_SWITCH, I18N_LOCALE_PERSISTENCE_NAV } from '../helpers/flow-tags'
 
 test.describe('i18n locale switch', () => {
-  test('switching EN→ES adds the /es prefix, swaps content, and sets html lang', { tag: [...I18N_LOCALE_SWITCH] }, async ({ page }) => {
+  test('switching EN→ES adds the /es prefix, swaps content, and sets html lang', { tag: [...I18N_LOCALE_SWITCH, '@outcome:success'] }, async ({ page }) => {
     await page.goto('/')
     await waitForPageLoad(page)
     await expect(page.locator('html')).toHaveAttribute('lang', 'en')
@@ -16,7 +16,7 @@ test.describe('i18n locale switch', () => {
     await expect(page.getByRole('heading', { level: 1, name: /Traducciones que funcionan para usuarios reales/i })).toBeVisible()
   })
 
-  test('switching ES→EN removes the /es prefix and restores English', { tag: [...I18N_LOCALE_SWITCH] }, async ({ page }) => {
+  test('switching ES→EN removes the /es prefix and restores English', { tag: [...I18N_LOCALE_SWITCH, '@outcome:success'] }, async ({ page }) => {
     await page.goto('/es/services/language-assurance')
     await waitForPageLoad(page)
     await expect(page.locator('html')).toHaveAttribute('lang', 'es')
@@ -30,7 +30,7 @@ test.describe('i18n locale switch', () => {
 })
 
 test.describe('i18n locale persistence across navigation', () => {
-  test('navigating via a header nav link keeps the /es prefix', { tag: [...I18N_LOCALE_PERSISTENCE_NAV] }, async ({ page }) => {
+  test('navigating via a header nav link keeps the /es prefix', { tag: [...I18N_LOCALE_PERSISTENCE_NAV, '@outcome:success'] }, async ({ page }) => {
     await page.goto('/es')
     await waitForPageLoad(page)
 
@@ -40,7 +40,7 @@ test.describe('i18n locale persistence across navigation', () => {
     await expect(page.locator('html')).toHaveAttribute('lang', 'es')
   })
 
-  test('navigating via a footer link keeps the /es prefix', { tag: [...I18N_LOCALE_PERSISTENCE_NAV] }, async ({ page }) => {
+  test('navigating via a footer link keeps the /es prefix', { tag: [...I18N_LOCALE_PERSISTENCE_NAV, '@outcome:success'] }, async ({ page }) => {
     await page.goto('/es')
     await waitForPageLoad(page)
 
