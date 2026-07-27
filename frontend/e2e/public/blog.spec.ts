@@ -11,7 +11,7 @@ import {
 } from '../helpers/flow-tags'
 
 test.describe('Blog', () => {
-  test('blog list shows seeded posts in English', { tag: [...BLOG_LIST] }, async ({ page }) => {
+  test('blog list shows seeded posts in English', { tag: [...BLOG_LIST, '@outcome:display'] }, async ({ page }) => {
     // quality: allow-no-interaction (content-render check via direct URL; navigation to it covered by the dedicated click tests)
     await page.goto('/blog')
     await waitForPageLoad(page)
@@ -22,8 +22,9 @@ test.describe('Blog', () => {
     await expect(page.getByRole('heading', { level: 3, name: /E2E Draft/i })).toBeHidden()
   })
 
-  test('blog detail renders title and back link', { tag: [...BLOG_DETAIL] }, async ({ page }) => {
+  test('blog detail renders title and back link', { tag: [...BLOG_DETAIL, '@outcome:display'] }, async ({ page }) => {
     // quality: allow-no-interaction (content-render check via direct URL; navigation to it covered by the dedicated click tests)
+    // quality: allow-deep-link (display flow's own subject is this nested route; UI-click arrival is covered by blog-card-to-detail)
     await page.goto('/blog/e2e-post-01')
     await waitForPageLoad(page)
 
@@ -31,7 +32,7 @@ test.describe('Blog', () => {
     await expect(page.getByRole('link', { name: /BACK TO BLOG/i })).toHaveAttribute('href', '/blog')
   })
 
-  test('blog pagination navigates to page 2', { tag: [...BLOG_PAGINATION] }, async ({ page }) => {
+  test('blog pagination navigates to page 2', { tag: [...BLOG_PAGINATION, '@outcome:display'] }, async ({ page }) => {
     await page.goto('/blog')
     await waitForPageLoad(page)
 
@@ -44,8 +45,9 @@ test.describe('Blog', () => {
     await expect(page.getByRole('heading', { level: 3, name: /E2E Post 01/i })).toBeVisible()
   })
 
-  test('blog list renders Spanish content at /es/blog', { tag: [...BLOG_LANGUAGE_SWITCH] }, async ({ page }) => {
+  test('blog list renders Spanish content at /es/blog', { tag: [...BLOG_LANGUAGE_SWITCH, '@outcome:display'] }, async ({ page }) => {
     // quality: allow-no-interaction (content-render check via direct URL; navigation to it covered by the dedicated click tests)
+    // quality: allow-deep-link (locale-prefixed route is this flow's own subject; UI-click arrival is out of scope for this URL-driven toggle)
     await page.goto('/es/blog')
     await waitForPageLoad(page)
 
@@ -53,14 +55,14 @@ test.describe('Blog', () => {
     await expect(page.getByRole('heading', { level: 3, name: /Post E2E 12/i })).toBeVisible()
   })
 
-  test('unknown slug returns 404', { tag: [...BLOG_NOT_FOUND] }, async ({ page }) => {
+  test('unknown slug returns 404', { tag: [...BLOG_NOT_FOUND, '@outcome:failure'] }, async ({ page }) => {
     // quality: allow-no-interaction (no UI path to a bad slug)
     // quality: allow-render-only (asserts the 404 response status)
     const response = await page.goto('/blog/this-slug-does-not-exist')
     expect(response?.status()).toBe(404)
   })
 
-  test('clicking a blog card navigates to the detail under the same locale', { tag: [...BLOG_CARD_TO_DETAIL] }, async ({ page }) => {
+  test('clicking a blog card navigates to the detail under the same locale', { tag: [...BLOG_CARD_TO_DETAIL, '@outcome:success'] }, async ({ page }) => {
     await page.goto('/es/blog')
     await waitForPageLoad(page)
 
@@ -73,7 +75,7 @@ test.describe('Blog', () => {
     await expect(page.getByRole('heading', { level: 1, name: /Post E2E 12/i })).toBeVisible()
   })
 
-  test('back link from blog detail returns to the localized list', { tag: [...BLOG_BACK_FROM_DETAIL_TO_LIST] }, async ({ page }) => {
+  test('back link from blog detail returns to the localized list', { tag: [...BLOG_BACK_FROM_DETAIL_TO_LIST, '@outcome:success'] }, async ({ page }) => {
     await page.goto('/es/blog/e2e-post-12')
     await waitForPageLoad(page)
 

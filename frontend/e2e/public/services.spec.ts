@@ -8,7 +8,7 @@ import {
 } from '../helpers/flow-tags'
 
 test.describe('Services', () => {
-  test('services overview page loads', { tag: [...SERVICES_OVERVIEW] }, async ({ page }) => {
+  test('services overview page loads', { tag: [...SERVICES_OVERVIEW, '@outcome:display'] }, async ({ page }) => {
     // quality: allow-no-interaction (content-render check via direct URL; navigation to it covered by the dedicated click tests)
     await page.goto('/services')
     await waitForPageLoad(page)
@@ -17,8 +17,9 @@ test.describe('Services', () => {
     await expect(page.getByRole('link', { name: /Talk to an Expert/i }).first()).toBeVisible()
   })
 
-  test('Language Assurance service page loads', { tag: [...SERVICES_LANGUAGE_ASSURANCE] }, async ({ page }) => {
+  test('Language Assurance service page loads', { tag: [...SERVICES_LANGUAGE_ASSURANCE, '@outcome:display'] }, async ({ page }) => {
     // quality: allow-no-interaction (content-render check via direct URL; navigation to it covered by the dedicated click tests)
+    // quality: allow-deep-link (display flow's own subject is this nested route; UI-click arrival is covered by services-card-to-detail)
     await page.goto('/services/language-assurance')
     await waitForPageLoad(page)
 
@@ -27,8 +28,9 @@ test.describe('Services', () => {
     await expect(page.locator('.hero-ctas').getByRole('link').first()).toHaveAttribute('href', '/contact')
   })
 
-  test('Spanish Experience Repair & Adaptation service page loads', { tag: [...SERVICES_LOCALIZATION_ADAPTATION] }, async ({ page }) => {
+  test('Spanish Experience Repair & Adaptation service page loads', { tag: [...SERVICES_LOCALIZATION_ADAPTATION, '@outcome:display'] }, async ({ page }) => {
     // quality: allow-no-interaction (content-render check via direct URL; navigation to it covered by the dedicated click tests)
+    // quality: allow-deep-link (display flow's own subject is this nested route; UI-click arrival is covered by services-card-to-detail)
     await page.goto('/services/localization-adaptation')
     await waitForPageLoad(page)
 
@@ -37,8 +39,9 @@ test.describe('Services', () => {
     await expect(page.locator('.hero-ctas').getByRole('link').first()).toHaveAttribute('href', '/contact')
   })
 
-  test('Applied Cultural Intelligence service page loads', { tag: [...SERVICES_APPLIED_CULTURAL_INTELLIGENCE] }, async ({ page }) => {
+  test('Applied Cultural Intelligence service page loads', { tag: [...SERVICES_APPLIED_CULTURAL_INTELLIGENCE, '@outcome:display'] }, async ({ page }) => {
     // quality: allow-no-interaction (content-render check via direct URL; navigation to it covered by the dedicated click tests)
+    // quality: allow-deep-link (display flow's own subject is this nested route; UI-click arrival is covered by services-card-to-detail)
     await page.goto('/services/applied-cultural-intelligence')
     await waitForPageLoad(page)
 

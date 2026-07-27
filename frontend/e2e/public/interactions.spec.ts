@@ -20,7 +20,7 @@ import {
 test.describe('Contact form', () => {
   test(
     'submitting the contact form shows the success banner',
-    { tag: [...CONTACT_FORM_SUBMIT] },
+    { tag: [...CONTACT_FORM_SUBMIT, '@outcome:success'] },
     async ({ page }) => {
       await page.goto('/contact')
       await waitForPageLoad(page)
@@ -40,7 +40,7 @@ test.describe('Contact form', () => {
 
   test(
     'shows the error banner when the contact API returns 5xx',
-    { tag: [...CONTACT_FORM_ERROR_STATE] },
+    { tag: [...CONTACT_FORM_ERROR_STATE, '@outcome:failure'] },
     async ({ page }) => {
       await page.goto('/contact')
       await waitForPageLoad(page)
@@ -71,7 +71,7 @@ test.describe('Contact form', () => {
 
   test(
     'selecting a quick start request type sends it with the contact form',
-    { tag: [...CONTACT_FORM_REQUEST_TYPE] },
+    { tag: [...CONTACT_FORM_REQUEST_TYPE, '@outcome:success'] },
     async ({ page }) => {
       await page.goto('/contact')
       await waitForPageLoad(page)
@@ -109,7 +109,7 @@ test.describe('Contact form', () => {
 test.describe('CTA navigation', () => {
   test(
     'clicking the home page CTA navigates to /contact',
-    { tag: [...CTA_HOME_TO_CONTACT] },
+    { tag: [...CTA_HOME_TO_CONTACT, '@outcome:success'] },
     async ({ page }) => {
       await page.goto('/')
       await waitForPageLoad(page)
@@ -123,7 +123,7 @@ test.describe('CTA navigation', () => {
 
   test(
     'clicking a core-solution card CTA on /services navigates to /contact',
-    { tag: [...CTA_SERVICES_CORE_SOLUTION_TO_CONTACT] },
+    { tag: [...CTA_SERVICES_CORE_SOLUTION_TO_CONTACT, '@outcome:success'] },
     async ({ page }) => {
       await page.goto('/services')
       await waitForPageLoad(page)
@@ -142,7 +142,7 @@ test.describe('CTA navigation', () => {
 
   test(
     'clicking the service detail CTA navigates to /contact',
-    { tag: [...CTA_SERVICE_DETAIL_TO_CONTACT] },
+    { tag: [...CTA_SERVICE_DETAIL_TO_CONTACT, '@outcome:success'] },
     async ({ page }) => {
       await page.goto('/services/language-assurance')
       await waitForPageLoad(page)
@@ -164,7 +164,7 @@ test.describe('CTA navigation', () => {
 test.describe('Services navigation', () => {
   test(
     'clicking a service card on /services navigates to the service detail page',
-    { tag: [...SERVICES_CARD_TO_DETAIL] },
+    { tag: [...SERVICES_CARD_TO_DETAIL, '@outcome:success'] },
     async ({ page }) => {
       await page.goto('/services')
       await waitForPageLoad(page)
@@ -178,7 +178,7 @@ test.describe('Services navigation', () => {
 
   test(
     'clicking the breadcrumb on a service detail page returns to /services',
-    { tag: [...BREADCRUMB_BACK_TO_SERVICES] },
+    { tag: [...BREADCRUMB_BACK_TO_SERVICES, '@outcome:success'] },
     async ({ page }) => {
       await page.goto('/services/language-assurance')
       await waitForPageLoad(page)
@@ -200,7 +200,7 @@ test.describe('Services navigation', () => {
 test.describe('Navigation interactions', () => {
   test(
     'mobile hamburger opens the drawer and navigates to About',
-    { tag: [...MOBILE_NAVIGATION_DRAWER] },
+    { tag: [...MOBILE_NAVIGATION_DRAWER, '@outcome:success'] },
     async ({ browser }) => {
       const context = await browser.newContext({
         viewport: { width: 390, height: 844 },
@@ -221,7 +221,7 @@ test.describe('Navigation interactions', () => {
 
   test(
     'mobile main bar exposes the language toggle and switches to Spanish without opening the drawer',
-    { tag: [...MOBILE_LANGUAGE_TOGGLE] },
+    { tag: [...MOBILE_LANGUAGE_TOGGLE, '@outcome:success'] },
     async ({ browser }) => {
       const context = await browser.newContext({
         viewport: { width: 390, height: 844 },
@@ -244,7 +244,7 @@ test.describe('Navigation interactions', () => {
 
   test(
     'hovering Services in the desktop header shows the dropdown and navigates on click',
-    { tag: [...HEADER_SERVICES_DROPDOWN] },
+    { tag: [...HEADER_SERVICES_DROPDOWN, '@outcome:success'] },
     async ({ page }) => {
       await page.goto('/')
       await waitForPageLoad(page)
@@ -261,7 +261,7 @@ test.describe('Navigation interactions', () => {
 
   test(
     'clicking the FAB contact button navigates to /contact',
-    { tag: [...FAB_CONTACT_BUTTON] },
+    { tag: [...FAB_CONTACT_BUTTON, '@outcome:success'] },
     async ({ page }) => {
       await page.goto('/')
       await waitForPageLoad(page)
@@ -274,7 +274,7 @@ test.describe('Navigation interactions', () => {
 
   test(
     'clicking the ES language toggle stores the preference in localStorage',
-    { tag: [...LANGUAGE_TOGGLE_PREFERENCE] },
+    { tag: [...LANGUAGE_TOGGLE_PREFERENCE, '@outcome:success'] },
     async ({ page }) => {
       await page.goto('/')
       await waitForPageLoad(page)
@@ -288,7 +288,7 @@ test.describe('Navigation interactions', () => {
 
   test(
     'clicking the About link in the footer navigates to /about',
-    { tag: [...FOOTER_LINKS_NAVIGATION] },
+    { tag: [...FOOTER_LINKS_NAVIGATION, '@outcome:success'] },
     async ({ page }) => {
       await page.goto('/')
       await waitForPageLoad(page)
