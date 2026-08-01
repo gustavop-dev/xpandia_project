@@ -10,6 +10,7 @@ CATEGORIES = ['ai-quality', 'localization', 'case-study', 'industry', 'operation
 
 PUBLISHED_COUNT = 12
 DRAFT_SLUG = 'e2e-draft-1'
+ENGLISH_ONLY_SLUG = 'e2e-english-only'
 
 
 def _content(text: str) -> dict:
@@ -58,6 +59,23 @@ class Command(BaseCommand):
             is_published=False,
         )
 
+        # Published but never translated: must appear on /blog and stay off /es/blog.
+        BlogPost.objects.create(
+            slug=ENGLISH_ONLY_SLUG,
+            title_en='E2E English Only',
+            title_es='E2E Solo Ingles',
+            excerpt_en='Published without a Spanish body.',
+            excerpt_es='Publicado sin cuerpo en español.',
+            content_json_en=_content('English body with no Spanish counterpart.'),
+            content_json_es={},
+            category='industry',
+            author='xpandia-team',
+            is_published=True,
+            # Oldest of the set, so it lands on the last page and leaves the
+            # existing pagination assertions untouched.
+            published_at=now - timedelta(seconds=PUBLISHED_COUNT + 1),
+        )
+
         self.stdout.write(self.style.SUCCESS(
-            f'Seeded {PUBLISHED_COUNT} published + 1 draft.'
+            f'Seeded {PUBLISHED_COUNT} published + 1 draft + 1 English-only.'
         ))

@@ -56,6 +56,8 @@ export const BLOG_LANGUAGE_SWITCH = ['@flow:blog-language-switch', '@module:blog
 export const BLOG_NOT_FOUND = ['@flow:blog-not-found', '@module:blog', '@priority:P4'];
 export const BLOG_CARD_TO_DETAIL = ['@flow:blog-card-to-detail', '@module:blog', '@priority:P3'];
 export const BLOG_BACK_FROM_DETAIL_TO_LIST = ['@flow:blog-back-from-detail-to-list', '@module:blog', '@priority:P3'];
+export const BLOG_UNTRANSLATED_POST_HIDDEN = ['@flow:blog-untranslated-post-hidden', '@module:blog', '@priority:P2'];
+export const BLOG_CATEGORY_LABEL_LOCALIZED = ['@flow:blog-category-label-localized', '@module:blog', '@priority:P3'];
 
 // ── Contact (extended) ──
 export const CONTACT_FORM_ERROR_STATE = ['@flow:contact-form-error-state', '@module:contact', '@priority:P3'];
@@ -64,3 +66,4 @@ export const CONTACT_FORM_REQUEST_TYPE = ['@flow:contact-form-request-type', '@m
 // ── Navigation (extended) ──
 export const HEADER_BLOG_LINK = ['@flow:header-blog-link', '@module:navigation', '@priority:P4'];
 export const HEADER_CONTACT_LINK = ['@flow:header-contact-link', '@module:navigation', '@priority:P3'];
+export const NAVIGATION_LOCALIZED_NOT_FOUND = ['@flow:navigation-localized-not-found', '@module:navigation', '@priority:P2'];

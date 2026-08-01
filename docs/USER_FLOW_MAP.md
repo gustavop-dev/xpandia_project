@@ -44,12 +44,15 @@ Use this document to understand each flow's steps, branching conditions, role re
 | `blog-not-found` | Blog detail 404 | blog | P4 | guest | `/blog/[unknown]` |
 | `blog-card-to-detail` | Blog card click → detail | blog | P3 | guest | `/blog` |
 | `blog-back-from-detail-to-list` | Back link from detail → list | blog | P3 | guest | `/blog/[slug]` |
+| `blog-untranslated-post-hidden` | Untranslated post hidden in the other locale | blog | P2 | guest | `/es/blog`, `/es/blog/[slug]` |
+| `blog-category-label-localized` | Blog category label follows the locale | blog | P3 | guest | `/blog`, `/es/blog` |
 | `contact-form-error-state` | Contact form server error | contact | P3 | guest | `/contact` |
 | `contact-book-call-cal-popup` | Book a call opens Cal.com scheduler | contact | P2 | guest | `/contact` |
 | `contact-cta-scroll-to-form-hint` | Form CTA scrolls to form + shows hint | contact | P3 | guest | `/contact` |
 | `contact-form-request-type` | Contact form request type | contact | P1 | guest | `/contact` |
 | `header-blog-link` | Header Blog nav link | navigation | P4 | guest | all pages |
 | `header-contact-link` | Header Contact nav link | navigation | P3 | guest | all pages |
+| `navigation-localized-not-found` | Localized 404 page | navigation | P2 | guest | any unmatched route |
 | `mobile-navigation-drawer` | Mobile nav drawer | navigation | P3 | guest | all pages |
 | `header-services-dropdown` | Header services dropdown | navigation | P3 | guest | all pages |
 | `fab-contact-button` | FAB contact button | navigation | P3 | guest | all pages |
@@ -548,6 +551,54 @@ Header and footer render on every route and expose the expected link set and CTA
 3. Browser navigates to `/contact`.
 
 **Expected outcome:** The header's `nav-active` underline appears on the Contact item once on `/contact`.
+
+### blog-untranslated-post-hidden
+
+| Field | Value |
+|-------|-------|
+| **Priority** | P2 |
+| **Roles** | guest |
+| **Frontend route** | `/es/blog`, `/es/blog/[slug]` |
+| **API endpoints** | `GET /api/blog/?lang=es`, `GET /api/blog/<slug>/?lang=es` |
+
+**Steps:**
+1. A post is published with `content_json_en` filled and `content_json_es` empty.
+2. User opens `/blog` — the post is listed with its English title and body.
+3. User opens `/es/blog` — the post is absent from the list and from `count`.
+4. User opens `/es/blog/<slug>` directly — the API returns 404 and the page renders the Spanish 404.
+
+**Expected outcome:** The Spanish site never renders English post copy. Before this gate, `blog/serializers.py` fell back to the English field whenever the Spanish one was empty.
+
+### blog-category-label-localized
+
+| Field | Value |
+|-------|-------|
+| **Priority** | P3 |
+| **Roles** | guest |
+| **Frontend route** | `/blog`, `/es/blog` |
+
+**Steps:**
+1. User is on `/blog`; a card shows its category label in English (e.g. "Localization").
+2. User clicks ES in the header language toggle.
+3. Browser navigates to `/es/blog`.
+
+**Expected outcome:** The same card shows the translated label (e.g. "Localización"). The backend's `category_display` / `author_display` come from untranslated model choices, so the labels are resolved from `messages/<locale>/blog.json` via `lib/blog/labels.ts`.
+
+### navigation-localized-not-found
+
+| Field | Value |
+|-------|-------|
+| **Priority** | P2 |
+| **Roles** | guest |
+| **Frontend route** | any unmatched route under `/` or `/es` |
+
+**Steps:**
+1. User opens an unmatched URL such as `/es/pagina-que-no-existe`.
+2. `app/[locale]/[...rest]/page.tsx` calls `notFound()`, so the locale layout renders `app/[locale]/not-found.tsx`.
+3. User clicks the "Volver al inicio" CTA.
+4. Browser navigates to `/es`.
+
+**Expected outcome:** 404 status, `html lang` matching the locale, the 404 copy in that locale, and a CTA that returns to that locale's homepage. Without the catch-all route Next.js served its own English-only 404, and the CTA used `next/link`, dropping the `/es` prefix.
 
 ---
 

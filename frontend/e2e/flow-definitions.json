@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2026-07-27",
+  "lastUpdated": "2026-08-01",
   "flows": {
     "home-loads": {
       "name": "Home page loads",
@@ -139,14 +139,14 @@
         "guest"
       ],
       "priority": "P1",
-      "description": "Guest fills out the contact qualifier form and submits \u2014 success banner appears",
+      "description": "Guest fills out the contact qualifier form and submits — success banner appears",
       "expectedSpecs": 1,
       "outcomes": [
         "success"
       ]
     },
     "cta-home-to-contact": {
-      "name": "CTA: Home \u2192 Contact",
+      "name": "CTA: Home → Contact",
       "module": "cta",
       "roles": [
         "guest"
@@ -178,14 +178,14 @@
         "guest"
       ],
       "priority": "P3",
-      "description": "Guest clicks a form-directed CTA (e.g. 'Request an audit', 'Talk to an Expert') on /contact \u2014 the page scrolls to the qualifier form and a highlight hint banner appears",
+      "description": "Guest clicks a form-directed CTA (e.g. 'Request an audit', 'Talk to an Expert') on /contact — the page scrolls to the qualifier form and a highlight hint banner appears",
       "expectedSpecs": 1,
       "outcomes": [
         "success"
       ]
     },
     "cta-service-detail-to-contact": {
-      "name": "CTA: Service detail \u2192 Contact",
+      "name": "CTA: Service detail → Contact",
       "module": "cta",
       "roles": [
         "guest"
@@ -198,20 +198,20 @@
       ]
     },
     "cta-services-core-solution-to-contact": {
-      "name": "CTA: Core solution card \u2192 Contact",
+      "name": "CTA: Core solution card → Contact",
       "module": "cta",
       "roles": [
         "guest"
       ],
       "priority": "P3",
-      "description": "Guest clicks a core-solution card text-link CTA (e.g. 'Request an AI QA Sprint \u2192') on /services and lands on /contact",
+      "description": "Guest clicks a core-solution card text-link CTA (e.g. 'Request an AI QA Sprint →') on /services and lands on /contact",
       "expectedSpecs": 1,
       "outcomes": [
         "success"
       ]
     },
     "services-card-to-detail": {
-      "name": "Services card \u2192 Detail page",
+      "name": "Services card → Detail page",
       "module": "services",
       "roles": [
         "guest"
@@ -224,13 +224,13 @@
       ]
     },
     "breadcrumb-back-to-services": {
-      "name": "Breadcrumb: Detail \u2192 Services",
+      "name": "Breadcrumb: Detail → Services",
       "module": "services",
       "roles": [
         "guest"
       ],
       "priority": "P2",
-      "description": "Guest clicks '\u2190 ALL SERVICES' breadcrumb on a service detail page and returns to /services",
+      "description": "Guest clicks '← ALL SERVICES' breadcrumb on a service detail page and returns to /services",
       "expectedSpecs": 1,
       "outcomes": [
         "success"
@@ -302,7 +302,7 @@
       ]
     },
     "i18n-locale-switch": {
-      "name": "Locale switch (EN \u21c4 ES)",
+      "name": "Locale switch (EN ⇄ ES)",
       "module": "navigation",
       "roles": [
         "shared"
@@ -451,7 +451,7 @@
         "shared"
       ],
       "priority": "P3",
-      "description": "Guest clicks '\u2190 BACK TO BLOG' on /blog/<slug> and returns to /blog with the same lang query param",
+      "description": "Guest clicks '← BACK TO BLOG' on /blog/<slug> and returns to /blog with the same lang query param",
       "expectedSpecs": 1,
       "outcomes": [
         "success"
@@ -481,6 +481,43 @@
       "expectedSpecs": 1,
       "outcomes": [
         "success"
+      ]
+    },
+    "navigation-localized-not-found": {
+      "name": "Localized 404 page",
+      "module": "navigation",
+      "roles": [
+        "shared"
+      ],
+      "priority": "P2",
+      "description": "An unmatched URL renders the 404 page in the active locale, and its CTA returns to the homepage of that same locale.",
+      "outcomes": [
+        "failure"
+      ]
+    },
+    "blog-untranslated-post-hidden": {
+      "name": "Untranslated post hidden in the other locale",
+      "module": "blog",
+      "roles": [
+        "shared"
+      ],
+      "priority": "P2",
+      "description": "A published post with no Spanish body is listed on /blog but absent from /es/blog, and its detail returns 404 under the Spanish locale instead of rendering English.",
+      "outcomes": [
+        "display",
+        "failure"
+      ]
+    },
+    "blog-category-label-localized": {
+      "name": "Blog category label follows the locale",
+      "module": "blog",
+      "roles": [
+        "shared"
+      ],
+      "priority": "P3",
+      "description": "A blog card shows its category label translated into the active locale rather than the English value the backend returns.",
+      "outcomes": [
+        "display"
       ]
     }
   }
