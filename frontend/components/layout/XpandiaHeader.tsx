@@ -47,7 +47,7 @@ export default function XpandiaHeader() {
   const linkBase = "text-[14px] font-[450] text-ink-700 relative py-2 transition-colors duration-[150ms] hover:text-ink-900"
   const linkActive = "text-ink-900 nav-active"
 
-  const { nav, cta, servicesDropdown } = t.global.header
+  const { nav, cta, servicesDropdown, a11y } = t.global.header
 
   return (
     <>
@@ -62,13 +62,13 @@ export default function XpandiaHeader() {
       >
         <div className="max-w-[1280px] mx-auto px-5 py-[14px] tablet:px-[clamp(24px,4vw,64px)] tablet:py-[18px] flex items-center justify-between gap-4 tablet:gap-8">
 
-          <Link className="h-[22px] sm:h-[26px] flex items-center shrink-0" href="/" aria-label="Xpandia">
-            <Image src="/assets/logo-full-light.webp" alt="Xpandia" width={138} height={26} className="h-full w-auto" priority />
+          <Link className="h-[22px] sm:h-[26px] flex items-center shrink-0" href="/" aria-label={a11y.logo}>
+            <Image src="/assets/logo-full-light.webp" alt={a11y.logo} width={138} height={26} className="h-full w-auto" priority />
           </Link>
 
           {/* Desktop nav links */}
-          <nav className="hidden tablet:flex items-center gap-7" aria-label="Primary">
-            <Link className={cn(linkBase, activePage === 'home' && linkActive)} href="/">Home</Link>
+          <nav className="hidden tablet:flex items-center gap-7" aria-label={a11y.primaryNav}>
+            <Link className={cn(linkBase, activePage === 'home' && linkActive)} href="/">{nav.home}</Link>
 
             <div className="relative group">
               <Link className={cn(linkBase, "inline-flex items-center", activePage === 'services' && linkActive)} href="/services">
@@ -102,7 +102,7 @@ export default function XpandiaHeader() {
 
           <div className="flex items-center gap-3 tablet:gap-4">
             {/* Language toggle — main bar on all breakpoints */}
-            <div className="inline-flex font-mono text-[11px] tracking-[0.08em] border border-ink-200 rounded-full overflow-hidden text-ink-500" role="group" aria-label="Language">
+            <div className="inline-flex font-mono text-[11px] tracking-[0.08em] border border-ink-200 rounded-full overflow-hidden text-ink-500" role="group" aria-label={a11y.langGroup}>
               <button
                 className={cn("border-0 px-[10px] py-[6px] cursor-pointer transition-colors", locale === 'en' ? "bg-ink-900 text-paper" : "bg-transparent")}
                 onClick={() => switchLocale('en')}
@@ -124,7 +124,7 @@ export default function XpandiaHeader() {
             <button
               className="inline-flex tablet:hidden w-10 h-10 border border-ink-150 rounded-full bg-transparent cursor-pointer items-center justify-center"
               id="nav-burger"
-              aria-label="Menu"
+              aria-label={a11y.menuButton}
               aria-expanded={drawerOpen}
               onClick={() => setDrawerOpen(!drawerOpen)}
             >
@@ -144,7 +144,7 @@ export default function XpandiaHeader() {
         )}
         aria-hidden={!drawerOpen}
       >
-        <Link href="/" className="block py-[18px] border-b border-ink-150 font-display text-[22px] text-ink-900" onClick={closeDrawer}>Home</Link>
+        <Link href="/" className="block py-[18px] border-b border-ink-150 font-display text-[22px] text-ink-900" onClick={closeDrawer}>{nav.home}</Link>
         <div className="mt-5 pb-1 font-mono text-[11px] tracking-[0.14em] text-ink-500">{nav.services.toUpperCase()}</div>
         <Link href="/services" className="block py-[10px] pl-5 text-[15px] text-ink-600 border-b border-ink-150" onClick={closeDrawer}>
           <span className="block font-mono text-[10px] tracking-[0.12em] text-accent mb-1">ALL</span>

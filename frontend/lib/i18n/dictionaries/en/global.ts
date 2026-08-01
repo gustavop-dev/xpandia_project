@@ -1,7 +1,8 @@
 export const global = {
   header: {
-    nav: { services: 'Services', blog: 'Blog', about: 'About', contact: 'Contact' },
+    nav: { home: 'Home', services: 'Services', blog: 'Blog', about: 'About', contact: 'Contact' },
     cta: 'Talk to an Expert',
+    a11y: { logo: 'Xpandia', primaryNav: 'Primary', langGroup: 'Language', menuButton: 'Menu' },
     servicesDropdown: {
       allTitle: 'All services',
       allDesc: 'Overview & comparison',
