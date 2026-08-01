@@ -105,13 +105,19 @@ test.describe('Blog', () => {
   })
 
   test('a post without a Spanish body is absent from the Spanish list', { tag: [...BLOG_UNTRANSLATED_POST_HIDDEN, '@outcome:display'] }, async ({ page }) => {
-    await page.goto('/es/blog')
+    // Reach the Spanish list the way a reader does: from /blog via the language toggle.
+    await page.goto('/blog')
     await waitForPageLoad(page)
 
-    const nextLink = page.getByRole('link', { name: 'SIGUIENTE →' })
+    await Promise.all([
+      page.waitForURL(/\/es\/blog$/),
+      page.getByRole('group', { name: /language|idioma/i }).getByRole('button', { name: 'ES' }).click(),
+    ])
+    await waitForPageLoad(page)
+
     await Promise.all([
       page.waitForURL(/[?&]page=2/),
-      nextLink.click(),
+      page.getByRole('link', { name: 'SIGUIENTE →' }).click(),
     ])
     await expect(page.getByRole('heading', { level: 3, name: /E2E Solo Ingles/i })).toBeHidden()
   })
