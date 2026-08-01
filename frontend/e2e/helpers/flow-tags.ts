@@ -42,7 +42,6 @@ export const BREADCRUMB_BACK_TO_SERVICES = ['@flow:breadcrumb-back-to-services',
 export const MOBILE_NAVIGATION_DRAWER = ['@flow:mobile-navigation-drawer', '@module:navigation', '@priority:P3'];
 export const HEADER_SERVICES_DROPDOWN = ['@flow:header-services-dropdown', '@module:navigation', '@priority:P3'];
 export const FAB_CONTACT_BUTTON = ['@flow:fab-contact-button', '@module:navigation', '@priority:P3'];
-export const LANGUAGE_TOGGLE_PREFERENCE = ['@flow:language-toggle-preference', '@module:navigation', '@priority:P3'];
 export const MOBILE_LANGUAGE_TOGGLE = ['@flow:mobile-language-toggle', '@module:navigation', '@priority:P3'];
 export const I18N_LOCALE_SWITCH = ['@flow:i18n-locale-switch', '@module:navigation', '@priority:P2'];
 export const I18N_LOCALE_PERSISTENCE_NAV = ['@flow:i18n-locale-persistence-nav', '@module:navigation', '@priority:P2'];
@@ -56,11 +55,16 @@ export const BLOG_LANGUAGE_SWITCH = ['@flow:blog-language-switch', '@module:blog
 export const BLOG_NOT_FOUND = ['@flow:blog-not-found', '@module:blog', '@priority:P4'];
 export const BLOG_CARD_TO_DETAIL = ['@flow:blog-card-to-detail', '@module:blog', '@priority:P3'];
 export const BLOG_BACK_FROM_DETAIL_TO_LIST = ['@flow:blog-back-from-detail-to-list', '@module:blog', '@priority:P3'];
+export const BLOG_UNTRANSLATED_POST_HIDDEN = ['@flow:blog-untranslated-post-hidden', '@module:blog', '@priority:P2'];
+export const BLOG_CATEGORY_LABEL_LOCALIZED = ['@flow:blog-category-label-localized', '@module:blog', '@priority:P3'];
 
 // ── Contact (extended) ──
 export const CONTACT_FORM_ERROR_STATE = ['@flow:contact-form-error-state', '@module:contact', '@priority:P3'];
 export const CONTACT_FORM_REQUEST_TYPE = ['@flow:contact-form-request-type', '@module:contact', '@priority:P1'];
+export const CONTACT_BOOK_CALL_CAL_POPUP = ['@flow:contact-book-call-cal-popup', '@module:contact', '@priority:P2'];
+export const CONTACT_CTA_SCROLL_TO_FORM_HINT = ['@flow:contact-cta-scroll-to-form-hint', '@module:contact', '@priority:P3'];
 
 // ── Navigation (extended) ──
 export const HEADER_BLOG_LINK = ['@flow:header-blog-link', '@module:navigation', '@priority:P4'];
 export const HEADER_CONTACT_LINK = ['@flow:header-contact-link', '@module:navigation', '@priority:P3'];
+export const NAVIGATION_LOCALIZED_NOT_FOUND = ['@flow:navigation-localized-not-found', '@module:navigation', '@priority:P2'];

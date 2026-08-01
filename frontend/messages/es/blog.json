@@ -21,5 +21,15 @@
   "detail": {
     "backToBlog": "← VOLVER AL BLOG",
     "contents": "Contenido"
+  },
+  "categories": {
+    "ai-quality": "Calidad de IA",
+    "localization": "Localización",
+    "case-study": "Caso de estudio",
+    "industry": "Industria",
+    "operations": "Operaciones"
+  },
+  "authors": {
+    "xpandia-team": "Equipo Xpandia"
   }
 }

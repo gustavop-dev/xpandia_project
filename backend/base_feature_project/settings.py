@@ -163,7 +163,13 @@ WSGI_APPLICATION = 'base_feature_project.wsgi.application'
 _db_engine = config('DJANGO_DB_ENGINE', default='django.db.backends.sqlite3')
 _db_config = {
     'ENGINE': _db_engine,
-    'NAME': config('DJANGO_DB_NAME', default=str(BASE_DIR / 'db.sqlite3')),
+    # DB_NAME is the canonical name: it is what settings_prod.py, the deployed
+    # .env files and the rest of the fleet use. DJANGO_DB_NAME stays accepted so
+    # environments that already set it keep working.
+    'NAME': config(
+        'DB_NAME',
+        default=config('DJANGO_DB_NAME', default=str(BASE_DIR / 'db.sqlite3')),
+    ),
 }
 if 'sqlite3' not in _db_engine:
     _db_config.update({

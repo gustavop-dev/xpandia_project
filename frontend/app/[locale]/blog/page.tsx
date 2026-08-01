@@ -4,6 +4,7 @@ import { fetchBlogPosts } from '@/lib/services/blog'
 import type { SupportedLocale } from '@/lib/i18n/config'
 import { localizedAlternates } from '@/lib/seo/alternates'
 import { PAGINATION } from '@/lib/constants'
+import { resolveBlogLabels } from '@/lib/blog/labels'
 import BlogCard from '@/components/blog/BlogCard'
 import BlogPagination from '@/components/blog/BlogPagination'
 
@@ -51,7 +52,12 @@ export default async function BlogIndexPage({ params, searchParams }: BlogIndexP
           ) : (
             <div className="grid grid-cols-1 tablet:grid-cols-2 lg:grid-cols-3 gap-8">
               {data.results.map(post => (
-                <BlogCard key={post.id} post={post} lang={locale as SupportedLocale} />
+                <BlogCard
+                  key={post.id}
+                  post={post}
+                  lang={locale as SupportedLocale}
+                  {...resolveBlogLabels(t, post)}
+                />
               ))}
             </div>
           )}

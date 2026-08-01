@@ -6,3 +6,6 @@ export const PAGINATION = {
   DEFAULT_PAGE_SIZE: 20,
   BLOG_PAGE_SIZE: 9,
 } as const;
+
+/** Public contact address. Not copy — identical in every locale. */
+export const CONTACT_EMAIL = 'hello@xpandia.global';

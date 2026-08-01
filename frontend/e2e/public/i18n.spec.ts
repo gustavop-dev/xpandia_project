@@ -1,6 +1,10 @@
 import { test, expect } from '../test-with-coverage'
 import { waitForPageLoad } from '../fixtures'
-import { I18N_LOCALE_SWITCH, I18N_LOCALE_PERSISTENCE_NAV } from '../helpers/flow-tags'
+import {
+  I18N_LOCALE_SWITCH,
+  I18N_LOCALE_PERSISTENCE_NAV,
+  NAVIGATION_LOCALIZED_NOT_FOUND,
+} from '../helpers/flow-tags'
 
 test.describe('i18n locale switch', () => {
   test('switching EN→ES adds the /es prefix, swaps content, and sets html lang', { tag: [...I18N_LOCALE_SWITCH, '@outcome:success'] }, async ({ page }) => {
@@ -48,5 +52,37 @@ test.describe('i18n locale persistence across navigation', () => {
 
     await expect(page).toHaveURL(/\/es\/about$/)
     await expect(page.locator('html')).toHaveAttribute('lang', 'es')
+  })
+})
+
+test.describe('localized 404', () => {
+  test('an unmatched Spanish URL renders the 404 copy in Spanish', { tag: [...NAVIGATION_LOCALIZED_NOT_FOUND, '@outcome:failure'] }, async ({ page }) => {
+    // quality: allow-no-interaction (no UI path leads to an unmatched URL)
+    const response = await page.goto('/es/pagina-que-no-existe')
+    await waitForPageLoad(page)
+
+    expect(response?.status()).toBe(404)
+    await expect(page.locator('html')).toHaveAttribute('lang', 'es')
+    await expect(page.getByRole('heading', { level: 1, name: /Página no encontrada/i })).toBeVisible()
+  })
+
+  test('the 404 CTA returns to the homepage of the active locale', { tag: [...NAVIGATION_LOCALIZED_NOT_FOUND, '@outcome:failure'] }, async ({ page }) => {
+    await page.goto('/es/pagina-que-no-existe')
+    await waitForPageLoad(page)
+
+    await page.locator('main').getByRole('link', { name: /Volver al inicio/i }).click()
+
+    await expect(page).toHaveURL(/\/es\/?$/)
+    await expect(page.getByRole('heading', { level: 1, name: /Traducciones que funcionan para usuarios reales/i })).toBeVisible()
+  })
+
+  test('an unmatched English URL renders the 404 copy in English', { tag: [...NAVIGATION_LOCALIZED_NOT_FOUND, '@outcome:failure'] }, async ({ page }) => {
+    // quality: allow-no-interaction (no UI path leads to an unmatched URL)
+    const response = await page.goto('/page-that-does-not-exist')
+    await waitForPageLoad(page)
+
+    expect(response?.status()).toBe(404)
+    await expect(page.locator('html')).toHaveAttribute('lang', 'en')
+    await expect(page.getByRole('heading', { level: 1, name: /Page not found/i })).toBeVisible()
   })
 })

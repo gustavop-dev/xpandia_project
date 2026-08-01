@@ -33,3 +33,15 @@ def test_detail_returns_spanish_content_when_lang_es(api_client, blog_post):
     response = api_client.get(f'{_url(blog_post.slug)}?lang=es')
     assert response.data['title'] == 'Primer Post'
     assert response.data['content_json']['sections'][0]['text'] == 'Hola.'
+
+
+@pytest.mark.django_db
+def test_detail_returns_404_without_spanish_body_when_lang_es(api_client, blog_post_english_only):
+    response = api_client.get(f'{_url(blog_post_english_only.slug)}?lang=es')
+    assert response.status_code == status.HTTP_404_NOT_FOUND
+
+
+@pytest.mark.django_db
+def test_detail_returns_200_without_spanish_body_when_lang_en(api_client, blog_post_english_only):
+    response = api_client.get(f'{_url(blog_post_english_only.slug)}?lang=en')
+    assert response.status_code == status.HTTP_200_OK

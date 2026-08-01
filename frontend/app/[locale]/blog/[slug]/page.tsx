@@ -6,6 +6,7 @@ import { Link } from '@/i18n/navigation'
 import { fetchBlogPost } from '@/lib/services/blog'
 import { formatLocaleDate, type SupportedLocale } from '@/lib/i18n/config'
 import { localizedAlternates } from '@/lib/seo/alternates'
+import { resolveBlogLabels } from '@/lib/blog/labels'
 import BlogContentRenderer from '@/components/blog/BlogContentRenderer'
 
 export const dynamic = 'force-dynamic'
@@ -33,6 +34,8 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
 
   const t = await getTranslations('blog')
 
+  const { categoryLabel, authorLabel } = resolveBlogLabels(t, post)
+
   const dateLabel = post.published_at
     ? formatLocaleDate(post.published_at, locale as SupportedLocale, { year: 'numeric', month: 'long', day: 'numeric' })
     : ''
@@ -44,15 +47,15 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
           <Link href="/blog" className="eyebrow mb-8 inline-flex no-bar">
             {t('detail.backToBlog')}
           </Link>
-          {post.category_display && (
+          {categoryLabel && (
             <div className="font-mono text-[11px] text-accent tracking-[0.12em] uppercase mb-4">
-              {post.category_display}
+              {categoryLabel}
             </div>
           )}
           <h1 className="hero-display">{post.title}</h1>
           <p className="hero-sub mt-6">{post.excerpt}</p>
           <div className="font-mono text-[11px] text-ink-500 tracking-[0.08em] mt-6">
-            {post.author_display}{dateLabel ? ` · ${dateLabel}` : ''}
+            {authorLabel}{dateLabel ? ` · ${dateLabel}` : ''}
           </div>
         </div>
       </section>
