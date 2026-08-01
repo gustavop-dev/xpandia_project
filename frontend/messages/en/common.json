@@ -78,5 +78,11 @@
     "description": "This page didn't load correctly. Try again, or go back to the homepage.",
     "retry": "Try again",
     "back": "Back to home"
+  },
+  "notFound": {
+    "eyebrow": "404",
+    "title": "Page not found.",
+    "description": "The page you're looking for doesn't exist or has moved.",
+    "back": "Back to home"
   }
 }
