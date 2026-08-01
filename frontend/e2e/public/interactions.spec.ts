@@ -14,7 +14,6 @@ import {
   MOBILE_NAVIGATION_DRAWER,
   HEADER_SERVICES_DROPDOWN,
   FAB_CONTACT_BUTTON,
-  LANGUAGE_TOGGLE_PREFERENCE,
   MOBILE_LANGUAGE_TOGGLE,
   FOOTER_LINKS_NAVIGATION,
 } from '../helpers/flow-tags'
@@ -380,20 +379,6 @@ test.describe('Navigation interactions', () => {
       await page.getByRole('link', { name: /let.s talk/i }).click()
 
       await expect(page).toHaveURL(/\/contact/)
-    }
-  )
-
-  test(
-    'clicking the ES language toggle stores the preference in localStorage',
-    { tag: [...LANGUAGE_TOGGLE_PREFERENCE, '@outcome:success'] },
-    async ({ page }) => {
-      await page.goto('/')
-      await waitForPageLoad(page)
-
-      await page.getByRole('group', { name: 'Language' }).getByRole('button', { name: 'ES' }).click()
-
-      const stored = await page.evaluate(() => localStorage.getItem('xpandia-lang'))
-      expect(stored).toBe('es')
     }
   )
 

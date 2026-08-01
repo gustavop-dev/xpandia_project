@@ -1,12 +1,13 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
 import { Link } from '@/i18n/navigation'
 import Image from 'next/image'
-import { useTranslations } from '@/lib/i18n/useTranslations'
+import { CONTACT_EMAIL } from '@/lib/constants'
+import { FOOTER_SERVICE_LINKS, FOOTER_COMPANY_LINKS } from '@/lib/navigation/links'
 
 export default function XpandiaFooter() {
-  const t = useTranslations()
-  const { footer } = t.global
+  const t = useTranslations('common.footer')
 
   return (
     <footer className="pt-20 pb-10 bg-ink-900 text-ink-300">
@@ -15,55 +16,55 @@ export default function XpandiaFooter() {
           <div>
             <Image
               src="/assets/logo-full-dark.svg"
-              alt="Xpandia"
+              alt={t('logoAlt')}
               width={113}
               height={32}
               className="h-9 w-auto block mb-5"
             />
             <div className="text-[14px] text-ink-300 max-w-[34ch] leading-[1.5]">
-              {footer.tagline}
+              {t('tagline')}
             </div>
             <div className="mt-3 text-[13px] text-ink-400 max-w-[38ch] leading-[1.5]">
-              {footer.description}
+              {t('description')}
             </div>
           </div>
           <div>
-            <h5 className="font-mono text-[11px] tracking-[0.12em] uppercase text-ink-400 mt-0 mb-4 font-medium">{footer.servicesTitle}</h5>
+            <h5 className="font-mono text-[11px] tracking-[0.12em] uppercase text-ink-400 mt-0 mb-4 font-medium">{t('servicesHeading')}</h5>
             <ul className="list-none p-0 m-0">
-              {footer.serviceLinks.map((link) => (
+              {FOOTER_SERVICE_LINKS.map((link) => (
                 <li key={link.href} className="mb-[10px] text-[14px]">
-                  <Link href={link.href} className="text-ink-200 hover:text-white transition-colors">{link.label}</Link>
+                  <Link href={link.href} className="text-ink-200 hover:text-white transition-colors">{t(`serviceLinks.${link.key}`)}</Link>
                 </li>
               ))}
             </ul>
           </div>
           <div>
-            <h5 className="font-mono text-[11px] tracking-[0.12em] uppercase text-ink-400 mt-0 mb-4 font-medium">{footer.companyTitle}</h5>
+            <h5 className="font-mono text-[11px] tracking-[0.12em] uppercase text-ink-400 mt-0 mb-4 font-medium">{t('companyHeading')}</h5>
             <ul className="list-none p-0 m-0">
-              {footer.companyLinks.map((link) => (
+              {FOOTER_COMPANY_LINKS.map((link) => (
                 <li key={link.href} className="mb-[10px] text-[14px]">
-                  <Link href={link.href} className="text-ink-200 hover:text-white transition-colors">{link.label}</Link>
+                  <Link href={link.href} className="text-ink-200 hover:text-white transition-colors">{t(`companyLinks.${link.key}`)}</Link>
                 </li>
               ))}
             </ul>
           </div>
           <div>
-            <h5 className="font-mono text-[11px] tracking-[0.12em] uppercase text-ink-400 mt-0 mb-4 font-medium">{footer.startTitle}</h5>
+            <h5 className="font-mono text-[11px] tracking-[0.12em] uppercase text-ink-400 mt-0 mb-4 font-medium">{t('startHeading')}</h5>
             <ul className="list-none p-0 m-0">
               <li className="mb-[10px] text-[14px]">
-                <Link href="/contact" className="text-ink-200 hover:text-white transition-colors">{footer.startLink}</Link>
+                <Link href="/contact" className="text-ink-200 hover:text-white transition-colors">{t('startLink')}</Link>
               </li>
             </ul>
-            <h5 className="font-mono text-[11px] tracking-[0.12em] uppercase text-ink-400 mt-6 mb-4 font-medium">{footer.contactTitle}</h5>
+            <h5 className="font-mono text-[11px] tracking-[0.12em] uppercase text-ink-400 mt-6 mb-4 font-medium">{t('contactHeading')}</h5>
             <ul className="list-none p-0 m-0">
               <li className="mb-[10px] text-[14px]">
-                <a href={`mailto:${footer.email}`} className="text-ink-200 hover:text-white transition-colors">{footer.email}</a>
+                <a href={`mailto:${CONTACT_EMAIL}`} className="text-ink-200 hover:text-white transition-colors">{CONTACT_EMAIL}</a>
               </li>
             </ul>
           </div>
         </div>
         <div className="pt-6 flex justify-between items-center font-mono text-[11px] tracking-[0.08em] text-ink-400">
-          <div>{footer.copyright}</div>
+          <div>{t('copyright')}</div>
         </div>
       </div>
     </footer>

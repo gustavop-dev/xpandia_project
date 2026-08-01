@@ -56,7 +56,6 @@ Use this document to understand each flow's steps, branching conditions, role re
 | `mobile-navigation-drawer` | Mobile nav drawer | navigation | P3 | guest | all pages |
 | `header-services-dropdown` | Header services dropdown | navigation | P3 | guest | all pages |
 | `fab-contact-button` | FAB contact button | navigation | P3 | guest | all pages |
-| `language-toggle-preference` | Language toggle | navigation | P3 | guest | all pages |
 | `mobile-language-toggle` | Mobile language toggle in main bar | navigation | P3 | guest | all pages |
 | `i18n-locale-switch` | Locale switch (EN ⇄ ES) | navigation | P2 | shared | all pages |
 | `i18n-locale-persistence-nav` | Locale persists across nav links | navigation | P2 | shared | all pages |
@@ -468,16 +467,6 @@ Header and footer render on every route and expose the expected link set and CTA
 | **Frontend route** | all pages |
 
 **Steps:** User clicks the `FABContact` floating action button (`aria-label="Book a diagnostic call"`) → browser navigates to `/contact`.
-
-### language-toggle-preference
-
-| Field | Value |
-|-------|-------|
-| **Priority** | P3 |
-| **Roles** | guest |
-| **Frontend route** | all pages |
-
-**Steps:** User clicks the "ES" language toggle button in the header → `localStorage['xpandia-lang']` is set to `'es'`; the ES button becomes active (dark background).
 
 ### mobile-language-toggle
 

@@ -8,65 +8,59 @@
   "header": {
     "logoAlt": "Xpandia",
     "primaryNavLabel": "Primary",
+    "menuButtonLabel": "Menu",
+    "langGroupLabel": "Language",
     "nav": {
+      "home": "Home",
       "services": "Services",
       "blog": "Blog",
       "about": "About",
       "contact": "Contact"
     },
+    "cta": "Talk to an Expert",
     "servicesMenu": {
       "all": {
         "label": "All services",
         "desc": "Overview & comparison"
       },
-      "items": [
-        {
-          "num": "01 / VALIDATE",
+      "items": {
+        "languageAssurance": {
           "label": "Language Assurance",
           "desc": "Validate Spanish before your users do."
         },
-        {
-          "num": "02 / ADAPT",
+        "localizationAdaptation": {
           "label": "Language Experience Repair & Adaptation",
           "desc": "Improve Spanish that needs to work for real users."
         },
-        {
-          "num": "03 / UNDERSTAND",
+        "appliedCulturalIntelligence": {
           "label": "Applied Cultural Intelligence",
           "desc": "Make better decisions with cultural context."
         }
-      ]
-    },
-    "cta": "Talk to an Expert",
-    "menuButtonLabel": "Menu",
-    "langGroupLabel": "Language",
-    "drawerServicesHeading": "SERVICES",
-    "drawerHome": "Home"
+      }
+    }
   },
   "footer": {
     "logoAlt": "Xpandia",
     "tagline": "Spanish and English that work for real users.",
     "description": "Xpandia helps AI, SaaS, EdTech, and digital product teams validate, improve, and culturally adapt high-impact digital experiences for English and Spanish-speaking audiences.",
-    "brandLine": "LANGUAGE EXPERTISE · 2026",
-    "colServices": {
-      "heading": "Services"
+    "servicesHeading": "Services",
+    "serviceLinks": {
+      "languageAssurance": "Language Assurance",
+      "localizationAdaptation": "Experience Repair & Adaptation",
+      "appliedCulturalIntelligence": "Applied Cultural Intelligence"
     },
-    "colCompany": {
-      "heading": "Company",
+    "companyHeading": "Company",
+    "companyLinks": {
       "about": "About",
-      "contact": "Contact",
-      "bookCall": "Talk to an Expert"
+      "contact": "Contact"
     },
-    "colContact": {
-      "heading": "Contact",
-      "requestAudit": "Request an audit"
-    },
-    "copyright": "©2013-2026 Xpandia. All rights reserved.",
-    "terms": "Terms",
-    "privacy": "Privacy"
+    "startHeading": "Start here",
+    "startLink": "Talk to an Expert",
+    "contactHeading": "Contact",
+    "copyright": "© 2013–2026 Xpandia. All rights reserved."
   },
   "fab": {
-    "label": "Let's talk"
+    "label": "Let’s Talk"
   },
   "serviceLines": {
     "languageAssurance": "Language Assurance",
