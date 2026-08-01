@@ -4,6 +4,8 @@ import {
   CONTACT_FORM_SUBMIT,
   CONTACT_FORM_ERROR_STATE,
   CONTACT_FORM_REQUEST_TYPE,
+  CONTACT_BOOK_CALL_CAL_POPUP,
+  CONTACT_CTA_SCROLL_TO_FORM_HINT,
   CTA_HOME_TO_CONTACT,
   CTA_SERVICE_DETAIL_TO_CONTACT,
   CTA_SERVICES_CORE_SOLUTION_TO_CONTACT,
@@ -102,6 +104,115 @@ test.describe('Contact form', () => {
 
       await expect(page.getByText(/Request received/i)).toBeVisible()
       expect(capturedBody?.intent).toBe('audit')
+    }
+  )
+})
+
+// Mirrors components/contact/CalScript.tsx — kept as a literal so the spec does
+// not import a 'use client' module (and next/script) into the Playwright runner.
+const CAL_LINK = 'milena-gonzalez-oqdwif/discovery-call'
+
+/**
+ * Stands in for https://app.cal.com/embed/embed.js.
+ *
+ * The real embed owns the whole popup: the trigger buttons carry no onClick, so
+ * without a stub a click is a no-op with nothing to assert, and with the real
+ * script the suite gains its only third-party network dependency. This replays
+ * the one contract our code relies on — document-level delegation on
+ * [data-cal-link] — and records the opened link on <body>. It verifies OUR
+ * wiring; the scheduler itself belongs to Cal.com and is out of scope.
+ */
+const CAL_EMBED_STUB = `
+  document.addEventListener('click', function (event) {
+    var trigger = event.target.closest && event.target.closest('[data-cal-link]')
+    if (!trigger) return
+    document.body.dataset.calOpened = trigger.getAttribute('data-cal-link')
+  })
+  document.documentElement.dataset.calStub = 'ready'
+`
+
+/**
+ * Navigate to the contact page and wait until the embed stub has registered its
+ * click listener. The real embed is injected by an afterInteractive script, so
+ * clicking before it loads is a silent no-op.
+ */
+async function gotoContactWithCalReady(page: import('@playwright/test').Page) {
+  await page.goto('/contact')
+  await waitForPageLoad(page)
+  await expect(page.locator('html')).toHaveAttribute('data-cal-stub', 'ready')
+}
+
+test.describe('Contact scheduling', () => {
+  test.beforeEach(async ({ page }) => {
+    await page.route('**/app.cal.com/embed/**', route =>
+      route.fulfill({ contentType: 'application/javascript', body: CAL_EMBED_STUB })
+    )
+  })
+
+  test(
+    'clicking the book-a-call CTA opens the Cal scheduler',
+    { tag: [...CONTACT_BOOK_CALL_CAL_POPUP, '@outcome:success'] },
+    async ({ page }) => {
+      await gotoContactWithCalReady(page)
+
+      await page.getByRole('button', { name: 'Book a diagnostic call' }).click()
+
+      await expect(page.locator('body')).toHaveAttribute('data-cal-opened', CAL_LINK)
+    }
+  )
+
+  test(
+    'opening the Cal scheduler keeps the user on the contact page',
+    { tag: [...CONTACT_BOOK_CALL_CAL_POPUP, '@outcome:success'] },
+    async ({ page }) => {
+      await gotoContactWithCalReady(page)
+
+      await page.getByRole('button', { name: 'Book a diagnostic call' }).click()
+      await expect(page.locator('body')).toHaveAttribute('data-cal-opened', CAL_LINK)
+
+      await expect(page).toHaveURL(/\/contact$/)
+    }
+  )
+})
+
+test.describe('Contact form CTA', () => {
+  test(
+    'the final CTA scrolls the contact form into view',
+    { tag: [...CONTACT_CTA_SCROLL_TO_FORM_HINT, '@outcome:success'] },
+    async ({ page }) => {
+      await page.goto('/contact')
+      await waitForPageLoad(page)
+
+      // The form heading stands in for the form: it scrolls into view with it.
+      const formHeading = page.getByRole('heading', { name: /Let's talk about your Spanish\/English products/i })
+      const cta = page.getByRole('button', { name: 'Talk to an Expert' })
+
+      await cta.scrollIntoViewIfNeeded()
+      await expect(formHeading).not.toBeInViewport()
+
+      await cta.click()
+
+      // toBeInViewport retries, which the JS-driven smooth scroll needs —
+      // reducedMotion does not shorten window.scrollTo({behavior:'smooth'}).
+      await expect(formHeading).toBeInViewport()
+    }
+  )
+
+  test(
+    'the final CTA surfaces the hint above the contact form',
+    { tag: [...CONTACT_CTA_SCROLL_TO_FORM_HINT, '@outcome:success'] },
+    async ({ page }) => {
+      await page.goto('/contact')
+      await waitForPageLoad(page)
+
+      await page.getByRole('button', { name: 'Talk to an Expert' }).click()
+
+      // The hint clears itself after 5s, so assert right away. The banner stays
+      // in the DOM and is collapsed with grid-template-rows/opacity rather than
+      // display:none, so toBeVisible() would not tell the two states apart —
+      // the `show` class is the actual signal.
+      await expect(page.getByRole('status')).toHaveClass(/show/)
+      await expect(page.getByRole('status')).toHaveText(/Fill out this form/i)
     }
   )
 })
