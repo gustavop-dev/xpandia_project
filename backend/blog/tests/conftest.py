@@ -38,6 +38,20 @@ def blog_draft(db):
 
 
 @pytest.fixture
+def blog_post_english_only(db):
+    """Published post whose Spanish body was never filled in."""
+    return BlogPost.objects.create(
+        title_en='English Only Post',
+        title_es='Post Solo En Ingles',
+        excerpt_en='An English excerpt.',
+        excerpt_es='Un resumen en español.',
+        content_json_en={'sections': [{'type': 'paragraph', 'text': 'Hello.'}]},
+        content_json_es={},
+        is_published=True,
+    )
+
+
+@pytest.fixture
 def blog_post_with_cover(db):
     cover = SimpleUploadedFile('cover.png', _MIN_PNG, content_type='image/png')
     return BlogPost.objects.create(

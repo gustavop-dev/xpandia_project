@@ -22,7 +22,9 @@ def test_list_default_page_size_is_9(api_client):
     for i in range(12):
         BlogPost.objects.create(
             title_en=f'Post {i:02d}', title_es=f'Post {i:02d}',
-            excerpt_en='', excerpt_es='', is_published=True,
+            excerpt_en='', excerpt_es='',
+            content_json_en={'intro': 'Body.'}, content_json_es={'intro': 'Cuerpo.'},
+            is_published=True,
         )
     response = api_client.get(URL)
     assert response.data['page_size'] == 9
@@ -36,7 +38,9 @@ def test_list_respects_page_query_param(api_client):
     for i in range(12):
         BlogPost.objects.create(
             title_en=f'Post {i:02d}', title_es=f'Post {i:02d}',
-            excerpt_en='', excerpt_es='', is_published=True,
+            excerpt_en='', excerpt_es='',
+            content_json_en={'intro': 'Body.'}, content_json_es={'intro': 'Cuerpo.'},
+            is_published=True,
         )
     response = api_client.get(f'{URL}?page=2')
     assert response.data['page'] == 2
@@ -67,3 +71,25 @@ def test_list_returns_spanish_fields_when_lang_es(api_client, blog_post):
 def test_list_pagination_metadata_shape(api_client, blog_post):
     response = api_client.get(URL)
     assert set(response.data.keys()) == {'results', 'count', 'page', 'page_size', 'total_pages'}
+
+
+@pytest.mark.django_db
+def test_list_excludes_post_without_spanish_body_when_lang_es(api_client, blog_post_english_only):
+    response = api_client.get(f'{URL}?lang=es')
+    slugs = {item['slug'] for item in response.data['results']}
+    assert blog_post_english_only.slug not in slugs
+
+
+@pytest.mark.django_db
+def test_list_includes_post_without_spanish_body_when_lang_en(api_client, blog_post_english_only):
+    response = api_client.get(f'{URL}?lang=en')
+    slugs = {item['slug'] for item in response.data['results']}
+    assert blog_post_english_only.slug in slugs
+
+
+@pytest.mark.django_db
+def test_list_count_excludes_posts_untranslated_in_requested_lang(
+    api_client, blog_post, blog_post_english_only,
+):
+    response = api_client.get(f'{URL}?lang=es')
+    assert response.data['count'] == 1

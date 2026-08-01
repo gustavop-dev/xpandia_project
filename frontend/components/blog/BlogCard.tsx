@@ -6,10 +6,14 @@ import { formatLocaleDate, type SupportedLocale } from '@/lib/i18n/config'
 interface BlogCardProps {
   post: BlogPostListItem
   lang: SupportedLocale
+  categoryLabel?: string
+  authorLabel?: string
 }
 
-export default function BlogCard({ post, lang }: BlogCardProps) {
+export default function BlogCard({ post, lang, categoryLabel, authorLabel }: BlogCardProps) {
   const dateLabel = post.published_at ? formatLocaleDate(post.published_at, lang) : ''
+  const category = categoryLabel ?? post.category_display
+  const author = authorLabel ?? post.author_display
 
   return (
     <Link
@@ -34,9 +38,9 @@ export default function BlogCard({ post, lang }: BlogCardProps) {
       </div>
 
       <div className="flex flex-col flex-1 p-7">
-        {post.category_display && (
+        {category && (
           <div className="font-mono text-[11px] text-accent tracking-[0.12em] uppercase mb-3">
-            {post.category_display}
+            {category}
           </div>
         )}
         <h3 className="font-display text-[22px] font-medium tracking-[-0.015em] leading-[1.15] text-ink-900 mb-3 line-clamp-2">
@@ -46,7 +50,7 @@ export default function BlogCard({ post, lang }: BlogCardProps) {
           {post.excerpt}
         </p>
         <div className="mt-auto pt-4 border-t border-ink-150 flex justify-between items-center font-mono text-[11px] text-ink-500 tracking-[0.06em]">
-          <span>{post.author_display}</span>
+          <span>{author}</span>
           {dateLabel && <span>{dateLabel}</span>}
         </div>
       </div>

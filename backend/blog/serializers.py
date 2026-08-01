@@ -1,14 +1,14 @@
 from rest_framework import serializers
 
+from .lang import DEFAULT_LANG, resolve_lang
 from .models import BlogPost
 
 
 def _get_lang(serializer):
     request = serializer.context.get('request')
     if request:
-        lang = request.query_params.get('lang', 'en')
-        return lang if lang in ('es', 'en') else 'en'
-    return serializer.context.get('lang', 'en')
+        return resolve_lang(request)
+    return serializer.context.get('lang', DEFAULT_LANG)
 
 
 class BlogPostListSerializer(serializers.ModelSerializer):
@@ -28,11 +28,11 @@ class BlogPostListSerializer(serializers.ModelSerializer):
 
     def get_title(self, obj):
         lang = _get_lang(self)
-        return getattr(obj, f'title_{lang}') or obj.title_en
+        return getattr(obj, f'title_{lang}')
 
     def get_excerpt(self, obj):
         lang = _get_lang(self)
-        return getattr(obj, f'excerpt_{lang}') or obj.excerpt_en
+        return getattr(obj, f'excerpt_{lang}')
 
     def get_cover_image_url(self, obj):
         if obj.cover_image_url:
@@ -54,4 +54,4 @@ class BlogPostDetailSerializer(BlogPostListSerializer):
 
     def get_content_json(self, obj):
         lang = _get_lang(self)
-        return getattr(obj, f'content_json_{lang}') or obj.content_json_en or {}
+        return getattr(obj, f'content_json_{lang}') or {}

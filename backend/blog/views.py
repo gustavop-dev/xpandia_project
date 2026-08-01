@@ -3,6 +3,7 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 
+from .lang import resolve_lang, translated_posts
 from .models import BlogPost
 from .serializers import BlogPostDetailSerializer, BlogPostListSerializer
 
@@ -21,7 +22,8 @@ def _int_param(params, key, default, *, min_val=1, max_val=None):
 @api_view(['GET'])
 @permission_classes([AllowAny])
 def list_blog_posts(request):
-    qs = BlogPost.objects.filter(is_published=True)
+    lang = resolve_lang(request)
+    qs = translated_posts(BlogPost.objects.filter(is_published=True), lang)
 
     page = _int_param(request.query_params, 'page', 1)
     page_size = _int_param(request.query_params, 'page_size', 9, max_val=50)
@@ -45,8 +47,10 @@ def list_blog_posts(request):
 @api_view(['GET'])
 @permission_classes([AllowAny])
 def retrieve_blog_post(request, slug):
+    lang = resolve_lang(request)
+    qs = translated_posts(BlogPost.objects.filter(is_published=True), lang)
     try:
-        post = BlogPost.objects.get(slug=slug, is_published=True)
+        post = qs.get(slug=slug)
     except BlogPost.DoesNotExist:
         return Response({'detail': 'Not found.'}, status=status.HTTP_404_NOT_FOUND)
     serializer = BlogPostDetailSerializer(post, context={'request': request})
