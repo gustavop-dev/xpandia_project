@@ -21,15 +21,15 @@
     "proofPoints": [
       {
         "title": "Copy listo para producto",
-        "desc": "UI copy, onboarding, forms, errors, flows, and user-facing product content."
+        "desc": "Copy de UI, onboarding, formularios, errores, flujos y contenido de producto de cara al usuario."
       },
       {
         "title": "Contenido que conecta",
-        "desc": "Websites, campaigns, help centers, learning materials, and customer communication."
+        "desc": "Sitios web, campañas, centros de ayuda, materiales de aprendizaje y comunicación con clientes."
       },
       {
         "title": "Adaptación consciente de audiencia",
-        "desc": "LatAm, US Hispanic, Spain, neutral Spanish, or specific regional markets."
+        "desc": "LatAm, hispanos de EE. UU., España, español neutro o mercados regionales específicos."
       }
     ],
     "h1Suffix": "."
