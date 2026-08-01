@@ -9,7 +9,6 @@ import XpandiaHeader from '@/components/layout/XpandiaHeader'
 import XpandiaFooter from '@/components/layout/XpandiaFooter'
 import FABContact from '@/components/layout/FABContact'
 import SiteAnimations from '@/components/animations/SiteAnimations'
-import HtmlLangSync from '@/components/layout/HtmlLangSync'
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://xpandia.global'
 
@@ -53,16 +52,25 @@ export default async function LocaleLayout({
   setRequestLocale(locale)
   const messages = await getMessages()
 
-  // <html>/<body> live in the root layout (app/layout.tsx) so that a global
-  // not-found boundary can exist alongside this segment.
   return (
-    <NextIntlClientProvider messages={messages}>
-      <HtmlLangSync />
-      <XpandiaHeader />
-      {children}
-      <XpandiaFooter />
-      <FABContact />
-      <SiteAnimations />
-    </NextIntlClientProvider>
+    <html lang={locale}>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body suppressHydrationWarning>
+        <NextIntlClientProvider messages={messages}>
+          <XpandiaHeader />
+          {children}
+          <XpandiaFooter />
+          <FABContact />
+          <SiteAnimations />
+        </NextIntlClientProvider>
+      </body>
+    </html>
   )
 }
