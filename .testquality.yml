@@ -4,9 +4,9 @@
 # adopted, so behaviour is preserved exactly. Edit freely; the sync script
 # never overwrites this file.
 
-backend_app_name: base_feature_app
+backend_app_name: "*"
 py_test_file_glob: test_*.py
-frontend_unit_dir: ""
+frontend_unit_dir: "."
 frontend_e2e_dir: e2e
 max_test_lines: 50
 min_test_lines: 3
@@ -16,6 +16,7 @@ min_lines_for_docstring: 15
 max_timeout_ms: 100
 
 py_allowed_folders:
+  - "."
   - "commands"
   - "models"
   - "permissions"
