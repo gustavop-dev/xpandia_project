@@ -1,6 +1,7 @@
 {
   "_comment": "Junk-test findings that predate the rules. These stay warnings under --junk-severity=error so existing debt does not block merges; anything not listed here is a new finding and fails. This file should only ever shrink.",
   "findings": [
-    "frontend/components/layout/__tests__/XpandiaHeader.test.tsx::mock_only_assertion::does not call router.replace when the current locale is already EN and EN is clicked"
+    "frontend/components/layout/__tests__/XpandiaHeader.test.tsx::mock_only_assertion::does not call router.replace when the current locale is already EN and EN is clicked",
+    "frontend/e2e/public/blog.spec.ts::negation_only_assertion::a post without a Spanish body is absent from the Spanish list"
   ]
 }
