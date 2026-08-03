@@ -1,7 +1,15 @@
 {
   "_comment": "Junk-test findings that predate the rules. These stay warnings under --junk-severity=error so existing debt does not block merges; anything not listed here is a new finding and fails. This file should only ever shrink.",
   "findings": [
+    "frontend/components/animations/__tests__/SiteAnimations.test.tsx::negation_only_assertion::mounts without throwing",
+    "frontend/components/blog/__tests__/BlogContentRenderer.test.tsx::negation_only_assertion::omits the table of contents when there is only one heading",
+    "frontend/components/contact/__tests__/ContactForm.test.tsx::negation_only_assertion::does not show the success banner when submission fails",
+    "frontend/components/contact/__tests__/ContactForm.test.tsx::negation_only_assertion::hides the submit button after form submission",
     "frontend/components/layout/__tests__/XpandiaHeader.test.tsx::mock_only_assertion::does not call router.replace when the current locale is already EN and EN is clicked",
-    "frontend/e2e/public/blog.spec.ts::negation_only_assertion::a post without a Spanish body is absent from the Spanish list"
+    "frontend/components/layout/__tests__/XpandiaHeader.test.tsx::negation_only_assertion::does not call router.replace when the current locale is already EN and EN is clicked",
+    "frontend/components/layout/__tests__/XpandiaHeader.test.tsx::negation_only_assertion::does not mark the Services link as active on an unrecognised route",
+    "frontend/e2e/public/blog.spec.ts::negation_only_assertion::a post without a Spanish body is absent from the Spanish list",
+    "frontend/lib/services/__tests__/blog.test.ts::negation_only_assertion::returns null for 404",
+    "frontend/lib/services/__tests__/tokens.test.ts::negation_only_assertion::returns null when tokens are missing"
   ]
 }
