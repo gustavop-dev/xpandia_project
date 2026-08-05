@@ -1,3 +1,4 @@
+import logging
 from unittest.mock import patch
 
 from base_feature_app.services.email_service import (
@@ -10,6 +11,8 @@ from base_feature_app.services.email_service import (
     _build_notification_subject,
     _confirmation_subject,
 )
+
+SERVICE_LOGGER = 'base_feature_app.services.email_service'
 
 
 def test_send_password_reset_code_delegates_to_util():
@@ -138,6 +141,17 @@ def test_send_contact_notification_returns_false_on_smtp_error():
     assert result is False
 
 
+def test_send_contact_notification_logs_the_smtp_error(caplog):
+    with patch(
+        'base_feature_app.services.email_service.EmailMessage',
+    ) as MockEmail:
+        MockEmail.return_value.send.side_effect = Exception('SMTP error')
+        with caplog.at_level(logging.ERROR, logger=SERVICE_LOGGER):
+            EmailService.send_contact_notification(CONTACT_DATA)
+
+    assert 'SMTP error' in caplog.text
+
+
 # ---------------------------------------------------------------------------
 # Notification subject — request type (QUICK START intent)
 # ---------------------------------------------------------------------------
@@ -246,6 +260,28 @@ def test_send_contact_confirmation_returns_false_on_smtp_error():
         result = EmailService.send_contact_confirmation(CONTACT_DATA)
 
     assert result is False
+
+
+def test_send_contact_confirmation_logs_the_smtp_error(caplog):
+    with patch(
+        'base_feature_app.services.email_service.EmailMessage',
+    ) as MockEmail:
+        MockEmail.return_value.send.side_effect = Exception('SMTP error')
+        with caplog.at_level(logging.ERROR, logger=SERVICE_LOGGER):
+            EmailService.send_contact_confirmation(CONTACT_DATA)
+
+    assert 'SMTP error' in caplog.text
+
+
+def test_send_contact_confirmation_error_log_names_the_recipient(caplog):
+    with patch(
+        'base_feature_app.services.email_service.EmailMessage',
+    ) as MockEmail:
+        MockEmail.return_value.send.side_effect = Exception('SMTP error')
+        with caplog.at_level(logging.ERROR, logger=SERVICE_LOGGER):
+            EmailService.send_contact_confirmation(CONTACT_DATA)
+
+    assert CONTACT_DATA['email'] in caplog.text
 
 
 # ---------------------------------------------------------------------------

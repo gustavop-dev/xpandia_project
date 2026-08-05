@@ -24,7 +24,7 @@
       },
       "email": {
         "label": "Email corporativo",
-        "placeholder": "juana@empresa.com"
+        "placeholder": "juana@example.com"
       },
       "company": {
         "label": "Empresa",
@@ -88,7 +88,7 @@
       },
       "website": {
         "label": "Sitio web o URL del producto",
-        "placeholder": "ejemplo.com"
+        "placeholder": "example.com"
       },
       "phone": {
         "label": "Teléfono",

@@ -4,6 +4,8 @@ Email service for handling all outbound email notifications.
 Centralizes email logic following the service layer pattern.
 Delegates to utility functions that wrap Django's send_mail.
 """
+import logging
+
 from django.conf import settings
 from django.core.mail import EmailMessage
 
@@ -11,6 +13,8 @@ from base_feature_app.utils.auth_utils import (
     send_password_reset_code,
     send_verification_code,
 )
+
+logger = logging.getLogger(__name__)
 
 CONTACT_EMAIL = 'milena@xpandia.global'
 
@@ -200,6 +204,9 @@ class EmailService:
             ).send(fail_silently=False)
             return True
         except Exception:
+            logger.exception(
+                'contact notification email failed for %s', data.get('email')
+            )
             return False
 
     @staticmethod
@@ -208,11 +215,17 @@ class EmailService:
         Send a confirmation auto-reply to the person who submitted the
         contact form.
 
+        Known limitation: True only means the SMTP relay accepted the message.
+        An address that is syntactically valid but undeliverable (a domain with
+        no MX, for example) is rejected asynchronously — Gmail retries for ~24h
+        and then bounces to the authenticated sender's mailbox, which is a human
+        inbox the application never reads. See ERROR-007.
+
         Args:
             data: Validated form data dict (keys: name, email).
 
         Returns:
-            bool: True if sent successfully, False otherwise.
+            bool: True if the relay accepted the message, False otherwise.
         """
         try:
             EmailMessage(
@@ -224,4 +237,7 @@ class EmailService:
             ).send(fail_silently=False)
             return True
         except Exception:
+            logger.exception(
+                'contact confirmation email failed for %s', data.get('email')
+            )
             return False

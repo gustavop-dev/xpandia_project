@@ -8,6 +8,8 @@ base_feature_project.settings (base). Use this file explicitly
 when you want development-specific overrides (DEBUG=True, console email).
 """
 
+from decouple import config
+
 from .settings import *  # noqa: F401,F403
 
 DEBUG = True
@@ -24,7 +26,10 @@ DATABASES = {
 # Use real SMTP when credentials are configured (e.g. to verify the contact
 # form locally); otherwise fall back to the console backend so a dev without
 # email credentials still works and never sends real mail by accident.
-EMAIL_BACKEND = (
+# An explicit DJANGO_EMAIL_BACKEND always wins, which is how the E2E suite
+# opts out of real delivery on a machine that does have credentials — see
+# the webServer env in frontend/playwright.config.ts.
+EMAIL_BACKEND = config('DJANGO_EMAIL_BACKEND', default='') or (
     'django.core.mail.backends.smtp.EmailBackend'
     if EMAIL_HOST_USER and EMAIL_HOST_PASSWORD
     else 'django.core.mail.backends.console.EmailBackend'

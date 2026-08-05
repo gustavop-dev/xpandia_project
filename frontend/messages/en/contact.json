@@ -24,7 +24,7 @@
       },
       "email": {
         "label": "Corporate email",
-        "placeholder": "jane@company.com"
+        "placeholder": "jane@example.com"
       },
       "company": {
         "label": "Company",

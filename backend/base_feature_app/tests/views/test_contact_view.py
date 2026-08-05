@@ -1,3 +1,4 @@
+import logging
 from unittest.mock import patch
 
 import pytest
@@ -71,6 +72,26 @@ def test_contact_form_returns_201_even_when_confirmation_fails(mock_notify, mock
     response = api_client.post(reverse(URL), VALID_PAYLOAD, format='json')
 
     assert response.status_code == status.HTTP_201_CREATED
+
+
+@pytest.mark.django_db
+@patch('base_feature_app.views.contact.EmailService.send_contact_confirmation', return_value=False)
+@patch('base_feature_app.views.contact.EmailService.send_contact_notification', return_value=True)
+def test_contact_form_logs_warning_when_confirmation_fails(mock_notify, mock_confirm, api_client, caplog):
+    with caplog.at_level(logging.WARNING, logger='base_feature_app.views.contact'):
+        api_client.post(reverse(URL), VALID_PAYLOAD, format='json')
+
+    assert 'contact_form confirmation email failed' in caplog.text
+
+
+@pytest.mark.django_db
+@patch('base_feature_app.views.contact.EmailService.send_contact_confirmation', return_value=False)
+@patch('base_feature_app.views.contact.EmailService.send_contact_notification', return_value=True)
+def test_contact_form_confirmation_failure_log_names_the_submitter(mock_notify, mock_confirm, api_client, caplog):
+    with caplog.at_level(logging.WARNING, logger='base_feature_app.views.contact'):
+        api_client.post(reverse(URL), VALID_PAYLOAD, format='json')
+
+    assert VALID_PAYLOAD['email'] in caplog.text
 
 
 @pytest.mark.django_db

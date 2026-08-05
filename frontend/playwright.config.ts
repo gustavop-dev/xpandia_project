@@ -25,6 +25,12 @@ export default defineConfig({
       timeout: 180_000, // 3 minutes for server startup
       stdout: 'ignore',
       stderr: 'ignore',
+      env: {
+        // The contact happy-path spec posts to the real backend, and settings_dev
+        // picks SMTP whenever backend/.env has credentials. Without this the suite
+        // sends real mail to the fixture address. Keep it in memory instead.
+        DJANGO_EMAIL_BACKEND: 'django.core.mail.backends.locmem.EmailBackend',
+      },
     },
     {
       command: 'npm run dev -- --port 3004',
