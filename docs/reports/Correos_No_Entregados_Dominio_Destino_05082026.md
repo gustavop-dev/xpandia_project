@@ -66,6 +66,8 @@
 
 **Qué se hizo:** los ejemplos del formulario ahora usan `example.com`, un dominio **reservado internacionalmente para documentación y ejemplos**. Por norma, no le pertenece a nadie y no puede recibir correo, así que no existe forma de que un ejemplo termine convertido en un envío real. El cambio se aplicó en la versión en inglés y en la versión en español del formulario, y también en las pruebas automáticas del sistema.
 
+**Una precaución adicional que detectamos de paso:** las pruebas automáticas que verifican el formulario llenaban ese mismo ejemplo y llegaban a enviar un correo de verdad usando la cuenta de Xpandia. Es decir, cada vez que se corrían esas pruebas se despachaba un mensaje real hacia una dirección ajena. Quedó corregido: ahora las pruebas simulan el envío internamente y **no sale ningún correo de la cuenta de Xpandia**. Esto protege además la reputación de envío del dominio, que se deteriora cuando se acumulan mensajes rebotados.
+
 **Dónde se ve / URL:** https://xpandia.global/es/contact (y https://xpandia.global/contact en inglés) — sección del formulario, campo **Email corporativo**.
 
 **Antes de probar necesitas:**
