@@ -28,6 +28,10 @@ def contact_form(request):
             status=status.HTTP_503_SERVICE_UNAVAILABLE,
         )
 
-    EmailService.send_contact_confirmation(data)
+    # The lead is already captured by the notification above, so a failed
+    # auto-reply must not turn a successful submission into an error. Log it
+    # and still return 201.
+    if not EmailService.send_contact_confirmation(data):
+        logger.warning('contact_form confirmation email failed for %s', data.get('email'))
 
     return Response({'detail': 'Request received.'}, status=status.HTTP_201_CREATED)
