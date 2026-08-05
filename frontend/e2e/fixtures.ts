@@ -53,7 +53,8 @@ export async function fillContactForm(
   // Labels are not linked to inputs via for/id — use placeholder instead
   await page.getByPlaceholder('Jane Doe').fill('Jane Doe')
   await page.getByPlaceholder(/VP Product/).fill('VP Product')
-  await page.getByPlaceholder('jane@company.com').fill('jane@company.com')
+  // example.com is reserved (RFC 2606) — never a real mail destination
+  await page.getByPlaceholder('jane@example.com').fill('jane@example.com')
   await page.getByPlaceholder('Company Inc.').fill('Acme Inc.')
   await page.getByPlaceholder(/Example: We launched/).fill(message)
 }
