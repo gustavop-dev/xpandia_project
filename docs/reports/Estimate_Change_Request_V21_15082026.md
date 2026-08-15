@@ -1,19 +1,25 @@
 # Estimate: Xpandia Website Change Request v21 — 15082026
 
-> **ProjectApp · Calculadora de Requerimientos** — estimación por funcionalidad para implementación web, precios en COP más IVA.
+> **ProjectApp · Calculadora de Requerimientos** — cotización por funcionalidad para implementación web, precios en COP más IVA.
 > **Cliente:** Xpandia (xpandia.global) · **Vigencia:** precios válidos por 30 días desde la fecha del título.
 
 ## 1. Resumen
 
-Xpandia solicitó 30 cambios numerados (W-01 a W-30) sobre su sitio ya publicado. De ellos, **27 son cambios de alcance cotizables** y **3 son defectos de nuestra implementación que asumimos sin costo**.
+Xpandia solicitó 30 cambios numerados (W-01 a W-30) sobre su sitio ya publicado. De ellos, **27 son requerimientos nuevos, con costo**, y **3 son defectos de nuestra implementación que asumimos sin costo**.
 
-El trabajo se organiza en cuatro etapas y está dimensionado para ejecutarse en **4 semanas con un equipo de 4 personas**. Todos los precios de este documento **ya incluyen un descuento del 20%** sobre nuestra tarifa de lista.
+| | |
+|---|---|
+| **Valor total** | **$4.400.000 + IVA** |
+| Esfuerzo | 367 horas |
+| Plazo | 4 semanas desde el anticipo |
+| Forma de pago | 50% al inicio y 50% contra entrega de cada etapa (sección 6) |
+| Descuento aplicado | 20%, ya incorporado en cada línea |
 
-La razón por la que este paquete cuesta menos de lo que su alcance sugiere está en la sección 2: el sitio lo construimos nosotros y buena parte de la maquinaria que estos cambios necesitan ya está hecha, probada y funcionando. Lo que se cobra es el trabajo que realmente queda por hacer.
+El trabajo se organiza en cuatro etapas. La razón por la que este paquete cuesta menos de lo que su alcance sugiere está en la sección 2: el sitio lo construimos nosotros y buena parte de la maquinaria que estos cambios necesitan ya está hecha, probada y funcionando. Lo que se cobra es el trabajo que realmente queda por hacer.
 
 ## 2. Qué ya existe y se reutiliza
 
-Antes de estimar revisamos el proyecto pieza por pieza para separar lo que hay que construir de lo que ya está construido. Este es el resultado, y es la base del precio.
+Antes de cotizar revisamos el proyecto pieza por pieza para separar lo que hay que construir de lo que ya está construido. Este es el resultado, y es la base del precio.
 
 ### Capacidades ya construidas que este paquete aprovecha
 
@@ -44,7 +50,7 @@ Somos igual de explícitos con lo contrario, porque es lo que explica por qué a
 
 ### Cómo se refleja en el precio
 
-Cada línea se estimó según cuánto de ella ya está resuelto. Las líneas que sólo requieren cargar contenido o editar textos bajaron alrededor de la mitad frente a construirlas desde cero; las reescrituras de página bajaron cerca de un 40%; los barridos de enlaces y el control de calidad final casi no bajan, porque son trabajo manual que ninguna infraestructura evita.
+Cada línea se cotizó según cuánto de ella ya está resuelto. Las líneas que sólo requieren cargar contenido o editar textos quedaron cerca de la mitad de lo que costaría construirlas desde cero; las reescrituras de página bajaron alrededor de un 40%; los barridos de enlaces y el control de calidad final casi no bajan, porque son trabajo manual que ninguna infraestructura evita.
 
 ## 3. Descomposición por funcionalidad
 
@@ -52,22 +58,22 @@ Cada línea se estimó según cuánto de ella ya está resuelto. Las líneas que
 
 | Funcionalidad | Nivel | Señal aplicada (cita literal) | Horas | Precio COP |
 |---|---|---|---|---|
-| W-01 + W-20 · Home: reestructura de 8 a 6 bloques con copy nuevo bilingüe y reducción de 30–40% del texto | M | "Landing / página de marketing multi-sección con formulario — página nueva con varias secciones y captura de contacto, sin CMS" | 19–48 h | $230K–$580K |
-| W-02 · Calendario: evento definitivo, organizador y notificaciones, más botones y rutas rápidas en cuatro vistas | M | "Integrar un componente de terceros en el FE — mapa embebido, editor WYSIWYG, date-range picker, tabla avanzada, reCAPTCHA, recorte de imagen, widget de chat" | 14–36 h | $170K–$430K |
-| W-21 · Cobertura de 20 locales: bloque compacto y expandible en Home, listado completo en páginas internas | S | "Tabs / acordeón / secciones colapsables — reorganizar una vista existente" | 9–26 h | $110K–$310K |
-| W-04 + W-05 · Muestra ilustrativa: cambio a 300 outputs y etiquetado en dos vistas | S | "Cambios de estilo (UI) o de plantilla / ajustes menores a tarjetas, tablas, botones o formularios" | 4–12 h | $50K–$140K |
-| W-08 · Carrusel de IA: reemplazo de los claims de dominio y garantía | XS | "Cambio de copy — texto, etiqueta, título, placeholder, mensaje de validación o typo (sin lógica)" | 2–4 h | $20K–$50K |
-| W-14 · Credenciales del fundador: 15+ años y retiro de la mención a Fortune 500 | XS | "Cambio de copy — texto, etiqueta, título, placeholder, mensaje de validación o typo (sin lógica)" | 2–4 h | $20K–$50K |
-| **Subtotal Etapa 0** | | | **50–130 h** | **$600K–$1,6M** |
+| W-01 + W-20 · Home: reestructura de 8 a 6 bloques con copy nuevo bilingüe y reducción de 30–40% del texto | M | "Landing / página de marketing multi-sección con formulario — página nueva con varias secciones y captura de contacto, sin CMS" | 28 h | $335.000 |
+| W-02 · Calendario: evento definitivo, organizador y notificaciones, más botones y rutas rápidas en cuatro vistas | M | "Integrar un componente de terceros en el FE — mapa embebido, editor WYSIWYG, date-range picker, tabla avanzada, reCAPTCHA, recorte de imagen, widget de chat" | 21 h | $250.000 |
+| W-21 · Cobertura de 20 locales: bloque compacto y expandible en Home, listado completo en páginas internas | S | "Tabs / acordeón / secciones colapsables — reorganizar una vista existente" | 15 h | $175.000 |
+| W-04 + W-05 · Muestra ilustrativa: cambio a 300 outputs y etiquetado en dos vistas | S | "Cambios de estilo (UI) o de plantilla / ajustes menores a tarjetas, tablas, botones o formularios" | 7 h | $80.000 |
+| W-08 · Carrusel de IA: reemplazo de los claims de dominio y garantía | XS | "Cambio de copy — texto, etiqueta, título, placeholder, mensaje de validación o typo (sin lógica)" | 3 h | $30.000 |
+| W-14 · Credenciales del fundador: 15+ años y retiro de la mención a Fortune 500 | XS | "Cambio de copy — texto, etiqueta, título, placeholder, mensaje de validación o typo (sin lógica)" | 3 h | $30.000 |
+| **Subtotal Etapa 0** | | | **77 h** | **$900.000** |
 
 ### Etapa 1 — Correcciones y consistencia
 
 | Funcionalidad | Nivel | Señal aplicada (cita literal) | Horas | Precio COP |
 |---|---|---|---|---|
-| W-07 · Correcciones editoriales del sitio, pendientes de la lista del cliente | S ⚠️ | "Cambio de copy — texto, etiqueta, título, placeholder, mensaje de validación o typo (sin lógica)" | 6–16 h | $70K–$190K |
-| W-03 · Formulario de contacto: reducción de 12 a 7 campos, en interfaz, servidor y correos | S | "Retiro controlado de un comportamiento ya entregado — eliminar un endpoint/acción y su UI, reescribiendo las pruebas que lo cubrían" | 5–13 h | $60K–$160K |
-| W-29 · Retiro del anclaje de USD 500 y unificación de los precios publicados | S | "Retiro controlado de un comportamiento ya entregado — eliminar un endpoint/acción y su UI, reescribiendo las pruebas que lo cubrían" | 4–12 h | $50K–$140K |
-| **Subtotal Etapa 1** | | | **15–41 h** | **$180K–$490K** |
+| W-07 · Correcciones editoriales del sitio, pendientes de la lista del cliente | S ⚠️ | "Cambio de copy — texto, etiqueta, título, placeholder, mensaje de validación o typo (sin lógica)" | 9 h | $110.000 |
+| W-03 · Formulario de contacto: reducción de 12 a 7 campos, en interfaz, servidor y correos | S | "Retiro controlado de un comportamiento ya entregado — eliminar un endpoint/acción y su UI, reescribiendo las pruebas que lo cubrían" | 8 h | $90.000 |
+| W-29 · Retiro del anclaje de USD 500 y unificación de los precios publicados | S | "Retiro controlado de un comportamiento ya entregado — eliminar un endpoint/acción y su UI, reescribiendo las pruebas que lo cubrían" | 7 h | $80.000 |
+| **Subtotal Etapa 1** | | | **24 h** | **$280.000** |
 
 Esta etapa incluye además los tres puntos que corregimos sin costo, detallados más abajo.
 
@@ -75,29 +81,29 @@ Esta etapa incluye además los tres puntos que corregimos sin costo, detallados 
 
 | Funcionalidad | Nivel | Señal aplicada (cita literal) | Horas | Precio COP |
 |---|---|---|---|---|
-| W-28 · Assets visuales nuevos: antes y después, Decision Context Canvas y mapa de los 20 locales | M ⚠️ | Sin señal — por analogía con el Quality Scorecard ya construido (bloque visual ilustrativo estático a medida) | 23–58 h | $280K–$700K |
-| W-10 + W-11 + W-12 + W-24 · Language Assurance: alcance del sprint, sin acceso a sistemas, mejor fit y flujo AISQAAS de cinco pasos | M | "Landing / página de marketing multi-sección con formulario — página nueva con varias secciones y captura de contacto, sin CMS" | 20–50 h | $240K–$600K |
-| W-25 · Experience Repair: nombre canónico, nueva dirección web con redirección y bloque de acceptance review | M | "Landing / página de marketing multi-sección con formulario — página nueva con varias secciones y captura de contacto, sin CMS" | 19–48 h | $230K–$580K |
-| W-26 · Applied Cultural Intelligence: reenfoque desde la decisión de negocio y marco de hechos, hipótesis y desconocidos | M | "Landing / página de marketing multi-sección con formulario — página nueva con varias secciones y captura de contacto, sin CMS" | 18–46 h | $220K–$550K |
-| W-13 + W-22 · Servicios: reestructura como selector de ruta con jerarquía del sprint | M | "Landing / página de marketing multi-sección con formulario — página nueva con varias secciones y captura de contacto, sin CMS" | 17–42 h | $200K–$500K |
-| W-23 · Validación local como hilo conductor, con función distinta por servicio, en seis vistas | S | "Cambios de estilo (UI) o de plantilla / ajustes menores a tarjetas, tablas, botones o formularios" | 8–22 h | $100K–$260K |
-| **Subtotal Etapa 2** | | | **105–266 h** | **$1,3M–$3,2M** |
+| W-28 · Assets visuales nuevos: antes y después, Decision Context Canvas y mapa de los 20 locales | M ⚠️ | Sin señal — por analogía con el Quality Scorecard ya construido (bloque visual ilustrativo estático a medida) | 33 h | $405.000 |
+| W-10 + W-11 + W-12 + W-24 · Language Assurance: alcance del sprint, sin acceso a sistemas, mejor fit y flujo AISQAAS de cinco pasos | M | "Landing / página de marketing multi-sección con formulario — página nueva con varias secciones y captura de contacto, sin CMS" | 28 h | $345.000 |
+| W-25 · Experience Repair: nombre canónico, nueva dirección web con redirección y bloque de acceptance review | M | "Landing / página de marketing multi-sección con formulario — página nueva con varias secciones y captura de contacto, sin CMS" | 28 h | $335.000 |
+| W-26 · Applied Cultural Intelligence: reenfoque desde la decisión de negocio y marco de hechos, hipótesis y desconocidos | M | "Landing / página de marketing multi-sección con formulario — página nueva con varias secciones y captura de contacto, sin CMS" | 27 h | $320.000 |
+| W-13 + W-22 · Servicios: reestructura como selector de ruta con jerarquía del sprint | M | "Landing / página de marketing multi-sección con formulario — página nueva con varias secciones y captura de contacto, sin CMS" | 24 h | $290.000 |
+| W-23 · Validación local como hilo conductor, con función distinta por servicio, en seis vistas | S | "Cambios de estilo (UI) o de plantilla / ajustes menores a tarjetas, tablas, botones o formularios" | 13 h | $150.000 |
+| **Subtotal Etapa 2** | | | **153 h** | **$1.845.000** |
 
 ### Etapa 3 — Institucional y cierre
 
 | Funcionalidad | Nivel | Señal aplicada (cita literal) | Horas | Precio COP |
 |---|---|---|---|---|
-| W-30 · Control de calidad final: escritorio y móvil, ambos idiomas, enlaces, formulario, calendario y metadatos | M | "Tarea técnica no funcional pedida como requerimiento — actualizar framework, migrar hosting, SSL/dominio, optimización puntual: se clasifica y cotiza aparte del roadmap funcional" | 26–66 h | $310K–$790K |
-| W-19 · Legales: privacidad, aviso legal y aviso de gestión de cookies | M | "Términos y condiciones con aceptación versionada / consentimientos — registrar quién aceptó qué versión y cuándo (Habeas Data básico)" | 18–45 h | $220K–$540K |
-| W-27 · Nosotros: simplificación, red de reviewers y modelo operativo | M | "Landing / página de marketing multi-sección con formulario — página nueva con varias secciones y captura de contacto, sin CMS" | 17–42 h | $200K–$500K |
-| W-18 · Auditoría de todos los botones, rutas rápidas y anclas del sitio | S | "Cambios de estilo (UI) o de plantilla / ajustes menores a tarjetas, tablas, botones o formularios" | 9–27 h | $110K–$320K |
-| W-16 · Blog: publicación de la serie inicial de cuatro artículos en ambos idiomas | S ⚠️ | "Cambio de copy — texto, etiqueta, título, placeholder, mensaje de validación o typo (sin lógica). Incluye actualizar el contenido de una página estática existente" | 4–12 h | $50K–$140K |
-| W-17 · Pie de página: LinkedIn, PBX, ciudad y correo corporativo | S | "Cambios de estilo (UI) o de plantilla / ajustes menores a tarjetas, tablas, botones o formularios" | 4–11 h | $50K–$130K |
-| **Subtotal Etapa 3** | | | **78–203 h** | **$940K–$2,4M** |
+| W-30 · Control de calidad final: escritorio y móvil, ambos idiomas, enlaces, formulario, calendario y metadatos | M | "Tarea técnica no funcional pedida como requerimiento — actualizar framework, migrar hosting, SSL/dominio, optimización puntual: se clasifica y cotiza aparte del roadmap funcional" | 35 h | $440.000 |
+| W-19 · Legales: privacidad, aviso legal y aviso de gestión de cookies | M | "Términos y condiciones con aceptación versionada / consentimientos — registrar quién aceptó qué versión y cuándo (Habeas Data básico)" | 26 h | $315.000 |
+| W-27 · Nosotros: simplificación, red de reviewers y modelo operativo | M | "Landing / página de marketing multi-sección con formulario — página nueva con varias secciones y captura de contacto, sin CMS" | 24 h | $290.000 |
+| W-18 · Auditoría de todos los botones, rutas rápidas y anclas del sitio | S | "Cambios de estilo (UI) o de plantilla / ajustes menores a tarjetas, tablas, botones o formularios" | 15 h | $175.000 |
+| W-16 · Blog: publicación de la serie inicial de cuatro artículos en ambos idiomas | S ⚠️ | "Cambio de copy — texto, etiqueta, título, placeholder, mensaje de validación o typo (sin lógica). Incluye actualizar el contenido de una página estática existente" | 7 h | $80.000 |
+| W-17 · Pie de página: LinkedIn, PBX, ciudad y correo corporativo | S | "Cambios de estilo (UI) o de plantilla / ajustes menores a tarjetas, tablas, botones o formularios" | 6 h | $75.000 |
+| **Subtotal Etapa 3** | | | **113 h** | **$1.375.000** |
 
 ### Lo que corregimos sin costo
 
-Estos tres puntos son defectos de nuestra implementación, no cambios de alcance. Se ejecutan dentro de la Etapa 1 y no suman al total.
+Estos tres puntos son defectos de nuestra implementación, no requerimientos nuevos. Se ejecutan dentro de la Etapa 1 y no suman al total.
 
 | Solicitud | Qué es | Nivel | Valor |
 |---|---|---|---|
@@ -130,31 +136,75 @@ Dos tipos: las internas fijan el orden de ejecución; las del cliente bloquean e
 | Lista exacta de correcciones editoriales | Cliente | W-07 | Xpandia la entrega. El documento las menciona pero no las enumera |
 | Textos legales aprobados de privacidad, aviso legal y cookies | Cliente | W-19 | Xpandia los entrega. El propio documento indica que no debemos redactarlos |
 | Enlaces de LinkedIn de Néstor Solano, Sandra Milena González y la página de empresa | Cliente | W-17 | Xpandia entrega las direcciones |
-| Los cuatro artículos del blog en ambos idiomas, con sus imágenes de portada | Cliente | W-16 | Xpandia los entrega. Si no habrá al menos tres, se retira el blog del menú y la línea baja a $20K–$50K |
+| Los cuatro artículos del blog en ambos idiomas, con sus imágenes de portada | Cliente | W-16 | Xpandia los entrega. Si no habrá al menos tres, se retira el blog del menú y la línea baja a $30.000 |
 | Acceso a la cuenta de Cal.com, o configuración desde su lado | Cliente | W-02 | Se requiere para dejar el organizador como Xpandia y las notificaciones en hello@xpandia.global |
-| Definición de quién diseña los tres assets visuales | Cliente | W-28 | Cotizado asumiendo que los diseñamos nosotros. Si Xpandia entrega el diseño, esa línea baja a $200K–$500K |
+| Definición de quién diseña los tres assets visuales | Cliente | W-28 | Cotizado asumiendo que los diseñamos nosotros. Si Xpandia entrega el diseño, esa línea baja a $285.000 |
 | Cuál de los dos precios publicados de ACI es el válido | Cliente | Corrección sin costo | Es una definición comercial, no técnica |
 | Decisión sobre cambiar la dirección web de Experience Repair | Cliente | W-25 | Se puede cambiar dejando redirección automática desde la actual, para no perder posicionamiento |
 
 ## 5. Total unificado
 
-| Etapa | Horas | Precio COP |
+| Etapa | Horas | Valor COP |
 |---|---|---|
-| Etapa 0 — Inmediato | 50–130 h | $600K–$1,6M |
-| Etapa 1 — Correcciones | 15–41 h | $180K–$490K |
-| Etapa 2 — Páginas de servicio | 105–266 h | $1,3M–$3,2M |
-| Etapa 3 — Institucional y cierre | 78–203 h | $940K–$2,4M |
-| **TOTAL** | **248–640 h** | **$3,0M–$7,7M** |
+| Etapa 0 — Inmediato | 77 h | $900.000 |
+| Etapa 1 — Correcciones | 24 h | $280.000 |
+| Etapa 2 — Páginas de servicio | 153 h | $1.845.000 |
+| Etapa 3 — Institucional y cierre | 113 h | $1.375.000 |
+| **TOTAL** | **367 h** | **$4.400.000** |
 
-- **Precio total:** $3,0M–$7,7M + IVA
-- **Semáforo:** ✅ Sweet spot (por debajo de $12M)
-- **Equipo y plazo:** 4 personas durante 4 semanas. El techo de 640 horas es exactamente esa capacidad
-- **Descuento aplicado:** 20%, ya incorporado en cada línea de este documento. Sobre tarifa de lista el mismo alcance sería $3,7M–$9,6M, así que el descuento representa entre $700K y $1,9M
+- **Valor total del paquete: $4.400.000 + IVA**
+- **Plazo:** 4 semanas desde el anticipo
+- **Descuento aplicado:** 20%, ya incorporado en cada línea. Sobre nuestra tarifa de lista el mismo alcance sería $5.505.000, de modo que el descuento representa $1.105.000
 
 > [!TIP]
-> El paquete completo cabe en una sola propuesta sin fricción comercial. Las cuatro etapas son la secuencia de entrega, no una fragmentación para bajar el ticket: pueden contratarse juntas y ejecutarse en las 4 semanas.
+> Las cuatro etapas son la secuencia de entrega, no una fragmentación comercial: se contratan juntas y se ejecutan dentro de las mismas 4 semanas. El corte por etapas existe para que Xpandia vea resultados publicados antes de que termine el proyecto, y para vincular cada pago a algo ya entregado.
 
-## 6. Observaciones
+## 6. Forma de pago
+
+El 50% se paga al iniciar y el 50% restante se libera contra la entrega de cada etapa, en proporción a su valor. Ningún pago intermedio se cobra por adelantado: cada uno corresponde a trabajo ya publicado y verificable.
+
+| Momento | Concepto | Valor COP |
+|---|---|---|
+| Al iniciar | Anticipo del 50% del proyecto | $2.200.000 |
+| Entrega de la Etapa 0 | 50% restante de la etapa | $450.000 |
+| Entrega de la Etapa 1 | 50% restante de la etapa | $140.000 |
+| Entrega de la Etapa 2 | 50% restante de la etapa | $922.500 |
+| Entrega de la Etapa 3 | 50% restante de la etapa | $687.500 |
+| **Total** | | **$4.400.000** |
+
+Todos los valores son antes de IVA. El anticipo es lo que da inicio al cronograma de 4 semanas.
+
+## 7. Efecto sobre el hosting
+
+Este punto no es un cobro adicional del desarrollo: es la consecuencia natural de que el sitio crezca. Lo explicamos aquí para que no aparezca como sorpresa al momento de la entrega.
+
+**Cómo funciona hoy.** El servicio anual de hosting, mantenimiento y soporte de Xpandia se calcula como un **11% del valor del desarrollo alojado**. El desarrollo original fue de $2.070.000, de modo que el servicio anual quedó en **$228.000 al año** ($19.000 al mes). Ese año está pagado y vigente **hasta el 1 de julio de 2027**.
+
+**Qué cambia con este paquete.** Al entregar estos requerimientos, el sitio alojado deja de ser el original y pasa a incluir todo lo nuevo. El valor del desarrollo alojado sube y el servicio anual se recalcula sobre ese valor:
+
+| Concepto | Valor |
+|---|---|
+| Desarrollo original | $2.070.000 |
+| Requerimientos de este paquete | $4.400.000 |
+| **Nuevo valor del desarrollo alojado** | **$6.470.000** |
+| Servicio anual actual (11%) | $228.000 |
+| **Nuevo servicio anual (11%)** | **$711.700** ($59.300 al mes) |
+| Incremento anual | $483.700 ($40.300 al mes) |
+
+**Qué se cobra y cuándo.** El año que Xpandia ya pagó **no se recobra**. Al momento de la entrega sólo se cobra la **diferencia proporcional por los meses que resten** hasta el 1 de julio de 2027, a razón de $40.300 por mes restante:
+
+| Si la entrega ocurre en | Meses restantes del año en curso | Diferencia a pagar |
+|---|---|---|
+| Octubre de 2026 | 9 | $363.000 |
+| Noviembre de 2026 | 8 | $322.700 |
+| Diciembre de 2026 | 7 | $282.300 |
+| Enero de 2027 | 6 | $242.000 |
+
+A partir del 1 de julio de 2027, la renovación anual se factura completa sobre el nuevo valor: **$711.700 al año**.
+
+**Por qué es así.** El servicio cubre la infraestructura, el monitoreo, los respaldos, el certificado de seguridad, las actualizaciones y el soporte de todo lo que está publicado. Un sitio con seis páginas reescritas, páginas legales nuevas, más contenido y más recorridos que sostener requiere más de ese servicio que el sitio original, y por eso se calcula sobre el valor total de lo alojado y no sobre una tarifa plana.
+
+## 8. Observaciones
 
 **Qué conviene separar**
 
@@ -170,13 +220,13 @@ Dos tipos: las internas fijan el orden de ejecución; las del cliente bloquean e
 
 **Una oportunidad técnica que no cotizamos.** Las tarjetas de servicio están escritas de forma idéntica en cuatro archivos distintos, y los bloques de página se repiten sin ser piezas reutilizables. Extraer cinco componentes comunes reduciría el costo de todo cambio futuro de contenido. No lo incluimos en este paquete porque no es lo que Xpandia pidió, pero conviene tenerlo presente como inversión separada.
 
-## 7. Supuestos y exclusiones
+## 9. Supuestos y exclusiones
 
-**A. W-07 — correcciones editoriales.** Se asume una lista acotada de hasta 20 correcciones de texto. Si supera ese volumen o incluye reescrituras de bloques completos, la línea sube de nivel y su precio se duplica aproximadamente.
+**A. W-07 — correcciones editoriales.** Se asume una lista acotada de hasta 20 correcciones de texto. Si supera ese volumen o incluye reescrituras de bloques completos, la línea sube de nivel y su valor se duplica aproximadamente.
 
-**B. W-28 — assets visuales.** Se cotiza asumiendo que el diseño lo producimos nosotros. Si Xpandia lo entrega y sólo maquetamos, la línea baja a $200K–$500K y el total a $2,9M–$7,5M.
+**B. W-28 — assets visuales.** Se cotiza asumiendo que el diseño lo producimos nosotros. Si Xpandia lo entrega y sólo maquetamos, la línea baja a $285.000 y el total del paquete a $4.280.000.
 
-**C. W-16 — blog.** Se asume que Xpandia entrega los cuatro artículos redactados en ambos idiomas y nosotros los cargamos y publicamos. La redacción no está incluida. Si se decide retirar el blog del menú, la línea baja a $20K–$50K.
+**C. W-16 — blog.** Se asume que Xpandia entrega los cuatro artículos redactados en ambos idiomas y nosotros los cargamos y publicamos. La redacción no está incluida. Si se decide retirar el blog del menú, la línea baja a $30.000.
 
 **D. La base ya existe.** Todo se cotiza como extensión del sitio en producción, no como desarrollo desde cero. Es la razón por la que ninguna línea llega al nivel de feature completo pese a que varias reescriben páginas enteras, y la razón de fondo del precio de este paquete. El detalle está en la sección 2.
 
@@ -186,26 +236,25 @@ Dos tipos: las internas fijan el orden de ejecución; las del cliente bloquean e
 
 **G. Precios en COP más IVA** (IVA vigente 19%), con el descuento del 20% ya aplicado en cada línea. **Válidos por 30 días** desde la fecha del título; pasado ese plazo se re-emite el documento.
 
-**H. El plazo de 4 semanas supone disponibilidad simultánea de las 4 personas** y que los insumos de la sección 4 lleguen antes de que arranque la etapa que los necesita. Un insumo que llegue tarde desplaza su línea, no todo el cronograma.
+**H. El plazo de 4 semanas cuenta desde el anticipo** y supone que los insumos de la sección 4 lleguen antes de que arranque la etapa que los necesita. Un insumo que llegue tarde desplaza su línea, no todo el cronograma.
 
-**I. No incluye:** infraestructura ni hosting recurrente, licencias de terceros, redacción de contenido (artículos del blog, textos legales), soporte continuo, capacitación extensa ni migración de datos. Sí incluye análisis, desarrollo, pruebas, despliegue y garantía corta de estabilización.
+**I. El servicio de hosting de la sección 7 se factura aparte** del desarrollo y no está incluido en los $4.400.000.
 
-**J. Reemplaza la primera versión emitida hoy.** Cambios respecto de ella:
+**J. No incluye:** infraestructura adicional, licencias de terceros, redacción de contenido (artículos del blog, textos legales), soporte por fuera del servicio anual, capacitación extensa ni migración de datos. Sí incluye análisis, desarrollo, pruebas, despliegue y garantía corta de estabilización.
+
+**K. Versión.** Este documento reemplaza las versiones anteriores emitidas el mismo día. Cambios respecto de la última:
 
 | Cambio | Detalle |
 |---|---|
-| Horas ajustadas | De 398–1.032 h a 248–640 h, con la reducción sustentada en el análisis de reutilización de la sección 2 |
-| Descuento | 20% incorporado en cada línea |
-| Precio | De $6,0M–$15,6M a $3,0M–$7,7M, pasando de zona de fricción a sweet spot |
-| Secciones retiradas | Escenarios de precio a futuro y bolsa de horas |
-| Secciones nuevas | Qué ya existe y se reutiliza · Dependencias |
-| Sin cambios | Las 27 líneas cobrables, sus niveles, sus señales y los 3 puntos sin costo |
+| Precio | De rangos a valor cerrado: $4.400.000 + IVA |
+| Secciones nuevas | Forma de pago · Efecto sobre el hosting |
+| Sin cambios | Las 27 líneas cobrables, sus niveles, sus señales, el análisis de reutilización, las dependencias y los 3 puntos sin costo |
 
 > [!IMPORTANT]
-> No cerrar precio fijo de las líneas W-07, W-16, W-17, W-19 y W-28 hasta recibir de Xpandia los insumos de la sección 4. Las cinco están cotizadas bajo supuesto declarado y son las únicas cuyo precio puede moverse al aclararse.
+> Las líneas W-07, W-16, W-17, W-19 y W-28 están cotizadas bajo los supuestos declarados arriba, porque dependen de insumos que Xpandia todavía no ha entregado (sección 4). Son las únicas cuyo valor puede moverse al aclararse; el resto del paquete es precio cerrado.
 
 ---
 
-**Requerimiento original:** «Crea un documento donde, por cada uno de los nuevos requerimientos que se pretende que implementemos, se muestre en tabla el resultado de la calculadora: nombre del requerimiento, nivel de esfuerzo y precio, ordenados, con los totales al final de cada etapa y un solo total unificado; ajusta las horas a 4 semanas de trabajo, aplica un descuento del 20%, y analiza qué se puede reutilizar para considerarlo en el precio, explicándoselo al cliente.» — sobre las 30 solicitudes del archivo `Xpandia_Website_Change_Request_ProjectApp_v2_1.docx`, analizadas en el reporte `Analisis_Solicitud_De_Cambios_V21_15082026`.
+**Requerimiento original:** «Crea un documento donde, por cada uno de los nuevos requerimientos que se pretende que implementemos, se muestre en tabla el resultado de la calculadora: nombre del requerimiento, nivel de esfuerzo y precio, con los totales al final de cada etapa y un solo total unificado; ajusta las horas a 4 semanas de trabajo, aplica un descuento del 20%, analiza qué se puede reutilizar para considerarlo en el precio, e incluye la forma de pago y el efecto sobre el hosting.» — sobre las 30 solicitudes del archivo `Xpandia_Website_Change_Request_ProjectApp_v2_1.docx`, analizadas en el reporte `Analisis_Solicitud_De_Cambios_V21_15082026`.
 
 — *ProjectApp · Calculadora de Requerimientos*
