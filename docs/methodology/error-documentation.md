@@ -30,6 +30,21 @@ No open issues.
 
 ## Resolved Issues
 
+### [ERROR-008] Django 6.1 deploy fails against production MySQL 8.0
+- **Date**: 2026-08-26
+- **Context**: During the production dependency deploy, `manage.py migrate` failed
+  before service restart with `NotSupportedError: MySQL 8.4 or later is required
+  (found 8.0.46)`.
+- **Root Cause**: The dependency refresh selected Django 6.1. That release drops
+  support for MySQL versions below 8.4, while Xpandia production still runs MySQL
+  8.0.46. CI did not exercise the production database-version compatibility gate.
+- **Resolution**: Pin Django to 6.0.8, the latest 6.0 patch, which supports MySQL
+  8.0.11 and later. The production venv was restored to 6.0.8; Django system checks
+  and migrations completed successfully with `settings_prod`, with no migrations
+  pending. Keep Django on 6.0.x until production MySQL is upgraded to 8.4+.
+- **Files Affected**: `backend/requirements.txt`,
+  `docs/methodology/technical.md`, `docs/methodology/lessons-learned.md`
+
 ### [ERROR-007] Mail to a destination domain times out against Cloudflare IPs
 - **Date**: 2026-08-05 (incident 2026-08-03/04)
 - **Context**: Gmail could not deliver a message sent from `milena@xpandia.global`. Two delayed-delivery notices (2026-08-03, 12:42 and 12:50) and the final bounce (2026-08-04, 12:55) all reported `The recipient server did not accept our requests to connect` with timeouts against `172.67.214.210`, `104.21.75.54`, `2606:4700:3034::ac43:d6d2` and `2606:4700:3031::6815:4b36`. The ticket assumed our MX records were misconfigured.

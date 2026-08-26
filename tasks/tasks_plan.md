@@ -46,6 +46,8 @@ The current focus is establishing the public marketing site, the bilingual blog,
 - [x] Header nav: "Blog" link added to desktop + mobile drawer
 
 ### Backend Infrastructure
+- [x] Production compatibility guard: Django 6.0.8 pinned for MySQL 8.0.x; Django
+  6.1 deferred until MySQL 8.4+
 - [x] Custom `User` model (email-based, `customer`/`admin` roles)
 - [x] `PasswordCode` model (6-digit, 15-minute TTL)
 - [x] JWT (SimpleJWT) + Google OAuth + email passcode reset
