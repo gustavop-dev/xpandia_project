@@ -80,6 +80,15 @@ The Xpandia staging environment is **not provisioned yet**. The `deploy-staging`
 2. Backend: `python manage.py collectstatic`.
 3. Restart Gunicorn and Huey services.
 
+### Django / MySQL compatibility gate
+
+- Production runs MySQL 8.0.x, so Django is pinned to the latest 6.0.x patch.
+- Django 6.1 requires MySQL 8.4+; a dependency audit must treat that database
+  minimum as a deployment constraint, even though the Django bump looks minor.
+- Before accepting a Django feature-release bump, verify the production database
+  version and run `manage.py check --database default` with `settings_prod` from
+  the deploy clone. Never run production migrations from a session worktree.
+
 ---
 
 ## 5. Testing Insights

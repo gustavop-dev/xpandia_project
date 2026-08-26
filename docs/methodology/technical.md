@@ -5,7 +5,7 @@ description: Tech stack, dev setup, environment configuration, design patterns, 
 
 # Technical — Xpandia
 
-_Last verified: 2026-05-07_
+_Last verified: 2026-08-26_
 
 ## 1. Tech Stack
 
@@ -13,8 +13,8 @@ _Last verified: 2026-05-07_
 | Package | Version |
 |---------|---------|
 | Python | 3.12 |
-| Django | 6.0.4 |
-| Django REST Framework | 3.17.1 |
+| Django | 6.0.8 |
+| Django REST Framework | 3.18.0 |
 | djangorestframework-simplejwt | 5.5.1 |
 | django-cors-headers | 4.9.0 |
 | Huey (Redis task queue) | ≥2.5.0 |
@@ -218,6 +218,13 @@ npm run dev                   # starts on :3000 (Playwright config uses :3004)
 ---
 
 ## 6. Staging & Deployment
+
+### Production database compatibility
+
+- Production currently runs MySQL 8.0.x.
+- Django must remain on the latest 6.0.x patch while that database version is in use.
+- Django 6.1 requires MySQL 8.4 or later and must not be selected by dependency
+  refreshes until the production database has been upgraded and verified.
 
 **Not provisioned yet.** The `deploy-staging` skill has placeholder variables that must be filled before use:
 - `<XPANDIA_STAGING_PATH>`

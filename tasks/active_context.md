@@ -5,13 +5,21 @@ description: Current work focus, recent changes, active decisions, and next step
 
 # Active Context — Xpandia
 
-_Last updated: 2026-05-07_
+_Last updated: 2026-08-26_
 
 ---
 
 ## Current State
 
 The Xpandia project is a **marketing site + bilingual blog + backend infrastructure**. The public site exposes 9 routes (7 marketing + `/blog` + `/blog/[slug]`). The blog is fully content-managed via Django admin; readers consume it bilingually via `?lang=es|en`. Backend has auth infrastructure ready but no authenticated frontend features yet.
+
+### Production dependency compatibility (2026-08-26)
+
+Production runs MySQL 8.0.46. Django is pinned to 6.0.8 because Django 6.1 drops
+support for MySQL versions below 8.4. The first dependency deploy detected this
+before restarting services; the production venv was restored to Django 6.0.8 and
+validated with `settings_prod` (`check --database default` and `migrate`, with no
+pending migrations). Do not upgrade Django past 6.0.x until MySQL is upgraded.
 
 ---
 
