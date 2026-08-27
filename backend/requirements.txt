@@ -1,3 +1,5 @@
+# Packaging tooling security floor; deploys install this file with pip.
+pip>=26.2,<27.0
 asgiref==3.12.1
 # Production uses MySQL 8.0.x; Django 6.1 requires MySQL 8.4+.
 Django==6.0.8
@@ -19,7 +21,7 @@ freezegun==1.5.5
 coverage==7.15.4
 factory-boy==3.3.3
 redis>=8.1.0
-ruff==0.16.4
+ruff==0.16.5
 requests==2.34.2
 python-dateutil==2.9.0.post0
 six==1.17.0
