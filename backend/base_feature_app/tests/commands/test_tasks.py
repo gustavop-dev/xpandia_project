@@ -1,5 +1,4 @@
 """Tests for Silk-related Huey tasks: silk_garbage_collection, weekly_slow_queries_report."""
-# quality: disable global_state_leak (pytest-django settings fixture auto-reverts all mutations after each test)
 
 from types import SimpleNamespace
 from unittest.mock import MagicMock, patch

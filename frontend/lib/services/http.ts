@@ -31,7 +31,7 @@ const refreshAccessToken = async (): Promise<string | null> => {
     if (!access) return null;
     setTokens({ access, refresh });
     return access;
-  } catch (e) {
+  } catch {
     clearTokens();
     return null;
   }

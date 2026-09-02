@@ -1,27 +1,9 @@
-import { test, expect } from '../test-with-coverage'
+import { test, expect } from '@playwright/test'
 import { waitForPageLoad, fillContactForm } from '../fixtures'
-import {
-  CONTACT_FORM_SUBMIT,
-  CONTACT_FORM_ERROR_STATE,
-  CONTACT_FORM_REQUEST_TYPE,
-  CONTACT_BOOK_CALL_CAL_POPUP,
-  CONTACT_CTA_SCROLL_TO_FORM_HINT,
-  CTA_HOME_TO_CONTACT,
-  CTA_SERVICE_DETAIL_TO_CONTACT,
-  CTA_SERVICES_CORE_SOLUTION_TO_CONTACT,
-  SERVICES_CARD_TO_DETAIL,
-  BREADCRUMB_BACK_TO_SERVICES,
-  MOBILE_NAVIGATION_DRAWER,
-  HEADER_SERVICES_DROPDOWN,
-  FAB_CONTACT_BUTTON,
-  MOBILE_LANGUAGE_TOGGLE,
-  FOOTER_LINKS_NAVIGATION,
-} from '../helpers/flow-tags'
 
 test.describe('Contact form', () => {
   test(
     'submitting the contact form shows the success banner',
-    { tag: [...CONTACT_FORM_SUBMIT, '@outcome:success'] },
     async ({ page }) => {
       await page.goto('/contact')
       await waitForPageLoad(page)
@@ -41,7 +23,6 @@ test.describe('Contact form', () => {
 
   test(
     'shows the error banner when the contact API returns 5xx',
-    { tag: [...CONTACT_FORM_ERROR_STATE, '@outcome:failure'] },
     async ({ page }) => {
       await page.goto('/contact')
       await waitForPageLoad(page)
@@ -65,14 +46,13 @@ test.describe('Contact form', () => {
       ])
 
       await expect(page.getByText(/something went wrong/i)).toBeVisible()
-      await expect(page.getByText(/Request received/i)).not.toBeVisible()
+      await expect(page.getByText(/Request received/i)).toBeHidden()
       await expect(page.getByRole('button', { name: /Send request/i })).toBeVisible()
     }
   )
 
   test(
     'selecting a quick start request type sends it with the contact form',
-    { tag: [...CONTACT_FORM_REQUEST_TYPE, '@outcome:success'] },
     async ({ page }) => {
       await page.goto('/contact')
       await waitForPageLoad(page)
@@ -150,7 +130,6 @@ test.describe('Contact scheduling', () => {
 
   test(
     'clicking the book-a-call CTA opens the Cal scheduler',
-    { tag: [...CONTACT_BOOK_CALL_CAL_POPUP, '@outcome:success'] },
     async ({ page }) => {
       await gotoContactWithCalReady(page)
 
@@ -162,7 +141,6 @@ test.describe('Contact scheduling', () => {
 
   test(
     'opening the Cal scheduler keeps the user on the contact page',
-    { tag: [...CONTACT_BOOK_CALL_CAL_POPUP, '@outcome:success'] },
     async ({ page }) => {
       await gotoContactWithCalReady(page)
 
@@ -177,7 +155,6 @@ test.describe('Contact scheduling', () => {
 test.describe('Contact form CTA', () => {
   test(
     'the final CTA scrolls the contact form into view',
-    { tag: [...CONTACT_CTA_SCROLL_TO_FORM_HINT, '@outcome:success'] },
     async ({ page }) => {
       await page.goto('/contact')
       await waitForPageLoad(page)
@@ -199,7 +176,6 @@ test.describe('Contact form CTA', () => {
 
   test(
     'the final CTA surfaces the hint above the contact form',
-    { tag: [...CONTACT_CTA_SCROLL_TO_FORM_HINT, '@outcome:success'] },
     async ({ page }) => {
       await page.goto('/contact')
       await waitForPageLoad(page)
@@ -219,7 +195,6 @@ test.describe('Contact form CTA', () => {
 test.describe('CTA navigation', () => {
   test(
     'clicking the home page CTA navigates to /contact',
-    { tag: [...CTA_HOME_TO_CONTACT, '@outcome:success'] },
     async ({ page }) => {
       await page.goto('/')
       await waitForPageLoad(page)
@@ -233,7 +208,6 @@ test.describe('CTA navigation', () => {
 
   test(
     'clicking a core-solution card CTA on /services navigates to /contact',
-    { tag: [...CTA_SERVICES_CORE_SOLUTION_TO_CONTACT, '@outcome:success'] },
     async ({ page }) => {
       await page.goto('/services')
       await waitForPageLoad(page)
@@ -252,7 +226,6 @@ test.describe('CTA navigation', () => {
 
   test(
     'clicking the service detail CTA navigates to /contact',
-    { tag: [...CTA_SERVICE_DETAIL_TO_CONTACT, '@outcome:success'] },
     async ({ page }) => {
       await page.goto('/services/language-assurance')
       await waitForPageLoad(page)
@@ -274,7 +247,6 @@ test.describe('CTA navigation', () => {
 test.describe('Services navigation', () => {
   test(
     'clicking a service card on /services navigates to the service detail page',
-    { tag: [...SERVICES_CARD_TO_DETAIL, '@outcome:success'] },
     async ({ page }) => {
       await page.goto('/services')
       await waitForPageLoad(page)
@@ -288,7 +260,6 @@ test.describe('Services navigation', () => {
 
   test(
     'clicking the breadcrumb on a service detail page returns to /services',
-    { tag: [...BREADCRUMB_BACK_TO_SERVICES, '@outcome:success'] },
     async ({ page }) => {
       await page.goto('/services/language-assurance')
       await waitForPageLoad(page)
@@ -310,7 +281,6 @@ test.describe('Services navigation', () => {
 test.describe('Navigation interactions', () => {
   test(
     'mobile hamburger opens the drawer and navigates to About',
-    { tag: [...MOBILE_NAVIGATION_DRAWER, '@outcome:success'] },
     async ({ browser }) => {
       const context = await browser.newContext({
         viewport: { width: 390, height: 844 },
@@ -331,7 +301,6 @@ test.describe('Navigation interactions', () => {
 
   test(
     'mobile main bar exposes the language toggle and switches to Spanish without opening the drawer',
-    { tag: [...MOBILE_LANGUAGE_TOGGLE, '@outcome:success'] },
     async ({ browser }) => {
       const context = await browser.newContext({
         viewport: { width: 390, height: 844 },
@@ -354,7 +323,6 @@ test.describe('Navigation interactions', () => {
 
   test(
     'hovering Services in the desktop header shows the dropdown and navigates on click',
-    { tag: [...HEADER_SERVICES_DROPDOWN, '@outcome:success'] },
     async ({ page }) => {
       await page.goto('/')
       await waitForPageLoad(page)
@@ -371,7 +339,6 @@ test.describe('Navigation interactions', () => {
 
   test(
     'clicking the FAB contact button navigates to /contact',
-    { tag: [...FAB_CONTACT_BUTTON, '@outcome:success'] },
     async ({ page }) => {
       await page.goto('/')
       await waitForPageLoad(page)
@@ -384,7 +351,6 @@ test.describe('Navigation interactions', () => {
 
   test(
     'clicking the About link in the footer navigates to /about',
-    { tag: [...FOOTER_LINKS_NAVIGATION, '@outcome:success'] },
     async ({ page }) => {
       await page.goto('/')
       await waitForPageLoad(page)

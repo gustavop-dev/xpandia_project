@@ -1,5 +1,4 @@
 """Tests for reCAPTCHA views and verify_recaptcha helper."""
-# quality: disable global_state_leak (pytest-django settings fixture auto-reverts all mutations after each test)
 
 from unittest.mock import patch
 

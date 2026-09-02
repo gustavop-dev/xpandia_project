@@ -1,8 +1,6 @@
-/**
- * E2E Test Fixtures and Helpers
- * 
- * Este archivo contiene fixtures y funciones auxiliares para las pruebas E2E
- */
+import type { Page } from '@playwright/test'
+
+/** Shared data and helpers for the end-to-end tests. */
 
 export const testUser = {
   email: 'test@example.com',
@@ -22,15 +20,20 @@ export const testCheckoutData = {
   postal_code: '10001',
 };
 
-export async function waitForPageLoad(page: any) {
+export async function waitForPageLoad(page: Page) {
   await page.waitForLoadState('load');
   await page.waitForLoadState('domcontentloaded');
   await page.waitForFunction(
     () => {
-      const el = document.querySelector('header') ?? document.body
-      if (!el) return false
-      return Object.keys(el).some(k =>
-        k.startsWith('__reactFiber') || k.startsWith('__reactInternalInstance'),
+      const elements = [
+        document.querySelector('header'),
+        document.querySelector('footer'),
+      ]
+
+      return elements.every(element =>
+        element && Object.keys(element).some(key =>
+          key.startsWith('__reactFiber') || key.startsWith('__reactInternalInstance'),
+        ),
       )
     },
     undefined,
@@ -44,7 +47,7 @@ export async function waitForPageLoad(page: any) {
  * test needs distinct content.
  */
 export async function fillContactForm(
-  page: any,
+  page: Page,
   message = 'We need a quality review of our Spanish AI outputs.',
 ) {
   // Radio tiles use role="button" (no native <input type="radio">)
@@ -62,8 +65,8 @@ export async function fillContactForm(
 /**
  * Wait for API response
  */
-export async function waitForApiResponse(page: any, url: string) {
-  return page.waitForResponse((response: any) => 
+export async function waitForApiResponse(page: Page, url: string) {
+  return page.waitForResponse(response =>
     response.url().includes(url) && response.status() === 200
   );
 }

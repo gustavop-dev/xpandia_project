@@ -1,10 +1,8 @@
-import { test, expect } from '../test-with-coverage';
+import { test, expect } from '@playwright/test';
 import { waitForPageLoad } from '../fixtures';
-import { HOME_LOADS, NAVIGATION_BETWEEN_PAGES, NAVIGATION_HEADER, NAVIGATION_FOOTER, HEADER_BLOG_LINK, HEADER_CONTACT_LINK } from '../helpers/flow-tags';
 
 test.describe('Navigation', () => {
-  test('should navigate to home page', { tag: [...HOME_LOADS, '@outcome:display'] }, async ({ page }) => {
-    // quality: allow-no-interaction (home is the app entry point; the hero heading assertion is a real content check)
+  test('should navigate to home page', async ({ page }) => {
     await page.goto('/');
     await waitForPageLoad(page);
 
@@ -12,7 +10,7 @@ test.describe('Navigation', () => {
     await expect(page.getByRole('heading', { level: 1, name: /Spanish that works/i })).toBeVisible();
   });
 
-  test('the header logo returns to the home page', { tag: [...NAVIGATION_HEADER, '@outcome:success'] }, async ({ page }) => {
+  test('the header logo returns to the home page', async ({ page }) => {
     await page.goto('/blog');
     await waitForPageLoad(page);
 
@@ -22,7 +20,7 @@ test.describe('Navigation', () => {
     await expect(page.getByRole('heading', { level: 1, name: /Spanish that works/i })).toBeVisible();
   });
 
-  test('the footer About link navigates to /about', { tag: [...NAVIGATION_FOOTER, '@outcome:success'] }, async ({ page }) => {
+  test('the footer About link navigates to /about', async ({ page }) => {
     await page.goto('/');
     await waitForPageLoad(page);
 
@@ -32,7 +30,7 @@ test.describe('Navigation', () => {
     await expect(page.getByRole('heading', { level: 1, name: /Spanish and English expertise/i })).toBeVisible();
   });
 
-  test('clicking Blog in the header navigates to /blog', { tag: [...HEADER_BLOG_LINK, '@outcome:success'] }, async ({ page }) => {
+  test('clicking Blog in the header navigates to /blog', async ({ page }) => {
     await page.goto('/');
     await waitForPageLoad(page);
 
@@ -42,7 +40,7 @@ test.describe('Navigation', () => {
     await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
   });
 
-  test('clicking Contact in the header navigates to /contact', { tag: [...HEADER_CONTACT_LINK, '@outcome:success'] }, async ({ page }) => {
+  test('clicking Contact in the header navigates to /contact', async ({ page }) => {
     await page.goto('/');
     await waitForPageLoad(page);
 
@@ -52,7 +50,7 @@ test.describe('Navigation', () => {
     await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
   });
 
-  test('navigates between pages via the header nav', { tag: [...NAVIGATION_BETWEEN_PAGES, '@outcome:success'] }, async ({ page }) => {
+  test('navigates between pages via the header nav', async ({ page }) => {
     await page.goto('/');
     await waitForPageLoad(page);
 
