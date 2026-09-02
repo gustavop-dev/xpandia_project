@@ -1,4 +1,3 @@
-# quality: disable global_state_leak (pytest-django settings fixture auto-reverts all mutations after each test)
 import pytest
 from django.contrib.messages.storage.fallback import FallbackStorage
 from django.core.exceptions import PermissionDenied
@@ -16,7 +15,7 @@ def _request_with_messages(user):
     request = RequestFactory().get('/admin/')
     request.user = user
     request.session = {}
-    setattr(request, '_messages', FallbackStorage(request))
+    request._messages = FallbackStorage(request)
     return request
 
 

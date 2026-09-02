@@ -3,44 +3,58 @@ import { jest } from '@jest/globals';
 import '@testing-library/jest-dom';
 import '@testing-library/jest-dom/jest-globals';
 
+type MockImageProps = React.ImgHTMLAttributes<HTMLImageElement> & {
+  fill?: boolean;
+  priority?: boolean;
+};
+
+type MockHref = string | { pathname?: string };
+type MockLinkProps = Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, 'href'> & {
+  href: MockHref;
+  children?: React.ReactNode;
+};
+
+const resolveHref = (href: MockHref) =>
+  typeof href === 'string' ? href : href.pathname ?? '/';
+
 jest.mock('next/image', () => ({
   __esModule: true,
-  default: function NextImage(props: any) {
-    const { fill, ...rest } = props;
-    return React.createElement('img', { ...rest, alt: props.alt });
+  default: function NextImage({ fill, priority, ...rest }: MockImageProps) {
+    void fill;
+    void priority;
+    return React.createElement('img', rest);
   },
 }));
 
 jest.mock('next/link', () => ({
   __esModule: true,
-  default: ({ href, children, ...rest }: any) => React.createElement('a', { href, ...rest }, children),
+  default: ({ href, children, ...rest }: MockLinkProps) =>
+    React.createElement('a', { href: resolveHref(href), ...rest }, children),
 }))
 
 // i18n navigation: make next-intl's Link/useRouter/usePathname behave like plain Next equivalents in tests
 jest.mock('@/i18n/navigation', () => {
-  const React = require('react')
   return {
-    Link: ({ href, children, ...rest }: any) => React.createElement('a', { href: typeof href === 'string' ? href : href?.pathname ?? '/', ...rest }, children),
+    Link: ({ href, children, ...rest }: MockLinkProps) =>
+      React.createElement('a', { href: resolveHref(href), ...rest }, children),
     usePathname: jest.fn(() => '/'),
     useRouter: jest.fn(() => ({ push: jest.fn(), replace: jest.fn(), refresh: jest.fn(), back: jest.fn() })),
     redirect: jest.fn(),
-    getPathname: jest.fn(({ href }: any) => (typeof href === 'string' ? href : href?.pathname ?? '/')),
+    getPathname: jest.fn(({ href }: { href: MockHref }) => resolveHref(href)),
   }
 });
 
 // next-intl/server: mock getTranslations for async server components under Jest (jsdom runs as client)
 jest.mock('next-intl/server', () => {
-  const { createTranslator } = require('use-intl/core')
-  const { enMessages } = require('./test-utils/messages')
+  const { createTranslator } = jest.requireActual<typeof import('use-intl/core')>('use-intl/core')
+  const { enMessages } = jest.requireActual<typeof import('./test-utils/messages')>('./test-utils/messages')
 
-  // Flatten the top-level namespace map into a single messages object
-  // enMessages is { common: {...}, home: {...}, ... }
-  const messages: Record<string, any> = {}
-  for (const [ns, value] of Object.entries(enMessages)) {
-    messages[ns] = value
-  }
+  const messages = { ...enMessages }
+  type MessageNamespace = keyof typeof messages
 
-  const getTranslations = async (namespaceOrOptions: string | { locale?: string; namespace: string }) => {
+  const getTranslations = async (
+    namespaceOrOptions: MessageNamespace | { locale?: string; namespace: MessageNamespace },
+  ) => {
     const namespace = typeof namespaceOrOptions === 'string' ? namespaceOrOptions : namespaceOrOptions.namespace
     return createTranslator({ locale: 'en', messages, namespace })
   }

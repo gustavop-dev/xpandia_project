@@ -1,13 +1,8 @@
-import { test, expect } from '../test-with-coverage'
+import { test, expect } from '@playwright/test'
 import { waitForPageLoad } from '../fixtures'
-import {
-  I18N_LOCALE_SWITCH,
-  I18N_LOCALE_PERSISTENCE_NAV,
-  NAVIGATION_LOCALIZED_NOT_FOUND,
-} from '../helpers/flow-tags'
 
 test.describe('i18n locale switch', () => {
-  test('switching EN→ES adds the /es prefix, swaps content, and sets html lang', { tag: [...I18N_LOCALE_SWITCH, '@outcome:success'] }, async ({ page }) => {
+  test('switching EN→ES adds the /es prefix, swaps content, and sets html lang', async ({ page }) => {
     await page.goto('/')
     await waitForPageLoad(page)
     await expect(page.locator('html')).toHaveAttribute('lang', 'en')
@@ -20,7 +15,7 @@ test.describe('i18n locale switch', () => {
     await expect(page.getByRole('heading', { level: 1, name: /Traducciones que funcionan para usuarios reales/i })).toBeVisible()
   })
 
-  test('switching ES→EN removes the /es prefix and restores English', { tag: [...I18N_LOCALE_SWITCH, '@outcome:success'] }, async ({ page }) => {
+  test('switching ES→EN removes the /es prefix and restores English', async ({ page }) => {
     await page.goto('/es/services/language-assurance')
     await waitForPageLoad(page)
     await expect(page.locator('html')).toHaveAttribute('lang', 'es')
@@ -34,7 +29,7 @@ test.describe('i18n locale switch', () => {
 })
 
 test.describe('i18n locale persistence across navigation', () => {
-  test('navigating via a header nav link keeps the /es prefix', { tag: [...I18N_LOCALE_PERSISTENCE_NAV, '@outcome:success'] }, async ({ page }) => {
+  test('navigating via a header nav link keeps the /es prefix', async ({ page }) => {
     await page.goto('/es')
     await waitForPageLoad(page)
 
@@ -44,7 +39,7 @@ test.describe('i18n locale persistence across navigation', () => {
     await expect(page.locator('html')).toHaveAttribute('lang', 'es')
   })
 
-  test('navigating via a footer link keeps the /es prefix', { tag: [...I18N_LOCALE_PERSISTENCE_NAV, '@outcome:success'] }, async ({ page }) => {
+  test('navigating via a footer link keeps the /es prefix', async ({ page }) => {
     await page.goto('/es')
     await waitForPageLoad(page)
 
@@ -56,8 +51,7 @@ test.describe('i18n locale persistence across navigation', () => {
 })
 
 test.describe('localized 404', () => {
-  test('an unmatched Spanish URL renders the 404 copy in Spanish', { tag: [...NAVIGATION_LOCALIZED_NOT_FOUND, '@outcome:failure'] }, async ({ page }) => {
-    // quality: allow-no-interaction (no UI path leads to an unmatched URL)
+  test('an unmatched Spanish URL renders the 404 copy in Spanish', async ({ page }) => {
     const response = await page.goto('/es/pagina-que-no-existe')
     await waitForPageLoad(page)
 
@@ -66,7 +60,7 @@ test.describe('localized 404', () => {
     await expect(page.getByRole('heading', { level: 1, name: /Página no encontrada/i })).toBeVisible()
   })
 
-  test('the 404 CTA returns to the homepage of the active locale', { tag: [...NAVIGATION_LOCALIZED_NOT_FOUND, '@outcome:failure'] }, async ({ page }) => {
+  test('the 404 CTA returns to the homepage of the active locale', async ({ page }) => {
     await page.goto('/es/pagina-que-no-existe')
     await waitForPageLoad(page)
 
@@ -76,8 +70,7 @@ test.describe('localized 404', () => {
     await expect(page.getByRole('heading', { level: 1, name: /Traducciones que funcionan para usuarios reales/i })).toBeVisible()
   })
 
-  test('an unmatched English URL renders the 404 copy in English', { tag: [...NAVIGATION_LOCALIZED_NOT_FOUND, '@outcome:failure'] }, async ({ page }) => {
-    // quality: allow-no-interaction (no UI path leads to an unmatched URL)
+  test('an unmatched English URL renders the 404 copy in English', async ({ page }) => {
     const response = await page.goto('/page-that-does-not-exist')
     await waitForPageLoad(page)
 

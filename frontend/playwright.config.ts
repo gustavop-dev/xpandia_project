@@ -15,7 +15,6 @@ export default defineConfig({
     ['list'],
     ['html', { open: 'never' }],
     ['json', { outputFile: 'e2e-results/results.json' }],
-    ['./e2e/reporters/flow-coverage-reporter.mjs', { outputDir: 'e2e-results' }],
   ],
   webServer: [
     {

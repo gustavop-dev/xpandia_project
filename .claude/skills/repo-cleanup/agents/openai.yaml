@@ -1,3 +1,0 @@
-interface:
-  display_name: "Repo Cleanup"
-  short_description: "Systematic audit for obsolete, deprecated, or unnecessary files in the repository"

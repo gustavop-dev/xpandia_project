@@ -1,10 +1,8 @@
-import { test, expect } from '../test-with-coverage'
+import { test, expect } from '@playwright/test'
 import { waitForPageLoad } from '../fixtures'
-import { ABOUT_PAGE, CONTACT_PAGE } from '../helpers/flow-tags'
 
 test.describe('Static pages', () => {
-  test('about page loads with content', { tag: [...ABOUT_PAGE, '@outcome:display'] }, async ({ page }) => {
-    // quality: allow-no-interaction (content-render check via direct URL; navigation to it covered by the dedicated click tests)
+  test('about page loads with content', async ({ page }) => {
     await page.goto('/about')
     await waitForPageLoad(page)
 
@@ -12,8 +10,7 @@ test.describe('Static pages', () => {
     await expect(page.getByRole('link', { name: /Talk to an Expert/i }).first()).toBeVisible()
   })
 
-  test('contact page loads with contact section', { tag: [...CONTACT_PAGE, '@outcome:display'] }, async ({ page }) => {
-    // quality: allow-no-interaction (content-render check via direct URL; navigation to it covered by the dedicated click tests)
+  test('contact page loads with contact section', async ({ page }) => {
     await page.goto('/contact')
     await waitForPageLoad(page)
 
